@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+
+<BorderPane prefWidth="1280" prefHeight="800"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            stylesheets="@../css/Score.css"
+            fx:controller="org.example.Controller.HomeController">
+
+    <left>
+        <VBox prefWidth="240" minWidth="240" maxWidth="240" spacing="20" styleClass="sidebar">
+            <padding>
+                <Insets top="28" right="20" bottom="24" left="20"/>
+            </padding>
+
+            <HBox alignment="CENTER_LEFT" spacing="12">
+                <Label text="🎓" styleClass="logo-icon"/>
+                <VBox spacing="2">
+                    <Label text="Student Portal" styleClass="logo-title"/>
+                    <Label text="Hệ thống sinh viên" styleClass="logo-subtitle"/>
+                </VBox>
+            </HBox>
+
+            <Separator styleClass="sidebar-separator"/>
+
+            <VBox spacing="10" VBox.vgrow="ALWAYS">
+                <Button maxWidth="Infinity" text="  👤   Thông tin cá nhân" styleClass="nav-button"/>
+                <Button maxWidth="Infinity" text="  📊   Kết quả học tập" styleClass="nav-active"/>
+                <Button maxWidth="Infinity" text="  📅   Lịch học" styleClass="nav-button"/>
+                <Button maxWidth="Infinity" text="  📚   Đăng ký môn học" styleClass="nav-button"/>
+                <Button maxWidth="Infinity" text="  💳   Học phí" styleClass="nav-button"/>
+                <Button maxWidth="Infinity" text="  🔔   Thông báo        3" styleClass="nav-button"/>
+                <Button maxWidth="Infinity" text="  💬   Tin nhắn" styleClass="nav-button"/>
+                <Button maxWidth="Infinity" text="  📄   Tài liệu" styleClass="nav-button"/>
+                <Button maxWidth="Infinity" text="  ⚙   Cài đặt" styleClass="nav-button"/>
+            </VBox>
+
+            <VBox spacing="8" styleClass="support-card">
+                <Label text="🎧  Hỗ trợ sinh viên" styleClass="support-title"/>
+                <Label text="1900 1234" styleClass="support-phone"/>
+                <Label text="support@student.edu.vn" styleClass="support-mail"/>
+            </VBox>
+
+            <Button maxWidth="Infinity" text="  ↪   Đăng xuất" styleClass="logout-button"/>
+        </VBox>
+    </left>
+
+    <center>
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" styleClass="scroll-pane">
+            <content>
+                <VBox spacing="22" styleClass="main-bg">
+                    <padding>
+                        <Insets top="28" right="32" bottom="32" left="32"/>
+                    </padding>
+
+                    <HBox alignment="CENTER_LEFT" spacing="20">
+                        <VBox spacing="6" HBox.hgrow="ALWAYS">
+                            <Label text="Kết quả học tập" styleClass="page-title"/>
+                            <HBox spacing="8" alignment="CENTER_LEFT">
+                                <Label text="Trang chủ" styleClass="breadcrumb"/>
+                                <Label text="›" styleClass="breadcrumb"/>
+                                <Label text="Kết quả học tập" styleClass="breadcrumb-current"/>
+                            </HBox>
+                        </VBox>
+                        <TextField promptText="Tìm kiếm..." prefWidth="280" styleClass="search-box"/>
+                        <StackPane styleClass="circle-icon"><Label text="🔔"/></StackPane>
+                        <StackPane styleClass="circle-icon"><Label text="👤"/></StackPane>
+                    </HBox>
+
+                    <HBox spacing="18">
+                        <VBox spacing="12" styleClass="summary-card" HBox.hgrow="ALWAYS">
+                            <HBox alignment="CENTER_LEFT">
+                                <Label text="GPA tích lũy" styleClass="card-label" HBox.hgrow="ALWAYS"/>
+                                <StackPane styleClass="mini-icon blue"><Label text="📈"/></StackPane>
+                            </HBox>
+                            <HBox alignment="BASELINE_LEFT" spacing="6">
+                                <Label text="3.45" styleClass="stat-main blue-text"/>
+                                <Label text="/4.0" styleClass="stat-unit"/>
+                            </HBox>
+                            <Label text="●  Giỏi" styleClass="pill-blue"/>
+                        </VBox>
+
+                        <VBox spacing="12" styleClass="summary-card" HBox.hgrow="ALWAYS">
+                            <HBox alignment="CENTER_LEFT">
+                                <Label text="Số tín chỉ tích lũy" styleClass="card-label" HBox.hgrow="ALWAYS"/>
+                                <StackPane styleClass="mini-icon green"><Label text="📖"/></StackPane>
+                            </HBox>
+                            <HBox alignment="BASELINE_LEFT" spacing="6">
+                                <Label text="86" styleClass="stat-main green-text"/>
+                                <Label text="TC" styleClass="stat-unit"/>
+                            </HBox>
+                            <Label text="Đã hoàn thành 72% CTĐT" styleClass="pill-green"/>
+                        </VBox>
+
+                        <VBox spacing="12" styleClass="summary-card" HBox.hgrow="ALWAYS">
+                            <HBox alignment="CENTER_LEFT">
+                                <Label text="Số môn đã học" styleClass="card-label" HBox.hgrow="ALWAYS"/>
+                                <StackPane styleClass="mini-icon purple"><Label text="📄"/></StackPane>
+                            </HBox>
+                            <HBox alignment="BASELINE_LEFT" spacing="6">
+                                <Label text="28" styleClass="stat-main purple-text"/>
+                                <Label text="/40" styleClass="stat-unit"/>
+                            </HBox>
+                            <Label text="7 môn còn lại" styleClass="small-note"/>
+                        </VBox>
+
+                        <VBox spacing="12" styleClass="summary-card" HBox.hgrow="ALWAYS">
+                            <HBox alignment="CENTER_LEFT">
+                                <Label text="Xếp loại học lực" styleClass="card-label" HBox.hgrow="ALWAYS"/>
+                                <StackPane styleClass="mini-icon orange"><Label text="🏅"/></StackPane>
+                            </HBox>
+                            <Label text="Khá" styleClass="stat-main orange-text"/>
+                            <Label text="Học kỳ gần nhất" styleClass="pill-orange"/>
+                        </VBox>
+                    </HBox>
+
+                    <HBox spacing="18" VBox.vgrow="ALWAYS">
+                        <VBox spacing="18" HBox.hgrow="ALWAYS">
+                            <HBox alignment="CENTER_LEFT" spacing="16" styleClass="filter-card">
+                                <Label text="Kỳ học" styleClass="filter-label"/>
+                                <ComboBox prefWidth="260" promptText="Học kỳ 2 (2023 - 2024)" styleClass="semester-box"/>
+                            </HBox>
+
+                            <VBox spacing="18" styleClass="card table-card" VBox.vgrow="ALWAYS">
+                                <Label text="Bảng điểm học kỳ 2 (2023 - 2024)" styleClass="section-title"/>
+
+                                <GridPane hgap="10" vgap="0" styleClass="grade-table">
+                                    <columnConstraints>
+                                        <ColumnConstraints percentWidth="7"/>
+                                        <ColumnConstraints percentWidth="12"/>
+                                        <ColumnConstraints percentWidth="34"/>
+                                        <ColumnConstraints percentWidth="13"/>
+                                        <ColumnConstraints percentWidth="13"/>
+                                        <ColumnConstraints percentWidth="10"/>
+                                        <ColumnConstraints percentWidth="15"/>
+                                    </columnConstraints>
+
+                                    <Label text="STT" styleClass="table-head" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                                    <Label text="Mã môn" styleClass="table-head" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                                    <Label text="Tên môn học" styleClass="table-head" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                                    <Label text="Số tín chỉ" styleClass="table-head" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+                                    <Label text="Điểm hệ 10" styleClass="table-head" GridPane.rowIndex="0" GridPane.columnIndex="4"/>
+                                    <Label text="Điểm chữ" styleClass="table-head" GridPane.rowIndex="0" GridPane.columnIndex="5"/>
+                                    <Label text="Trạng thái" styleClass="table-head" GridPane.rowIndex="0" GridPane.columnIndex="6"/>
+
+                                    <Label text="1" styleClass="table-cell" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                                    <Label text="IT101" styleClass="table-cell" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                                    <Label text="Lập trình hướng đối tượng" styleClass="table-cell" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                                    <Label text="3" styleClass="table-cell center" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+                                    <Label text="8.5" styleClass="table-cell center" GridPane.rowIndex="1" GridPane.columnIndex="4"/>
+                                    <Label text="B+" styleClass="table-cell center" GridPane.rowIndex="1" GridPane.columnIndex="5"/>
+                                    <Label text="Đã hoàn thành" styleClass="status-pass" GridPane.rowIndex="1" GridPane.columnIndex="6"/>
+
+                                    <Label text="2" styleClass="table-cell" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                                    <Label text="IT102" styleClass="table-cell" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                                    <Label text="Cấu trúc dữ liệu và giải thuật" styleClass="table-cell" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+                                    <Label text="3" styleClass="table-cell center" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+                                    <Label text="7.5" styleClass="table-cell center" GridPane.rowIndex="2" GridPane.columnIndex="4"/>
+                                    <Label text="B" styleClass="table-cell center" GridPane.rowIndex="2" GridPane.columnIndex="5"/>
+                                    <Label text="Đã hoàn thành" styleClass="status-pass" GridPane.rowIndex="2" GridPane.columnIndex="6"/>
+
+                                    <Label text="3" styleClass="table-cell" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                                    <Label text="IT103" styleClass="table-cell" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                                    <Label text="Cơ sở dữ liệu" styleClass="table-cell" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
+                                    <Label text="3" styleClass="table-cell center" GridPane.rowIndex="3" GridPane.columnIndex="3"/>
+                                    <Label text="8.0" styleClass="table-cell center" GridPane.rowIndex="3" GridPane.columnIndex="4"/>
+                                    <Label text="B+" styleClass="table-cell center" GridPane.rowIndex="3" GridPane.columnIndex="5"/>
+                                    <Label text="Đã hoàn thành" styleClass="status-pass" GridPane.rowIndex="3" GridPane.columnIndex="6"/>
+
+                                    <Label text="4" styleClass="table-cell" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                                    <Label text="IT104" styleClass="table-cell" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                                    <Label text="Mạng máy tính" styleClass="table-cell" GridPane.rowIndex="4" GridPane.columnIndex="2"/>
+                                    <Label text="3" styleClass="table-cell center" GridPane.rowIndex="4" GridPane.columnIndex="3"/>
+                                    <Label text="7.0" styleClass="table-cell center" GridPane.rowIndex="4" GridPane.columnIndex="4"/>
+                                    <Label text="B" styleClass="table-cell center" GridPane.rowIndex="4" GridPane.columnIndex="5"/>
+                                    <Label text="Đã hoàn thành" styleClass="status-pass" GridPane.rowIndex="4" GridPane.columnIndex="6"/>
+
+                                    <Label text="5" styleClass="table-cell" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                                    <Label text="IT105" styleClass="table-cell" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+                                    <Label text="Hệ điều hành" styleClass="table-cell" GridPane.rowIndex="5" GridPane.columnIndex="2"/>
+                                    <Label text="3" styleClass="table-cell center" GridPane.rowIndex="5" GridPane.columnIndex="3"/>
+                                    <Label text="6.5" styleClass="table-cell center" GridPane.rowIndex="5" GridPane.columnIndex="4"/>
+                                    <Label text="C+" styleClass="table-cell center" GridPane.rowIndex="5" GridPane.columnIndex="5"/>
+                                    <Label text="Đã hoàn thành" styleClass="status-pass" GridPane.rowIndex="5" GridPane.columnIndex="6"/>
+
+                                    <Label text="6" styleClass="table-cell" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+                                    <Label text="IT106" styleClass="table-cell" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+                                    <Label text="Lập trình Web cơ bản" styleClass="table-cell" GridPane.rowIndex="6" GridPane.columnIndex="2"/>
+                                    <Label text="3" styleClass="table-cell center" GridPane.rowIndex="6" GridPane.columnIndex="3"/>
+                                    <Label text="8.0" styleClass="table-cell center" GridPane.rowIndex="6" GridPane.columnIndex="4"/>
+                                    <Label text="B+" styleClass="table-cell center" GridPane.rowIndex="6" GridPane.columnIndex="5"/>
+                                    <Label text="Đã hoàn thành" styleClass="status-pass" GridPane.rowIndex="6" GridPane.columnIndex="6"/>
+
+                                    <Label text="7" styleClass="table-cell" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+                                    <Label text="IT107" styleClass="table-cell" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+                                    <Label text="Xác suất thống kê" styleClass="table-cell" GridPane.rowIndex="7" GridPane.columnIndex="2"/>
+                                    <Label text="2" styleClass="table-cell center" GridPane.rowIndex="7" GridPane.columnIndex="3"/>
+                                    <Label text="7.5" styleClass="table-cell center" GridPane.rowIndex="7" GridPane.columnIndex="4"/>
+                                    <Label text="B" styleClass="table-cell center" GridPane.rowIndex="7" GridPane.columnIndex="5"/>
+                                    <Label text="Đã hoàn thành" styleClass="status-pass" GridPane.rowIndex="7" GridPane.columnIndex="6"/>
+
+                                    <HBox spacing="60" styleClass="table-total" GridPane.rowIndex="8" GridPane.columnIndex="0" GridPane.columnSpan="7">
+                                        <Label text="Tổng số tín chỉ" styleClass="total-label"/>
+                                        <Label text="20" styleClass="total-value"/>
+                                        <Label text="GPA học kỳ" styleClass="total-label"/>
+                                        <Label text="7.64" styleClass="total-blue"/>
+                                    </HBox>
+
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="42"/>
+                                        <RowConstraints minHeight="46"/>
+                                        <RowConstraints minHeight="46"/>
+                                        <RowConstraints minHeight="46"/>
+                                        <RowConstraints minHeight="46"/>
+                                        <RowConstraints minHeight="46"/>
+                                        <RowConstraints minHeight="46"/>
+                                        <RowConstraints minHeight="46"/>
+                                        <RowConstraints minHeight="58"/>
+                                    </rowConstraints>
+                                </GridPane>
+                            </VBox>
+                        </VBox>
+
+                        <VBox prefWidth="330" minWidth="330" spacing="16">
+                            <VBox spacing="12" styleClass="card chart-card">
+                                <Label text="Biểu đồ GPA" styleClass="section-title-small"/>
+                                <LineChart fx:id="gpaChart" prefHeight="220" legendVisible="false" animated="false" createSymbols="true" styleClass="gpa-chart">
+                                    <xAxis>
+                                        <CategoryAxis side="BOTTOM" tickLabelRotation="0"/>
+                                    </xAxis>
+                                    <yAxis>
+                                        <NumberAxis side="LEFT" lowerBound="0" upperBound="4" tickUnit="1" autoRanging="false"/>
+                                    </yAxis>
+                                </LineChart>
+                                <Label text="Gợi ý: thêm dữ liệu chart trong Controller bằng gpaChart.getData().add(series)." styleClass="chart-hint"/>
+                            </VBox>
+
+                            <VBox spacing="12" styleClass="card chart-card">
+                                <Label text="Thống kê kết quả" styleClass="section-title-small"/>
+                                <HBox alignment="CENTER_LEFT" spacing="12">
+                                    <PieChart fx:id="resultPieChart" prefWidth="135" prefHeight="135" labelsVisible="false" legendVisible="false" animated="false"/>
+                                    <VBox spacing="10" HBox.hgrow="ALWAYS">
+                                        <Label text="●  A (8.0 - 10)        6 môn" styleClass="legend-green"/>
+                                        <Label text="●  B (6.5 - 7.9)      15 môn" styleClass="legend-blue"/>
+                                        <Label text="●  C (5.0 - 6.4)       5 môn" styleClass="legend-yellow"/>
+                                        <Label text="●  D (4.0 - 4.9)       1 môn" styleClass="legend-purple"/>
+                                        <Label text="●  F (&lt; 4.0)           1 môn" styleClass="legend-red"/>
+                                    </VBox>
+                                </HBox>
+                                <Label text="Gợi ý: thêm dữ liệu PieChart trong Controller bằng resultPieChart.setData(...)." styleClass="chart-hint"/>
+                            </VBox>
+
+                            <VBox spacing="10" styleClass="card note-card">
+                                <Label text="ℹ  Ghi chú" styleClass="section-title-small"/>
+                                <Label wrapText="true" text="• Điểm số được cập nhật sau khi hoàn tất quá trình nhập điểm của giảng viên." styleClass="note-text"/>
+                            </VBox>
+                        </VBox>
+                    </HBox>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+</BorderPane>

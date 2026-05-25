@@ -1,0 +1,291 @@
+
+.root{
+    -fx-font-family: "Segoe UI";
+    -fx-background-color: #f3f7ff;
+}
+
+.sidebar{
+    -fx-background-color: linear-gradient(to bottom, #ffffff, #f7faff);
+    -fx-border-color: transparent #e6edf8 transparent transparent;
+    -fx-border-width: 0 1 0 0;
+}
+
+.logo-title{
+    -fx-text-fill: #07142f;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.logo-subtitle{
+    -fx-text-fill: #5f6f89;
+    -fx-font-size: 12px;
+}
+
+.logo-icon{
+    -fx-font-size: 30px;
+    -fx-text-fill: #2f6df6;
+}
+
+.nav-button,
+.nav-active{
+    -fx-background-radius: 12;
+    -fx-padding: 12 16;
+    -fx-font-size: 14px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-cursor: hand;
+}
+
+.nav-button{
+    -fx-background-color: transparent;
+    -fx-text-fill: #52627c;
+}
+
+.nav-button:hover{
+    -fx-background-color: #eef4ff;
+    -fx-text-fill: #2563eb;
+}
+
+.nav-active{
+    -fx-background-color: linear-gradient(to right, #2f6df6, #2563eb);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.support-card{
+    -fx-background-color: #f1f6ff;
+    -fx-padding: 16;
+    -fx-background-radius: 16;
+}
+
+.support-title{
+    -fx-text-fill: #07142f;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+
+.support-phone,
+.support-mail{
+    -fx-text-fill: #2563eb;
+}
+
+/* MAIN */
+.main-bg{
+    -fx-background-color: #f3f7ff;
+}
+
+.scroll-pane-clean,
+.scroll-pane-clean > .viewport{
+    -fx-background-color: transparent;
+}
+
+.page-title{
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #07142f;
+}
+
+.search-box{
+    -fx-background-radius: 14;
+    -fx-background-color: white;
+    -fx-padding: 10 14;
+    -fx-border-color: #dbe6f6;
+    -fx-border-radius: 14;
+    -fx-text-fill: #07142f;
+    -fx-prompt-text-fill: #8a99b4;
+}
+
+.top-icon,
+.avatar-small{
+    -fx-font-size: 20px;
+    -fx-background-color: white;
+    -fx-padding: 10;
+    -fx-background-radius: 50;
+    -fx-text-fill: #2563eb;
+}
+
+/* CARD */
+.card{
+    -fx-background-color: white;
+    -fx-background-radius: 22;
+    -fx-padding: 24;
+    -fx-border-color: #dce7f7;
+    -fx-border-radius: 22;
+    -fx-border-width: 1.2;
+    -fx-effect: dropshadow(gaussian, rgba(30,64,175,0.11), 18, 0, 0, 5);
+}
+
+/* PROFILE HEADER */
+.profile-card{
+    -fx-background-color: white;
+    -fx-background-radius: 22;
+    -fx-border-color: #dce7f7;
+    -fx-border-radius: 22;
+    -fx-border-width: 1.2;
+}
+
+.profile-card .student-name{
+    -fx-text-fill: #07142f;
+}
+
+.profile-card .student-id{
+    -fx-text-fill: #2563eb;
+}
+
+.profile-card .student-major{
+    -fx-text-fill: #52627c;
+}
+
+.avatar-circle{
+    -fx-fill: #eef3fb;
+}
+
+.avatar-emoji{
+    -fx-font-size: 54px;
+}
+
+.camera-badge{
+    -fx-background-color: white;
+    -fx-text-fill: #2563eb;
+    -fx-padding: 6;
+    -fx-background-radius: 50;
+    -fx-border-color: #dbe6f6;
+    -fx-border-radius: 50;
+}
+
+.student-name{
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+}
+
+.student-id,
+.student-major{
+    -fx-font-size: 14px;
+}
+
+.status-green,
+.status-blue{
+    -fx-padding: 6 12;
+    -fx-background-radius: 20;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.status-green{
+    -fx-background-color: #e9f9ef;
+    -fx-text-fill: #11a36a;
+}
+
+.status-blue{
+    -fx-background-color: #edf4ff;
+    -fx-text-fill: #2563eb;
+}
+
+.section-title{
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #07142f;
+}
+
+.edit-button{
+    -fx-background-color: white;
+    -fx-text-fill: #2563eb;
+    -fx-border-color: #dbe6f6;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-padding: 8 16;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+}
+
+.edit-button:hover{
+    -fx-background-color: #edf4ff;
+}
+
+/* INFO - làm rõ các khối thông tin sinh viên */
+.info-card{
+    -fx-background-color: white;
+    -fx-border-color: #cfdcf0;
+    -fx-border-width: 1.4;
+}
+
+.info-item{
+    -fx-background-color: linear-gradient(to bottom, #ffffff, #f2f7ff);
+    -fx-background-radius: 18;
+    -fx-border-color: #cfdcf0;
+    -fx-border-radius: 18;
+    -fx-border-width: 1.2;
+    -fx-padding: 16 18;
+    -fx-effect: dropshadow(gaussian, rgba(30,64,175,0.08), 10, 0, 0, 3);
+}
+
+.info-item:hover{
+    -fx-background-color: #eef5ff;
+    -fx-border-color: #8fb3ff;
+}
+
+.info-label{
+    -fx-text-fill: #657895;
+    -fx-font-size: 13px;
+}
+
+.info-value{
+    -fx-text-fill: #07142f;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+
+/* SCHEDULE */
+.schedule-row{
+    -fx-background-color: #f8fbff;
+    -fx-padding: 14;
+    -fx-background-radius: 16;
+}
+
+.date-box{
+    -fx-background-color: linear-gradient(to bottom, #2f6df6, #2563eb);
+    -fx-text-fill: white;
+    -fx-padding: 12;
+    -fx-background-radius: 14;
+    -fx-alignment: center;
+    -fx-font-weight: bold;
+}
+
+.schedule-title{
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #07142f;
+}
+
+/* STATS */
+.stat-card{
+    -fx-background-color: linear-gradient(to bottom, #fbfdff, #f4f8ff);
+    -fx-background-radius: 14;
+    -fx-border-color: #dbe6f6;
+    -fx-border-radius: 14;
+    -fx-padding: 18;
+    -fx-spacing: 8;
+}
+
+.stat-label{
+    -fx-text-fill: #52627c;
+    -fx-font-size: 13px;
+}
+
+.stat-blue,
+.stat-green,
+.stat-purple,
+.stat-orange{
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.stat-blue{ -fx-text-fill: #2f6df6; }
+.stat-green{ -fx-text-fill: #22a86f; }
+.stat-purple{ -fx-text-fill: #7c3aed; }
+.stat-orange{ -fx-text-fill: #e68412; }
+
+.link-text{
+    -fx-text-fill: #2563eb;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
