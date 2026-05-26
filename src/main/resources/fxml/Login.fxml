@@ -1,44 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="550.0" prefWidth="900.0" stylesheets="@../css/login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.LoginController">
-   <children>
-      <VBox alignment="TOP_CENTER" layoutX="300.0" layoutY="84.0" prefHeight="383.0" prefWidth="300.0" styleClass="login-box">
-         <children>
-            <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="70.0" prefWidth="300.0" text="Login">
-               <font>
-                  <Font size="50.0" />
-               </font>
-            </Label>
-            <Label alignment="TOP_CENTER" prefHeight="58.0" prefWidth="300.0" text="Please enter your username and password">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Label>
-            <TextField fx:id="txtusername" alignment="CENTER" prefHeight="50.0" prefWidth="300.0" promptText="Username">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </TextField>
-            <PasswordField fx:id="txtppassword" alignment="CENTER" prefHeight="50.0" prefWidth="300.0" promptText="Password">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </PasswordField>
-            <Label prefHeight="38.0" prefWidth="40.0" />
-            <Button fx:id="btnLogin" contentDisplay="CENTER" mnemonicParsing="false" onAction="#submit" prefHeight="36.0" prefWidth="76.0" text="Login" textAlignment="CENTER">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
-         </children>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.layout.Region?>
+<AnchorPane prefWidth="1000" prefHeight="620" stylesheets="@../css/login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.HomeController"
+            styleClass="root-bg">
+
+   <HBox layoutX="90" layoutY="70"
+         prefWidth="820" prefHeight="480"
+         styleClass="login-card">
+
+      <!-- LEFT FORM -->
+      <VBox prefWidth="480" spacing="22" styleClass="left-panel">
+
+         <HBox spacing="12" alignment="CENTER_LEFT">
+            <Label text="🎓" styleClass="logo-icon"/>
+            <VBox spacing="2">
+               <Label text="Student Portal" styleClass="logo-title"/>
+               <Label text="Học tập thông minh, quản lý dễ dàng" styleClass="logo-subtitle"/>
+            </VBox>
+         </HBox>
+
+         <Region prefHeight="35"/>
+
+         <VBox spacing="8">
+            <Label text="Welcome back" styleClass="title"/>
+            <Label text="Đăng nhập để tiếp tục sử dụng hệ thống." styleClass="subtitle"/>
+         </VBox>
+
+         <VBox spacing="14">
+
+            <HBox alignment="CENTER_LEFT" spacing="10" styleClass="input-box">
+               <Label text="👤" styleClass="input-icon"/>
+               <TextField promptText="Username" styleClass="input-field"/>
+            </HBox>
+
+            <HBox alignment="CENTER_LEFT" spacing="10" styleClass="input-box">
+               <Label text="🔒" styleClass="input-icon"/>
+               <PasswordField promptText="Password" styleClass="input-field"/>
+            </HBox>
+
+            <HBox alignment="CENTER_LEFT" spacing="105">
+               <CheckBox text="Remember me" selected="true" styleClass="check-box-custom"/>
+               <Hyperlink text="Forgot Password?" styleClass="forgot-link"/>
+            </HBox>
+
+            <Button text="Login" prefWidth="170" prefHeight="42" styleClass="login-btn"/>
+
+         </VBox>
       </VBox>
-   </children>
+
+      <!-- RIGHT DECORATION -->
+      <Pane prefWidth="340" styleClass="right-panel">
+         <Circle centerX="230" centerY="240" radius="260" styleClass="circle-light"/>
+         <Circle centerX="260" centerY="240" radius="235" styleClass="circle-main"/>
+
+         <VBox layoutX="110" layoutY="150" alignment="CENTER" spacing="12">
+            <Label text="🎓" styleClass="big-watermark"/>
+            <Label text="Student Portal" styleClass="watermark-title"/>
+         </VBox>
+      </Pane>
+
+   </HBox>
+
 </AnchorPane>

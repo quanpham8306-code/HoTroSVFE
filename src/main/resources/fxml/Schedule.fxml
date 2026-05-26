@@ -1,14 +1,172 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.example.Controller.ScheduleController"
-            prefHeight="400.0" prefWidth="600.0">
+<?import javafx.scene.image.ImageView?>
+<BorderPane prefWidth="1200" prefHeight="760"
+            stylesheets="../css/Schedule.css"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.Controller.HomeController">
 
-</AnchorPane>
+    <left>
+        <VBox prefWidth="230" spacing="18" styleClass="sidebar">
+            <Label text="🎓 Student Portal" styleClass="logo"/>
+            <Label text="Hệ thống sinh viên" styleClass="sub-logo"/>
+
+            <VBox spacing="10" styleClass="menu-box">
+                <Button text="👤  Thông tin cá nhân" styleClass="menu-btn"/>
+                <Button text="📊  Kết quả học tập" styleClass="menu-btn"/>
+                <Button text="📅  Lịch học" styleClass="menu-btn-active"/>
+                <Button text="📚  Đăng ký môn học" styleClass="menu-btn"/>
+                <Button text="💳  Học phí" styleClass="menu-btn"/>
+                <Button text="🔔  Thông báo" styleClass="menu-btn"/>
+                <Button text="⚙  Cài đặt" styleClass="menu-btn"/>
+            </VBox>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <VBox styleClass="support-box">
+                <Label text="🎧 Hỗ trợ sinh viên" styleClass="support-title"/>
+                <Label text="1900 1234" styleClass="support-phone"/>
+                <Label text="support@student.edu.vn" styleClass="support-mail"/>
+            </VBox>
+
+            <Button text="↩  Đăng xuất" styleClass="logout-btn"/>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox spacing="18" styleClass="main">
+            <HBox alignment="CENTER_LEFT">
+                <Label text="Lịch học" styleClass="page-title"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <TextField promptText="Tìm kiếm môn học..." styleClass="search-box"/>
+                <Button text="🔔" styleClass="icon-btn"/>
+            </HBox>
+
+            <HBox spacing="16">
+                <VBox spacing="8" styleClass="stat-card">
+                    <Label text="Tổng số môn" styleClass="stat-label"/>
+                    <Label text="5" styleClass="stat-number"/>
+                </VBox>
+
+                <VBox spacing="8" styleClass="stat-card">
+                    <Label text="Số buổi tuần này" styleClass="stat-label"/>
+                    <Label text="12" styleClass="stat-number green"/>
+                </VBox>
+
+                <VBox spacing="8" styleClass="stat-card">
+                    <Label text="Tiết học hôm nay" styleClass="stat-label"/>
+                    <Label text="4" styleClass="stat-number purple"/>
+                </VBox>
+
+                <VBox spacing="8" styleClass="stat-card">
+                    <Label text="Phòng học" styleClass="stat-label"/>
+                    <Label text="P.302" styleClass="stat-number orange"/>
+                </VBox>
+            </HBox>
+
+            <HBox spacing="18" VBox.vgrow="ALWAYS">
+
+                <VBox spacing="14" styleClass="schedule-card" HBox.hgrow="ALWAYS">
+                    <HBox alignment="CENTER_LEFT">
+                        <Label text="📅 Thời khóa biểu tuần" styleClass="section-title"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="Tuần trước" styleClass="small-btn"/>
+                        <Button text="Tuần này" styleClass="small-btn-active"/>
+                        <Button text="Tuần sau" styleClass="small-btn"/>
+                    </HBox>
+
+                    <GridPane hgap="10" vgap="10" styleClass="calendar-grid">
+                        <columnConstraints>
+                            <ColumnConstraints percentWidth="20"/>
+                            <ColumnConstraints percentWidth="20"/>
+                            <ColumnConstraints percentWidth="20"/>
+                            <ColumnConstraints percentWidth="20"/>
+                            <ColumnConstraints percentWidth="20"/>
+                        </columnConstraints>
+
+                        <VBox GridPane.columnIndex="0" styleClass="day-box">
+                            <Label text="Thứ 2" styleClass="day-title"/>
+                            <Label text="20/05" styleClass="day-date"/>
+                            <VBox styleClass="class-item blue">
+                                <Label text="Cấu trúc dữ liệu" styleClass="subject"/>
+                                <Label text="07:30 - 09:15" styleClass="time"/>
+                                <Label text="P.301 - Tòa A" styleClass="room"/>
+                            </VBox>
+                        </VBox>
+
+                        <VBox GridPane.columnIndex="1" styleClass="day-box">
+                            <Label text="Thứ 3" styleClass="day-title"/>
+                            <Label text="21/05" styleClass="day-date"/>
+                            <VBox styleClass="class-item green">
+                                <Label text="Lập trình OOP" styleClass="subject"/>
+                                <Label text="09:30 - 11:15" styleClass="time"/>
+                                <Label text="P.302 - Tòa A" styleClass="room"/>
+                            </VBox>
+                        </VBox>
+
+                        <VBox GridPane.columnIndex="2" styleClass="day-box">
+                            <Label text="Thứ 4" styleClass="day-title"/>
+                            <Label text="22/05" styleClass="day-date"/>
+                            <VBox styleClass="class-item purple">
+                                <Label text="Cơ sở dữ liệu" styleClass="subject"/>
+                                <Label text="13:30 - 15:15" styleClass="time"/>
+                                <Label text="P.201 - Tòa B" styleClass="room"/>
+                            </VBox>
+                        </VBox>
+
+                        <VBox GridPane.columnIndex="3" styleClass="day-box">
+                            <Label text="Thứ 5" styleClass="day-title"/>
+                            <Label text="23/05" styleClass="day-date"/>
+                            <VBox styleClass="class-item orange">
+                                <Label text="Mạng máy tính" styleClass="subject"/>
+                                <Label text="07:30 - 09:15" styleClass="time"/>
+                                <Label text="P.305 - Tòa A" styleClass="room"/>
+                            </VBox>
+                        </VBox>
+
+                        <VBox GridPane.columnIndex="4" styleClass="day-box">
+                            <Label text="Thứ 6" styleClass="day-title"/>
+                            <Label text="24/05" styleClass="day-date"/>
+                            <VBox styleClass="empty-day">
+                                <Label text="Không có lịch" styleClass="empty-text"/>
+                            </VBox>
+                        </VBox>
+                    </GridPane>
+                </VBox>
+
+                <VBox spacing="16" prefWidth="340">
+                    <VBox spacing="12" styleClass="right-card">
+                        <Label text="📌 Lịch hôm nay" styleClass="section-title"/>
+
+                        <VBox styleClass="today-item">
+                            <Label text="07:30 - 09:15" styleClass="time"/>
+                            <Label text="Cấu trúc dữ liệu và giải thuật" styleClass="subject"/>
+                            <Label text="P.301 - Tòa A" styleClass="room"/>
+                        </VBox>
+
+                        <VBox styleClass="today-item">
+                            <Label text="13:30 - 15:15" styleClass="time"/>
+                            <Label text="Cơ sở dữ liệu" styleClass="subject"/>
+                            <Label text="P.201 - Tòa B" styleClass="room"/>
+                        </VBox>
+                    </VBox>
+
+                    <VBox spacing="12" styleClass="right-card">
+                        <Label text="📚 Danh sách môn học" styleClass="section-title"/>
+                        <Label text="• Cấu trúc dữ liệu và giải thuật" styleClass="list-text"/>
+                        <Label text="• Lập trình hướng đối tượng" styleClass="list-text"/>
+                        <Label text="• Cơ sở dữ liệu" styleClass="list-text"/>
+                        <Label text="• Mạng máy tính" styleClass="list-text"/>
+                    </VBox>
+                </VBox>
+
+            </HBox>
+        </VBox>
+    </center>
+
+</BorderPane>
