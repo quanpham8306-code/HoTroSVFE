@@ -3,60 +3,60 @@ package org.example.Model;
 import java.sql.Time;
 
 public class LopHocPhan {
-    private int thuHoc;
-    private Time gioBatDau;
-    private Time gioiKetThuc;
-    private String phongHoc;
-    private MonHoc monHoc;
+    private String tenMonHoc;
+    private String maLopHP;
+    private int soLuongToiDa;
+    private String hocKy;
+    private String namHoc;
 
     public LopHocPhan() {
     }
 
-    public LopHocPhan(int thuHoc, Time gioBatDau, Time gioiKetThuc, String phongHoc, MonHoc monHoc) {
-        this.thuHoc = thuHoc;
-        this.gioBatDau = gioBatDau;
-        this.gioiKetThuc = gioiKetThuc;
-        this.phongHoc = phongHoc;
-        this.monHoc = monHoc;
+    public LopHocPhan(String tenMonHoc, String maLopHP, int soLuongToiDa, String hocKy, String namHoc) {
+        this.tenMonHoc = tenMonHoc;
+        this.maLopHP = maLopHP;
+        this.soLuongToiDa = soLuongToiDa;
+        this.hocKy = hocKy;
+        this.namHoc = namHoc;
     }
 
-    public int getThuHoc() {
-        return thuHoc;
+    public String getTenMonHoc() {
+        return tenMonHoc;
     }
 
-    public void setThuHoc(int thuHoc) {
-        this.thuHoc = thuHoc;
+    public void setTenMonHoc(String tenMonHoc) {
+        this.tenMonHoc = tenMonHoc;
     }
 
-    public Time getGioBatDau() {
-        return gioBatDau;
+    public String getMaLopHP() {
+        return maLopHP;
     }
 
-    public void setGioBatDau(Time gioBatDau) {
-        this.gioBatDau = gioBatDau;
+    public void setMaLopHP(String maLopHP) {
+        this.maLopHP = maLopHP;
     }
 
-    public Time getGioiKetThuc() {
-        return gioiKetThuc;
+    public int getSoLuongToiDa() {
+        return soLuongToiDa;
     }
 
-    public void setGioiKetThuc(Time gioiKetThuc) {
-        this.gioiKetThuc = gioiKetThuc;
+    public void setSoLuongToiDa(int soLuongToiDa) {
+        this.soLuongToiDa = soLuongToiDa;
     }
 
-    public String getPhongHoc() {
-        return phongHoc;
+    public String getHocKy() {
+        return hocKy;
     }
 
-    public void setPhongHoc(String phongHoc) {
-        this.phongHoc = phongHoc;
+    public void setHocKy(String hocKy) {
+        this.hocKy = hocKy;
     }
 
-    public MonHoc getMonHoc() {
-        return monHoc;
+    public String getNamHoc() {
+        return namHoc;
     }
 
-    public void setMonHoc(MonHoc monHoc) {
-        this.monHoc = monHoc;
+    public void setNamHoc(String namHoc) {
+        this.namHoc = namHoc;
     }
 }
