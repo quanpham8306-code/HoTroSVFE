@@ -1,73 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.layout.Region?>
-<AnchorPane prefWidth="1000" prefHeight="620" stylesheets="@../css/login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.HomeController"
-            styleClass="root-bg">
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 
-   <HBox layoutX="90" layoutY="70"
-         prefWidth="820" prefHeight="480"
-         styleClass="login-card">
+<AnchorPane prefHeight="620" prefWidth="1000" styleClass="root-bg" stylesheets="@../css/login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.LoginController">
+
+   <HBox layoutX="90" layoutY="70" prefHeight="480" prefWidth="820" styleClass="login-card">
 
       <!-- LEFT FORM -->
       <VBox prefWidth="480" spacing="22" styleClass="left-panel">
 
-         <HBox spacing="12" alignment="CENTER_LEFT">
-            <Label text="🎓" styleClass="logo-icon"/>
+         <HBox alignment="CENTER_LEFT" spacing="12">
+            <Label styleClass="logo-icon" text="🎓" />
             <VBox spacing="2">
-               <Label text="Student Portal" styleClass="logo-title"/>
-               <Label text="Học tập thông minh, quản lý dễ dàng" styleClass="logo-subtitle"/>
+               <Label styleClass="logo-title" text="Student Portal" />
+               <Label styleClass="logo-subtitle" text="Học tập thông minh, quản lý dễ dàng" />
             </VBox>
          </HBox>
 
-         <Region prefHeight="35"/>
+         <Region prefHeight="35" />
 
          <VBox spacing="8">
-            <Label text="Welcome back" styleClass="title"/>
-            <Label text="Đăng nhập để tiếp tục sử dụng hệ thống." styleClass="subtitle"/>
+            <Label styleClass="title" text="Welcome back" />
+            <Label styleClass="subtitle" text="Đăng nhập để tiếp tục sử dụng hệ thống." />
          </VBox>
 
          <VBox spacing="14">
 
             <HBox alignment="CENTER_LEFT" spacing="10" styleClass="input-box">
-               <Label text="👤" styleClass="input-icon"/>
-               <TextField promptText="Username" styleClass="input-field"/>
+               <Label styleClass="input-icon" text="👤" />
+               <TextField fx:id="txtUsername" promptText="Username" styleClass="input-field" />
             </HBox>
 
             <HBox alignment="CENTER_LEFT" spacing="10" styleClass="input-box">
-               <Label text="🔒" styleClass="input-icon"/>
-               <PasswordField promptText="Password" styleClass="input-field"/>
+               <Label styleClass="input-icon" text="🔒" />
+               <PasswordField fx:id="txtPassword" promptText="Password" styleClass="input-field" />
             </HBox>
 
             <HBox alignment="CENTER_LEFT" spacing="105">
-               <CheckBox text="Remember me" selected="true" styleClass="check-box-custom"/>
-               <Hyperlink text="Forgot Password?" styleClass="forgot-link"/>
+               <CheckBox selected="true" styleClass="check-box-custom" text="Remember me" />
+               <Hyperlink styleClass="forgot-link" text="Forgot Password?" />
             </HBox>
 
-            <Button text="Login" prefWidth="170" prefHeight="42" styleClass="login-btn"/>
+            <Button fx:id="LoginButton" onAction="#submit" prefHeight="42" prefWidth="170" styleClass="login-btn" text="Login" />
 
          </VBox>
       </VBox>
 
       <!-- RIGHT DECORATION -->
       <Pane prefWidth="340" styleClass="right-panel">
-         <Circle centerX="230" centerY="240" radius="260" styleClass="circle-light"/>
-         <Circle centerX="260" centerY="240" radius="235" styleClass="circle-main"/>
+         <Circle centerX="230" centerY="240" radius="260" styleClass="circle-light" />
+         <Circle centerX="260" centerY="240" radius="235" styleClass="circle-main" />
 
-         <VBox layoutX="110" layoutY="150" alignment="CENTER" spacing="12">
-            <Label text="🎓" styleClass="big-watermark"/>
-            <Label text="Student Portal" styleClass="watermark-title"/>
+         <VBox alignment="CENTER" layoutX="110" layoutY="150" spacing="12">
+            <Label styleClass="big-watermark" text="🎓" />
+            <Label styleClass="watermark-title" text="Student Portal" />
          </VBox>
       </Pane>
 

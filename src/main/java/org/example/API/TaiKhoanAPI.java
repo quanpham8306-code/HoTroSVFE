@@ -7,7 +7,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class TaiKhoanAPI {
-    public static final String baseUrl = "http://localhost:8080/api/account";
+    public static final String baseUrl = "http://26.108.243.246:8080/api/auth";
     public static String logIn(String username, String password) {
         try {
             HttpClient client = HttpClient.newHttpClient();
@@ -30,6 +30,7 @@ public class TaiKhoanAPI {
                             request,
                             HttpResponse.BodyHandlers.ofString()
                     );
+            System.out.println(response.body());
 
             return response.body();
         } catch (IOException | InterruptedException e) {

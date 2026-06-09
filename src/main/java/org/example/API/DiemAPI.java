@@ -8,7 +8,7 @@ import java.net.http.HttpResponse;
 
 public class DiemAPI {
     public static final String baseUrl = "http://localhost:8080/api/score";
-    public static String getByIdSvIdlop(int idSv,int idlop) {
+    public static String getByIdSvIdlop(String idSv,int idlop) {
         try {
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()

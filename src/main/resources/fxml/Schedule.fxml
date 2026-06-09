@@ -6,10 +6,10 @@
 
 <?import javafx.scene.image.ImageView?>
 <BorderPane prefWidth="1200" prefHeight="760"
-            stylesheets="../css/Schedule.css"
+            stylesheets="@../css/Schedule.css"
             xmlns="http://javafx.com/javafx/21"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.example.Controller.HomeController">
+            fx:controller="org.example.Controller.ScheduleController">
 
     <left>
         <VBox prefWidth="230" spacing="18" styleClass="sidebar">
@@ -17,8 +17,8 @@
             <Label text="Hệ thống sinh viên" styleClass="sub-logo"/>
 
             <VBox spacing="10" styleClass="menu-box">
-                <Button text="👤  Thông tin cá nhân" styleClass="menu-btn"/>
-                <Button text="📊  Kết quả học tập" styleClass="menu-btn"/>
+                <Button fx:id="btnHome" onAction="#showHome" text="👤  Thông tin cá nhân" styleClass="menu-btn"/>
+                <Button fx:id="btnScore" onAction="#showScore" text="📊  Kết quả học tập" styleClass="menu-btn"/>
                 <Button text="📅  Lịch học" styleClass="menu-btn-active"/>
                 <Button text="📚  Đăng ký môn học" styleClass="menu-btn"/>
                 <Button text="💳  Học phí" styleClass="menu-btn"/>
@@ -34,7 +34,7 @@
                 <Label text="support@student.edu.vn" styleClass="support-mail"/>
             </VBox>
 
-            <Button text="↩  Đăng xuất" styleClass="logout-btn"/>
+            <Button fx:id="btnLogout" onAction="#handleLogout" text="↩  Đăng xuất" styleClass="logout-btn"/>
         </VBox>
     </left>
 

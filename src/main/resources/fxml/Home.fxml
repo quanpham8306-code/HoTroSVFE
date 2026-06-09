@@ -15,9 +15,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
-<BorderPane prefHeight="768" prefWidth="1366" stylesheets="@../css/Home.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.HomeController">
+<BorderPane prefHeight="768" prefWidth="1366" stylesheets="@../css/Home.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.HomeController">
 
-   <!-- SIDEBAR -->
    <left>
       <VBox maxWidth="240" minWidth="240" prefWidth="240" spacing="18" styleClass="sidebar">
          <padding>
@@ -37,7 +36,7 @@
          <VBox spacing="10" VBox.vgrow="ALWAYS">
             <Button maxWidth="Infinity" styleClass="nav-active" text="  👤   Thông tin cá nhân" />
             <Button fx:id="btnScore" maxWidth="Infinity" onAction="#showScore" styleClass="nav-button" text="  📊   Kết quả học tập" />
-            <Button maxWidth="Infinity" styleClass="nav-button" text="  📅   Lịch học" />
+            <Button fx:id="btnSchedule" maxWidth="Infinity" onAction="#showSchedule" styleClass="nav-button" text="  📅   Lịch học" />
             <Button maxWidth="Infinity" styleClass="nav-button" text="  📄   Tài liệu" />
             <Button maxWidth="Infinity" styleClass="nav-button" text="  ⚙   Cài đặt" />
          </VBox>
@@ -48,19 +47,17 @@
             <Label styleClass="support-mail" text="support@student.edu.vn" />
          </VBox>
 
-         <Button maxWidth="Infinity" styleClass="nav-button" text="  ↪   Đăng xuất" />
+         <Button fx:id="btnLogout" maxWidth="Infinity" onAction="#handleLogout" styleClass="nav-button" text="  ↪   Đăng xuất" />
       </VBox>
    </left>
 
-   <!-- MAIN -->
    <center>
-      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" styleClass="scroll-pane-clean">
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" styleClass="scroll-pane-clean" BorderPane.alignment="CENTER">
          <VBox spacing="18" styleClass="main-bg">
             <padding>
                <Insets bottom="24" left="28" right="28" top="20" />
             </padding>
 
-            <!-- TOP BAR -->
             <HBox alignment="CENTER_LEFT" spacing="16">
                <Label maxWidth="Infinity" styleClass="page-title" text="Thông tin sinh viên" HBox.hgrow="ALWAYS" />
                <TextField prefWidth="300" promptText="Tìm kiếm..." styleClass="search-box" />
@@ -69,10 +66,8 @@
 
             <HBox alignment="TOP_LEFT" spacing="20" VBox.vgrow="ALWAYS">
 
-               <!-- LEFT CONTENT -->
                <VBox minWidth="680" prefWidth="760" spacing="14" HBox.hgrow="ALWAYS">
 
-                  <!-- PROFILE HEADER -->
                   <HBox alignment="CENTER_LEFT" minHeight="165" prefHeight="165" spacing="28" styleClass="card profile-card">
                      <StackPane prefHeight="120" prefWidth="120">
                         <Circle radius="58" styleClass="avatar-circle" />
@@ -81,8 +76,8 @@
                      </StackPane>
 
                      <VBox spacing="12">
-                        <Label styleClass="student-name" text="Phạm Anh Quân" />
-                        <Label styleClass="student-id" text="CT9B230128" />
+                        <Label fx:id="LabelHoten" styleClass="student-name" text="Phạm Anh Quân" />
+                        <Label fx:id="txtmasv" styleClass="student-id" text="CT9B230128" />
                         <Label styleClass="student-major" text="Công nghệ thông tin - Khoa Công nghệ thông tin" />
                         <HBox spacing="12">
                            <Label styleClass="status-green" text="●  Đang học" />
@@ -91,11 +86,11 @@
                      </VBox>
                   </HBox>
 
-                  <!-- PERSONAL INFO -->
                   <VBox spacing="22" styleClass="card info-card" VBox.vgrow="ALWAYS">
                      <HBox alignment="CENTER_LEFT">
                         <Label maxWidth="Infinity" styleClass="section-title" text="👤  Thông tin cá nhân" HBox.hgrow="ALWAYS" />
-                        <Button styleClass="edit-button" text="✎  Chỉnh sửa" />
+                        <Button fx:id="LuuButton" onAction="#save" styleClass="edit-button" text="Lưu " />
+                        <Button fx:id="EditButton" onAction="#edit" styleClass="edit-button" text="✎  Chỉnh sửa" />
                      </HBox>
 
                      <GridPane hgap="46" vgap="15">
@@ -106,40 +101,40 @@
 
                         <VBox spacing="7" styleClass="info-item" GridPane.columnIndex="0" GridPane.rowIndex="0">
                            <Label styleClass="info-label" text="Họ và tên" />
-                           <Label styleClass="info-value" text="Phạm Anh Quân" />
+                           <TextField fx:id="txtHovaTen" styleClass="info-value" text="Phạm Anh Quân" />
                         </VBox>
                         <VBox spacing="7" styleClass="info-item" GridPane.columnIndex="0" GridPane.rowIndex="1">
                            <Label styleClass="info-label" text="Ngày sinh" />
-                           <Label styleClass="info-value" text="15/08/2004" />
+                           <TextField fx:id="txtNgaySinh" styleClass="info-value" text="15/08/2004" />
                         </VBox>
                         <VBox spacing="7" styleClass="info-item" GridPane.columnIndex="0" GridPane.rowIndex="2">
                            <Label styleClass="info-label" text="Giới tính" />
-                           <Label styleClass="info-value" text="Nam" />
+                           <TextField fx:id="txtGioiTinh" styleClass="info-value" text="Nam" />
                         </VBox>
                         <VBox spacing="7" styleClass="info-item" GridPane.columnIndex="0" GridPane.rowIndex="3">
                            <Label styleClass="info-label" text="Số điện thoại" />
-                           <Label styleClass="info-value" text="0321 456 789" />
+                           <TextField fx:id="txtSDT" styleClass="info-value" text="0321 456 789" />
                         </VBox>
                         <VBox spacing="7" styleClass="info-item" GridPane.columnIndex="0" GridPane.rowIndex="4">
                            <Label styleClass="info-label" text="Địa chỉ" />
-                           <Label styleClass="info-value" text="123 Nguyễn Văn Cừ, Q.5, TP.HCM" />
+                           <TextField fx:id="txtDiaChi" styleClass="info-value" text="123 Nguyễn Văn Cừ, Q.5, TP.HCM" />
                         </VBox>
 
                         <VBox spacing="7" styleClass="info-item" GridPane.columnIndex="1" GridPane.rowIndex="0">
                            <Label styleClass="info-label" text="Mã sinh viên" />
-                           <Label styleClass="info-value" text="CT9B230128" />
+                           <TextField fx:id="txtMaSV" styleClass="info-value" text="CT9B230128" />
                         </VBox>
                         <VBox spacing="7" styleClass="info-item" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <Label styleClass="info-label" text="Lớp" />
-                           <Label styleClass="info-value" text="CT9B" />
+                           <TextField fx:id="txtLop" styleClass="info-value" text="CT9B" />
                         </VBox>
                         <VBox spacing="7" styleClass="info-item" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <Label styleClass="info-label" text="Email" />
-                           <Label styleClass="info-value" text="quanpa@example.com" />
+                           <TextField fx:id="txtEmail" styleClass="info-value" text="quanpa@example.com" />
                         </VBox>
                         <VBox spacing="7" styleClass="info-item" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <Label styleClass="info-label" text="CMND/CCCD" />
-                           <Label styleClass="info-value" text="079204012345" />
+                           <TextField fx:id="txtCccd" styleClass="info-value" text="079204012345" />
                         </VBox>
 
                         <rowConstraints>
@@ -153,7 +148,6 @@
                   </VBox>
                </VBox>
 
-               <!-- RIGHT CONTENT -->
                <VBox maxWidth="380" minWidth="350" prefWidth="360" spacing="16">
                   <VBox spacing="16" styleClass="card">
                      <Label styleClass="section-title" text="🎓  Tổng quan học tập" />
@@ -164,19 +158,19 @@
                         </columnConstraints>
                         <VBox styleClass="stat-card" GridPane.columnIndex="0" GridPane.rowIndex="0">
                            <Label styleClass="stat-label" text="GPA" />
-                           <Label styleClass="stat-blue" text="3.45 /4.0" />
+                           <Label fx:id="LabelGPA" styleClass="stat-blue" text="3.45 /4.0" />
                         </VBox>
                         <VBox styleClass="stat-card" GridPane.columnIndex="1" GridPane.rowIndex="0">
                            <Label styleClass="stat-label" text="Số tín chỉ" />
-                           <Label styleClass="stat-green" text="86 TC" />
+                           <Label fx:id="LabelSTC" styleClass="stat-green" text="86 TC" />
                         </VBox>
                         <VBox styleClass="stat-card" GridPane.columnIndex="0" GridPane.rowIndex="1">
                            <Label styleClass="stat-label" text="Số môn đã học" />
-                           <Label styleClass="stat-purple" text="28" />
+                           <Label fx:id="LabelSoMon" styleClass="stat-purple" text="28" />
                         </VBox>
                         <VBox styleClass="stat-card" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <Label styleClass="stat-label" text="Xếp loại" />
-                           <Label styleClass="stat-orange" text="Khá" />
+                           <Label fx:id="LabelXepLoai" styleClass="stat-orange" text="Khá" />
                         </VBox>
                         <rowConstraints>
                            <RowConstraints />
