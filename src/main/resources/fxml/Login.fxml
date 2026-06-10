@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
-<AnchorPane prefHeight="620" prefWidth="1000" styleClass="root-bg" stylesheets="@../css/login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.LoginController">
+<AnchorPane prefHeight="620" prefWidth="1000" styleClass="root-bg" stylesheets="@../css/login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.Auth.LoginController">
 
    <HBox layoutX="90" layoutY="70" prefHeight="480" prefWidth="820" styleClass="login-card">
 
@@ -52,7 +52,7 @@
                <Hyperlink styleClass="forgot-link" text="Forgot Password?" />
             </HBox>
 
-            <Button fx:id="LoginButton" onAction="#submit" prefHeight="42" prefWidth="170" styleClass="login-btn" text="Login" />
+            <Button fx:id="btnLogin" onAction="#login" prefHeight="42" prefWidth="170" styleClass="login-btn" text="Login" />
 
          </VBox>
       </VBox>

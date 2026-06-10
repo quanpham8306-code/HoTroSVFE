@@ -9,6 +9,16 @@
     -fx-border-color: transparent #e6edf8 transparent transparent;
     -fx-border-width: 0 1 0 0;
 }
+.text-field {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e5e7eb;
+    -fx-border-width: 1;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
 
 .logo-title{
     -fx-text-fill: #07142f;

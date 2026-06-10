@@ -1,32 +1,36 @@
 package org.example.Model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class SinhVien {
-
     private String maSv;
     private String hoTen;
-    private Date ngaySinh;
-    private boolean gioiTinh;
+    private LocalDate ngaySinh;
+    private Boolean gioiTinh;
     private String email;
+    private String soDienThoai;
     private String lop;
-    private String soDth;
     private String cccd;
     private String diaChi;
+    private String nganh;
+    private int namNhapHoc;
 
     public SinhVien() {
     }
 
-    public SinhVien(String maSv, String hoTen, Date ngaySinh, boolean gioiTinh, String email, String lop, String soDth, String cccd, String diaChi) {
+    public SinhVien(String maSv, String hoTen, LocalDate ngaySinh, Boolean gioiTinh, String email, String soDienThoai, String lop, String cccd, String diaChi, String nganh, int namNhapHoc) {
         this.maSv = maSv;
         this.hoTen = hoTen;
         this.ngaySinh = ngaySinh;
         this.gioiTinh = gioiTinh;
         this.email = email;
+        this.soDienThoai = soDienThoai;
         this.lop = lop;
-        this.soDth = soDth;
         this.cccd = cccd;
         this.diaChi = diaChi;
+        this.nganh = nganh;
+        this.namNhapHoc = namNhapHoc;
     }
 
     public String getMaSv() {
@@ -45,19 +49,19 @@ public class SinhVien {
         this.hoTen = hoTen;
     }
 
-    public Date getNgaySinh() {
+    public LocalDate getNgaySinh() {
         return ngaySinh;
     }
 
-    public void setNgaySinh(Date ngaySinh) {
+    public void setNgaySinh(LocalDate ngaySinh) {
         this.ngaySinh = ngaySinh;
     }
 
-    public boolean isGioiTinh() {
+    public Boolean getGioiTinh() {
         return gioiTinh;
     }
 
-    public void setGioiTinh(boolean gioiTinh) {
+    public void setGioiTinh(Boolean gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
 
@@ -69,20 +73,20 @@ public class SinhVien {
         this.email = email;
     }
 
+    public String getSoDienThoai() {
+        return soDienThoai;
+    }
+
+    public void setSoDienThoai(String soDienThoai) {
+        this.soDienThoai = soDienThoai;
+    }
+
     public String getLop() {
         return lop;
     }
 
     public void setLop(String lop) {
         this.lop = lop;
-    }
-
-    public String getSoDth() {
-        return soDth;
-    }
-
-    public void setSoDth(String soDth) {
-        this.soDth = soDth;
     }
 
     public String getCccd() {
@@ -99,5 +103,21 @@ public class SinhVien {
 
     public void setDiaChi(String diaChi) {
         this.diaChi = diaChi;
+    }
+
+    public String getNganh() {
+        return nganh;
+    }
+
+    public void setNganh(String nganh) {
+        this.nganh = nganh;
+    }
+
+    public int getNamNhapHoc() {
+        return namNhapHoc;
+    }
+
+    public void setNamNhapHoc(int namNhapHoc) {
+        this.namNhapHoc = namNhapHoc;
     }
 }

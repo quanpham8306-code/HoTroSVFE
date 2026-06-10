@@ -1,19 +1,28 @@
 package org.example.Model;
 
 public class MonHoc {
+    private String maMon;
+
     private String tenMonHoc;
+
     private int soTinChi;
-    private String MaMon;
 
     public MonHoc() {
     }
 
-    public MonHoc(String tenMonHoc, int soTinChi, String maMon) {
+    public MonHoc(String maMon, String tenMonHoc, int soTinChi) {
+        this.maMon = maMon;
         this.tenMonHoc = tenMonHoc;
         this.soTinChi = soTinChi;
-        MaMon = maMon;
     }
 
+    public String getMaMon() {
+        return maMon;
+    }
+
+    public void setMaMon(String maMon) {
+        this.maMon = maMon;
+    }
 
     public String getTenMonHoc() {
         return tenMonHoc;
@@ -29,13 +38,5 @@ public class MonHoc {
 
     public void setSoTinChi(int soTinChi) {
         this.soTinChi = soTinChi;
-    }
-
-    public String getMaMon() {
-        return MaMon;
-    }
-
-    public void setMaMon(String maMon) {
-        MaMon = maMon;
     }
 }

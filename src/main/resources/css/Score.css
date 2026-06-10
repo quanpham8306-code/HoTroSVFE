@@ -1,6 +1,11 @@
+/* =========================================================
+   GLOBAL
+========================================================= */
+
 .root {
     -fx-font-family: "Segoe UI", Arial, sans-serif;
     -fx-text-fill: #0f172a;
+    -fx-background-color: #f4f7fc;
 }
 
 .main-bg {
@@ -12,6 +17,17 @@
     -fx-background-color: #f4f7fc;
 }
 
+.scroll-pane {
+    -fx-border-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
 .sidebar {
     -fx-background-color: #ffffff;
     -fx-border-color: #e5eaf3;
@@ -20,11 +36,12 @@
 
 .logo-icon {
     -fx-font-size: 34px;
+    -fx-text-fill: #2563eb;
 }
 
 .logo-title {
     -fx-font-size: 20px;
-    -fx-font-weight: 800;
+    -fx-font-weight: 900;
     -fx-text-fill: #0f172a;
 }
 
@@ -63,7 +80,7 @@
     -fx-font-size: 14px;
     -fx-font-weight: 800;
     -fx-text-fill: white;
-    -fx-effect: dropshadow(gaussian, rgba(37,99,235,0.26), 16, 0, 0, 6);
+    -fx-effect: dropshadow(gaussian, rgba(37, 99, 235, 0.26), 16, 0, 0, 6);
     -fx-cursor: hand;
 }
 
@@ -85,6 +102,11 @@
     -fx-font-weight: 700;
     -fx-text-fill: #2563eb;
 }
+
+
+/* =========================================================
+   HEADER
+========================================================= */
 
 .page-title {
     -fx-font-size: 31px;
@@ -124,6 +146,11 @@
     -fx-max-height: 44;
 }
 
+
+/* =========================================================
+   COMMON CARD
+========================================================= */
+
 .card,
 .summary-card,
 .filter-card {
@@ -134,13 +161,13 @@
     -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.055), 18, 0, 0, 6);
 }
 
+.card {
+    -fx-padding: 20;
+}
+
 .summary-card {
     -fx-padding: 18 20;
     -fx-min-height: 132;
-}
-
-.card {
-    -fx-padding: 20;
 }
 
 .filter-card {
@@ -154,6 +181,23 @@
     -fx-text-fill: #475569;
 }
 
+.section-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #0f172a;
+}
+
+.section-title-small {
+    -fx-font-size: 17px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #0f172a;
+}
+
+
+/* =========================================================
+   SUMMARY CARDS
+========================================================= */
+
 .mini-icon {
     -fx-background-radius: 999;
     -fx-min-width: 42;
@@ -162,10 +206,21 @@
     -fx-max-height: 42;
 }
 
-.mini-icon.blue { -fx-background-color: #eaf1ff; }
-.mini-icon.green { -fx-background-color: #e9fbf1; }
-.mini-icon.purple { -fx-background-color: #f3eaff; }
-.mini-icon.orange { -fx-background-color: #fff3df; }
+.mini-icon.blue {
+    -fx-background-color: #eaf1ff;
+}
+
+.mini-icon.green {
+    -fx-background-color: #e9fbf1;
+}
+
+.mini-icon.purple {
+    -fx-background-color: #f3eaff;
+}
+
+.mini-icon.orange {
+    -fx-background-color: #fff3df;
+}
 
 .stat-main {
     -fx-font-size: 31px;
@@ -178,10 +233,21 @@
     -fx-text-fill: #64748b;
 }
 
-.blue-text { -fx-text-fill: #2563eb; }
-.green-text { -fx-text-fill: #16a34a; }
-.purple-text { -fx-text-fill: #7c3aed; }
-.orange-text { -fx-text-fill: #ea7a08; }
+.blue-text {
+    -fx-text-fill: #2563eb;
+}
+
+.green-text {
+    -fx-text-fill: #16a34a;
+}
+
+.purple-text {
+    -fx-text-fill: #7c3aed;
+}
+
+.orange-text {
+    -fx-text-fill: #ea7a08;
+}
 
 .pill-blue,
 .pill-green,
@@ -209,9 +275,14 @@
 }
 
 .small-note {
-    -fx-text-fill: #334155;
     -fx-font-size: 13px;
+    -fx-text-fill: #334155;
 }
+
+
+/* =========================================================
+   COMBOBOX
+========================================================= */
 
 .semester-box {
     -fx-background-color: #ffffff;
@@ -219,23 +290,185 @@
     -fx-border-color: #d7e0ee;
     -fx-border-radius: 10;
     -fx-padding: 6;
+    -fx-font-size: 13px;
 }
 
+.semester-box:hover {
+    -fx-border-color: #93c5fd;
+}
+
+
+.semester-box .list-cell {
+    -fx-text-fill: #0f172a;
+    -fx-font-size: 13px;
+}
+
+.semester-box .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.semester-box .arrow {
+    -fx-background-color: #475569;
+}
+
+
+/* =========================================================
+   SCORE TABLE CARD
+========================================================= */
+
 .table-card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 18;
+    -fx-border-color: #e6edf7;
+    -fx-border-radius: 18;
+    -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.055), 18, 0, 0, 6);
+    -fx-padding: 20;
     -fx-min-height: 445;
 }
 
-.section-title {
-    -fx-font-size: 20px;
-    -fx-font-weight: 900;
+.score-table {
+    -fx-background-color: transparent;
+    -fx-border-color: #e6edf7;
+    -fx-border-radius: 14;
+    -fx-background-radius: 14;
+    -fx-padding: 0;
+    -fx-table-cell-border-color: transparent;
+}
+
+/* Nền trong bảng */
+.score-table .virtual-flow,
+.score-table .clipped-container,
+.score-table .sheet {
+    -fx-background-color: transparent;
+}
+
+/* Header tổng */
+.score-table .column-header-background {
+    -fx-background-color: #f1f6ff;
+    -fx-background-radius: 14 14 0 0;
+    -fx-border-color: #dbe5f4;
+    -fx-border-width: 0 0 1 0;
+}
+
+/* Phần trống cuối header */
+.score-table .filler {
+    -fx-background-color: #f1f6ff;
+    -fx-background-radius: 0 14 0 0;
+    -fx-border-color: transparent;
+}
+
+/* Header từng cột */
+.score-table .column-header {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent #dbe5f4 transparent transparent;
+    -fx-border-width: 0 1 0 0;
+    -fx-pref-height: 44;
+    -fx-size: 44;
+}
+
+.score-table .column-header .label {
+    -fx-text-fill: #0f172a;
+    -fx-font-size: 13px;
+    -fx-font-weight: 800;
+    -fx-alignment: CENTER;
+}
+
+/* Dòng dữ liệu */
+.score-table .table-row-cell {
+    -fx-background-color: #ffffff;
+    -fx-border-color: transparent transparent #eef2f7 transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-cell-size: 48;
+}
+
+.score-table .table-row-cell:hover {
+    -fx-background-color: #f1f6ff;
+}
+
+/* Ô dữ liệu */
+.score-table .table-cell {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0 12 0 12;
+    -fx-text-fill: #0f172a;
+    -fx-font-size: 13.5px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+/* Class thêm từ Controller cho các cột cần căn giữa */
+.score-table .center-cell {
+    -fx-alignment: CENTER;
+}
+
+/* Class thêm từ Controller cho trạng thái */
+.score-table .status-cell {
+    -fx-alignment: CENTER;
+    -fx-text-fill: #159947;
+    -fx-font-weight: 800;
+}
+
+/* No content in table */
+.score-table .placeholder .label {
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+}
+
+/* Scrollbar trong bảng */
+.score-table .scroll-bar:vertical,
+.score-table .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+.score-table .scroll-bar .track {
+    -fx-background-color: transparent;
+}
+
+.score-table .scroll-bar .thumb {
+    -fx-background-color: #cbd5e1;
+    -fx-background-radius: 999;
+}
+
+.score-table .corner {
+    -fx-background-color: transparent;
+}
+
+
+/* =========================================================
+   TOTAL ROW UNDER TABLE
+   Dùng nếu bạn có HBox tổng tín chỉ + GPA học kỳ dưới TableView
+========================================================= */
+
+.table-total {
+    -fx-background-color: #f6f9ff;
+    -fx-background-radius: 14;
+    -fx-padding: 16 18;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.total-label {
+    -fx-font-size: 13.5px;
+    -fx-font-weight: 800;
     -fx-text-fill: #0f172a;
 }
 
-.section-title-small {
-    -fx-font-size: 17px;
-    -fx-font-weight: 900;
+.total-value {
+    -fx-font-size: 13.5px;
+    -fx-font-weight: 800;
     -fx-text-fill: #0f172a;
 }
+
+.total-blue {
+    -fx-font-size: 14px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #2563eb;
+}
+
+
+/* =========================================================
+   OLD GRID TABLE - GIỮ LẠI NẾU FILE KHÁC CÒN DÙNG
+   Lưu ý: không dùng .table-cell global nữa
+========================================================= */
 
 .grade-table {
     -fx-background-color: transparent;
@@ -250,7 +483,7 @@
     -fx-border-width: 0 0 1 0;
 }
 
-.table-cell {
+.grade-table-cell {
     -fx-padding: 0 8;
     -fx-font-size: 13.5px;
     -fx-text-fill: #0f172a;
@@ -272,30 +505,10 @@
     -fx-alignment: CENTER;
 }
 
-.table-total {
-    -fx-background-color: #f6f9ff;
-    -fx-background-radius: 12;
-    -fx-padding: 18 16;
-    -fx-alignment: CENTER_LEFT;
-}
 
-.total-label {
-    -fx-font-size: 13.5px;
-    -fx-font-weight: 800;
-    -fx-text-fill: #0f172a;
-}
-
-.total-value {
-    -fx-font-size: 13.5px;
-    -fx-font-weight: 800;
-    -fx-text-fill: #0f172a;
-}
-
-.total-blue {
-    -fx-font-size: 14px;
-    -fx-font-weight: 900;
-    -fx-text-fill: #2563eb;
-}
+/* =========================================================
+   CHART
+========================================================= */
 
 .chart-card {
     -fx-min-height: 230;
@@ -323,11 +536,11 @@
 .axis {
     -fx-tick-label-fill: #64748b;
     -fx-font-size: 11px;
+    -fx-border-color: transparent;
 }
 
-.axis:bottom,
-.axis:left {
-    -fx-border-color: transparent;
+.axis-label {
+    -fx-text-fill: #64748b;
 }
 
 .default-color0.chart-series-line {
@@ -341,11 +554,30 @@
     -fx-padding: 5px;
 }
 
-.default-color0.chart-pie { -fx-pie-color: #22c55e; }
-.default-color1.chart-pie { -fx-pie-color: #3b82f6; }
-.default-color2.chart-pie { -fx-pie-color: #f59e0b; }
-.default-color3.chart-pie { -fx-pie-color: #8b5cf6; }
-.default-color4.chart-pie { -fx-pie-color: #ef4444; }
+
+/* =========================================================
+   PIE CHART
+========================================================= */
+
+.default-color0.chart-pie {
+    -fx-pie-color: #22c55e;
+}
+
+.default-color1.chart-pie {
+    -fx-pie-color: #3b82f6;
+}
+
+.default-color2.chart-pie {
+    -fx-pie-color: #f59e0b;
+}
+
+.default-color3.chart-pie {
+    -fx-pie-color: #8b5cf6;
+}
+
+.default-color4.chart-pie {
+    -fx-pie-color: #ef4444;
+}
 
 .legend-green,
 .legend-blue,
@@ -355,11 +587,31 @@
     -fx-font-size: 12px;
     -fx-font-weight: 700;
 }
-.legend-green { -fx-text-fill: #16a34a; }
-.legend-blue { -fx-text-fill: #2563eb; }
-.legend-yellow { -fx-text-fill: #d97706; }
-.legend-purple { -fx-text-fill: #7c3aed; }
-.legend-red { -fx-text-fill: #dc2626; }
+
+.legend-green {
+    -fx-text-fill: #16a34a;
+}
+
+.legend-blue {
+    -fx-text-fill: #2563eb;
+}
+
+.legend-yellow {
+    -fx-text-fill: #d97706;
+}
+
+.legend-purple {
+    -fx-text-fill: #7c3aed;
+}
+
+.legend-red {
+    -fx-text-fill: #dc2626;
+}
+
+
+/* =========================================================
+   NOTE
+========================================================= */
 
 .note-card {
     -fx-min-height: 105;

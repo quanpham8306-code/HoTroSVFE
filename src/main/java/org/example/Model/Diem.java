@@ -2,33 +2,29 @@ package org.example.Model;
 
 public class Diem {
 
-    private String TenMon;
+    private String mon;
     private double diemQuaTrinh;
     private double diemCuoiKy;
     private double diemHocPhan;
-    private String diemchu;
-    private String trangthai;
-    private MonHoc mh;
+    private String trangThai;
 
     public Diem() {
     }
 
-    public Diem(String tenMon, double diemQuaTrinh, double diemCuoiKy, double diemHocPhan, String diemchu, String trangthai, MonHoc mh) {
-        TenMon = tenMon;
+    public Diem(String mon, double diemQuaTrinh, double diemCuoiKy, double diemHocPhan, String trangThai) {
+        this.mon = mon;
         this.diemQuaTrinh = diemQuaTrinh;
         this.diemCuoiKy = diemCuoiKy;
         this.diemHocPhan = diemHocPhan;
-        this.diemchu = diemchu;
-        this.trangthai = trangthai;
-        this.mh = mh;
+        this.trangThai = trangThai;
     }
 
-    public String getTenMon() {
-        return TenMon;
+    public String getMon() {
+        return mon;
     }
 
-    public void setTenMon(String tenMon) {
-        TenMon = tenMon;
+    public void setMon(String mon) {
+        this.mon = mon;
     }
 
     public double getDiemQuaTrinh() {
@@ -55,27 +51,11 @@ public class Diem {
         this.diemHocPhan = diemHocPhan;
     }
 
-    public String getDiemchu() {
-        return diemchu;
+    public String getTrangThai() {
+        return trangThai;
     }
 
-    public void setDiemchu(String diemchu) {
-        this.diemchu = diemchu;
-    }
-
-    public String getTrangthai() {
-        return trangthai;
-    }
-
-    public void setTrangthai(String trangthai) {
-        this.trangthai = trangthai;
-    }
-
-    public MonHoc getMh() {
-        return mh;
-    }
-
-    public void setMh(MonHoc mh) {
-        this.mh = mh;
+    public void setTrangThai(String trangThai) {
+        this.trangThai = trangThai;
     }
 }

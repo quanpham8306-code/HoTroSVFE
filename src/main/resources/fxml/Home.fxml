@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
-<BorderPane prefHeight="768" prefWidth="1366" stylesheets="@../css/Home.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.HomeController">
+<BorderPane prefHeight="768" prefWidth="1366" stylesheets="@../css/Home.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.HomeController">
 
    <left>
       <VBox maxWidth="240" minWidth="240" prefWidth="240" spacing="18" styleClass="sidebar">
@@ -76,12 +76,12 @@
                      </StackPane>
 
                      <VBox spacing="12">
-                        <Label fx:id="LabelHoten" styleClass="student-name" text="Phạm Anh Quân" />
-                        <Label fx:id="txtmasv" styleClass="student-id" text="CT9B230128" />
-                        <Label styleClass="student-major" text="Công nghệ thông tin - Khoa Công nghệ thông tin" />
+                        <Label fx:id="lblHoTenHeader" styleClass="student-name" text="Phạm Anh Quân" />
+                        <Label fx:id="lblMaSvHeader" styleClass="student-id" text="CT9B230128" />
+                        <Label fx:id="lblNganhHeader" styleClass="student-major" text="Công nghệ thông tin - Khoa Công nghệ thông tin" />
                         <HBox spacing="12">
                            <Label styleClass="status-green" text="●  Đang học" />
-                           <Label styleClass="status-blue" text="Khóa 2023 - 2027" />
+                           <Label fx:id="lblKhoaHeader" styleClass="status-blue" text="Khóa 2023 - 2027" />
                         </HBox>
                      </VBox>
                   </HBox>
@@ -101,7 +101,7 @@
 
                         <VBox spacing="7" styleClass="info-item" GridPane.columnIndex="0" GridPane.rowIndex="0">
                            <Label styleClass="info-label" text="Họ và tên" />
-                           <TextField fx:id="txtHovaTen" styleClass="info-value" text="Phạm Anh Quân" />
+                           <TextField fx:id="txtHoTen" styleClass="info-value" text="Phạm Anh Quân" />
                         </VBox>
                         <VBox spacing="7" styleClass="info-item" GridPane.columnIndex="0" GridPane.rowIndex="1">
                            <Label styleClass="info-label" text="Ngày sinh" />
@@ -113,11 +113,11 @@
                         </VBox>
                         <VBox spacing="7" styleClass="info-item" GridPane.columnIndex="0" GridPane.rowIndex="3">
                            <Label styleClass="info-label" text="Số điện thoại" />
-                           <TextField fx:id="txtSDT" styleClass="info-value" text="0321 456 789" />
+                           <TextField fx:id="txtPhone" styleClass="info-value" text="0321 456 789" />
                         </VBox>
                         <VBox spacing="7" styleClass="info-item" GridPane.columnIndex="0" GridPane.rowIndex="4">
                            <Label styleClass="info-label" text="Địa chỉ" />
-                           <TextField fx:id="txtDiaChi" styleClass="info-value" text="123 Nguyễn Văn Cừ, Q.5, TP.HCM" />
+                           <TextField fx:id="txtAddress" styleClass="info-value" text="123 Nguyễn Văn Cừ, Q.5, TP.HCM" />
                         </VBox>
 
                         <VBox spacing="7" styleClass="info-item" GridPane.columnIndex="1" GridPane.rowIndex="0">
@@ -126,7 +126,7 @@
                         </VBox>
                         <VBox spacing="7" styleClass="info-item" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <Label styleClass="info-label" text="Lớp" />
-                           <TextField fx:id="txtLop" styleClass="info-value" text="CT9B" />
+                           <TextField fx:id="txtClass" styleClass="info-value" text="CT9B" />
                         </VBox>
                         <VBox spacing="7" styleClass="info-item" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <Label styleClass="info-label" text="Email" />
@@ -134,7 +134,7 @@
                         </VBox>
                         <VBox spacing="7" styleClass="info-item" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <Label styleClass="info-label" text="CMND/CCCD" />
-                           <TextField fx:id="txtCccd" styleClass="info-value" text="079204012345" />
+                           <TextField fx:id="txtId" styleClass="info-value" text="079204012345" />
                         </VBox>
 
                         <rowConstraints>

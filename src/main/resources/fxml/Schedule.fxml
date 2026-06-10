@@ -9,7 +9,7 @@
             stylesheets="@../css/Schedule.css"
             xmlns="http://javafx.com/javafx/21"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.example.Controller.ScheduleController">
+            fx:controller="org.example.Controller.Student.StudentScheduleController">
 
     <left>
         <VBox prefWidth="230" spacing="18" styleClass="sidebar">

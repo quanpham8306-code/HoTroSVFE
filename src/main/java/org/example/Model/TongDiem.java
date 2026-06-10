@@ -1,45 +1,42 @@
 package org.example.Model;
 
-import java.util.List;
-
 public class TongDiem {
-    private double GPA;
-    private double tongTin, tongMon;
+    private double gpa;
+    private int tongTin;
+    private int tongMon;
     private String xepLoai;
-    private List<Diem> listDiem;
 
     public TongDiem() {
     }
 
-    public TongDiem(double GPA, double tongTin, double tongMon, String xepLoai, List<Diem> listDiem) {
-        this.GPA = GPA;
+    public TongDiem(double gpa, int tongTin, int tongMon, String xepLoai) {
+        this.gpa = gpa;
         this.tongTin = tongTin;
         this.tongMon = tongMon;
         this.xepLoai = xepLoai;
-        this.listDiem = listDiem;
     }
 
-    public double getGPA() {
-        return GPA;
+    public double getGpa() {
+        return gpa;
     }
 
-    public void setGPA(double GPA) {
-        this.GPA = GPA;
+    public void setGpa(double gpa) {
+        this.gpa = gpa;
     }
 
-    public double getTongTin() {
+    public int getTongTin() {
         return tongTin;
     }
 
-    public void setTongTin(double tongTin) {
+    public void setTongTin(int tongTin) {
         this.tongTin = tongTin;
     }
 
-    public double getTongMon() {
+    public int getTongMon() {
         return tongMon;
     }
 
-    public void setTongMon(double tongMon) {
+    public void setTongMon(int tongMon) {
         this.tongMon = tongMon;
     }
 
@@ -49,13 +46,5 @@ public class TongDiem {
 
     public void setXepLoai(String xepLoai) {
         this.xepLoai = xepLoai;
-    }
-
-    public List<Diem> getListDiem() {
-        return listDiem;
-    }
-
-    public void setListDiem(List<Diem> listDiem) {
-        this.listDiem = listDiem;
     }
 }
