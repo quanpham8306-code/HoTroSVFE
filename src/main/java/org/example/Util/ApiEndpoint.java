@@ -11,8 +11,6 @@ public class ApiEndpoint {
     // Student
     public static final String STUDENT_ME = "/api/student/me";
     public static final String STUDENT_SCORE_ME = "/api/student/score/me";
-    public static final String STUDENT_SCORE_BY_KY = "/api/student/score/{ky}";
-    public static final String STUDENT_SCORE_SUMMARY_BY_KY = "/api/student/score/summary/{ky}";
     public static final String STUDENT_SCORE_SUMMARY = "/api/student/score/summary";
     public static final String STUDENT_SCHEDULE_ME = "/api/student/schedule/me";
     public static final String STUDENT_SCHEDULE_EXPORT = "/api/student/schedule/export";

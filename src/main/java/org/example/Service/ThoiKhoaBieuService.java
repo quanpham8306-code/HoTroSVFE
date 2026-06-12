@@ -19,4 +19,5 @@ public class ThoiKhoaBieuService {
         }
         return ApiResponseHandler.readData(response, new TypeReference<List<ThoiKhoaBieu>>() {});
     }
+
 }

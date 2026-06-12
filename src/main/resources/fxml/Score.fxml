@@ -139,13 +139,13 @@
 
                                 <TableView fx:id="scoreTable" prefHeight="380" styleClass="grade-table" VBox.vgrow="ALWAYS">
                                     <columns>
-                                        <TableColumn fx:id="colStt" prefWidth="29.0" text="STT" />
-                                        <TableColumn fx:id="colMaMonHoc" prefWidth="56.0" text="Mã môn" />
-                                        <TableColumn fx:id="colTenMonHoc" prefWidth="194.0" text="Tên môn học" />
-                                        <TableColumn fx:id="colSoTinChi" prefWidth="67.0" text="Số tín chỉ" />
-                                        <TableColumn fx:id="colDiemHe10" text="Điểm hệ 10" />
-                                        <TableColumn fx:id="colDiemChu" text="Điểm chữ" />
-                                        <TableColumn fx:id="colTrangThai" prefWidth="106.0" text="Trạng thái" />
+                                        <TableColumn fx:id="colStt" prefWidth="45.0" text="STT" />
+                                        <TableColumn fx:id="colMaMonHoc" prefWidth="77.0" text="Mã môn" />
+                                        <TableColumn fx:id="colTenMonHoc" prefWidth="226.0" text="Tên môn học" />
+                                        <TableColumn fx:id="colSoTinChi" prefWidth="90.0" text="Số tín chỉ" />
+                                        <TableColumn fx:id="colDiemHe10" prefWidth="97.0" text="Điểm hệ 10" />
+                                        <TableColumn fx:id="colDiemChu" prefWidth="78.0" text="Điểm chữ" />
+                                        <TableColumn fx:id="colTrangThai" prefWidth="187.0" text="Trạng thái" />
                                     </columns>
                                 </TableView>
 

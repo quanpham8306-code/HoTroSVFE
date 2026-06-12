@@ -9,7 +9,7 @@
             stylesheets="@../css/Schedule.css"
             xmlns="http://javafx.com/javafx/21"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.example.Controller.Student.StudentScheduleController">
+            fx:controller="org.example.Controller.Student.StudentScoreController">
 
     <left>
         <VBox prefWidth="230" spacing="18" styleClass="sidebar">
@@ -18,7 +18,7 @@
 
             <VBox spacing="10" styleClass="menu-box">
                 <Button fx:id="btnHome" onAction="#showHome" text="👤  Thông tin cá nhân" styleClass="menu-btn"/>
-                <Button fx:id="btnScore" onAction="#showScore" text="📊  Kết quả học tập" styleClass="menu-btn"/>
+                <Button fx:id="btnScore" text="📊  Kết quả học tập" styleClass="menu-btn"/>
                 <Button text="📅  Lịch học" styleClass="menu-btn-active"/>
                 <Button text="📚  Đăng ký môn học" styleClass="menu-btn"/>
                 <Button text="💳  Học phí" styleClass="menu-btn"/>

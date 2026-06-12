@@ -29,14 +29,13 @@ public class StudentHomeController {
     @FXML private TextField txtAddress;
     @FXML private TextField txtEmail;
     @FXML private TextField txtPhone;
-    @FXML private TextField txtMaSv;
+    @FXML private TextField txtMaSV;
     @FXML private TextField txtClass;
     @FXML private TextField txtGioiTinh;
 
-    @FXML private Label lblMaSv;
     @FXML private Label lblGpa;
-    @FXML private Label lblTongTin;
-    @FXML private Label lblTongMon;
+    @FXML private Label lblSoTinChi;
+    @FXML private Label lblSoMon;
     @FXML private Label lblXepLoai;
 
     private final SinhVienService sinhVienService = new SinhVienService();
@@ -63,13 +62,11 @@ public class StudentHomeController {
         AppSession.clear();
         SceneUtil.switchScene(btnLogout, "/fxml/Login.fxml");
     }
-
-
     private void loadStudentInfo() {
         try {
             SinhVien sv = sinhVienService.getMyInfo();
 
-            lblHoTenHeader.setText(sv.getMaSv());
+            lblHoTenHeader.setText(sv.getHoTen());
             lblMaSvHeader.setText(sv.getMaSv());
             lblNganhHeader.setText(sv.getNganh());
             lblKhoaHeader.setText(sv.getNamNhapHoc()+"");
@@ -80,28 +77,13 @@ public class StudentHomeController {
             txtAddress.setText(sv.getDiaChi());
             txtEmail.setText(sv.getEmail());
             txtPhone.setText(sv.getSoDienThoai());
-            txtMaSv.setText(sv.getMaSv());
+            txtMaSV.setText(sv.getMaSv());
             txtClass.setText(sv.getLop());
             txtGioiTinh.setText(
                     sv.getGioiTinh() ? "Nam" : "Nữ");
 
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-
-    private void loadScoreSummary() {
-        try {
-            TongDiem summary = diemService.getMySummary();
-            lblGpa.setText( String.format("%.2f /4.0", summary.getGpa()));
-            lblTongTin.setText(summary.getTongTin() + " TC");
-            lblTongMon.setText( String.valueOf(summary.getTongMon()));
-            lblXepLoai.setText(summary.getXepLoai());
-        } catch (Exception e) {
-            lblGpa.setText("0.0/4.0");
-            lblTongTin.setText("0 TC");
-            lblTongMon.setText("0");
-            lblXepLoai.setText("Chưa có xếp hạng.");
         }
     }
     public void acceptEdit(boolean x)
@@ -112,11 +94,28 @@ public class StudentHomeController {
         txtAddress.setEditable(x);
         txtEmail.setEditable(x);
         txtPhone.setEditable(x);
-        txtMaSv.setEditable(x);
+        txtMaSV.setEditable(x);
         txtClass.setEditable(x);
         txtGioiTinh.setEditable(x);
     }
+    private void loadScoreSummary() {
+        try {
+            TongDiem summary = diemService.getMySummary();
+            lblGpa.setText( String.format("%.2f /4.0", summary.getGpa()));
+            lblSoTinChi.setText(summary.getTongTin() + " TC");
+            lblSoMon.setText( String.valueOf(summary.getTongMon()));
+            lblXepLoai.setText(summary.getXepLoai());
+        } catch (Exception e) {
+            lblGpa.setText("0.0/4.0");
+            lblSoTinChi.setText("0 TC");
+            lblSoMon.setText("0");
+            lblXepLoai.setText("Chưa có xếp hạng.");
+        }
+    }
+    private void loadSchedule()
+    {
 
+    }
     private String valueOrEmpty(String value) {
         return value == null ? "" : value;
     }
