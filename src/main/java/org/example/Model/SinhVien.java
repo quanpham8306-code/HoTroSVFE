@@ -14,12 +14,13 @@ public class SinhVien {
     private String cccd;
     private String diaChi;
     private String nganh;
+    private String khoa;
     private int namNhapHoc;
 
     public SinhVien() {
     }
 
-    public SinhVien(String maSv, String hoTen, LocalDate ngaySinh, Boolean gioiTinh, String email, String soDienThoai, String lop, String cccd, String diaChi, String nganh, int namNhapHoc) {
+    public SinhVien(String maSv, String hoTen, LocalDate ngaySinh, Boolean gioiTinh, String email, String soDienThoai, String lop, String cccd, String diaChi, String nganh, String khoa, int namNhapHoc) {
         this.maSv = maSv;
         this.hoTen = hoTen;
         this.ngaySinh = ngaySinh;
@@ -30,7 +31,16 @@ public class SinhVien {
         this.cccd = cccd;
         this.diaChi = diaChi;
         this.nganh = nganh;
+        this.khoa = khoa;
         this.namNhapHoc = namNhapHoc;
+    }
+
+    public String getKhoa() {
+        return khoa;
+    }
+
+    public void setKhoa(String khoa) {
+        this.khoa = khoa;
     }
 
     public String getMaSv() {

@@ -61,27 +61,7 @@
     -fx-font-weight: bold;
 }
 
-.support-card{
-    -fx-background-color: #f1f6ff;
-    -fx-padding: 16;
-    -fx-background-radius: 16;
-}
-
-.support-title{
-    -fx-text-fill: #07142f;
-    -fx-font-size: 15px;
-    -fx-font-weight: bold;
-}
-
-.support-phone,
-.support-mail{
-    -fx-text-fill: #2563eb;
-}
-
 /* MAIN */
-.main-bg{
-    -fx-background-color: #f3f7ff;
-}
 
 .scroll-pane-clean,
 .scroll-pane-clean > .viewport{

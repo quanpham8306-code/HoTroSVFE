@@ -8,7 +8,7 @@ public class ThoiKhoaBieu {
 
     private int ky;
 
-    private List<LopHocPhan> lopHocPhanList = new ArrayList<>();
+    private List<LopHocPhan> lopHocPhanDTOList = new ArrayList<>();
 
     public ThoiKhoaBieu() {
     }
@@ -16,7 +16,7 @@ public class ThoiKhoaBieu {
     public ThoiKhoaBieu(String loaiLich, int ky, List<LopHocPhan> lopHocPhanList) {
         this.loaiLich = loaiLich;
         this.ky = ky;
-        this.lopHocPhanList = lopHocPhanList;
+        this.lopHocPhanDTOList = lopHocPhanList;
     }
 
     public String getLoaiLich() {
@@ -36,10 +36,10 @@ public class ThoiKhoaBieu {
     }
 
     public List<LopHocPhan> getLopHocPhanList() {
-        return lopHocPhanList;
+        return lopHocPhanDTOList;
     }
 
-    public void setLopHocPhanList(List<LopHocPhan> lopHocPhanList) {
-        this.lopHocPhanList = lopHocPhanList;
+    public void setLopHocPhanDTOList(List<LopHocPhan> lopHocPhanList) {
+        this.lopHocPhanDTOList = lopHocPhanList;
     }
 }

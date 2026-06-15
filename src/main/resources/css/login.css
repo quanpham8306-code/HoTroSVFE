@@ -18,8 +18,8 @@
 
 .logo-icon {
     -fx-font-size: 30px;
+    -fx-text-fill: #2f6df6;
 }
-
 .logo-title {
     -fx-font-size: 22px;
     -fx-font-weight: 800;
@@ -53,11 +53,6 @@
     -fx-border-width: 1.2;
 }
 
-.input-field:focused {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-}
-
 .input-icon {
     -fx-font-size: 16px;
     -fx-text-fill: #51617f;
@@ -71,28 +66,6 @@
     -fx-prompt-text-fill: #8793ad;
 }
 
-.check-box-custom {
-    -fx-font-size: 13px;
-    -fx-text-fill: #5d6b8a;
-}
-
-.check-box-custom .box {
-    -fx-background-color: white;
-    -fx-border-color: #2563eb;
-    -fx-border-radius: 4;
-    -fx-background-radius: 4;
-}
-
-.check-box-custom:selected .box {
-    -fx-background-color: #2563eb;
-}
-
-.forgot-link {
-    -fx-font-size: 13px;
-    -fx-text-fill: #315a9f;
-    -fx-border-color: transparent;
-    -fx-underline: false;
-}
 
 .login-btn {
     -fx-background-color: linear-gradient(to right, #2563eb, #1d4ed8);

@@ -26,7 +26,13 @@ public class ApiResponseHandler {
 
     public static <T> T readData(String responseBody, Class<T> clazz) {
         try {
-            JsonNode data = mapper.readTree(responseBody).path("data");
+            JsonNode root = mapper.readTree(responseBody);
+            JsonNode data = root.get("data");
+
+            if (data == null || data.isNull()) {
+                return null;
+            }
+
             return mapper.treeToValue(data, clazz);
         } catch (Exception e) {
             throw new RuntimeException("Cannot parse response data", e);
@@ -35,8 +41,14 @@ public class ApiResponseHandler {
 
     public static <T> T readData(String responseBody, TypeReference<T> typeReference) {
         try {
-            JsonNode data = mapper.readTree(responseBody).path("data");
-            return mapper.readValue(mapper.treeAsTokens(data), typeReference);
+            JsonNode root = mapper.readTree(responseBody);
+            JsonNode data = root.get("data");
+
+            if (data == null || data.isNull()) {
+                return null;
+            }
+
+            return mapper.convertValue(data, typeReference);
         } catch (Exception e) {
             throw new RuntimeException("Cannot parse response data", e);
         }

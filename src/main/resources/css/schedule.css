@@ -1,0 +1,207 @@
+.schedule-row {
+    -fx-background-color: #f8fbff;
+    -fx-padding: 14;
+    -fx-background-radius: 16;
+}
+
+.date-box {
+    -fx-background-color: linear-gradient(to bottom, #2f6df6, #2563eb);
+    -fx-text-fill: white;
+    -fx-padding: 12;
+    -fx-background-radius: 14;
+    -fx-alignment: center;
+    -fx-font-weight: bold;
+}
+
+.schedule-title {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #07142f;
+}
+.toolbar {
+    -fx-background-color: white;
+    -fx-background-radius: 18;
+    -fx-border-radius: 18;
+    -fx-border-color: #d7e2f3;
+    -fx-padding: 16;
+    -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.06), 12, 0, 0, 4);
+}
+
+.radio {
+    -fx-font-size: 15px;
+    -fx-text-fill: #475569;
+}
+
+.date-picker {
+    -fx-pref-height: 38;
+}
+
+.primary-button {
+    -fx-background-color: #2f6df6;
+    -fx-text-fill: white;
+    -fx-background-radius: 10;
+    -fx-font-weight: 800;
+    -fx-padding: 9 16;
+    -fx-cursor: hand;
+}
+
+.primary-button:hover {
+    -fx-background-color: #1d4ed8;
+}
+
+.outline-button {
+    -fx-background-color: #eff6ff;
+    -fx-text-fill: #2563eb;
+    -fx-background-radius: 10;
+    -fx-font-weight: 800;
+    -fx-padding: 9 16;
+    -fx-cursor: hand;
+}
+
+.outline-button:hover {
+    -fx-background-color: #dbeafe;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+/* Ẩn nền góc dưới phải khi có cả scroll ngang + dọc */
+.scroll-pane .corner {
+    -fx-background-color: transparent;
+}
+
+/* Thanh cuộn dọc + ngang */
+.scroll-pane .scroll-bar:vertical,
+.scroll-pane .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+    -fx-padding: 4px;
+}
+
+/* Nền track của scrollbar */
+.scroll-pane .scroll-bar .track {
+    -fx-background-color: #eaf2ff;
+    -fx-background-radius: 999px;
+    -fx-border-color: transparent;
+}
+
+/* Nút tăng giảm ở 2 đầu scrollbar */
+.scroll-pane .scroll-bar .increment-button,
+.scroll-pane .scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+/* Ẩn mũi tên */
+.scroll-pane .scroll-bar .increment-arrow,
+.scroll-pane .scroll-bar .decrement-arrow {
+    -fx-background-color: transparent;
+    -fx-shape: "";
+    -fx-padding: 0;
+}
+/* ===== GRIDPANE THỜI KHÓA BIỂU ===== */
+
+.schedule-grid {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 18px;
+    -fx-border-color: #dbeafe;
+    -fx-border-radius: 18px;
+    -fx-border-width: 1px;
+    -fx-padding: 18px;
+    -fx-hgap: 14px;
+    -fx-vgap: 14px;
+}
+
+/* Ô lịch học dạng card nổi */
+.schedule-class-card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 16px;
+    -fx-border-color: #bfdbfe;
+    -fx-border-radius: 16px;
+    -fx-border-width: 1px;
+    -fx-max-height: 140px;
+    -fx-padding: 14px;
+    -fx-spacing: 7px;
+
+    -fx-effect: dropshadow(gaussian, rgba(37, 99, 235, 0.22), 16, 0, 0, 5);
+}
+
+/* Hover cho card */
+.schedule-class-card:hover {
+    -fx-background-color: #eff6ff;
+    -fx-border-color: #3b82f6;
+    -fx-effect: dropshadow(gaussian, rgba(37, 99, 235, 0.35), 22, 0, 0, 8);
+    -fx-cursor: hand;
+}
+
+/* Ô tiêu đề: Thứ 2, Thứ 3,... */
+.schedule-grid {
+    -fx-background-color: white;
+    -fx-background-radius: 14px;
+    -fx-border-color: #dbeafe;
+    -fx-border-radius: 14px;
+    -fx-padding: 0;
+}
+
+/* Header chung */
+.schedule-header-cell {
+    -fx-background-color: linear-gradient(to right, #4484f6, #3e83f6);
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    -fx-padding: 13px 10px;
+}
+
+/* Ô đầu tiên: Ca học */
+.schedule-header-first {
+    -fx-background-radius: 12px 0 0 0;
+}
+
+/* Các ô giữa */
+.schedule-header-middle {
+    -fx-background-radius: 0;
+}
+
+/* Ô cuối: Chủ nhật */
+.schedule-header-last {
+    -fx-background-radius: 0 12px 0 0;
+}
+/* Tên môn */
+.schedule-subject {
+    -fx-text-fill: #1e3a8a;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+/* Phòng học, giảng viên, giờ */
+.schedule-info {
+    -fx-text-fill: #334155;
+    -fx-font-size: 12px;
+}
+
+/* Mã lớp */
+.schedule-code {
+    -fx-text-fill: #2563eb;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+.schedule-empty-slot {
+    -fx-background-color: #f8fbff;
+    -fx-background-radius: 14px;
+
+    -fx-border-color: #e0ecff;
+    -fx-border-radius: 14px;
+    -fx-border-width: 1px;
+
+    -fx-min-height: 120px;
+    -fx-max-height: 120px;
+    -fx-padding: 8px;
+
+    -fx-effect: dropshadow(gaussian, rgba(37, 99, 235, 0.08), 8, 0, 0, 2);
+}

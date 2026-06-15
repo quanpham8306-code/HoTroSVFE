@@ -10,14 +10,11 @@ import org.example.Service.TaiKhoanService;
 import org.example.Util.SceneUtil;
 
 public class LoginController {
-    @FXML
-    private TextField txtUsername;
+    @FXML private TextField txtUsername;
 
-    @FXML
-    private PasswordField txtPassword;
+    @FXML private PasswordField txtPassword;
 
-    @FXML
-    private Button btnLogin;
+    @FXML private Button btnLogin;
 
     private final TaiKhoanService taiKhoanService = new TaiKhoanService();
 
@@ -33,7 +30,7 @@ public class LoginController {
 
         try {
             if (taiKhoanService.login(username, password)) {
-                SceneUtil.switchScene(btnLogin, "/fxml/Home.fxml");
+                SceneUtil.switchToApp(btnLogin, "/fxml/Home.fxml");
             } else {
                 showAlert("Login fail", "Sai tài khoản hoặc mật khẩu.");
             }

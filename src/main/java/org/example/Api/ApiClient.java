@@ -91,4 +91,27 @@ public class ApiClient {
             throw new RuntimeException("DELETE API failed: " + endpoint, e);
         }
     }
+    public byte[] downloadFile(String endpoint) {
+        try {
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(ApiEndpoint.BASE_URL + endpoint))
+                    .header("Authorization", "Bearer " + AppSession.getToken())
+                    .GET()
+                    .build();
+
+            HttpResponse<byte[]> response = client.send(
+                    request,
+                    HttpResponse.BodyHandlers.ofByteArray()
+            );
+
+            if (response.statusCode() >= 200 && response.statusCode() < 300) {
+                return response.body();
+            }
+
+            throw new RuntimeException("Tải file thất bại. Status: " + response.statusCode());
+
+        } catch (Exception e) {
+            throw new RuntimeException("Lỗi khi tải file Excel", e);
+        }
+    }
 }

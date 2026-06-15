@@ -13,7 +13,12 @@ public class ApiEndpoint {
     public static final String STUDENT_SCORE_ME = "/api/student/score/me";
     public static final String STUDENT_SCORE_SUMMARY = "/api/student/score/summary";
     public static final String STUDENT_SCHEDULE_ME = "/api/student/schedule/me";
+    public static final String STUDENT_SCHEDULE_BY_WEEK = "/api/student/schedule/date/";
     public static final String STUDENT_SCHEDULE_EXPORT = "/api/student/schedule/export";
+    public static final String STUDENT_SCHEDULE_IMPORT = "/api/student/schedule/import";
+    public static final String STUDENT_PICKED_CLASS ="/api/student/lich-ao/picked-class/";
+    public static final String STUDENT_PICKED_SUBJECT = "/api/student/lich-ao/subject/";
+    public static final String STUDENT_SCHEDULE_NEAR = "/api/student/schedule/baBuoiGanNhat";
     public static final String STUDENT_VIRTUAL_SCHEDULE_CHECK = "/api/student/lich-ao/check-them-lop";
 
     // Admin

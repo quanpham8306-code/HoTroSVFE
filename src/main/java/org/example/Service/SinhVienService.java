@@ -13,4 +13,9 @@ public class SinhVienService {
         String response = apiClient.get(ApiEndpoint.STUDENT_ME);
         return ApiResponseHandler.readData(response, SinhVien.class);
     }
+    public int getKhoa()
+    {
+        String response = apiClient.get(ApiEndpoint.STUDENT_ME);
+        return ApiResponseHandler.readData(response, SinhVien.class).getNamNhapHoc();
+    }
 }

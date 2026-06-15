@@ -1,0 +1,245 @@
+.card,
+.summary-card,
+.filter-card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 18;
+    -fx-border-color: #e6edf7;
+    -fx-border-radius: 18;
+    -fx-effect: dropshadow(gaussian, rgba(15, 23, 42, 0.055), 18, 0, 0, 6);
+}
+
+.card {
+    -fx-padding: 20;
+}
+
+.summary-card {
+    -fx-padding: 18 20;
+    -fx-min-height: 132;
+}
+
+.filter-card {
+    -fx-padding: 16 20;
+}
+
+.card-label,
+.filter-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #475569;
+}
+
+.section-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #0f172a;
+}
+
+.section-title-small {
+    -fx-font-size: 17px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #0f172a;
+}
+
+
+/* =========================================================
+   SUMMARY CARDS
+========================================================= */
+
+
+.stat-main {
+    -fx-font-size: 31px;
+    -fx-font-weight: 900;
+}
+
+.stat-unit {
+    -fx-font-size: 16px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #64748b;
+}
+
+
+.pill-blue,
+.pill-green,
+.pill-orange {
+    -fx-background-radius: 999;
+    -fx-padding: 7 13;
+    -fx-font-size: 12px;
+    -fx-font-weight: 800;
+    -fx-max-width: 185;
+}
+
+.pill-blue {
+    -fx-background-color: #edf4ff;
+    -fx-text-fill: #2563eb;
+}
+
+.pill-green {
+    -fx-background-color: #e8f8ef;
+    -fx-text-fill: #15803d;
+}
+
+.pill-orange {
+    -fx-background-color: #fff1df;
+    -fx-text-fill: #d97706;
+}
+
+.small-note {
+    -fx-font-size: 13px;
+    -fx-text-fill: #334155;
+}
+
+
+.semester-box {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 10;
+    -fx-border-color: #d7e0ee;
+    -fx-border-radius: 10;
+    -fx-padding: 6;
+    -fx-font-size: 13px;
+}
+
+.semester-box:hover {
+    -fx-border-color: #93c5fd;
+}
+
+
+.semester-box .list-cell {
+    -fx-text-fill: #0f172a;
+    -fx-font-size: 13px;
+}
+
+.semester-box .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.semester-box .arrow {
+    -fx-background-color: #475569;
+}
+.default-color0.chart-pie {
+    -fx-pie-color: #22c55e;
+}
+
+.default-color1.chart-pie {
+    -fx-pie-color: #3b82f6;
+}
+
+.default-color2.chart-pie {
+    -fx-pie-color: #f59e0b;
+}
+
+.default-color3.chart-pie {
+    -fx-pie-color: #8b5cf6;
+}
+
+.default-color4.chart-pie {
+    -fx-pie-color: #ef4444;
+}
+
+.legend-green,
+.legend-blue,
+.legend-yellow,
+.legend-purple,
+.legend-red {
+    -fx-font-size: 12px;
+    -fx-font-weight: 700;
+}
+
+.legend-green {
+    -fx-text-fill: #16a34a;
+}
+
+.legend-blue {
+    -fx-text-fill: #2563eb;
+}
+
+.legend-yellow {
+    -fx-text-fill: #d97706;
+}
+
+.legend-purple {
+    -fx-text-fill: #7c3aed;
+}
+
+.legend-red {
+    -fx-text-fill: #dc2626;
+}
+
+
+/* ===== TABLE VIEW MODERN STYLE ===== */
+
+.table-view {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 14px;
+    -fx-border-radius: 14px;
+    -fx-border-color: #e5e7eb;
+    -fx-border-width: 1px;
+    -fx-padding: 0;
+}
+
+/* Ẩn nền thừa */
+.table-view .virtual-flow {
+    -fx-background-color: transparent;
+}
+
+/* Header */
+.table-view .column-header-background {
+    -fx-background-color: #2563eb;
+    -fx-background-radius: 14px 14px 0 0;
+    -fx-padding: 0;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-size: 44px;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+
+/* Dòng trong bảng */
+.table-row-cell {
+    -fx-background-color: #ffffff;
+    -fx-border-color: transparent transparent #f1f5f9 transparent;
+    -fx-border-width: 0 0 1px 0;
+    -fx-cell-size: 46px;
+}
+
+/* Hover */
+.table-row-cell:hover {
+    -fx-background-color: #e0f2fe;
+}
+
+/* Text trong ô */
+.table-cell {
+    -fx-text-fill: #0f172a;
+    -fx-font-size: 14px;
+    -fx-alignment: center;
+    -fx-border-color: transparent;
+    -fx-padding: 0 10px;
+}
+
+/* Placeholder khi bảng rỗng */
+.table-view .placeholder .label {
+    -fx-text-fill: #64748b;
+    -fx-font-size: 14px;
+}
+
+/* Scrollbar */
+.table-view .scroll-bar:vertical,
+.table-view .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+.table-view .scroll-bar .thumb {
+    -fx-background-color: #cbd5e1;
+    -fx-background-radius: 10px;
+}
+
+.table-view .scroll-bar .thumb:hover {
+    -fx-background-color: #94a3b8;
+}

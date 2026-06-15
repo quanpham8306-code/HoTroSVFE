@@ -13,7 +13,7 @@ public class LopHocPhan {
 
     private String phongHoc;
 
-    private String thu;
+    private int thu;
 
     private LocalTime gioBatDau;
 
@@ -32,7 +32,7 @@ public class LopHocPhan {
     public LopHocPhan() {
     }
 
-    public LopHocPhan(String maLopHP, String tenMonHoc, String giangVien, String phongHoc, String thu, LocalTime gioBatDau, LocalTime gioKetThuc, LocalDate ngayBatDau, LocalDate ngayKetThuc, Integer siSoToiDa, String hocKy, String namHoc) {
+    public LopHocPhan(String maLopHP, String tenMonHoc, String giangVien, String phongHoc, int thu, LocalTime gioBatDau, LocalTime gioKetThuc, LocalDate ngayBatDau, LocalDate ngayKetThuc, Integer siSoToiDa, String hocKy, String namHoc) {
         this.maLopHP = maLopHP;
         this.tenMonHoc = tenMonHoc;
         this.giangVien = giangVien;
@@ -79,11 +79,11 @@ public class LopHocPhan {
         this.phongHoc = phongHoc;
     }
 
-    public String getThu() {
+    public int getThu() {
         return thu;
     }
 
-    public void setThu(String thu) {
+    public void setThu(int thu) {
         this.thu = thu;
     }
 

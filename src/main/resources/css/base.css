@@ -1,0 +1,15 @@
+.root {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-text-fill: #0f172a;
+    -fx-background-color: #f4f7fc;
+}
+.label {
+    -fx-text-fill: #07142f;
+}
+
+.text-muted {
+    -fx-text-fill: #657895;
+}
+.main-bg{
+    -fx-background-color: #f3f7ff;
+}

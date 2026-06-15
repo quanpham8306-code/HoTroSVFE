@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -15,12 +16,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
-<BorderPane prefHeight="768" prefWidth="1366" stylesheets="@../css/Home.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.Student.StudentHomeController">
+<BorderPane prefHeight="620" prefWidth="1000" styleClass="root" stylesheets="@../css/base.css, @../css/layout.css, @../css/components.css, @../css/home.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.Student.StudentHomeController">
 
    <left>
-      <VBox maxWidth="240" minWidth="240" prefWidth="240" spacing="18" styleClass="sidebar">
+      <VBox maxWidth="240" minWidth="240" prefWidth="240" spacing="20" styleClass="sidebar">
          <padding>
-            <Insets bottom="20" left="18" right="18" top="24" />
+            <Insets bottom="24" left="20" right="20" top="28" />
          </padding>
 
          <HBox alignment="CENTER_LEFT" spacing="12">
@@ -31,23 +32,17 @@
             </VBox>
          </HBox>
 
-         <Separator />
+         <Separator styleClass="sidebar-separator" />
 
          <VBox spacing="10" VBox.vgrow="ALWAYS">
             <Button maxWidth="Infinity" styleClass="nav-active" text="  👤   Thông tin cá nhân" />
             <Button fx:id="btnScore" maxWidth="Infinity" onAction="#showScore" styleClass="nav-button" text="  📊   Kết quả học tập" />
             <Button fx:id="btnSchedule" maxWidth="Infinity" onAction="#showSchedule" styleClass="nav-button" text="  📅   Lịch học" />
-            <Button maxWidth="Infinity" styleClass="nav-button" text="  📄   Tài liệu" />
-            <Button maxWidth="Infinity" styleClass="nav-button" text="  ⚙   Cài đặt" />
+            <Button fx:id="btnSubject" maxWidth="Infinity" onAction="#showSubject" styleClass="nav-button" text="📚 Đăng ký môn" />
+            <Button fx:id="btnNote" maxWidth="Infinity" onAction="#showNote" styleClass="nav-button" text="  📄   Ghi chú" />
          </VBox>
 
-         <VBox spacing="6" styleClass="support-card">
-            <Label styleClass="support-title" text="🎧  Hỗ trợ sinh viên" />
-            <Label styleClass="support-phone" text="1900 1234" />
-            <Label styleClass="support-mail" text="support@student.edu.vn" />
-         </VBox>
-
-         <Button fx:id="btnLogout" maxWidth="Infinity" onAction="#handleLogout" styleClass="nav-button" text="  ↪   Đăng xuất" />
+         <Button fx:id="btnLogout" maxWidth="Infinity" onAction="#handleLogout" prefHeight="35.0" prefWidth="199.0" styleClass="logout-button" text="  ↪   Đăng xuất" />
       </VBox>
    </left>
 
@@ -60,8 +55,6 @@
 
             <HBox alignment="CENTER_LEFT" spacing="16">
                <Label maxWidth="Infinity" styleClass="page-title" text="Thông tin sinh viên" HBox.hgrow="ALWAYS" />
-               <TextField prefWidth="300" promptText="Tìm kiếm..." styleClass="search-box" />
-               <Label styleClass="avatar-small" text="👤" />
             </HBox>
 
             <HBox alignment="TOP_LEFT" spacing="20" VBox.vgrow="ALWAYS">
@@ -80,7 +73,7 @@
                         <Label fx:id="lblMaSvHeader" styleClass="student-id" text="CT9B230128" />
                         <Label fx:id="lblNganhHeader" styleClass="student-major" text="Công nghệ thông tin - Khoa Công nghệ thông tin" />
                         <HBox spacing="12">
-                           <Label styleClass="status-green" text="●  Đang học" />
+                           <Label fx:id="lblStatus" styleClass="status-green" text="●  Đang học" />
                            <Label fx:id="lblKhoaHeader" styleClass="status-blue" text="Khóa 2023 - 2027" />
                         </HBox>
                      </VBox>
@@ -180,7 +173,11 @@
                   <VBox spacing="14" styleClass="card">
                      <HBox alignment="CENTER_LEFT">
                         <Label maxWidth="Infinity" styleClass="section-title" text="📅  Lịch học sắp tới" HBox.hgrow="ALWAYS" />
-                        <Label styleClass="link-text" text="Xem tất cả" />
+                        <Button mnemonicParsing="false" onAction="#showSchedule" text="Xem tất cả">
+                           <styleClass>
+                              <String fx:value="link-text" />
+                              <String fx:value="nav-button" />
+                           </styleClass></Button>
                      </HBox>
                      <VBox spacing="10">
                         <HBox alignment="CENTER_LEFT" spacing="18" styleClass="schedule-row">

@@ -12,13 +12,13 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="800" prefWidth="1280" stylesheets="@../css/Score.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.Student.StudentScoreController">
+<BorderPane prefHeight="620" prefWidth="1000" styleClass="root" stylesheets="@../css/base.css, @../css/layout.css, @../css/components.css, @../css/score.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.Student.StudentScoreController">
 
     <left>
         <VBox maxWidth="240" minWidth="240" prefWidth="240" spacing="20" styleClass="sidebar">
@@ -36,32 +36,21 @@
 
             <Separator styleClass="sidebar-separator" />
 
-            <VBox spacing="10" VBox.vgrow="ALWAYS">
+            <VBox maxHeight="1080.0" maxWidth="384.0" spacing="10" VBox.vgrow="ALWAYS">
                 <Button fx:id="btnHome" maxWidth="Infinity" onAction="#showHome" styleClass="nav-button" text="  👤   Thông tin cá nhân" />
                 <Button maxWidth="Infinity" styleClass="nav-active" text="  📊   Kết quả học tập" />
                 <Button fx:id="btnSchedule" maxWidth="Infinity" onAction="#showSchedule" styleClass="nav-button" text="  📅   Lịch học" />
-                <Button maxWidth="Infinity" styleClass="nav-button" text="  📚   Đăng ký môn học" />
-                <Button maxWidth="Infinity" styleClass="nav-button" text="  💳   Học phí" />
-                <Button maxWidth="Infinity" styleClass="nav-button" text="  🔔   Thông báo        3" />
-                <Button maxWidth="Infinity" styleClass="nav-button" text="  💬   Tin nhắn" />
-                <Button maxWidth="Infinity" styleClass="nav-button" text="  📄   Tài liệu" />
-                <Button maxWidth="Infinity" styleClass="nav-button" text="  ⚙   Cài đặt" />
+                <Button fx:id="btnSubject" maxWidth="Infinity" onAction="#showSubject" styleClass="nav-button" text="📚 Đăng ký môn" />
+                <Button fx:id="btnNote" maxWidth="Infinity" onAction="#showNote" styleClass="nav-button" text="  📄   Ghi chú" />
             </VBox>
 
-            <VBox spacing="8" styleClass="support-card">
-                <Label styleClass="support-title" text="🎧  Hỗ trợ sinh viên" />
-                <Label styleClass="support-phone" text="1900 1234" />
-                <Label styleClass="support-mail" text="support@student.edu.vn" />
-            </VBox>
-
-            <Button fx:id="btnLogout" maxWidth="Infinity" onAction="#handleLogout" styleClass="logout-button" text="  ↪   Đăng xuất" />
+            <Button fx:id="btnLogout" maxWidth="Infinity" onAction="#handleLogout" prefHeight="34.0" prefWidth="199.0" styleClass="logout-button" text="  ↪   Đăng xuất" />
         </VBox>
     </left>
-
-    <center>
-        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" styleClass="scroll-pane">
+   <center>
+        <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="1080.0" maxWidth="1536.0" minWidth="-Infinity" prefHeight="620.0" prefWidth="1434.0" styleClass="scroll-pane" BorderPane.alignment="CENTER">
             <content>
-                <VBox spacing="22" styleClass="main-bg">
+                <VBox prefHeight="830.0" prefWidth="1482.0" spacing="22" styleClass="main-bg">
                     <padding>
                         <Insets bottom="32" left="32" right="32" top="28" />
                     </padding>
@@ -69,28 +58,22 @@
                     <HBox alignment="CENTER_LEFT" spacing="20">
                         <VBox spacing="6" HBox.hgrow="ALWAYS">
                             <Label styleClass="page-title" text="Kết quả học tập" />
-                            <HBox alignment="CENTER_LEFT" spacing="8">
-                                <Label styleClass="breadcrumb" text="Trang chủ" />
-                                <Label styleClass="breadcrumb" text="›" />
-                                <Label styleClass="breadcrumb-current" text="Kết quả học tập" />
-                            </HBox>
+                            <HBox alignment="CENTER_LEFT" spacing="8" />
                         </VBox>
-                        <TextField prefWidth="280" promptText="Tìm kiếm..." styleClass="search-box" />
-                        <StackPane styleClass="circle-icon"><Label text="🔔" /></StackPane>
-                        <StackPane styleClass="circle-icon"><Label text="👤" /></StackPane>
+                        <StackPane styleClass="circle-icon" />
+                        <StackPane styleClass="circle-icon" />
                     </HBox>
 
-                    <HBox spacing="18">
+                    <HBox prefHeight="43.0" prefWidth="1137.0" spacing="18">
                         <VBox spacing="12" styleClass="summary-card" HBox.hgrow="ALWAYS">
                             <HBox alignment="CENTER_LEFT">
                                 <Label styleClass="card-label" text="GPA tích lũy" HBox.hgrow="ALWAYS" />
                                 <StackPane styleClass="mini-icon blue"><Label text="📈" /></StackPane>
                             </HBox>
-                            <HBox alignment="BASELINE_LEFT" spacing="6">
-                                <Label fx:id="lblGPA" styleClass="stat-main blue-text" text="0.00" />
-                                <Label styleClass="stat-unit" text="/4.0" />
+                            <HBox alignment="BASELINE_LEFT" spacing="6" styleClass="pill-blue">
+                                <Label fx:id="lblGPA" styleClass="stat-blue" text="0.00" />
+                                <Label styleClass="stat-blue" text="/4.0" />
                             </HBox>
-                            <Label styleClass="pill-blue" text="●  Giỏi" />
                         </VBox>
 
                         <VBox spacing="12" styleClass="summary-card" HBox.hgrow="ALWAYS">
@@ -98,11 +81,10 @@
                                 <Label styleClass="card-label" text="Số tín chỉ tích lũy" HBox.hgrow="ALWAYS" />
                                 <StackPane styleClass="mini-icon green"><Label text="📖" /></StackPane>
                             </HBox>
-                            <HBox alignment="BASELINE_LEFT" spacing="6">
-                                <Label fx:id="lblTongTinChi" styleClass="stat-main green-text" text="0" />
-                                <Label styleClass="stat-unit" text="TC" />
+                            <HBox alignment="BASELINE_LEFT" spacing="6" styleClass="pill-blue">
+                                <Label fx:id="lblTongTinChi" styleClass="stat-green" text="0" />
+                                <Label styleClass="stat-green" text="TC" />
                             </HBox>
-                            <Label styleClass="pill-green" text="Đã hoàn thành 72% CTĐT" />
                         </VBox>
 
                         <VBox spacing="12" styleClass="summary-card" HBox.hgrow="ALWAYS">
@@ -110,20 +92,20 @@
                                 <Label styleClass="card-label" text="Số môn đã học" HBox.hgrow="ALWAYS" />
                                 <StackPane styleClass="mini-icon purple"><Label text="📄" /></StackPane>
                             </HBox>
-                            <HBox alignment="BASELINE_LEFT" spacing="6">
-                                <Label fx:id="lblSoMon" styleClass="stat-main purple-text" text="0" />
-                                <Label styleClass="stat-unit" text="/40" />
+                            <HBox alignment="BASELINE_LEFT" spacing="6" styleClass="pill-blue">
+                                <Label fx:id="lblSoMon" styleClass="stat-purple" text="0" />
                             </HBox>
-                            <Label styleClass="small-note" text="7 môn còn lại" />
                         </VBox>
 
-                        <VBox spacing="12" styleClass="summary-card" HBox.hgrow="ALWAYS">
+                        <VBox prefWidth="232.0" spacing="12" styleClass="summary-card" HBox.hgrow="ALWAYS">
                             <HBox alignment="CENTER_LEFT">
                                 <Label styleClass="card-label" text="Xếp loại học lực" HBox.hgrow="ALWAYS" />
-                                <StackPane styleClass="mini-icon orange"><Label text="🏅" /></StackPane>
+                                <StackPane styleClass="mini-icon orange"><Label prefWidth="23.0" text="🏅">
+                              <font>
+                                 <Font size="38.0" />
+                              </font></Label></StackPane>
                             </HBox>
-                            <Label fx:id="lblXepLoai" styleClass="stat-main orange-text" text="Chưa có" />
-                            <Label styleClass="pill-orange" text="Học kỳ gần nhất" />
+                            <Label fx:id="lblXepLoai" maxWidth="207.0" prefHeight="44.0" prefWidth="207.0" styleClass="pill-blue" text="Chưa có" />
                         </VBox>
                     </HBox>
 
@@ -137,31 +119,24 @@
                             <VBox spacing="18" styleClass="card table-card" VBox.vgrow="ALWAYS">
                                 <Label styleClass="section-title" text="Bảng điểm học kỳ 2 (2023 - 2024)" />
 
-                                <TableView fx:id="scoreTable" prefHeight="380" styleClass="grade-table" VBox.vgrow="ALWAYS">
+                                <TableView fx:id="scoreTable" prefHeight="380" styleClass="grade-table-cell" VBox.vgrow="ALWAYS">
                                     <columns>
-                                        <TableColumn fx:id="colStt" prefWidth="45.0" text="STT" />
-                                        <TableColumn fx:id="colMaMonHoc" prefWidth="77.0" text="Mã môn" />
-                                        <TableColumn fx:id="colTenMonHoc" prefWidth="226.0" text="Tên môn học" />
-                                        <TableColumn fx:id="colSoTinChi" prefWidth="90.0" text="Số tín chỉ" />
-                                        <TableColumn fx:id="colDiemHe10" prefWidth="97.0" text="Điểm hệ 10" />
-                                        <TableColumn fx:id="colDiemChu" prefWidth="78.0" text="Điểm chữ" />
-                                        <TableColumn fx:id="colTrangThai" prefWidth="187.0" text="Trạng thái" />
+                                        <TableColumn fx:id="colMaMonHoc" editable="false" prefWidth="77.0" sortable="false" text="Mã môn" />
+                                        <TableColumn fx:id="colTenMonHoc" editable="false" prefWidth="226.0" sortable="false" text="Tên môn học" />
+                                        <TableColumn fx:id="colSoTinChi" editable="false" prefWidth="90.0" sortable="false" text="Số tín chỉ" />
+                                        <TableColumn fx:id="colDiemHe10" editable="false" prefWidth="97.0" sortable="false" text="Điểm hệ 10" />
+                                        <TableColumn fx:id="colDiemChu" editable="false" prefWidth="78.0" sortable="false" text="Điểm chữ" />
+                                        <TableColumn fx:id="colTrangThai" editable="false" prefWidth="187.0" sortable="false" text="Trạng thái" />
                                     </columns>
                                 </TableView>
 
-                                <HBox alignment="CENTER_LEFT" spacing="60" styleClass="table-total">
-                                    <Label styleClass="total-label" text="Tổng số tín chỉ" />
-                                    <Label fx:id="lblTongTinChiHocKy" styleClass="total-value" text="0" />
-                                    <Label styleClass="total-label" text="GPA học kỳ" />
-                                    <Label fx:id="lblGpaHocKy" styleClass="total-blue" text="0.00" />
-                                </HBox>
                             </VBox>
                         </VBox>
 
-                        <VBox minWidth="330" prefWidth="330" spacing="16">
+                        <VBox minWidth="330" prefHeight="548.0" prefWidth="372.0" spacing="16">
                             <VBox spacing="12" styleClass="card chart-card">
                                 <Label styleClass="section-title-small" text="Biểu đồ GPA" />
-                                <LineChart fx:id="gpaChart" animated="false" createSymbols="true" legendVisible="false" prefHeight="220" styleClass="gpa-chart">
+                                <LineChart fx:id="gpaChart" animated="false" createSymbols="true" legendVisible="false" prefHeight="130.0" prefWidth="372.0" styleClass="gpa-chart">
                                     <xAxis>
                                         <CategoryAxis side="BOTTOM" tickLabelRotation="0" />
                                     </xAxis>
@@ -171,28 +146,46 @@
                                 </LineChart>
                             </VBox>
 
-                            <VBox spacing="12" styleClass="card chart-card">
+                            <VBox prefHeight="185.0" prefWidth="338.0" spacing="12" styleClass="card chart-card" VBox.vgrow="ALWAYS">
                                 <Label styleClass="section-title-small" text="Thống kê kết quả" />
                                 <HBox alignment="CENTER_LEFT" spacing="12">
-                                    <PieChart fx:id="resultPieChart" animated="false" labelsVisible="false" legendVisible="false" prefHeight="135" prefWidth="135" />
-                                    <VBox spacing="10" HBox.hgrow="ALWAYS">
-                                        <Label styleClass="legend-green" text="●  A (8.0 - 10)        6 môn" />
-                                        <Label styleClass="legend-blue" text="●  B (6.5 - 7.9)      15 môn" />
-                                        <Label styleClass="legend-yellow" text="●  C (5.0 - 6.4)       5 môn" />
-                                        <Label styleClass="legend-purple" text="●  D (4.0 - 4.9)       1 môn" />
-                                        <Label styleClass="legend-red" text="●  F (&lt; 4.0)           1 môn" />
+                                    <PieChart fx:id="resultPieChart" animated="false" labelsVisible="false" legendVisible="false" prefHeight="150.0" prefWidth="160.0" />
+                                    <VBox prefHeight="151.0" prefWidth="166.0" spacing="10" HBox.hgrow="ALWAYS">
+                                        <Label prefHeight="15.0" prefWidth="158.0" styleClass="legend-green" text="●  A (8.5 - 10)" />
+                                        <Label styleClass="legend-blue" text="●  B (7.0 - 8.4)" />
+                                        <Label styleClass="legend-yellow" text="●  C (5.2 - 6.9)" />
+                                        <Label styleClass="legend-purple" text="●  D (4.0 - 5.1)" />
+                                        <Label styleClass="legend-red" text="●  F (&lt; 4.0)" />
                                     </VBox>
+                           <VBox prefHeight="151.0" prefWidth="150.0">
+                              <children>
+                                 <Label fx:id="lblA" prefHeight="14.0" prefWidth="66.0" styleClass="legend-green" text="1 môn" />
+                                 <Label fx:id="lblB" prefHeight="34.0" prefWidth="36.0" styleClass="legend-blue" text="1 môn" />
+                                 <Label fx:id="lblC" prefHeight="21.0" prefWidth="36.0" styleClass="legend-yellow" text="1 môn" />
+                                 <Label fx:id="lblD" prefHeight="26.0" prefWidth="36.0" styleClass="legend-purple" text="1 môn" />
+                                 <Label fx:id="lblF" prefHeight="26.0" prefWidth="36.0" styleClass="legend-red" text="1 môn" />
+                              </children>
+                           </VBox>
                                 </HBox>
                             </VBox>
-
-                            <VBox prefHeight="76.0" prefWidth="330.0" spacing="10" styleClass="card note-card">
-                                <Label prefHeight="11.0" prefWidth="84.0" styleClass="section-title-small" text="ℹ  Ghi chú" />
-                                <Label prefHeight="44.0" prefWidth="330.0" styleClass="note-text" text="• Điểm số được cập nhật sau khi hoàn tất quá trình nhập điểm của giảng viên." wrapText="true" />
-                            </VBox>
+                     <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                        <children>
+                           <Label text="Chú ý :">
+                              <font>
+                                 <Font size="14.0" />
+                              </font>
+                           </Label>
+                           <Label ellipsisString="Điểm sẽ được cập nhật sau khi giảng viên cập nhật lên hệ thống." prefHeight="79.0" prefWidth="400.0" text="Điểm sẽ được cập nhật sau khi giảng viên cập nhật lên hệ thống.">
+                              <font>
+                                 <Font size="14.0" />
+                              </font>
+                           </Label>
+                        </children>
+                     </VBox>
                         </VBox>
                     </HBox>
                 </VBox>
             </content>
         </ScrollPane>
-    </center>
+   </center>
 </BorderPane>
