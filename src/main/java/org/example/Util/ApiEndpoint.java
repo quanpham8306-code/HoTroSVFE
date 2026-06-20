@@ -20,6 +20,11 @@ public class ApiEndpoint {
     public static final String STUDENT_PICKED_SUBJECT = "/api/student/lich-ao/subject/";
     public static final String STUDENT_SCHEDULE_NEAR = "/api/student/schedule/baBuoiGanNhat";
     public static final String STUDENT_VIRTUAL_SCHEDULE_CHECK = "/api/student/lich-ao/check-them-lop";
+    public static final String STUDENT_NOTE_ME = "/api/student/note/me";
+    public static final String STUDENT_NOTE_TITLE = "/api/student/note/";
+    public static final String STUDENT_NOTE_POST = "/api/student/note/addNote";
+    public static final String STUDENT_NOTE_DELETE = "/api/student/note/delete";
+    public static final String STUDENT_NOTE_UPDATE = "/api/student/note/update";
 
     // Admin
     public static final String ADMIN_STUDENT = "/api/admin/student";

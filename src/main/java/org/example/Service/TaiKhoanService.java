@@ -24,6 +24,7 @@ public class TaiKhoanService {
         LoginResponse loginResponse = ApiResponseHandler.readData(response, LoginResponse.class);
         AppSession.setToken(loginResponse.getToken());
         AppSession.setUsername(username);
+        AppSession.setRole(loginResponse.getRole());
         return true;
     }
 
@@ -36,6 +37,8 @@ public class TaiKhoanService {
     }
 
     public static class LoginResponse {
+        private String role;
+
         private String token;
 
         public String getToken() {
@@ -45,5 +48,11 @@ public class TaiKhoanService {
         public void setToken(String token) {
             this.token = token;
         }
+
+        public void setRole(String role) {
+            this.role = role;
+        }
+
+        public String getRole() {return  role;}
     }
 }

@@ -25,14 +25,14 @@ public class LopHocPhan {
 
     private Integer siSoToiDa;
 
-    private String hocKy;
+    private int hocKy;
 
     private String namHoc;
 
     public LopHocPhan() {
     }
 
-    public LopHocPhan(String maLopHP, String tenMonHoc, String giangVien, String phongHoc, int thu, LocalTime gioBatDau, LocalTime gioKetThuc, LocalDate ngayBatDau, LocalDate ngayKetThuc, Integer siSoToiDa, String hocKy, String namHoc) {
+    public LopHocPhan(String maLopHP, String tenMonHoc, String giangVien, String phongHoc, int thu, LocalTime gioBatDau, LocalTime gioKetThuc, LocalDate ngayBatDau, LocalDate ngayKetThuc, Integer siSoToiDa, int hocKy, String namHoc) {
         this.maLopHP = maLopHP;
         this.tenMonHoc = tenMonHoc;
         this.giangVien = giangVien;
@@ -127,11 +127,11 @@ public class LopHocPhan {
         this.siSoToiDa = siSoToiDa;
     }
 
-    public String getHocKy() {
+    public int getHocKy() {
         return hocKy;
     }
 
-    public void setHocKy(String hocKy) {
+    public void setHocKy(int hocKy) {
         this.hocKy = hocKy;
     }
 

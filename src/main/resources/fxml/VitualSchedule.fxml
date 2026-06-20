@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="620" prefWidth="1000" styleClass="root" stylesheets="@../css/base.css, @../css/layout.css, @../css/components.css, @../css/subject.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.Student.RegisterSubjectController">
+<BorderPane prefHeight="620" prefWidth="1000" styleClass="root" stylesheets="@../css/base.css, @../css/layout.css, @../css/components.css, @../css/virtual.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.Student.VirtualScheduleController">
 
     <left>
         <VBox maxWidth="240" minWidth="240" prefWidth="240" spacing="20" styleClass="sidebar">
@@ -93,8 +93,18 @@
                     <Region HBox.hgrow="ALWAYS" />
                     <Button fx:id="btnClear" styleClass="danger-button" text="Xóa lịch" />
                 </HBox>
-
-                <GridPane fx:id="scheduleGrid" hgap="10" prefHeight="173.0" prefWidth="728.0" styleClass="schedule-grid" vgap="10" />
+            <TableView fx:id="virtualScheduleTable" prefHeight="179.0" prefWidth="728.0" styleClass="modern-table">
+               <columns>
+                  <TableColumn fx:id="colLop1" prefWidth="260" text="Lớp" />
+                  <TableColumn fx:id="colGiangVien1" prefWidth="220" text="Giảng viên" />
+                  <TableColumn fx:id="colDiaDiem1" prefWidth="180" text="Địa điểm" />
+                  <TableColumn fx:id="colThoiGian1" prefWidth="160" text="Thời gian" />
+                  <TableColumn fx:id="colNgayHoc1" prefWidth="240" text="Các ngày học" />
+               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
             </VBox>
 
             <!-- Button cuối -->

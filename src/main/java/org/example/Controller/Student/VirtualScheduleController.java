@@ -3,14 +3,13 @@ package org.example.Controller.Student;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
 import org.example.Config.AppSession;
 import org.example.Model.LopHocPhan;
 import org.example.Model.MonHoc;
+import org.example.Model.ThoiKhoaBieu;
 import org.example.Service.LopHocPhanService;
 import org.example.Service.MonHocService;
 import org.example.Service.SinhVienService;
@@ -21,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class RegisterSubjectController {
+public class VirtualScheduleController {
     @FXML private Button btnHome;
     @FXML private Button btnScore;
     @FXML private Button btnSchedule;
@@ -35,6 +34,13 @@ public class RegisterSubjectController {
     @FXML private TableColumn<LopHocPhan, String> colThoiGian;
     @FXML private TableColumn<LopHocPhan, String> colNgayHoc;
 
+    @FXML private TableView<LopHocPhan> virtualScheduleTable;
+    @FXML private TableColumn<LopHocPhan, String> colLop1;
+    @FXML private TableColumn<LopHocPhan, String> colGiangVien1;
+    @FXML private TableColumn<LopHocPhan, String> colDiaDiem1;
+    @FXML private TableColumn<LopHocPhan, String> colThoiGian1;
+    @FXML private TableColumn<LopHocPhan, String> colNgayHoc1;
+
     @FXML private ComboBox<String> cbKhoa;
     @FXML private ComboBox<String> cbMon;
 
@@ -42,16 +48,20 @@ public class RegisterSubjectController {
     private final SinhVienService sinhVienService = new SinhVienService();
     private final MonHocService monHocService = new MonHocService();
 
+    private ThoiKhoaBieu virtualSchedule;
+
 
     @FXML
     public void initialize() {
-
+        virtualSchedule  = new ThoiKhoaBieu();
         loadComboKhoa();
+        setupTable();
+        setupVirtualTable();
         cbKhoa.setOnAction(event -> {
             loadComboMon();
         });
         cbMon.setOnAction(event -> {
-            setupTable();
+            lopHocPhanTable.getItems().clear();
             loadListClass();
         });
         lopHocPhanTable.getSelectionModel()
@@ -89,6 +99,10 @@ public class RegisterSubjectController {
 
     private void xuLySauKhiChonLop(LopHocPhan newValue)
     {
+        virtualSchedule.setLoaiLich("LICH-Ao");
+        virtualSchedule.getLopHocPhanList().add(newValue);
+        virtualSchedule.setKy(newValue.getHocKy());
+        loadVirtualClass();
 
     }
     private void setupTable() {
@@ -97,6 +111,20 @@ public class RegisterSubjectController {
         colGiangVien.setCellValueFactory(new PropertyValueFactory<>("giangVien"));
         colNgayHoc.setCellValueFactory(new PropertyValueFactory<>("ngayBatDau"+"-"+"ngayKetThuc"));
         colThoiGian.setCellValueFactory(new PropertyValueFactory<>("gioBatDau"+"-"+"gioKetThuc"));
+    }
+    private void setupVirtualTable() {
+        colLop1.setCellValueFactory(new PropertyValueFactory<>("maLopHP"));
+        colDiaDiem1.setCellValueFactory(new PropertyValueFactory<>("phongHoc"));
+        colGiangVien1.setCellValueFactory(new PropertyValueFactory<>("giangVien"));
+        colNgayHoc1.setCellValueFactory(new PropertyValueFactory<>("ngayBatDau"+"-"+"ngayKetThuc"));
+        colThoiGian1.setCellValueFactory(new PropertyValueFactory<>("gioBatDau"+"-"+"gioKetThuc"));
+    }
+    private void loadVirtualClass()
+    {
+        virtualScheduleTable.getItems().clear();
+        ObservableList<LopHocPhan> lopHocPhanObservableList = FXCollections.observableArrayList();
+        lopHocPhanObservableList.addAll(virtualSchedule.getLopHocPhanList());
+        virtualScheduleTable.setItems(lopHocPhanObservableList);
     }
     private void loadListClass() {
         ObservableList<LopHocPhan> lopHocPhanObservableList = FXCollections.observableArrayList();
@@ -138,4 +166,5 @@ public class RegisterSubjectController {
     private String getMonKhoaSelected() {
         return cbMon.getValue();
     }
+
 }

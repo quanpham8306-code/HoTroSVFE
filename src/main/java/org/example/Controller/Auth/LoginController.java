@@ -6,6 +6,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import org.example.Config.AppSession;
 import org.example.Service.TaiKhoanService;
 import org.example.Util.SceneUtil;
 
@@ -30,7 +31,13 @@ public class LoginController {
 
         try {
             if (taiKhoanService.login(username, password)) {
-                SceneUtil.switchToApp(btnLogin, "/fxml/Home.fxml");
+                if(AppSession.getRole().equals("ADMIN")){
+                    SceneUtil.switchToApp(btnLogin, "/fxml/AdminHome.fxml");
+                }
+                if(AppSession.getRole().equals("STUDENT")){
+                    SceneUtil.switchToApp(btnLogin, "/fxml/Home.fxml");
+                }
+
             } else {
                 showAlert("Login fail", "Sai tài khoản hoặc mật khẩu.");
             }
