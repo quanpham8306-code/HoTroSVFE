@@ -9,6 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.example.Config.AppSession;
 import org.example.Model.MonHoc;
 import org.example.Service.Admin.AdminSubjectService;
 import org.example.Util.SceneUtil;
@@ -28,11 +29,17 @@ public class SubjectManagementController {
     @FXML private Button btnSV;
     @FXML private Button btnLHP;
     @FXML private Button btnScore;
+    @FXML private Button btnLogout;
 
     private ObservableList<MonHoc> subjectList;
 
     private final AdminSubjectService service =
             new AdminSubjectService();
+    @FXML
+    public void handleLogout() {
+        AppSession.clear();
+        SceneUtil.switchScene(btnLogout, "/fxml/Login.fxml");
+    }
 
     @FXML
     public void initialize() {

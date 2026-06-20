@@ -13,6 +13,10 @@ public class ThoiKhoaBieu {
     public ThoiKhoaBieu() {
     }
 
+    public ThoiKhoaBieu(String loaiLich) {
+        this.loaiLich = loaiLich;
+    }
+
     public ThoiKhoaBieu(String loaiLich, int ky, List<LopHocPhan> lopHocPhanList) {
         this.loaiLich = loaiLich;
         this.ky = ky;

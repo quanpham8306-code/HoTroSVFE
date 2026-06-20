@@ -3,36 +3,21 @@ package org.example.Controller.Admin;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import org.example.Config.AppSession;
 import org.example.Service.Admin.AdminHomeService;
 import org.example.Util.SceneUtil;
 
 public class AdminHomeController {
-    @FXML
-    private Label lblStudent;
+    @FXML private Label lblStudent;
+    @FXML private Label lblSubject;
+    @FXML private Label lblClass;
+    @FXML private Label lblScore;
 
-    @FXML
-    private Label lblSubject;
-
-    @FXML
-    private Label lblClass;
-
-    @FXML
-    private Label lblScore;
-
-    @FXML
-    private Button btnHomeAdmin;
-
-    @FXML
-    private Button btnSV;
-
-    @FXML
-    private Button btnMh;
-
-    @FXML
-    private Button btnLHP;
-
-    @FXML
-    private Button btnScore;
+    @FXML private Button btnSV;
+    @FXML private Button btnMh;
+    @FXML private Button btnLHP;
+    @FXML private Button btnScore;
+    @FXML private Button btnLogout;
 
     private final AdminHomeService service =
             new AdminHomeService();
@@ -77,6 +62,9 @@ public class AdminHomeController {
     public void showScore() {
         SceneUtil.switchScene(btnScore, "/fxml/Admin/ScoreManagement.fxml");
     }
-
-
+    @FXML
+    public void handleLogout() {
+        AppSession.clear();
+        SceneUtil.switchScene(btnLogout, "/fxml/Login.fxml");
+    }
 }

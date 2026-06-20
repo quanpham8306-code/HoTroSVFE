@@ -8,6 +8,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.example.Config.AppSession;
 import org.example.Model.Diem;
 import org.example.Service.Admin.AdminScoreService;
 import org.example.Util.SceneUtil;
@@ -31,6 +32,7 @@ public class ScoreManagementController {
     @FXML private Button btnSV;
     @FXML private Button btnLHP;
     @FXML private Button btnMh;
+    @FXML private Button btnLogout;
 
     private ObservableList<Diem> scoreList;
 
@@ -241,5 +243,10 @@ public class ScoreManagementController {
     @FXML
     public void showLHP() {
         SceneUtil.switchScene(btnLHP, "/fxml/Admin/ClassManagement.fxml");
+    }
+    @FXML
+    public void handleLogout() {
+        AppSession.clear();
+        SceneUtil.switchScene(btnLogout, "/fxml/Login.fxml");
     }
 }

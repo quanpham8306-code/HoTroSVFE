@@ -6,10 +6,12 @@ import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.example.Config.AppSession;
 import org.example.Model.SinhVien;
 import org.example.Service.Admin.AdminStudentService;
 import org.example.Util.SceneUtil;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class StudentManagementController {
@@ -18,14 +20,25 @@ public class StudentManagementController {
     @FXML private TableColumn<SinhVien,String> colMaSv;
     @FXML private TableColumn<SinhVien,String> colHoTen;
     @FXML private TableColumn<SinhVien,String> colLop;
+    @FXML private TableColumn<SinhVien,String> colNgaySinh;
+    @FXML private TableColumn<SinhVien,String> colId;
+    @FXML private TableColumn<SinhVien,String> colDiaChi;
+    @FXML private TableColumn<SinhVien,String> colKhoa;
     @FXML private TableColumn<SinhVien,String> colEmail;
     @FXML private TableColumn<SinhVien,String> colPhone;
+    @FXML private TableColumn<SinhVien,String> colNamNhapHoc;
     @FXML private TableColumn<SinhVien, String> colNganh;
+    @FXML private TableColumn<SinhVien,String> colGioiTinh;
 
     @FXML private TextField txtSearch;
     @FXML private TextField txtMaSv;
-    @FXML private TextField txtHoTen;
+    @FXML private TextField txtNgaySinh;
     @FXML private TextField txtLop;
+    @FXML private TextField txtHoTen;
+    @FXML private TextField txtId;
+    @FXML private TextField txtDiaChi;
+    @FXML private TextField txtKhoa;
+    @FXML private TextField txtGioiTinh;
     @FXML private TextField txtEmail;
     @FXML private TextField txtPhone;
     @FXML private TextField txtNganh;
@@ -35,33 +48,19 @@ public class StudentManagementController {
     @FXML private Button btnMh;
     @FXML private Button btnLHP;
     @FXML private Button btnScore;
+    @FXML private Button btnLogout;
 
     private ObservableList<SinhVien> studentList;
 
     private final AdminStudentService service = new AdminStudentService();
-
+    @FXML
+    public void handleLogout() {
+        AppSession.clear();
+        SceneUtil.switchScene(btnLogout, "/fxml/Login.fxml");
+    }
     @FXML
     public void initialize() {
-
-        colMaSv.setCellValueFactory(
-                new PropertyValueFactory<>("maSv"));
-
-        colHoTen.setCellValueFactory(
-                new PropertyValueFactory<>("hoTen"));
-
-        colLop.setCellValueFactory(
-                new PropertyValueFactory<>("lop"));
-
-        colEmail.setCellValueFactory(
-                new PropertyValueFactory<>("email"));
-
-        colPhone.setCellValueFactory(
-                new PropertyValueFactory<>("soDienThoai"));
-
-        colNganh.setCellValueFactory(
-                new PropertyValueFactory<>("nganh")
-        );
-
+        setUpTableStudent();
         loadData();
 
         txtSearch.textProperty().addListener((obs, oldV, newV) -> {
@@ -73,20 +72,37 @@ public class StudentManagementController {
                 .addListener((obs, oldValue, sv) -> {
 
                     if (sv != null) {
-                        txtMaSv.setText(sv.getMaSv());
-                        txtHoTen.setText(sv.getHoTen());
-                        txtLop.setText(sv.getLop());
-                        txtEmail.setText(sv.getEmail());
-                        txtPhone.setText(sv.getSoDienThoai());
-                        txtNganh.setText(sv.getNganh());
-                        txtNamNhapHoc.setText(
-                                String.valueOf(sv.getNamNhapHoc())
-                        );
+                       setSinhVien(sv);
                     }
                 });
 
     }
-
+    private void setUpTableStudent() {
+        colMaSv.setCellValueFactory(
+                new PropertyValueFactory<>("maSv"));
+        colHoTen.setCellValueFactory(
+                new PropertyValueFactory<>("hoTen"));
+        colLop.setCellValueFactory(
+                new PropertyValueFactory<>("lop"));
+        colGioiTinh.setCellValueFactory(
+                new PropertyValueFactory<>("gioiTinh"));
+        colEmail.setCellValueFactory(
+                new PropertyValueFactory<>("email"));
+        colNgaySinh.setCellValueFactory(
+                new PropertyValueFactory<>("ngaySinh"));
+        colPhone.setCellValueFactory(
+                new PropertyValueFactory<>("soDienThoai"));
+        colNganh.setCellValueFactory(
+                new PropertyValueFactory<>("nganh"));
+        colId.setCellValueFactory(
+                new PropertyValueFactory<>("cccd"));
+        colDiaChi.setCellValueFactory(
+                new PropertyValueFactory<>("diaChi"));
+        colKhoa.setCellValueFactory(
+                new PropertyValueFactory<>("khoa"));
+        colNamNhapHoc.setCellValueFactory(
+                new PropertyValueFactory<>("namNhapHoc"));
+    }
     private void loadData() {
 
         try {
@@ -112,19 +128,7 @@ public class StudentManagementController {
     @FXML
     private void addStudent() {
 
-        SinhVien sv = new SinhVien();
-
-        sv.setMaSv(txtMaSv.getText());
-        sv.setHoTen(txtHoTen.getText());
-        sv.setLop(txtLop.getText());
-        sv.setEmail(txtEmail.getText());
-        sv.setSoDienThoai(txtPhone.getText());
-        sv.setNganh(txtNganh.getText());
-        sv.setNamNhapHoc(
-                Integer.parseInt(
-                        txtNamNhapHoc.getText()
-                )
-        );
+        SinhVien sv = getSinhVien();
 
         if(service.add(sv)) {
 
@@ -158,17 +162,7 @@ public class StudentManagementController {
 
         if (sv == null)
             return;
-
-        sv.setMaSv(txtMaSv.getText());
-        sv.setHoTen(txtHoTen.getText());
-        sv.setLop(txtLop.getText());
-        sv.setEmail(txtEmail.getText());
-        sv.setSoDienThoai(txtPhone.getText());
-        sv.setNganh(txtNganh.getText());
-        sv.setNamNhapHoc(
-                Integer.parseInt(txtNamNhapHoc.getText())
-        );
-
+        sv = getSinhVien();
         if(service.update(sv)) {
             loadData();
             refreshForm();
@@ -219,7 +213,48 @@ public class StudentManagementController {
             }
         }
     }
+    private void setSinhVien(SinhVien sv) {
+        refreshForm();
+        txtMaSv.setText(sv.getMaSv());
+        txtHoTen.setText(sv.getHoTen());
+        txtLop.setText(sv.getLop());
+        txtEmail.setText(sv.getEmail());
+        txtPhone.setText(sv.getSoDienThoai());
+        txtNganh.setText(sv.getNganh());
+        txtDiaChi.setText(sv.getDiaChi());
+        txtNamNhapHoc.setText(sv.getDiaChi());
+        txtId.setText(sv.getCccd());
+        txtKhoa.setText(sv.getKhoa());
+        txtNgaySinh.setText(sv.getNgaySinh().toString());
+        if(sv.getGioiTinh() == true) {
+            txtGioiTinh.setText("Nam");
+        }
+        else {
+            txtGioiTinh.setText("Nữ");
+        }
+    }
+    private SinhVien getSinhVien() {
+        SinhVien sv = new SinhVien();
+        sv.setMaSv(txtMaSv.getText());
+        sv.setHoTen(txtHoTen.getText());
+        sv.setLop(txtLop.getText());
+        sv.setEmail(txtEmail.getText());
+        sv.setSoDienThoai(txtPhone.getText());
+        sv.setNganh(txtNganh.getText());
+        sv.setDiaChi(txtDiaChi.getText());
+        sv.setKhoa(txtKhoa.getText());
+        sv.setCccd(txtId.getText());
+        sv.setNamNhapHoc(Integer.parseInt(txtNamNhapHoc.getText()));
+        sv.setNgaySinh(LocalDate.parse(txtNgaySinh.toString()));
+        if (txtGioiTinh.getText().equals("nam")||txtGioiTinh.getText().equals("Nam")) {
+            sv.setGioiTinh(true);
+        }
+        else {
+            sv.setGioiTinh(false);
+        }
 
+        return sv;
+    }
     private void search(String keyword) {
 
         FilteredList<SinhVien> filtered =

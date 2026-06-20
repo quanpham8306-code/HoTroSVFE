@@ -8,7 +8,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.Config.AppSession;
 import org.example.Model.LopHocPhan;
 import org.example.Model.MonHoc;
+import org.example.Model.ResponeObject;
 import org.example.Model.ThoiKhoaBieu;
+import org.example.Service.Student.LichAoService;
 import org.example.Service.Student.LopHocPhanService;
 import org.example.Service.Student.MonHocService;
 import org.example.Service.Student.SinhVienService;
@@ -46,12 +48,15 @@ public class VirtualScheduleController {
     private final LopHocPhanService lopHocPhanService = new LopHocPhanService();
     private final SinhVienService sinhVienService = new SinhVienService();
     private final MonHocService monHocService = new MonHocService();
+    private final LichAoService lichAoService = new LichAoService();
 
     private ThoiKhoaBieu virtualSchedule;
+    private List<String> selectedLopMaLops;
 
     @FXML
     public void initialize() {
-        virtualSchedule  = new ThoiKhoaBieu();
+        virtualSchedule  = new ThoiKhoaBieu("LICH_AO");
+        selectedLopMaLops = new ArrayList<>();
         loadComboKhoa();
         setupTable();
         setupVirtualTable();
@@ -97,10 +102,22 @@ public class VirtualScheduleController {
 
     private void xuLySauKhiChonLop(LopHocPhan newValue)
     {
-        virtualSchedule.setLoaiLich("LICH-Ao");
-        virtualSchedule.getLopHocPhanList().add(newValue);
-        virtualSchedule.setKy(newValue.getHocKy());
-        loadVirtualClass();
+        ResponeObject res = lichAoService.checkThemLop(selectedLopMaLops, newValue.getMaLopHP());
+        if(res != null)
+            if(res.getStatus().equals("ok")) {
+                selectedLopMaLops.add(newValue.getMaLopHP());
+                virtualSchedule.getLopHocPhanList().add(newValue);
+                virtualSchedule.setKy(newValue.getHocKy());
+                loadVirtualClass();
+            }
+        else {
+                Alert alert =
+                        new Alert(Alert.AlertType.ERROR);
+
+                alert.setHeaderText(null);
+                alert.setContentText("Lớp bị trùng với lớp"+res.getMessage());
+                alert.showAndWait();
+            }
 
     }
     private void setupTable() {

@@ -77,6 +77,7 @@ public class StudentScoreController {
         SceneUtil.switchScene(btnNote, "/fxml/Student/Note.fxml");
     }
 
+
     @FXML
     public void handleLogout() {
         AppSession.clear();

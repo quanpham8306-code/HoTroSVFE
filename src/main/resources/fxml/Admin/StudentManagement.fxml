@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="768" prefWidth="1366" stylesheets="@../../css/Admin.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.Admin.StudentManagementController">
+<BorderPane prefHeight="768" prefWidth="1366" stylesheets="@../../css/Admin.css,@../../css/layout.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.Admin.StudentManagementController">
 
     <!-- SIDEBAR -->
     <left>
@@ -41,20 +41,20 @@
 
             <VBox spacing="10" VBox.vgrow="ALWAYS">
 
-                <Button fx:id="btnHomeAdmin" onAction="#showHomeAd" styleClass="nav-button" text="📊 Dashboard" />
+                <Button fx:id="btnHomeAdmin" onAction="#showHomeAd" prefHeight="42.0" prefWidth="465.0" styleClass="nav-button" text="📊 Dashboard" />
 
-                <Button styleClass="nav-active" text="👨‍🎓 Sinh viên" />
+                <Button prefHeight="42.0" prefWidth="546.0" styleClass="nav-active" text="👨‍🎓 Sinh viên" />
 
-                <Button fx:id="btnMh" onAction="#showMh" styleClass="nav-button" text="📚 Môn học" />
+                <Button fx:id="btnMh" onAction="#showMh" prefHeight="42.0" prefWidth="606.0" styleClass="nav-button" text="📚 Môn học" />
 
-                <Button fx:id="btnLHP" onAction="#showLHP" styleClass="nav-button" text="🏫 Lớp học phần" />
+                <Button fx:id="btnLHP" onAction="#showLHP" prefHeight="42.0" prefWidth="490.0" styleClass="nav-button" text="🏫 Lớp học phần" />
 
-                <Button fx:id="btnScore" onAction="#showScore" styleClass="nav-button" text="📝 Điểm" />
+                <Button fx:id="btnScore" onAction="#showScore" prefHeight="42.0" prefWidth="336.0" styleClass="nav-button" text="📝 Điểm" />
 
-                <Button styleClass="nav-button" text="📅 Thời khóa biểu" />
+                <Button prefHeight="42.0" prefWidth="370.0" styleClass="nav-button" text="📅 Thời khóa biểu" />
             </VBox>
 
-            <Button styleClass="nav-button" text="↪ Đăng xuất" />
+            <Button fx:id="btnLogout" onAction="#handleLogout" prefHeight="42.0" prefWidth="391.0" styleClass="nav-active" text="↪ Đăng xuất" />
 
         </VBox>
     </left>
@@ -62,30 +62,27 @@
     <!-- CONTENT -->
     <center>
 
-        <VBox spacing="22" styleClass="main-bg" prefHeight="Infinity" VBox.vgrow="ALWAYS">
+        <VBox prefHeight="Infinity" spacing="22" styleClass="main-bg" VBox.vgrow="ALWAYS">
 
             <padding>
                 <Insets bottom="32" left="32" right="32" top="28" />
             </padding>
 
             <!-- HEADER -->
-            <HBox alignment="CENTER_LEFT" spacing="20">
+            <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="1062.0" spacing="20">
 
                 <VBox spacing="5">
 
                     <Label styleClass="page-title" text="Quản lý sinh viên" />
 
                     <HBox spacing="8">
-                        <Label styleClass="breadcrumb" text="Admin" />
 
                         <Label styleClass="breadcrumb" text="›" />
-
-                        <Label styleClass="breadcrumb-current" text="Sinh viên" />
                     </HBox>
 
                 </VBox>
 
-                <Region HBox.hgrow="ALWAYS" />
+                <Region prefHeight="41.0" prefWidth="362.0" HBox.hgrow="ALWAYS" />
 
                 <TextField fx:id="txtSearch" prefWidth="320" promptText="🔍 Tìm kiếm sinh viên..." styleClass="search-box" />
 
@@ -93,16 +90,16 @@
             </HBox>
 
             <!-- TABLE CARD -->
-            <VBox spacing="18" styleClass="table-card" VBox.vgrow="ALWAYS">
+            <VBox prefHeight="690.0" prefWidth="1062.0" spacing="18" styleClass="table-card" VBox.vgrow="ALWAYS">
 
                 <Label styleClass="section-title" text="Thông tin sinh viên" />
 
-                <GridPane hgap="20" vgap="15">
+                <GridPane hgap="20" prefHeight="293.0" prefWidth="1018.0" vgap="15">
 
                     <columnConstraints>
                         <ColumnConstraints percentWidth="15" />
                         <ColumnConstraints percentWidth="35" />
-                        <ColumnConstraints percentWidth="15" />
+                        <ColumnConstraints maxWidth="1.7976931348623157E308" percentWidth="15" />
                         <ColumnConstraints percentWidth="35" />
                     </columnConstraints>
 
@@ -124,10 +121,24 @@
                     <Label text="Ngành" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                     <TextField fx:id="txtNganh" GridPane.columnIndex="3" GridPane.rowIndex="2" />
 
-                    <Label text="Năm nhập học" GridPane.rowIndex="3" />
-                    <TextField fx:id="txtNamNhapHoc" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                    <Label text="Năm nhập học" GridPane.rowIndex="4" />
+                    <TextField fx:id="txtNamNhapHoc" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+               <Label text="Khoa" GridPane.rowIndex="3" />
+               <TextField fx:id="txtKhoa" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+               <TextField fx:id="txtNgaySinh" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+               <Label text="Ngày sinh" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+               <Label text="Giới tính" GridPane.rowIndex="5" />
+               <Label text="Địa chỉ" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+               <Label text="CCCD" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+               <TextField fx:id="txtGioiTinh" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+               <TextField fx:id="txtNgaySinh" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+               <TextField fx:id="txtDiaChi" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+               <TextField fx:id="txtId" GridPane.columnIndex="3" GridPane.rowIndex="5" />
 
                <rowConstraints>
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
                   <RowConstraints />
                   <RowConstraints />
                   <RowConstraints />
@@ -135,7 +146,7 @@
 
                 </GridPane>
 
-                <HBox spacing="15">
+                <HBox prefHeight="2.0" prefWidth="1018.0" spacing="15">
 
                     <Button onAction="#addStudent" styleClass="primary-btn" text="+ Thêm" />
 
@@ -143,31 +154,40 @@
 
                     <Button onAction="#deleteStudent" styleClass="delete-btn" text="Xóa" />
 
-                    <Button onAction="#refreshForm" text="Làm mới" />
+                    <Button onAction="#refreshForm" prefHeight="23.0" prefWidth="89.0" styleClass="primary-btn" text="Làm mới" />
 
                 </HBox>
 
-                <Separator />
+                <Separator prefHeight="0.0" prefWidth="1018.0" />
 
                 <Label styleClass="section-title" text="Danh sách sinh viên" />
 
-                <TableView fx:id="tableStudent" VBox.vgrow="ALWAYS" minHeight="300" prefHeight="9999">
+                <TableView fx:id="tableStudent" minHeight="239.0" prefHeight="239.0" prefWidth="1018.0" styleClass="student-table" VBox.vgrow="ALWAYS">
 
                     <columns>
 
-                        <TableColumn fx:id="colMaSv" prefWidth="150" text="Mã sinh viên" />
+                        <TableColumn fx:id="colMaSv" prefWidth="98.39999234676361" text="Mã sinh viên" />
 
-                        <TableColumn fx:id="colHoTen" prefWidth="250" text="Họ và tên" />
+                        <TableColumn fx:id="colHoTen" prefWidth="144.00000762939453" text="Họ và tên" />
 
-                        <TableColumn fx:id="colLop" prefWidth="120" text="Lớp" />
+                        <TableColumn fx:id="colLop" prefWidth="58.399993896484375" text="Lớp" />
 
-                        <TableColumn fx:id="colEmail" prefWidth="320" text="Email" />
+                        <TableColumn fx:id="colEmail" prefWidth="65.60003662109375" text="Email" />
 
-                        <TableColumn fx:id="colPhone" prefWidth="180" text="Số điện thoại" />
+                        <TableColumn fx:id="colPhone" prefWidth="119.99993896484375" text="Số điện thoại" />
 
-                        <TableColumn fx:id="colNganh" prefWidth="150" text="Ngành" />
+                        <TableColumn fx:id="colNganh" prefWidth="67.99990844726562" text="Ngành" />
+                  <TableColumn fx:id="colId" prefWidth="93.60003662109375" text="CCCD" />
+                  <TableColumn fx:id="colNgaySinh" prefWidth="84.0" text="Ngày sinh" />
+                  <TableColumn fx:id="colDiaChi" prefWidth="80.79998779296875" text="Địa chỉ" />
+                  <TableColumn fx:id="colGioiTinh" prefWidth="69.60009765625" text="Giới tính" />
+                  <TableColumn fx:id="colKhoa" prefWidth="60.800048828125" text="Khoa" />
+                  <TableColumn fx:id="colNamNhapHoc" prefWidth="105.5999755859375" text="Năm nhập học" />
 
                     </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
 
                 </TableView>
 

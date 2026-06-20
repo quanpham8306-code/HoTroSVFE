@@ -6,6 +6,7 @@ import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.example.Config.AppSession;
 import org.example.Model.LopHocPhan;
 import org.example.Service.Admin.AdminClassService;
 import org.example.Util.SceneUtil;
@@ -46,6 +47,7 @@ public class ClassManagementController {
     @FXML private Button btnSV;
     @FXML private Button btnMh;
     @FXML private Button btnScore;
+    @FXML private Button btnLogout;
 
     private ObservableList<LopHocPhan> classList;
 
@@ -297,6 +299,11 @@ public class ClassManagementController {
         lhp.setHocKy(Integer.parseInt(txtHocKy.getText()));
         lhp.setNamHoc(txtNamHoc.getText());
         return lhp;
+    }
+    @FXML
+    public void handleLogout() {
+        AppSession.clear();
+        SceneUtil.switchScene(btnLogout, "/fxml/Login.fxml");
     }
 
 }
