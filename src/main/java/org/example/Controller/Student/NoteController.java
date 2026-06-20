@@ -52,7 +52,7 @@ public class NoteController {
 
     @FXML
     public void showSubject() {
-        SceneUtil.switchScene(btnSubject, "/fxml/VirtualSchedule.fxml");
+        SceneUtil.switchScene(btnSubject, "/fxml/VitualSchedule.fxml");
     }
 
     @FXML
@@ -68,7 +68,11 @@ public class NoteController {
     }
     @FXML public void seeAll(){
         noteTable.getItems().clear();
-        noteTable.getItems().addAll(noteService.findAllNotes());
+        try {
+            noteTable.getItems().addAll(noteService.findAllNotes());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML public void findNote(){
@@ -76,20 +80,34 @@ public class NoteController {
         noteTable.getItems().clear();
         noteTable.getItems().addAll(noteService.findNoteByTitle(title));
     }
-    @FXML public void deleteNote(){
-        String title = txtSearch.getText();
-        noteService.deleteNote(noteTable.getSelectionModel().getSelectedItem());
+    @FXML
+    public void deleteNote() {
+        Note selected = noteTable.getSelectionModel().getSelectedItem();
+
+        if (selected == null) {
+            return;
+        }
+
+        noteService.deleteNote(selected);
+        clearNote();
+        loadTable();
     }
-    @FXML public void saveNote(){
+    @FXML
+    public void saveNote() {
         Note note = getNote();
         noteService.saveNote(note);
+        clearNote();
+        loadTable();
     }
     private void getNoteTable()
     {
-        Note note = noteTable.getSelectionModel()
+        noteTable.getSelectionModel()
                 .selectedItemProperty()
-                .get();
-        loadNote(note);
+                .addListener((observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        loadNote(newValue);
+                    }
+                });
     }
     private void setUpTable() {
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -112,8 +130,12 @@ public class NoteController {
         note.setTitle(txtTitle.getText());
         return note;
     }
-    private void loadNote(Note note){
-        clearNote();
+    private void loadNote(Note note) {
+        if (note == null) {
+            clearNote();
+            return;
+        }
+
         txtNote.setText(note.getNote());
         txtTag.setText(note.getTag());
         txtTitle.setText(note.getTitle());

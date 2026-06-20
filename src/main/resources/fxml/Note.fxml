@@ -22,7 +22,7 @@
             </padding>
 
             <HBox alignment="CENTER_LEFT" spacing="12">
-                <Label text="🎓" textFill="#152bd4">
+                <Label styleClass="logo-icon" text="🎓" textFill="#152bd4">
                <font>
                   <Font size="67.0" />
                </font></Label>

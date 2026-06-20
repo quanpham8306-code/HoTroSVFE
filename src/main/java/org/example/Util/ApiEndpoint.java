@@ -11,7 +11,9 @@ public class ApiEndpoint {
     // Student
     public static final String STUDENT_ME = "/api/student/me";
     public static final String STUDENT_SCORE_ME = "/api/student/score/me";
+    public static final String STUDENT_SCORE_ME_BY_KY = "/api/student/me/";
     public static final String STUDENT_SCORE_SUMMARY = "/api/student/score/summary";
+    public static final String STUDENT_SCORE_SUMMARY_BY_KY = "/api/student/score/summary/";
     public static final String STUDENT_SCHEDULE_ME = "/api/student/schedule/me";
     public static final String STUDENT_SCHEDULE_BY_WEEK = "/api/student/schedule/date/";
     public static final String STUDENT_SCHEDULE_EXPORT = "/api/student/schedule/export";
@@ -21,6 +23,7 @@ public class ApiEndpoint {
     public static final String STUDENT_SCHEDULE_NEAR = "/api/student/schedule/baBuoiGanNhat";
     public static final String STUDENT_VIRTUAL_SCHEDULE_CHECK = "/api/student/lich-ao/check-them-lop";
     public static final String STUDENT_NOTE_ME = "/api/student/note/me";
+    public static final String GET_ALL_MY_HOC_KY = "/api/student/get-all-my-hoc-ky";
     public static final String STUDENT_NOTE_TITLE = "/api/student/note/";
     public static final String STUDENT_NOTE_POST = "/api/student/note/addNote";
     public static final String STUDENT_NOTE_DELETE = "/api/student/note/delete";

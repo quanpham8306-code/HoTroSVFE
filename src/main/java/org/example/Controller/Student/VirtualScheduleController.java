@@ -5,7 +5,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.GridPane;
 import org.example.Config.AppSession;
 import org.example.Model.LopHocPhan;
 import org.example.Model.MonHoc;
@@ -49,7 +48,6 @@ public class VirtualScheduleController {
     private final MonHocService monHocService = new MonHocService();
 
     private ThoiKhoaBieu virtualSchedule;
-
 
     @FXML
     public void initialize() {
@@ -134,37 +132,45 @@ public class VirtualScheduleController {
     }
     private void loadComboKhoa() {
 
-        cbKhoa.getItems().clear();
-        int namNhapHoc = sinhVienService.getKhoa();
-        int namHienTai;
-        if(LocalDate.now().getMonth().getValue() < 9)
-            namHienTai = LocalDate.now().getYear()-1;
-        else
-            namHienTai = LocalDate.now().getYear();
+        try {
+            cbKhoa.getItems().clear();
+            int namNhapHoc = sinhVienService.getKhoa();
+            int namHienTai;
+            if(LocalDate.now().getMonth().getValue() < 9)
+                namHienTai = LocalDate.now().getYear()-1;
+            else
+                namHienTai = LocalDate.now().getYear();
 
-        List<String> khoaList = new ArrayList<>();
+            List<String> khoaList = new ArrayList<>();
 
-        for (int nam = namNhapHoc; nam <= namHienTai; nam++) {
-            khoaList.add("K" + String.valueOf(nam).substring(2));
+            for (int nam = namNhapHoc; nam <= namHienTai; nam++) {
+                khoaList.add("K" + String.valueOf(nam).substring(2));
+            }
+
+            cbKhoa.setItems(FXCollections.observableArrayList(khoaList));
+            cbKhoa.getSelectionModel().selectFirst();
+        } catch (Exception e) {
+            cbKhoa.setItems(null);
+            cbMon.setItems(null);
         }
-
-        cbKhoa.setItems(FXCollections.observableArrayList(khoaList));
-        cbKhoa.getSelectionModel().selectFirst();
     }
     private String getKhoaSelected() {
         return cbKhoa.getValue();
     }
     private void loadComboMon() {
-        cbMon.getItems().clear();
-        List<MonHoc>monHocList = monHocService.getMonHocByKhoaAndNganh(getKhoaSelected());
-        List<String> tenMonHocList = new ArrayList<>();
-        for (MonHoc monHoc : monHocList) {
-            tenMonHocList.add(monHoc.getTenMonHoc());
+        try {
+            cbMon.getItems().clear();
+            List<MonHoc>monHocList = monHocService.getMonHocByKhoaAndNganh(getKhoaSelected());
+            List<String> tenMonHocList = new ArrayList<>();
+            for (MonHoc monHoc : monHocList) {
+                tenMonHocList.add(monHoc.getTenMonHoc());
+            }
+            cbMon.setItems(FXCollections.observableArrayList(tenMonHocList));
+        } catch (Exception e) {
+            cbMon.setItems(null);
         }
-        cbMon.setItems(FXCollections.observableArrayList(tenMonHocList));
     }
     private String getMonKhoaSelected() {
         return cbMon.getValue();
     }
-
 }

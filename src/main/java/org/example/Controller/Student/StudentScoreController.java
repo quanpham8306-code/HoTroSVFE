@@ -2,20 +2,19 @@ package org.example.Controller.Student;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.Config.AppSession;
 import org.example.Model.BangDiem;
 
+import org.example.Model.HocKy;
 import org.example.Model.TongDiem;
 
 import org.example.Service.DiemService;
@@ -37,6 +36,7 @@ public class StudentScoreController {
     @FXML private Label lblC;
     @FXML private Label lblD;
     @FXML private Label lblF;
+    @FXML private Label lblHocKy;
 
 
     @FXML private LineChart<String, Number> gpaChart;
@@ -56,6 +56,8 @@ public class StudentScoreController {
     @FXML private TableColumn<BangDiem, String> colDiemChu;
     @FXML private TableColumn<BangDiem, String> colTrangThai;
 
+    @FXML private ComboBox<HocKy> cBoxKyHoc;
+
     private final DiemService diemService = new DiemService();
     @FXML
     public void showHome() {
@@ -68,7 +70,7 @@ public class StudentScoreController {
     }
     @FXML
     public void showSubject() {
-        SceneUtil.switchScene(btnSubject, "/fxml/VirtualSchedule.fxml");
+        SceneUtil.switchScene(btnSubject, "/fxml/VitualSchedule.fxml");
     }
     @FXML
     public void showNote() {
@@ -83,27 +85,80 @@ public class StudentScoreController {
     @FXML
     public void initialize() {
         setupTable();
-        loadListScoreData();
-        loadScoreData();
+        loadHocKy();
+        loadAllScoreData();
+        cBoxKyHoc.setOnAction(this::chonKyHoc);
+    }
+    private void chonKyHoc(ActionEvent event) {
+        if(cBoxKyHoc.getSelectionModel().getSelectedItem().getHocKy() == 0) {
+            lblHocKy.setText("Bảng điểm toàn bộ các kỳ.");
+            loadAllScoreData();
+        } else if (cBoxKyHoc.getSelectionModel().getSelectedItem() == null) {
+            cBoxKyHoc.getSelectionModel().clearSelection();
+        }
+        else
+        {
+            int hocKy = cBoxKyHoc.getSelectionModel().getSelectedItem().getHocKy();
+            String namHoc = cBoxKyHoc.getSelectionModel().getSelectedItem().getNamHoc();
+            lblHocKy.setText("Bảng điểm học kỳ "+ hocKy + " năm hoc " + namHoc);
+            loadScoreByKy(hocKy, namHoc);
+        }
+
+    }
+    private void loadScoreByKy(int ky,String nam) {
+        try {
+            List<BangDiem> scores = diemService.getMyScoresByKy(ky,nam);
+            TongDiem summary = diemService.getMySummaryByKy(ky,nam);
+            ObservableList<BangDiem> diems =
+                    FXCollections.observableArrayList(scores);
+
+            scoreTable.setItems(diems);
+            lblGPA.setText(String.format("%.2f", summary.getGpa()));
+            lblTongTinChi.setText(String.valueOf(summary.getTongTin()));
+            lblSoMon.setText(String.valueOf(summary.getTongMon()));
+            lblXepLoai.setText(
+                    summary.getXepLoai() == null ? "Chưa có" : summary.getXepLoai()
+            );
+
+            drawLineChart(scores);
+            drawPieChart(scores);
+
+        } catch(Exception e){
+            e.printStackTrace();
+
+            scoreTable.setItems(FXCollections.observableArrayList());
+
+            lblGPA.setText("0.00");
+            lblSoMon.setText("0");
+            lblTongTinChi.setText("0");
+            lblXepLoai.setText("Chưa có");
+        }
     }
 
-    private void loadScoreData() {
+    private void loadAllScoreData() {
         try {
             List<BangDiem> scores = diemService.getMyScores();
             TongDiem summary = diemService.getMySummary();
+            ObservableList<BangDiem> diems =
+                    FXCollections.observableArrayList(scores);
 
-            scoreTable.setItems(FXCollections.observableArrayList(scores));
+            scoreTable.setItems(diems);
 
             lblGPA.setText(String.format("%.2f", summary.getGpa()));
             lblTongTinChi.setText(String.valueOf(summary.getTongTin()));
             lblSoMon.setText(String.valueOf(summary.getTongMon()));
-            lblXepLoai.setText(summary.getXepLoai() == null ? "Chưa có" : summary.getXepLoai());
+            lblXepLoai.setText(
+                    summary.getXepLoai() == null ? "Chưa có" : summary.getXepLoai()
+            );
 
             drawLineChart(scores);
             drawPieChart(scores);
 
         } catch (Exception e) {
             e.printStackTrace();
+
+            scoreTable.setItems(FXCollections.observableArrayList());
+
             lblGPA.setText("0.00");
             lblSoMon.setText("0");
             lblTongTinChi.setText("0");
@@ -165,22 +220,6 @@ public class StudentScoreController {
         colDiemChu.setCellValueFactory(new PropertyValueFactory<>("diemChu"));
         colTrangThai.setCellValueFactory(new PropertyValueFactory<>("trangThai"));
     }
-    private void setupTableStyle() {
-        scoreTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        colMaMonHoc.getStyleClass().add("center-cell");
-        colTenMonHoc.getStyleClass().add("center-cell");
-        colSoTinChi.getStyleClass().add("center-cell");
-        colDiemHe10.getStyleClass().add("center-cell");
-        colDiemChu.getStyleClass().add("center-cell");
-        colTrangThai.getStyleClass().add("status-cell");
-    }
-    private void loadListScoreData() {
-        ObservableList<BangDiem> diems = FXCollections.observableArrayList();
-        List<BangDiem> scores = diemService.getMyScores();
-        diems.addAll(scores);
-        scoreTable.setItems(diems);
-        setupTableStyle();
-    }
     private Map<String, Integer> countGradeLetters(List<BangDiem> scores) {
         Map<String, Integer> result = new HashMap<>();
 
@@ -202,6 +241,17 @@ public class StudentScoreController {
             }
         }
         return result;
+    }
+    private void loadHocKy(){
+        try {
+            List<HocKy> hocKyList = diemService.getMyHocKy();
+            hocKyList.addFirst(new HocKy(0,"Tất cả các kỳ"));
+            cBoxKyHoc.setItems(
+                    FXCollections.observableArrayList(hocKyList)
+            );
+        } catch (Exception e) {
+            cBoxKyHoc.setItems(null);
+        }
     }
 }
 

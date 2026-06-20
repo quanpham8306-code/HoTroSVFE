@@ -113,11 +113,11 @@
                         <VBox spacing="18" HBox.hgrow="ALWAYS">
                             <HBox alignment="CENTER_LEFT" spacing="16" styleClass="filter-card">
                                 <Label styleClass="filter-label" text="Kỳ học" />
-                                <ComboBox fx:id="BoxKyHoc" prefWidth="260" promptText="Học kỳ 2 (2023 - 2024)" styleClass="semester-box" />
+                                <ComboBox fx:id="cBoxKyHoc" prefWidth="260" promptText="Tất cả các kỳ" styleClass="semester-box" />
                             </HBox>
 
                             <VBox spacing="18" styleClass="card table-card" VBox.vgrow="ALWAYS">
-                                <Label styleClass="section-title" text="Bảng điểm học kỳ 2 (2023 - 2024)" />
+                                <Label fx:id="lblHocKy" styleClass="section-title" text="Bảng điểm học kỳ 2 (2023 - 2024)" />
 
                                 <TableView fx:id="scoreTable" prefHeight="380" styleClass="grade-table-cell" VBox.vgrow="ALWAYS">
                                     <columns>

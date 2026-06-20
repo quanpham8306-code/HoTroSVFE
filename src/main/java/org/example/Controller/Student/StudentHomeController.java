@@ -81,7 +81,7 @@ public class StudentHomeController {
 
     @FXML
     public void showSubject() {
-        SceneUtil.switchScene(btnSubject, "/fxml/VirtualSchedule.fxml");
+        SceneUtil.switchScene(btnSubject, "/fxml/VitualSchedule.fxml");
     }
     @FXML
     public void showNote() {
