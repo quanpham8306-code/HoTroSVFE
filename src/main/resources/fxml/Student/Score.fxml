@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="620" prefWidth="1000" styleClass="root" stylesheets="@../css/base.css, @../css/layout.css, @../css/components.css, @../css/score.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.Student.StudentScoreController">
+<BorderPane prefHeight="620" prefWidth="1000" styleClass="root" stylesheets="@../../css/base.css, @../css/layout.css, @../css/components.css, @../css/score.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.Student.StudentScoreController">
 
     <left>
         <VBox maxWidth="240" minWidth="240" prefWidth="240" spacing="20" styleClass="sidebar">

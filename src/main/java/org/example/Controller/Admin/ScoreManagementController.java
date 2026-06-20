@@ -1,0 +1,245 @@
+package org.example.Controller.Admin;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import org.example.Model.Diem;
+import org.example.Service.Admin.AdminScoreService;
+import org.example.Util.SceneUtil;
+
+public class ScoreManagementController {
+
+    @FXML private TextField txtMon;
+    @FXML private TextField txtQT;
+    @FXML private TextField txtCK;
+    @FXML private TextField txtHP;
+    @FXML private TextField txtTrangThai;
+
+    @FXML private TableView<Diem> tableScore;
+    @FXML private TableColumn<Diem,String> colMon;
+    @FXML private TableColumn<Diem,Double> colQT;
+    @FXML private TableColumn<Diem,Double> colCK;
+    @FXML private TableColumn<Diem,Double> colHP;
+    @FXML private TableColumn<Diem,String> colTrangThai;
+
+    @FXML private Button btnHomeAdmin;
+    @FXML private Button btnSV;
+    @FXML private Button btnLHP;
+    @FXML private Button btnMh;
+
+    private ObservableList<Diem> scoreList;
+
+    private final AdminScoreService service =
+            new AdminScoreService();
+
+
+    @FXML
+    public void initialize() {
+
+        colMon.setCellValueFactory(
+                new PropertyValueFactory<>("mon"));
+
+        colQT.setCellValueFactory(
+                new PropertyValueFactory<>("diemQuaTrinh"));
+
+        colCK.setCellValueFactory(
+                new PropertyValueFactory<>("diemCuoiKy"));
+
+        colHP.setCellValueFactory(
+                new PropertyValueFactory<>("diemHocPhan"));
+
+        colTrangThai.setCellValueFactory(
+                new PropertyValueFactory<>("trangThai"));
+
+        loadData();
+
+        txtQT.textProperty()
+                .addListener((obs, o, n) -> tinhDiem());
+
+        txtCK.textProperty()
+                .addListener((obs, o, n) -> tinhDiem());
+
+        tableScore.getSelectionModel()
+                .selectedItemProperty()
+                .addListener((obs, oldV, d) -> {
+
+                    if (d != null) {
+
+                        txtMon.setText(
+                                d.getMon());
+
+                        txtQT.setText(
+                                String.valueOf(
+                                        d.getDiemQuaTrinh()));
+
+                        txtCK.setText(
+                                String.valueOf(
+                                        d.getDiemCuoiKy()));
+
+                        txtHP.setText(
+                                String.valueOf(
+                                        d.getDiemHocPhan()));
+
+                        txtTrangThai.setText(
+                                d.getTrangThai());
+                    }
+                });
+    }
+
+    private void loadData() {
+
+        scoreList =
+                FXCollections.observableArrayList(
+                        service.getAll());
+
+        tableScore.setItems(scoreList);
+    }
+
+
+    private void tinhDiem() {
+
+        try {
+            double qt =
+                    Double.parseDouble(
+                            txtQT.getText());
+
+            double ck =
+                    Double.parseDouble(
+                            txtCK.getText());
+
+            double hp =
+                    qt * 0.4 + ck * 0.6;
+
+            txtHP.setText(
+                    String.format("%.2f", hp));
+
+            txtTrangThai.setText(
+                    hp >= 4
+                            ? "Đạt"
+                            : "Không đạt");
+        }
+        catch (Exception e) {
+
+            txtHP.clear();
+            txtTrangThai.clear();
+        }
+    }
+
+    @FXML
+    private void addScore() {
+
+        Diem d = new Diem();
+
+        d.setMon(
+                txtMon.getText());
+
+        d.setDiemQuaTrinh(
+                Double.parseDouble(
+                        txtQT.getText()));
+
+        d.setDiemCuoiKy(
+                Double.parseDouble(
+                        txtCK.getText()));
+
+        d.setDiemHocPhan(
+                Double.parseDouble(
+                        txtHP.getText()));
+
+        d.setTrangThai(
+                txtTrangThai.getText());
+
+        if (service.add(d)) {
+            loadData();
+            refreshForm();
+        }
+    }
+//
+//    @FXML
+//    private void editScore() {
+//
+//        Diem d =
+//                tableScore.getSelectionModel()
+//                        .getSelectedItem();
+//
+//        if (d == null)
+//            return;
+//
+//        d.setMon(
+//                txtMon.getText());
+//
+//        d.setDiemQuaTrinh(
+//                Double.parseDouble(
+//                        txtQT.getText()));
+//
+//        d.setDiemCuoiKy(
+//                Double.parseDouble(
+//                        txtCK.getText()));
+//
+//        d.setDiemHocPhan(
+//                Double.parseDouble(
+//                        txtHP.getText()));
+//
+//        d.setTrangThai(
+//                txtTrangThai.getText());
+//
+//        if (service.update(d.getMon(), d)) {
+//            loadData();
+//            refreshForm();
+//        }
+//    }
+//
+//    @FXML
+//    private void deleteScore() {
+//
+//        Diem d =
+//                tableScore.getSelectionModel()
+//                        .getSelectedItem();
+//
+//        if (d == null)
+//            return;
+//
+//        if (service.delete(d.getMon())) {
+//            loadData();
+//            refreshForm();
+//        }
+//    }
+
+    @FXML
+    private void refreshForm() {
+
+        txtMon.clear();
+        txtQT.clear();
+        txtCK.clear();
+        txtHP.clear();
+        txtTrangThai.clear();
+
+        tableScore.getSelectionModel()
+                .clearSelection();
+    }
+
+
+    @FXML
+    public void showHomeAd() {
+        SceneUtil.switchScene(btnHomeAdmin, "/fxml/Admin/AdminHome.fxml");
+    }
+
+    @FXML
+    public void showMh() {
+        SceneUtil.switchScene(btnMh, "/fxml/Admin/SubjectManagement.fxml");
+    }
+
+    @FXML
+    public void showSV() {
+        SceneUtil.switchScene(btnSV, "/fxml/Admin/StudentManagement.fxml");
+    }
+
+    @FXML
+    public void showLHP() {
+        SceneUtil.switchScene(btnLHP, "/fxml/Admin/ClassManagement.fxml");
+    }
+}

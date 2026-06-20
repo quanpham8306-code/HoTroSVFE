@@ -7,9 +7,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.example.Config.AppSession;
 import org.example.Model.*;
-import org.example.Service.DiemService;
-import org.example.Service.SinhVienService;
-import org.example.Service.ThoiKhoaBieuService;
+import org.example.Service.Student.DiemService;
+import org.example.Service.Student.SinhVienService;
+import org.example.Service.Student.ThoiKhoaBieuService;
 import org.example.Util.SceneUtil;
 
 import java.time.LocalDate;
@@ -71,21 +71,21 @@ public class StudentHomeController {
     }
     @FXML
     public void showScore() {
-        SceneUtil.switchScene(btnScore, "/fxml/Score.fxml");
+        SceneUtil.switchScene(btnScore, "/fxml/Student/Score.fxml");
     }
 
     @FXML
     public void showSchedule() {
-        SceneUtil.switchScene(btnSchedule, "/fxml/Schedule.fxml");
+        SceneUtil.switchScene(btnSchedule, "/fxml/Student/Schedule.fxml");
     }
 
     @FXML
     public void showSubject() {
-        SceneUtil.switchScene(btnSubject, "/fxml/VitualSchedule.fxml");
+        SceneUtil.switchScene(btnSubject, "/fxml/Student/VitualSchedule.fxml");
     }
     @FXML
     public void showNote() {
-        SceneUtil.switchScene(btnNote, "/fxml/Note.fxml");
+        SceneUtil.switchScene(btnNote, "/fxml/Student/Note.fxml");
     }
 
     @FXML

@@ -17,7 +17,7 @@ import org.example.Model.BangDiem;
 import org.example.Model.HocKy;
 import org.example.Model.TongDiem;
 
-import org.example.Service.DiemService;
+import org.example.Service.Student.DiemService;
 import org.example.Util.SceneUtil;
 
 import java.util.HashMap;
@@ -61,20 +61,20 @@ public class StudentScoreController {
     private final DiemService diemService = new DiemService();
     @FXML
     public void showHome() {
-        SceneUtil.switchScene(btnHome, "/fxml/Home.fxml");
+        SceneUtil.switchScene(btnHome, "/fxml/Student/Home.fxml");
     }
 
     @FXML
     public void showSchedule() {
-        SceneUtil.switchScene(btnSchedule, "/fxml/Schedule.fxml");
+        SceneUtil.switchScene(btnSchedule, "/fxml/Student/Schedule.fxml");
     }
     @FXML
     public void showSubject() {
-        SceneUtil.switchScene(btnSubject, "/fxml/VitualSchedule.fxml");
+        SceneUtil.switchScene(btnSubject, "/fxml/Student/VitualSchedule.fxml");
     }
     @FXML
     public void showNote() {
-        SceneUtil.switchScene(btnNote, "/fxml/Note.fxml");
+        SceneUtil.switchScene(btnNote, "/fxml/Student/Note.fxml");
     }
 
     @FXML

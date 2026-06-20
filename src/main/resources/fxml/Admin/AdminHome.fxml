@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--/*-->
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<?import java.lang.*?>-->
+<!--<?import java.util.*?>-->
+<!--<?import javafx.scene.*?>-->
+<!--<?import javafx.scene.control.*?>-->
+<!--<?import javafx.scene.layout.*?>-->
+<!--<AnchorPane xmlns="http://javafx.com/javafx"-->
+<!--            xmlns:fx="http://javafx.com/fxml"-->
+<!--            fx:controller="CONTROLLER_NAME"-->
+<!--            prefHeight="400.0" prefWidth="600.0">-->
+<!--</AnchorPane>-->
+<!--*/-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="768" prefWidth="1366" stylesheets="@../css/Admin.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.Admin.AdminHomeController">
+
+    <left>
+        <VBox prefWidth="240" spacing="15" styleClass="sidebar">
+
+            <padding>
+                <Insets bottom="20" left="20" right="20" top="25" />
+            </padding>
+
+            <Label styleClass="logo-title" text="🎓 Student Portal" />
+
+            <Separator />
+
+            <Button fx:id="btnHomeAdmin" styleClass="nav-active" text="🏠 Dashboard" />
+
+            <Button fx:id="btnSV" onAction="#showSV" styleClass="nav-button" text="👨‍🎓 Sinh viên" />
+
+            <Button fx:id="btnMh" onAction="#showMh" styleClass="nav-button" text="📚 Môn học" />
+
+            <Button fx:id="btnLHP" onAction="#showLHP" styleClass="nav-button" text="🏫 Lớp học phần" />
+
+            <Button fx:id="btnScore" onAction="#showScore" styleClass="nav-button" text="📊 Điểm" />
+
+            <Button styleClass="nav-button" text="📅 Thời khóa biểu" />
+
+            <Region VBox.vgrow="ALWAYS" />
+
+            <Button styleClass="nav-button" text="↩ Đăng xuất" />
+        </VBox>
+    </left>
+
+    <center>
+
+        <VBox spacing="20" styleClass="main-bg">
+
+            <padding>
+                <Insets bottom="30" left="30" right="30" top="30" />
+            </padding>
+
+            <Label styleClass="page-title" text="Dashboard Admin" />
+
+            <HBox spacing="20">
+
+                <VBox styleClass="card" HBox.hgrow="ALWAYS">
+                    <Label text="Tổng sinh viên" />
+                    <Label fx:id="lblStudent" styleClass="stat-number" text="0" />
+                </VBox>
+
+                <VBox styleClass="card" HBox.hgrow="ALWAYS">
+                    <Label text="Tổng môn học" />
+                    <Label fx:id="lblSubject" styleClass="stat-number" text="0" />
+                </VBox>
+
+                <VBox styleClass="card" HBox.hgrow="ALWAYS">
+                    <Label text="Tổng lớp học phần" />
+                    <Label fx:id="lblClass" styleClass="stat-number" text="0" />
+                </VBox>
+
+                <VBox styleClass="card" HBox.hgrow="ALWAYS">
+                    <Label text="Tổng bản ghi điểm" />
+                    <Label fx:id="lblScore" styleClass="stat-number" text="0" />
+                </VBox>
+
+            </HBox>
+
+        </VBox>
+
+    </center>
+
+</BorderPane>

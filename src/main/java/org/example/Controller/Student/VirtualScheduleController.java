@@ -9,9 +9,9 @@ import org.example.Config.AppSession;
 import org.example.Model.LopHocPhan;
 import org.example.Model.MonHoc;
 import org.example.Model.ThoiKhoaBieu;
-import org.example.Service.LopHocPhanService;
-import org.example.Service.MonHocService;
-import org.example.Service.SinhVienService;
+import org.example.Service.Student.LopHocPhanService;
+import org.example.Service.Student.MonHocService;
+import org.example.Service.Student.SinhVienService;
 import org.example.Util.SceneUtil;
 
 import java.time.LocalDate;
@@ -72,21 +72,21 @@ public class VirtualScheduleController {
     }
     @FXML
     public void showScore() {
-        SceneUtil.switchScene(btnScore, "/fxml/Score.fxml");
+        SceneUtil.switchScene(btnScore, "/fxml/Student/Score.fxml");
     }
 
     @FXML
     public void showSchedule() {
-        SceneUtil.switchScene(btnSchedule, "/fxml/Schedule.fxml");
+        SceneUtil.switchScene(btnSchedule, "/fxml/Student/Schedule.fxml");
     }
 
     @FXML
     public void showHome() {
-        SceneUtil.switchScene(btnHome, "/fxml/Home.fxml");
+        SceneUtil.switchScene(btnHome, "/fxml/Student/Home.fxml");
     }
     @FXML
     public void showNote() {
-        SceneUtil.switchScene(btnNote, "/fxml/Note.fxml");
+        SceneUtil.switchScene(btnNote, "/fxml/Student/Note.fxml");
     }
 
     @FXML

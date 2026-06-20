@@ -9,7 +9,7 @@ import javafx.scene.layout.VBox;
 import org.example.Config.AppSession;
 import org.example.Model.LopHocPhan;
 import org.example.Model.ThoiKhoaBieu;
-import org.example.Service.ThoiKhoaBieuService;
+import org.example.Service.Student.ThoiKhoaBieuService;
 import org.example.Util.SceneUtil;
 
 import java.time.DayOfWeek;
@@ -52,20 +52,20 @@ public class StudentScheduleController {
     }
     @FXML
     public void showScore() {
-        SceneUtil.switchScene(btnScore, "/fxml/Score.fxml");
+        SceneUtil.switchScene(btnScore, "/fxml/Student/Score.fxml");
     }
 
     @FXML
     public void showHome() {
-        SceneUtil.switchScene(btnHome, "/fxml/Home.fxml");
+        SceneUtil.switchScene(btnHome, "/fxml/Student/Home.fxml");
     }
     @FXML
     public void showSubject() {
-        SceneUtil.switchScene(btnSubject, "/fxml/VitualSchedule.fxml");
+        SceneUtil.switchScene(btnSubject, "/fxml/Student/VitualSchedule.fxml");
     }
     @FXML
     public void showNote() {
-        SceneUtil.switchScene(btnNote, "/fxml/Note.fxml");
+        SceneUtil.switchScene(btnNote, "/fxml/Student/Note.fxml");
     }
 
     @FXML

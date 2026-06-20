@@ -1,15 +1,11 @@
-package org.example.Service;
+package org.example.Service.Student;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import javafx.collections.ObservableList;
 import org.example.Api.ApiClient;
 import org.example.Api.ApiResponseHandler;
-import org.example.Model.BangDiem;
 import org.example.Model.LopHocPhan;
-import org.example.Model.ThoiKhoaBieu;
 import org.example.Util.ApiEndpoint;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public class LopHocPhanService {

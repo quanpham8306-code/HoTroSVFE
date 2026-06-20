@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="620" prefWidth="1000" styleClass="root" stylesheets="@../css/base.css, @../css/layout.css, @../css/components.css, @../css/schedule.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.Student.StudentScheduleController">
+<BorderPane prefHeight="620" prefWidth="1000" styleClass="root" stylesheets="@../../css/base.css, @../css/layout.css, @../css/components.css, @../css/schedule.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.Student.StudentScheduleController">
 
     <!-- SIDEBAR -->
     <left>

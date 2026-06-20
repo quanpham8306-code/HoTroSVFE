@@ -1,4 +1,4 @@
-package org.example.Service;
+package org.example.Service.Student;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.example.Api.ApiClient;

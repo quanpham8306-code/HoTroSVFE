@@ -5,7 +5,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.Config.AppSession;
 import org.example.Model.Note;
-import org.example.Service.NoteService;
+import org.example.Service.Student.NoteService;
 import org.example.Util.SceneUtil;
 
 import java.time.LocalDate;
@@ -37,22 +37,22 @@ public class NoteController {
     }
     @FXML
     public void showScore() {
-        SceneUtil.switchScene(btnScore, "/fxml/Score.fxml");
+        SceneUtil.switchScene(btnScore, "/fxml/Student/Score.fxml");
     }
 
     @FXML
     public void showSchedule() {
-        SceneUtil.switchScene(btnSchedule, "/fxml/Schedule.fxml");
+        SceneUtil.switchScene(btnSchedule, "/fxml/Student/Schedule.fxml");
     }
 
     @FXML
     public void showHome() {
-        SceneUtil.switchScene(btnHome, "/fxml/Home.fxml");
+        SceneUtil.switchScene(btnHome, "/fxml/Student/Home.fxml");
     }
 
     @FXML
     public void showSubject() {
-        SceneUtil.switchScene(btnSubject, "/fxml/VitualSchedule.fxml");
+        SceneUtil.switchScene(btnSubject, "/fxml/Student/VitualSchedule.fxml");
     }
 
     @FXML

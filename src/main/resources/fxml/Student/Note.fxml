@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="878.0" prefWidth="1032.0" styleClass="note-root" stylesheets="@../css/note.css, @../css/components.css,@../css/layout.css,@../css/base.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.Student.NoteController">
+<BorderPane prefHeight="878.0" prefWidth="1032.0" styleClass="note-root" stylesheets="@../../css/note.css, @../css/components.css,@../css/layout.css,@../css/base.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.Student.NoteController">
     <left>
         <VBox maxWidth="240.0" minWidth="240" prefHeight="523.0" prefWidth="743.0" spacing="20" styleClass="sidebar">
             <padding>

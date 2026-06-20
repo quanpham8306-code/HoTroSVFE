@@ -1,12 +1,10 @@
-package org.example.Service;
+package org.example.Service.Student;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import javafx.stage.FileChooser;
 import org.example.Api.ApiClient;
 import org.example.Api.ApiResponseHandler;
 import org.example.Model.BuoiHoc;
-import org.example.Model.LopHocPhan;
-import org.example.Model.SinhVien;
 import org.example.Model.ThoiKhoaBieu;
 import org.example.Util.ApiEndpoint;
 

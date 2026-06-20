@@ -1,4 +1,4 @@
-package org.example.Service;
+package org.example.Service.Student;
 
 import org.example.Api.ApiClient;
 import org.example.Api.ApiResponseHandler;

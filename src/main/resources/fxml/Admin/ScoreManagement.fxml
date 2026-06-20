@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="768" prefWidth="1366" stylesheets="@../css/Admin.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.Admin.ScoreManagementController">
+
+    <!-- SIDEBAR -->
+    <left>
+        <VBox prefWidth="240" spacing="18" styleClass="sidebar">
+
+            <padding>
+                <Insets bottom="20" left="18" right="18" top="24" />
+            </padding>
+
+            <HBox alignment="CENTER_LEFT" spacing="12">
+
+                <Label styleClass="logo-icon" text="🎓" />
+
+                <VBox spacing="2">
+                    <Label styleClass="logo-title" text="Admin Portal" />
+
+                    <Label styleClass="logo-subtitle" text="Hệ thống quản trị" />
+                </VBox>
+
+            </HBox>
+
+            <Separator />
+
+            <VBox spacing="10" VBox.vgrow="ALWAYS">
+
+                <Button fx:id="btnHomeAdmin" onAction="#showHomeAd" styleClass="nav-button" text="📊 Dashboard" />
+
+                <Button fx:id="btnSV" onAction="#showSV" styleClass="nav-button" text="👨‍🎓 Sinh viên" />
+
+                <Button fx:id="btnMh" onAction="#showMh" styleClass="nav-button" text="📚 Môn học" />
+
+                <Button fx:id="btnLHP" onAction="#showLHP" styleClass="nav-button" text="🏫 Lớp học phần" />
+
+                <Button styleClass="nav-active" text="📝 Điểm" />
+
+                <Button styleClass="nav-button" text="📅 Thời khóa biểu" />
+            </VBox>
+
+            <Button styleClass="nav-button" text="↪ Đăng xuất" />
+        </VBox>
+    </left>
+
+    <!-- CONTENT -->
+    <center>
+
+        <VBox spacing="22" styleClass="main-bg">
+
+            <padding>
+                <Insets bottom="32" left="32" right="32" top="28" />
+            </padding>
+
+            <!-- Header -->
+            <VBox spacing="5">
+
+                <Label styleClass="page-title" text="Quản lý điểm" />
+
+                <HBox spacing="8">
+                    <Label styleClass="breadcrumb" text="Admin" />
+
+                    <Label styleClass="breadcrumb" text="›" />
+
+                    <Label styleClass="breadcrumb-current" text="Điểm" />
+                </HBox>
+
+            </VBox>
+
+            <!-- Card -->
+            <VBox spacing="18" styleClass="table-card" VBox.vgrow="ALWAYS">
+
+                <Label styleClass="section-title" text="Thông tin điểm" />
+
+                <GridPane hgap="20" vgap="15">
+
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="15" />
+                        <ColumnConstraints percentWidth="35" />
+                        <ColumnConstraints percentWidth="15" />
+                        <ColumnConstraints percentWidth="35" />
+                    </columnConstraints>
+
+                    <!-- Hàng 1 -->
+                    <Label text="Môn học" />
+                    <TextField fx:id="txtMon" promptText="Nhập tên môn" GridPane.columnIndex="1" />
+
+                    <!-- Hàng 2 -->
+                    <Label text="Điểm quá trình" GridPane.rowIndex="1" />
+                    <TextField fx:id="txtQT" promptText="0 - 10" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                    <Label text="Điểm cuối kỳ" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                    <TextField fx:id="txtCK" promptText="0 - 10" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+
+                    <!-- Hàng 3 -->
+                    <Label text="Điểm học phần" GridPane.rowIndex="2" />
+                    <TextField fx:id="txtHP" editable="false" promptText="Tự động tính" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                    <Label text="Trạng thái" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                    <TextField fx:id="txtTrangThai" editable="false" promptText="Đạt / Không đạt" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+               <rowConstraints>
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+               </rowConstraints>
+
+                </GridPane>
+
+                <!-- BUTTON -->
+                <HBox spacing="15">
+
+                    <Button onAction="#addScore" styleClass="primary-btn" text="+ Thêm" />
+
+                    <Button  styleClass="edit-btn" text="Sửa" />
+
+                    <Button  styleClass="delete-btn" text="Xóa" />
+
+                    <Button onAction="#refreshForm" text="Làm mới" />
+                </HBox>
+
+                <Separator />
+
+                <Label styleClass="section-title" text="Danh sách điểm" />
+
+                <TableView fx:id="tableScore" styleClass="student-table" VBox.vgrow="ALWAYS">
+
+                    <columns>
+
+                        <TableColumn fx:id="colMon" prefWidth="300" text="Môn học" />
+
+                        <TableColumn fx:id="colQT" prefWidth="150" text="Điểm QT" />
+
+                        <TableColumn fx:id="colCK" prefWidth="150" text="Điểm CK" />
+
+                        <TableColumn fx:id="colHP" prefWidth="150" text="Điểm HP" />
+
+                        <TableColumn fx:id="colTrangThai" prefWidth="200" text="Trạng thái" />
+
+                    </columns>
+
+                </TableView>
+
+            </VBox>
+
+        </VBox>
+
+    </center>
+
+</BorderPane>
