@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="768" prefWidth="1366" stylesheets="@../css/Admin.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.Admin.SubjectManagementController">
+<BorderPane prefHeight="768" prefWidth="1366" stylesheets="@../../css/Admin.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.Admin.SubjectManagementController">
 
     <left>
         <VBox maxWidth="240" minWidth="240" prefWidth="240" spacing="18" styleClass="sidebar">

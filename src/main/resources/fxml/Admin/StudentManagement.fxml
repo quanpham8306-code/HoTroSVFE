@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="768" prefWidth="1366" stylesheets="@../css/Admin.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.Admin.StudentManagementController">
+<BorderPane prefHeight="768" prefWidth="1366" stylesheets="@../../css/Admin.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.Admin.StudentManagementController">
 
     <!-- SIDEBAR -->
     <left>
@@ -62,7 +62,7 @@
     <!-- CONTENT -->
     <center>
 
-        <VBox spacing="22" styleClass="main-bg">
+        <VBox spacing="22" styleClass="main-bg" prefHeight="Infinity" VBox.vgrow="ALWAYS">
 
             <padding>
                 <Insets bottom="32" left="32" right="32" top="28" />
@@ -122,14 +122,10 @@
                     <TextField fx:id="txtPhone" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
                     <Label text="Ngành" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                    <TextField fx:id="txtNganh"
-                               GridPane.columnIndex="3"
-                               GridPane.rowIndex="2" />
+                    <TextField fx:id="txtNganh" GridPane.columnIndex="3" GridPane.rowIndex="2" />
 
                     <Label text="Năm nhập học" GridPane.rowIndex="3" />
-                    <TextField fx:id="txtNamNhapHoc"
-                               GridPane.columnIndex="1"
-                               GridPane.rowIndex="3" />
+                    <TextField fx:id="txtNamNhapHoc" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 
                <rowConstraints>
                   <RowConstraints />
@@ -155,7 +151,7 @@
 
                 <Label styleClass="section-title" text="Danh sách sinh viên" />
 
-                <TableView fx:id="tableStudent" styleClass="student-table" VBox.vgrow="ALWAYS">
+                <TableView fx:id="tableStudent" VBox.vgrow="ALWAYS" minHeight="300" prefHeight="9999">
 
                     <columns>
 
@@ -169,9 +165,7 @@
 
                         <TableColumn fx:id="colPhone" prefWidth="180" text="Số điện thoại" />
 
-                        <TableColumn fx:id="colNganh"
-                                     prefWidth="150"
-                                     text="Ngành" />
+                        <TableColumn fx:id="colNganh" prefWidth="150" text="Ngành" />
 
                     </columns>
 
