@@ -1,0 +1,205 @@
+
+.root{
+    -fx-font-family: "Segoe UI";
+    -fx-background-color: #f3f7ff;
+}
+
+.sidebar{
+    -fx-background-color: white;
+    -fx-border-color: #e5e7eb;
+}
+
+.logo-title{
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2563eb;
+}
+
+.nav-button{
+    -fx-background-color: transparent;
+    -fx-background-radius: 12;
+    -fx-padding: 12;
+    -fx-alignment: CENTER_LEFT;
+    -fx-cursor: hand;
+}
+
+.nav-button:hover{
+    -fx-background-color: #eef4ff;
+}
+
+.nav-active{
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+    -fx-background-radius: 12;
+    -fx-padding: 12;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.main-bg{
+    -fx-background-color: #f3f7ff;
+}
+
+.page-title{
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+}
+
+.card{
+    -fx-background-color: white;
+    -fx-background-radius: 20;
+    -fx-padding: 25;
+    -fx-spacing: 15;
+    -fx-effect: dropshadow(
+            gaussian,
+            rgba(0,0,0,0.08),
+            10,
+            0,
+            0,
+            4);
+}
+
+.stat-number{
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2563eb;
+}
+
+/*//student*/
+
+.search-box{
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color: #dbe5f4;
+    -fx-padding: 10 14;
+}
+
+.primary-btn{
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+    -fx-background-radius: 10;
+    -fx-padding: 10 18;
+    -fx-cursor: hand;
+}
+
+.primary-btn:hover{
+    -fx-background-color: #1d4ed8;
+}
+
+.edit-btn{
+    -fx-background-color: #f59e0b;
+    -fx-text-fill: white;
+    -fx-background-radius: 10;
+    -fx-padding: 10 18;
+    -fx-cursor: hand;
+}
+
+.edit-btn:hover{
+    -fx-background-color: #d97706;
+}
+
+.delete-btn{
+    -fx-background-color: #ef4444;
+    -fx-text-fill: white;
+    -fx-background-radius: 10;
+    -fx-padding: 10 18;
+    -fx-cursor: hand;
+}
+
+.delete-btn:hover{
+    -fx-background-color: #dc2626;
+}
+
+.table-card{
+    -fx-background-color: white;
+    -fx-background-radius: 20;
+    -fx-padding: 20;
+    -fx-spacing: 15;
+    -fx-effect: dropshadow(
+            gaussian,
+            rgba(0,0,0,0.08),
+            10,
+            0,
+            0,
+            4);
+}
+
+.student-table{
+    -fx-background-color: transparent;
+    -fx-border-color: #e5e7eb;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+}
+
+.student-table .column-header-background{
+    -fx-background-color: #eef4ff;
+}
+
+.student-table .column-header .label{
+    -fx-font-weight: bold;
+}
+
+.student-table .table-row-cell{
+    -fx-cell-size: 45;
+}
+
+.student-table .table-row-cell:hover{
+    -fx-background-color: #f8fbff;
+}
+
+.logo-icon{
+    -fx-font-size: 30px;
+    -fx-text-fill: #2563eb;
+}
+
+.logo-subtitle{
+    -fx-font-size: 12px;
+    -fx-text-fill: #64748b;
+}
+
+.breadcrumb{
+    -fx-font-size: 13px;
+    -fx-text-fill: #94a3b8;
+}
+
+.breadcrumb-current{
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #475569;
+}
+
+.section-title{
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.table-card{
+    -fx-background-color: white;
+    -fx-background-radius: 20;
+    -fx-padding: 22;
+    -fx-effect: dropshadow(
+            gaussian,
+            rgba(0,0,0,0.08),
+            15,
+            0,
+            0,
+            4);
+}
+
+.student-table{
+    -fx-background-color: transparent;
+    -fx-border-color: #e5e7eb;
+    -fx-border-radius: 12;
+}
+
+.student-table .column-header-background{
+    -fx-background-color: #f1f6ff;
+}
+
+.student-table .table-row-cell:hover{
+    -fx-background-color: #f8fbff;
+}
+
+
+
+
