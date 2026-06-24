@@ -14,6 +14,8 @@ import org.example.Model.MonHoc;
 import org.example.Service.Admin.AdminSubjectService;
 import org.example.Util.SceneUtil;
 
+import java.util.List;
+
 public class SubjectManagementController {
     @FXML private TableView<MonHoc> tableSubject;
     @FXML private TableColumn<MonHoc,String> colMaMon;
@@ -43,64 +45,63 @@ public class SubjectManagementController {
 
     @FXML
     public void initialize() {
+        try {
+            colMaMon.setCellValueFactory(new PropertyValueFactory<>("maMon"));
+            colTenMon.setCellValueFactory(new PropertyValueFactory<>("tenMonHoc"));
+            colSoTinChi.setCellValueFactory(new PropertyValueFactory<>("soTinChi"));
 
-        colMaMon.setCellValueFactory(
-                new PropertyValueFactory<>("maMon"));
+            loadData();
 
-        colTenMon.setCellValueFactory(
-                new PropertyValueFactory<>("tenMonHoc"));
+            txtSearch.textProperty().addListener((obs, oldV, newV) -> search(newV));
 
-        colSoTinChi.setCellValueFactory(
-                new PropertyValueFactory<>("soTinChi"));
+            tableSubject.getSelectionModel().selectedItemProperty().addListener((obs, oldV, mh) -> {
+                if (mh != null) {
+                    txtMaMon.setText(mh.getMaMon());
+                    txtTenMon.setText(mh.getTenMonHoc());
+                    txtSoTinChi.setText(String.valueOf(mh.getSoTinChi()));
+                }
+            });
 
-        loadData();
+        } catch (Exception e) {
+            System.out.println("Initialize Subject lỗi: " + e.getMessage());
 
-        txtSearch.textProperty()
-                .addListener((obs, oldV, newV) ->
-                        search(newV));
-
-        tableSubject.getSelectionModel()
-                .selectedItemProperty()
-                .addListener((obs, oldV, mh) -> {
-
-                    if (mh != null) {
-
-                        txtMaMon.setText(
-                                mh.getMaMon());
-
-                        txtTenMon.setText(
-                                mh.getTenMonHoc());
-
-                        txtSoTinChi.setText(
-                                String.valueOf(
-                                        mh.getSoTinChi()));
-                    }
-                });
+            // vẫn cho bảng mở
+            subjectList = FXCollections.observableArrayList();
+            tableSubject.setItems(subjectList);
+        }
     }
-
     private void loadData() {
+        subjectList = FXCollections.observableArrayList();
 
-        subjectList =
-                FXCollections.observableArrayList(
-                        service.getAll()
-                );
+        try {
+            List<MonHoc> data = service.getAll();
 
-        tableSubject.setItems(subjectList);
+            if (data == null) data = List.of();
+
+            subjectList = FXCollections.observableArrayList(data);
+            tableSubject.setItems(subjectList);
+
+            System.out.println("SIZE = " + data.size());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            subjectList = FXCollections.observableArrayList();
+            tableSubject.setItems(subjectList);
+        }
+
+
     }
 
     @FXML
     private void addSubject() {
-
         MonHoc mh = new MonHoc();
 
         mh.setMaMon(txtMaMon.getText());
         mh.setTenMonHoc(txtTenMon.getText());
-        mh.setSoTinChi(
-                Integer.parseInt(
-                        txtSoTinChi.getText()));
+        mh.setSoTinChi(Integer.parseInt(txtSoTinChi.getText()));
 
-        if(service.add(mh)) {
-
+        if (service.add(mh)) {
             loadData();
             refreshForm();
         }
@@ -162,8 +163,7 @@ public class SubjectManagementController {
             String key =
                     keyword.toLowerCase();
 
-            return mh.getMaMon()
-                    .toLowerCase()
+            return String.valueOf(mh.getMaMon())
                     .contains(key)
 
                     ||

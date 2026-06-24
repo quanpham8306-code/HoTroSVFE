@@ -52,7 +52,7 @@
                 <Button styleClass="nav-button" text="📅 Thời khóa biểu" />
             </VBox>
 
-            <Button styleClass="nav-button" text="↪ Đăng xuất" />
+            <Button fx:id="btnLogout" onAction="#handleLogout" styleClass="nav-button" text="↪ Đăng xuất" />
 
         </VBox>
     </left>
@@ -95,17 +95,39 @@
                     <Label text="Thứ" GridPane.rowIndex="2" />
                     <TextField fx:id="txtThu" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
+                    <Label text="Giờ bắt đầu" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                    <TextField fx:id="txtGioBatDau" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+
+                    <Label text="Giờ kết thúc" GridPane.rowIndex="5" />
+                    <TextField fx:id="txtGioKetThu" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                    <Label text="Ngày bắt đầu" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                    <TextField fx:id="txtNgayBatDau" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+
+                    <Label text="Ngày kết thúc" GridPane.rowIndex="6" />
+                    <TextField fx:id="txtNgayKetThuc" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                    <Label text="Sĩ số tối đa" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                    <TextField fx:id="txtSiSoToiDa" GridPane.columnIndex="3" GridPane.rowIndex="6" />
                     <Label text="Học kỳ" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                     <TextField fx:id="txtHocKy" GridPane.columnIndex="3" GridPane.rowIndex="2" />
 
                     <Label text="Năm học" GridPane.rowIndex="3" />
                     <TextField fx:id="txtNamHoc" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-               <rowConstraints>
-                  <RowConstraints />
-                  <RowConstraints />
-                  <RowConstraints />
-                  <RowConstraints />
-               </rowConstraints>
+
+                    <Label text="Ngành" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                    <TextField fx:id="txtNganh" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+
+                    <Label text="Khóa" GridPane.rowIndex="4" />
+                    <TextField fx:id="txtKhoa" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                    <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                    </rowConstraints>
 
                 </GridPane>
 
@@ -139,9 +161,19 @@
 
                         <TableColumn fx:id="colThu" prefWidth="120" text="Thứ" />
 
+                        <TableColumn fx:id="colGioBatDau" prefWidth="120" text="Giờ bắt đầu" />
+                        <TableColumn fx:id="colGioKetThuc" prefWidth="120" text="Giờ kết thúc" />
+                        <TableColumn fx:id="colNgayBatDau" prefWidth="140" text="Ngày bắt đầu" />
+                        <TableColumn fx:id="colNgayKetThuc" prefWidth="140" text="Ngày kết thúc" />
+                        <TableColumn fx:id="colSiSoToiDa" prefWidth="120" text="Sĩ số tối đa" />
+
                         <TableColumn fx:id="colHocKy" prefWidth="120" text="Học kỳ" />
 
                         <TableColumn fx:id="colNamHoc" prefWidth="150" text="Năm học" />
+
+                        <TableColumn fx:id="colNganh" prefWidth="180" text="Ngành" />
+
+                        <TableColumn fx:id="colKhoa" prefWidth="120" text="Khóa" />
 
                     </columns>
 

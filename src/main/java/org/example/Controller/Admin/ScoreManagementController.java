@@ -3,10 +3,7 @@ package org.example.Controller.Admin;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.Config.AppSession;
 import org.example.Model.Diem;
@@ -15,6 +12,8 @@ import org.example.Util.SceneUtil;
 
 public class ScoreManagementController {
 
+    @FXML private TextField txtMaSv;
+    @FXML private TextField txtMaLopHP;
     @FXML private TextField txtMon;
     @FXML private TextField txtQT;
     @FXML private TextField txtCK;
@@ -23,6 +22,8 @@ public class ScoreManagementController {
 
     @FXML private TableView<Diem> tableScore;
     @FXML private TableColumn<Diem,String> colMon;
+    @FXML private TableColumn<Diem,String> colMasv;
+    @FXML private TableColumn<Diem,String> colMaLopHP;
     @FXML private TableColumn<Diem,Double> colQT;
     @FXML private TableColumn<Diem,Double> colCK;
     @FXML private TableColumn<Diem,Double> colHP;
@@ -42,6 +43,12 @@ public class ScoreManagementController {
 
     @FXML
     public void initialize() {
+
+        colMasv.setCellValueFactory(
+                new PropertyValueFactory<>("masv"));
+
+        colMaLopHP.setCellValueFactory(
+                new PropertyValueFactory<>("maLopHP"));
 
         colMon.setCellValueFactory(
                 new PropertyValueFactory<>("mon"));
@@ -72,23 +79,19 @@ public class ScoreManagementController {
 
                     if (d != null) {
 
-                        txtMon.setText(
-                                d.getMon());
+                        txtMon.setText(d.getMon());
 
-                        txtQT.setText(
-                                String.valueOf(
-                                        d.getDiemQuaTrinh()));
+                        txtMaSv.setText(d.getMasv());
 
-                        txtCK.setText(
-                                String.valueOf(
-                                        d.getDiemCuoiKy()));
+                        txtMaLopHP.setText(d.getMaLopHP());
 
-                        txtHP.setText(
-                                String.valueOf(
-                                        d.getDiemHocPhan()));
+                        txtQT.setText(String.valueOf(d.getDiemQuaTrinh()));
 
-                        txtTrangThai.setText(
-                                d.getTrangThai());
+                        txtCK.setText(String.valueOf(d.getDiemCuoiKy()));
+
+                        txtHP.setText(String.valueOf(d.getDiemHocPhan()));
+
+                        txtTrangThai.setText(d.getTrangThai());
                     }
                 });
     }
@@ -137,79 +140,68 @@ public class ScoreManagementController {
 
         Diem d = new Diem();
 
-        d.setMon(
-                txtMon.getText());
-
-        d.setDiemQuaTrinh(
-                Double.parseDouble(
-                        txtQT.getText()));
-
-        d.setDiemCuoiKy(
-                Double.parseDouble(
-                        txtCK.getText()));
-
-        d.setDiemHocPhan(
-                Double.parseDouble(
-                        txtHP.getText()));
-
-        d.setTrangThai(
-                txtTrangThai.getText());
+        d.setMon(txtMon.getText());
+        d.setMasv(txtMaSv.getText());
+        d.setMaLopHP(txtMaLopHP.getText());
+        d.setDiemQuaTrinh(Double.parseDouble(txtQT.getText()));
+        d.setDiemCuoiKy(Double.parseDouble(txtCK.getText()));
+        d.setDiemHocPhan(Double.parseDouble(txtHP.getText()));
+        d.setTrangThai(txtTrangThai.getText());
 
         if (service.add(d)) {
             loadData();
             refreshForm();
         }
     }
-//
-//    @FXML
-//    private void editScore() {
-//
-//        Diem d =
-//                tableScore.getSelectionModel()
-//                        .getSelectedItem();
-//
-//        if (d == null)
-//            return;
-//
-//        d.setMon(
-//                txtMon.getText());
-//
-//        d.setDiemQuaTrinh(
-//                Double.parseDouble(
-//                        txtQT.getText()));
-//
-//        d.setDiemCuoiKy(
-//                Double.parseDouble(
-//                        txtCK.getText()));
-//
-//        d.setDiemHocPhan(
-//                Double.parseDouble(
-//                        txtHP.getText()));
-//
-//        d.setTrangThai(
-//                txtTrangThai.getText());
-//
-//        if (service.update(d.getMon(), d)) {
-//            loadData();
-//            refreshForm();
-//        }
-//    }
-//
-//    @FXML
-//    private void deleteScore() {
-//
-//        Diem d =
-//                tableScore.getSelectionModel()
-//                        .getSelectedItem();
-//
-//        if (d == null)
-//            return;
-//
-//        if (service.delete(d.getMon())) {
-//            loadData();
-//            refreshForm();
-//        }
-//    }
+
+    @FXML
+    private void editScore() {
+
+        Diem d = tableScore.getSelectionModel().getSelectedItem();
+
+        if (d == null)
+            return;
+
+        d.setMasv(txtMaSv.getText());
+        d.setMaLopHP(txtMaLopHP.getText());
+        d.setMon(txtMon.getText());
+        d.setDiemQuaTrinh(Double.parseDouble(txtQT.getText()));
+        d.setDiemCuoiKy(Double.parseDouble(txtCK.getText()));
+        d.setDiemHocPhan(Double.parseDouble(txtHP.getText()));
+        d.setTrangThai(txtTrangThai.getText());
+
+        if (service.update(d)) {
+            loadData();
+            refreshForm();
+        }
+    }
+
+    @FXML
+    private void deleteScore() {
+
+        Diem d = tableScore.getSelectionModel().getSelectedItem();
+
+        if (d == null)
+            return;
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText(null);
+        alert.setContentText(
+                "Bạn có chắc muốn xóa điểm của sinh viên "
+                        + d.getMasv()
+                        + " lớp "
+                        + d.getMaLopHP()
+                        + " không?"
+        );
+
+        if (alert.showAndWait().get() == ButtonType.OK) {
+            if (service.delete(d)) {
+                loadData();
+                refreshForm();
+            }
+        }
+    }
+
 
     @FXML
     private void refreshForm() {
@@ -219,6 +211,8 @@ public class ScoreManagementController {
         txtCK.clear();
         txtHP.clear();
         txtTrangThai.clear();
+        txtMaSv.clear();
+        txtMaLopHP.clear();
 
         tableScore.getSelectionModel()
                 .clearSelection();

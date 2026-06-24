@@ -76,6 +76,8 @@ public class StudentManagementController {
                     }
                 });
 
+        System.out.println("INIT OK");
+
     }
     private void setUpTableStudent() {
         colMaSv.setCellValueFactory(
@@ -104,26 +106,24 @@ public class StudentManagementController {
                 new PropertyValueFactory<>("namNhapHoc"));
     }
     private void loadData() {
-
         try {
             List<SinhVien> list = service.getAll();
 
-            if (list == null) {
-                list = List.of();
-            }
-            studentList =
-                    FXCollections.observableArrayList(list);
+            if (list == null) list = List.of();
+
+            studentList = FXCollections.observableArrayList(list);
             tableStudent.setItems(studentList);
 
+            System.out.println("SIZE = " + list.size());
+
         } catch (Exception e) {
-
             e.printStackTrace();
-            studentList =
-                    FXCollections.observableArrayList();
 
+            studentList = FXCollections.observableArrayList();
             tableStudent.setItems(studentList);
         }
     }
+
 
     @FXML
     private void addStudent() {
@@ -212,9 +212,11 @@ public class StudentManagementController {
                 success.showAndWait();
             }
         }
+        System.out.println("DELETE CLICKED");
+        System.out.println("Selected SV = " + sv);
     }
+
     private void setSinhVien(SinhVien sv) {
-        refreshForm();
         txtMaSv.setText(sv.getMaSv());
         txtHoTen.setText(sv.getHoTen());
         txtLop.setText(sv.getLop());
@@ -222,16 +224,11 @@ public class StudentManagementController {
         txtPhone.setText(sv.getSoDienThoai());
         txtNganh.setText(sv.getNganh());
         txtDiaChi.setText(sv.getDiaChi());
-        txtNamNhapHoc.setText(sv.getDiaChi());
+        txtNamNhapHoc.setText(String.valueOf(sv.getNamNhapHoc()));
         txtId.setText(sv.getCccd());
         txtKhoa.setText(sv.getKhoa());
         txtNgaySinh.setText(sv.getNgaySinh().toString());
-        if(sv.getGioiTinh() == true) {
-            txtGioiTinh.setText("Nam");
-        }
-        else {
-            txtGioiTinh.setText("Nữ");
-        }
+        txtGioiTinh.setText(sv.getGioiTinh() ? "Nam" : "Nữ");
     }
     private SinhVien getSinhVien() {
         SinhVien sv = new SinhVien();
@@ -245,7 +242,7 @@ public class StudentManagementController {
         sv.setKhoa(txtKhoa.getText());
         sv.setCccd(txtId.getText());
         sv.setNamNhapHoc(Integer.parseInt(txtNamNhapHoc.getText()));
-        sv.setNgaySinh(LocalDate.parse(txtNgaySinh.toString()));
+        sv.setNgaySinh(LocalDate.parse(txtNgaySinh.getText()));
         if (txtGioiTinh.getText().equals("nam")||txtGioiTinh.getText().equals("Nam")) {
             sv.setGioiTinh(true);
         }
@@ -275,6 +272,8 @@ public class StudentManagementController {
         tableStudent.setItems(filtered);
     }
 
+
+
     @FXML
     private void refreshForm() {
         clearForm();
@@ -289,6 +288,11 @@ public class StudentManagementController {
         txtPhone.clear();
         txtNganh.clear();
         txtNamNhapHoc.clear();
+        txtKhoa.clear();
+        txtGioiTinh.clear();
+        txtNgaySinh.clear();
+        txtDiaChi.clear();
+        txtId.clear();
     }
 
     @FXML

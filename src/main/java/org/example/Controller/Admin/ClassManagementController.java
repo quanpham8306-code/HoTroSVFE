@@ -28,6 +28,8 @@ public class ClassManagementController {
     @FXML private TableColumn<LopHocPhan,String> colSiSoToiDa;
     @FXML private TableColumn<LopHocPhan,String> colHocKy;
     @FXML private TableColumn<LopHocPhan,String> colNamHoc;
+    @FXML private TableColumn<LopHocPhan,String> colNganh;
+    @FXML private TableColumn<LopHocPhan,String> colKhoa;
 
     @FXML private TextField txtMaLop;
     @FXML private TextField txtMonHoc;
@@ -41,6 +43,8 @@ public class ClassManagementController {
     @FXML private TextField txtSiSoToiDa;
     @FXML private TextField txtHocKy;
     @FXML private TextField txtNamHoc;
+    @FXML private TextField txtNganh;
+    @FXML private TextField txtKhoa;
     @FXML private TextField txtSearch;
 
     @FXML private Button btnHomeAdmin;
@@ -72,28 +76,26 @@ public class ClassManagementController {
                     }
                 });
     }
-    private void setLopHocPhan(LopHocPhan lhp){
-        txtMaLop.setText(
-                lhp.getMaLopHP());
 
-        txtMonHoc.setText(
-                lhp.getTenMonHoc());
+    private void setLopHocPhan(LopHocPhan lhp) {
+        txtMaLop.setText(lhp.getMaLopHP());
+        txtMonHoc.setText(lhp.getTenMonHoc());
+        txtGiangVien.setText(lhp.getGiangVien());
+        txtPhong.setText(lhp.getPhongHoc());
+        txtThu.setText(String.valueOf(lhp.getThu()));
 
-        txtGiangVien.setText(
-                lhp.getGiangVien());
+        txtGioBatDau.setText(String.valueOf(lhp.getGioBatDau()));
+        txtGioKetThu.setText(String.valueOf(lhp.getGioKetThuc()));
+        txtNgayBatDau.setText(String.valueOf(lhp.getNgayBatDau()));
+        txtNgayKetThuc.setText(String.valueOf(lhp.getNgayKetThuc()));
+        txtSiSoToiDa.setText(String.valueOf(lhp.getSiSoToiDa()));
 
-        txtPhong.setText(
-                lhp.getPhongHoc());
-
-        txtThu.setText(
-                lhp.getThu()+"");
-
-        txtHocKy.setText(
-                lhp.getHocKy()+"");
-
-        txtNamHoc.setText(
-                lhp.getNamHoc());
+        txtHocKy.setText(String.valueOf(lhp.getHocKy()));
+        txtNamHoc.setText(lhp.getNamHoc());
+        txtNganh.setText(lhp.getNganh());
+        txtKhoa.setText(lhp.getKhoa());
     }
+
     private void setUpTable()
     {
         colMaLop.setCellValueFactory(
@@ -130,6 +132,12 @@ public class ClassManagementController {
 
         colNamHoc.setCellValueFactory(
                 new PropertyValueFactory<>("namHoc"));
+
+        colNganh.setCellValueFactory(
+                new PropertyValueFactory<>("nganh"));
+
+        colKhoa.setCellValueFactory(
+                new PropertyValueFactory<>("khoa"));
     }
     private void loadData() {
 
@@ -162,25 +170,29 @@ public class ClassManagementController {
     @FXML
     private void editClass() {
 
-        LopHocPhan lhp =
-                tableClass.getSelectionModel()
-                        .getSelectedItem();
+        LopHocPhan lhp = tableClass.getSelectionModel().getSelectedItem();
 
         if (lhp == null)
             return;
-        getLopHocPhan();
+
+        lhp.setMaLopHP(txtMaLop.getText());
+        lhp.setTenMonHoc(txtMonHoc.getText());
+        lhp.setGiangVien(txtGiangVien.getText());
+        lhp.setPhongHoc(txtPhong.getText());
+        lhp.setThu(Integer.parseInt(txtThu.getText()));
+        lhp.setGioBatDau(LocalTime.parse(txtGioBatDau.getText()));
+        lhp.setGioKetThuc(LocalTime.parse(txtGioKetThu.getText()));
+        lhp.setNgayBatDau(LocalDate.parse(txtNgayBatDau.getText()));
+        lhp.setNgayKetThuc(LocalDate.parse(txtNgayKetThuc.getText()));
+        lhp.setSiSoToiDa(Integer.parseInt(txtSiSoToiDa.getText()));
+        lhp.setHocKy(Integer.parseInt(txtHocKy.getText()));
+        lhp.setNamHoc(txtNamHoc.getText());
+        lhp.setNganh(txtNganh.getText());
+        lhp.setKhoa(txtKhoa.getText());
 
         if (service.update(lhp)) {
-
             loadData();
             refreshForm();
-
-            Alert alert =
-                    new Alert(Alert.AlertType.INFORMATION);
-
-            alert.setHeaderText(null);
-            alert.setContentText("Cập nhật thành công!");
-            alert.showAndWait();
         }
     }
 
@@ -231,6 +243,8 @@ public class ClassManagementController {
         txtSiSoToiDa.clear();
         txtHocKy.clear();
         txtNamHoc.clear();
+        txtNganh.clear();
+        txtKhoa.clear();
 
         tableClass.getSelectionModel()
                 .clearSelection();
@@ -298,6 +312,8 @@ public class ClassManagementController {
         lhp.setSiSoToiDa(Integer.parseInt(txtSiSoToiDa.getText()));
         lhp.setHocKy(Integer.parseInt(txtHocKy.getText()));
         lhp.setNamHoc(txtNamHoc.getText());
+        lhp.setNganh(txtNganh.getText());
+        lhp.setKhoa(txtKhoa.getText());
         return lhp;
     }
     @FXML

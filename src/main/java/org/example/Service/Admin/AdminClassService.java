@@ -14,7 +14,12 @@ public class AdminClassService {
 
     public List<LopHocPhan> getAll() {
         String response = apiClient.get(ApiEndpoint.ADMIN_CLASS);
-        return ApiResponseHandler.readData(response, new TypeReference<List<LopHocPhan>>() {});
+        System.out.println("RAW CLASS JSON = " + response);
+
+        return ApiResponseHandler.readData(
+                response,
+                new TypeReference<List<LopHocPhan>>() {}
+        );
     }
 
     public boolean add(LopHocPhan lhp) {
@@ -25,8 +30,7 @@ public class AdminClassService {
     public boolean update(LopHocPhan lhp) {
         String response = apiClient.put(
                 UrlUtil.build(
-                        ApiEndpoint.ADMIN_CLASS_BY_ID,
-                        lhp.getMaLopHP()
+                        ApiEndpoint.ADMIN_CLASS_BY_MALOP + lhp.getMaLopHP()
                         ),
                 lhp
         );
@@ -36,8 +40,7 @@ public class AdminClassService {
     public boolean delete(String maLop) {
         String response = apiClient.delete(
                 UrlUtil.build(
-                        ApiEndpoint.ADMIN_CLASS_BY_ID,
-                        maLop
+                        ApiEndpoint.ADMIN_CLASS_BY_MALOP + maLop
                         )
                 );
         return ApiResponseHandler.isOk(response);

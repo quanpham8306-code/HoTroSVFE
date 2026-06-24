@@ -1,8 +1,11 @@
 package org.example.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.time.LocalDate;
 import java.util.Date;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SinhVien {
     private String maSv;
     private String hoTen;

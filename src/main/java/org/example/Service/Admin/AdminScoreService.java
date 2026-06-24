@@ -1,8 +1,10 @@
 package org.example.Service.Admin;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import org.example.Api.ApiResponseHandler;
 import org.example.Model.Diem;
 import org.example.Util.ApiEndpoint;
+import org.example.Util.UrlUtil;
 
 import java.util.List;
 
@@ -30,31 +32,26 @@ public class AdminScoreService {
         return org.example.Api.ApiResponseHandler.isOk(response);
     }
 
-//    public boolean update(String mon,
-//                          Diem diem) {
-//
-//        String response =
-//                apiClient.put(
-//                        UrlUtil.build(
-//                                ApiEndpoint.ADMIN_SCORE_BY_MON,
-//                                mon
-//                        ),
-//                        diem
-//                );
-//
-//        return org.example.Api.ApiResponseHandler.isOk(response);
-//    }
-//
-//    public boolean delete(String mon) {
-//
-//        String response =
-//                apiClient.delete(
-//                        UrlUtil.build(
-//                                ApiEndpoint.ADMIN_SCORE_BY_MON,
-//                                mon
-//                        )
-//                );
-//
-//        return org.example.Api.ApiResponseHandler.isOk(response);
-//    }
+    public boolean update(Diem diem) {
+        String response = apiClient.put(
+                ApiEndpoint.ADMIN_SCORE_BY_STUDENT_CLASS
+                        + diem.getMasv()
+                        + "/"
+                        + diem.getMaLopHP(),
+                diem
+        );
+
+        return ApiResponseHandler.isOk(response);
+    }
+
+    public boolean delete(Diem diem) {
+        String response = apiClient.delete(
+                ApiEndpoint.ADMIN_SCORE_BY_STUDENT_CLASS
+                        + diem.getMasv()
+                        + "/"
+                        + diem.getMaLopHP()
+        );
+
+        return ApiResponseHandler.isOk(response);
+    }
 }

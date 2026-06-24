@@ -3,6 +3,8 @@ package org.example.Model;
 public class Diem {
 
     private String mon;
+    private String masv;
+    private String maLopHP;
     private double diemQuaTrinh;
     private double diemCuoiKy;
     private double diemHocPhan;
@@ -11,12 +13,30 @@ public class Diem {
     public Diem() {
     }
 
-    public Diem(String mon, double diemQuaTrinh, double diemCuoiKy, double diemHocPhan, String trangThai) {
+    public Diem(String mon, String masv, String maLopHP, double diemQuaTrinh, double diemCuoiKy, double diemHocPhan, String trangThai) {
         this.mon = mon;
+        this.masv = masv;
+        this.maLopHP = maLopHP;
         this.diemQuaTrinh = diemQuaTrinh;
         this.diemCuoiKy = diemCuoiKy;
         this.diemHocPhan = diemHocPhan;
         this.trangThai = trangThai;
+    }
+
+    public String getMasv() {
+        return masv;
+    }
+
+    public void setMasv(String masv) {
+        this.masv = masv;
+    }
+
+    public String getMaLopHP() {
+        return maLopHP;
+    }
+
+    public void setMaLopHP(String maLopHP) {
+        this.maLopHP = maLopHP;
     }
 
     public String getMon() {

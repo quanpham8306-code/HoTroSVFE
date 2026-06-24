@@ -131,7 +131,6 @@
                <Label text="Địa chỉ" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                <Label text="CCCD" GridPane.columnIndex="2" GridPane.rowIndex="5" />
                <TextField fx:id="txtGioiTinh" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-               <TextField fx:id="txtNgaySinh" GridPane.columnIndex="3" GridPane.rowIndex="3" />
                <TextField fx:id="txtDiaChi" GridPane.columnIndex="3" GridPane.rowIndex="4" />
                <TextField fx:id="txtId" GridPane.columnIndex="3" GridPane.rowIndex="5" />
 
