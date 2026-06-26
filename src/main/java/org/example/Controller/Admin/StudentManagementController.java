@@ -43,12 +43,13 @@ public class StudentManagementController {
     @FXML private TextField txtPhone;
     @FXML private TextField txtNganh;
     @FXML private TextField txtNamNhapHoc;
-    @FXML private Button btnHomeAdmin;
 
+    @FXML private Button btnHomeAdmin;
     @FXML private Button btnMh;
     @FXML private Button btnLHP;
     @FXML private Button btnScore;
     @FXML private Button btnLogout;
+    @FXML private Button btnRegisteredClass;
 
     private ObservableList<SinhVien> studentList;
 
@@ -315,4 +316,5 @@ public class StudentManagementController {
         SceneUtil.switchScene(btnScore, "/fxml/Admin/ScoreManagement.fxml");
     }
 
+    @FXML public void showRegisteredClass(){ SceneUtil.switchScene(btnRegisteredClass,"/fxml/Admin/RegisteredClass.fxml");}
 }

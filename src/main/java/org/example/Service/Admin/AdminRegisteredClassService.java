@@ -1,0 +1,47 @@
+package org.example.Service.Admin;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import org.example.Api.ApiClient;
+import org.example.Api.ApiResponseHandler;
+import org.example.Model.DangKyLopRequest;
+import org.example.Model.LopHocPhan;
+import org.example.Util.ApiEndpoint;
+
+import java.util.List;
+
+public class AdminRegisteredClassService {
+    private final ApiClient apiClient = new ApiClient();
+
+    public List<LopHocPhan> getByMaSv(String maSv) {
+        String response = apiClient.get(
+                ApiEndpoint.ADMIN_REGISTERED_CLASS_BY_STUDENT + maSv
+        );
+
+        List<LopHocPhan> list = ApiResponseHandler.readData(
+                response,
+                new TypeReference<List<LopHocPhan>>() {}
+        );
+
+        return list != null ? list : List.of();
+    }
+
+    public boolean addStudentToClass(String maSv, String maLopHP) {
+        String response = apiClient.post(
+                ApiEndpoint.ADMIN_ADD_STUDENT_TO_CLASS,
+                new DangKyLopRequest(maSv, maLopHP)
+        );
+
+        System.out.println("ADD STUDENT CLASS RESPONSE = " + response);
+
+        return ApiResponseHandler.isOk(response);
+    }
+
+    public boolean removeStudentFromClass(String maSv, String maLopHP) {
+        String response = apiClient.post(
+                ApiEndpoint.ADMIN_REMOVE_STUDENT_FROM_CLASS,
+                new DangKyLopRequest(maSv, maLopHP)
+        );
+
+        return ApiResponseHandler.isOk(response);
+    }
+}

@@ -52,6 +52,7 @@ public class ClassManagementController {
     @FXML private Button btnMh;
     @FXML private Button btnScore;
     @FXML private Button btnLogout;
+    @FXML private Button btnRegisteredClass;
 
     private ObservableList<LopHocPhan> classList;
 
@@ -321,5 +322,7 @@ public class ClassManagementController {
         AppSession.clear();
         SceneUtil.switchScene(btnLogout, "/fxml/Login.fxml");
     }
+
+    @FXML public void showRegisteredClass(){ SceneUtil.switchScene(btnRegisteredClass,"/fxml/Admin/RegisteredClass.fxml");}
 
 }

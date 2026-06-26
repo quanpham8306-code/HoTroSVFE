@@ -50,10 +50,10 @@
 
                 <Button styleClass="nav-active" text="📝 Điểm" />
 
-                <Button styleClass="nav-button" text="📅 Thời khóa biểu" />
+                <Button fx:id="btnRegisteredClass" onAction="#showRegisteredClass" styleClass="nav-button" text="📋 Lớp đã đăng ký" />
             </VBox>
 
-            <Button styleClass="nav-button" text="↪ Đăng xuất" />
+            <Button fx:id="btnLogout" onAction="#handleLogout" prefHeight="42.0" prefWidth="391.0" styleClass="nav-active" text="↪ Đăng xuất" />
         </VBox>
     </left>
 

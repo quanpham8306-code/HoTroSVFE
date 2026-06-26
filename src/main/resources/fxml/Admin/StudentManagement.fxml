@@ -51,7 +51,7 @@
 
                 <Button fx:id="btnScore" onAction="#showScore" prefHeight="42.0" prefWidth="336.0" styleClass="nav-button" text="📝 Điểm" />
 
-                <Button prefHeight="42.0" prefWidth="370.0" styleClass="nav-button" text="📅 Thời khóa biểu" />
+                <Button fx:id="btnRegisteredClass" onAction="#showRegisteredClass" styleClass="nav-button" text="📋 Lớp đã đăng ký" />
             </VBox>
 
             <Button fx:id="btnLogout" onAction="#handleLogout" prefHeight="42.0" prefWidth="391.0" styleClass="nav-active" text="↪ Đăng xuất" />

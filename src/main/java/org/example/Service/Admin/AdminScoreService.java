@@ -25,7 +25,10 @@ public class AdminScoreService {
 
         String response =
                 apiClient.post(
-                        ApiEndpoint.ADMIN_SCORE,
+                        ApiEndpoint.ADMIN_SCORE
+                        + diem.getMaSv()
+                                + "/"
+                                + diem.getMaLopHP(),
                         diem
                 );
 
@@ -35,7 +38,7 @@ public class AdminScoreService {
     public boolean update(Diem diem) {
         String response = apiClient.put(
                 ApiEndpoint.ADMIN_SCORE_BY_STUDENT_CLASS
-                        + diem.getMasv()
+                        + diem.getMaSv()
                         + "/"
                         + diem.getMaLopHP(),
                 diem
@@ -47,7 +50,7 @@ public class AdminScoreService {
     public boolean delete(Diem diem) {
         String response = apiClient.delete(
                 ApiEndpoint.ADMIN_SCORE_BY_STUDENT_CLASS
-                        + diem.getMasv()
+                        + diem.getMaSv()
                         + "/"
                         + diem.getMaLopHP()
         );

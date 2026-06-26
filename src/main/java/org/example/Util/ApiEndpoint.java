@@ -39,9 +39,13 @@ public class ApiEndpoint {
     public static final String ADMIN_CLASS_BY_MALOP = "/api/admin/class/";
     public static final String ADMIN_SCORE = "/api/admin/score";
     public static final String ADMIN_SCORE_BY_MaSv_STUDENT = "/api/admin/score/student/";
-    public static final String ADMIN_SCORE_BY_STUDENT_CLASS = "/api/admin/score/"; //{idSv}/{idLhp}
+    public static final String ADMIN_SCORE_BY_STUDENT_CLASS = "/api/admin/score/"; //{maSv}/{maLophp}
     public static final String ADMIN_SCORE_SUMMARY_BY_MASV = "/api/admin/score/student/summary/"; //{idSv}
     public static final String ADMIN_SCHEDULE = "/api/admin/schedule";
     public static final String ADMIN_SCHEDULE_BY_STUDENT = "/api/admin/schedule/";   //{idSv}
+
+    public static final String ADMIN_REGISTERED_CLASS_BY_STUDENT = "/api/admin/class/registered_class/";// xem sinh viên đã đăng kí những lớp nào
+    public static final String ADMIN_ADD_STUDENT_TO_CLASS ="/api/admin/class/add_student/";// thêm sv vào lớp HP
+    public static final String ADMIN_REMOVE_STUDENT_FROM_CLASS ="/api/admin/class/remove_student/";// xóa sv khỏi lớp HP
 }
 

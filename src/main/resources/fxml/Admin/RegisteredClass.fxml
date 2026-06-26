@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="768" prefWidth="1366"
+            stylesheets="@../../css/Admin.css,@../../css/layout.css"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.Controller.Admin.RegisteredClassController">
+
+    <left>
+        <VBox maxWidth="240" minWidth="240" prefWidth="240" spacing="18" styleClass="sidebar">
+            <padding>
+                <Insets bottom="20" left="18" right="18" top="24" />
+            </padding>
+
+            <HBox alignment="CENTER_LEFT" spacing="12">
+                <Label styleClass="logo-icon" text="🎓" />
+                <VBox spacing="2">
+                    <Label styleClass="logo-title" text="Admin Portal" />
+                    <Label styleClass="logo-subtitle" text="Hệ thống quản trị" />
+                </VBox>
+            </HBox>
+
+            <Separator />
+
+            <VBox spacing="10" VBox.vgrow="ALWAYS">
+                <Button fx:id="btnHomeAdmin" onAction="#showHomeAd" styleClass="nav-button" text="📊 Dashboard" />
+                <Button fx:id="btnSV" onAction="#showSV" styleClass="nav-button" text="👨‍🎓 Sinh viên" />
+                <Button fx:id="btnMh" onAction="#showMh" styleClass="nav-button" text="📚 Môn học" />
+                <Button fx:id="btnLHP" onAction="#showLHP" styleClass="nav-button" text="🏫 Lớp học phần" />
+                <Button fx:id="btnScore" onAction="#showScore" styleClass="nav-button" text="📝 Điểm" />
+                <Button styleClass="nav-active" text="📋 Lớp đã đăng ký" />
+            </VBox>
+
+            <Button fx:id="btnLogout" onAction="#handleLogout" prefHeight="42.0" prefWidth="391.0" styleClass="nav-active" text="↪ Đăng xuất" />
+        </VBox>
+    </left>
+
+    <center>
+        <VBox spacing="22" styleClass="main-bg">
+            <padding>
+                <Insets bottom="32" left="32" right="32" top="28" />
+            </padding>
+
+            <Label styleClass="page-title" text="Lớp học phần sinh viên đã đăng ký" />
+
+            <VBox spacing="18" styleClass="table-card" VBox.vgrow="ALWAYS">
+
+                <HBox spacing="15">
+                    <TextField fx:id="txtMaSv"
+                               prefWidth="260"
+                               promptText="Nhập mã sinh viên, ví dụ SV001" />
+
+                    <TextField fx:id="txtMaLopHP"
+                               prefWidth="260"
+                               promptText="Nhập mã lớp HP, ví dụ LHP001" />
+
+                    <Button onAction="#searchByStudent"
+                            styleClass="primary-btn"
+                            text="Xem lớp đã đăng ký" />
+
+                    <Button onAction="#addStudentToClass"
+                            styleClass="primary-btn"
+                            text="+ Thêm vào lớp" />
+
+                    <Button onAction="#removeStudentFromClass"
+                            styleClass="delete-btn"
+                            text="Xóa khỏi lớp" />
+                </HBox>
+
+                <Separator />
+
+                <TableView fx:id="tableClass" styleClass="student-table" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colMaLop" prefWidth="140" text="Mã lớp" />
+                        <TableColumn fx:id="colMonHoc" prefWidth="250" text="Môn học" />
+                        <TableColumn fx:id="colGiangVien" prefWidth="180" text="Giảng viên" />
+                        <TableColumn fx:id="colPhong" prefWidth="120" text="Phòng" />
+                        <TableColumn fx:id="colThu" prefWidth="100" text="Thứ" />
+                        <TableColumn fx:id="colGioBatDau" prefWidth="130" text="Giờ bắt đầu" />
+                        <TableColumn fx:id="colGioKetThuc" prefWidth="130" text="Giờ kết thúc" />
+                        <TableColumn fx:id="colHocKy" prefWidth="100" text="Học kỳ" />
+                        <TableColumn fx:id="colNamHoc" prefWidth="150" text="Năm học" />
+                    </columns>
+                </TableView>
+
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

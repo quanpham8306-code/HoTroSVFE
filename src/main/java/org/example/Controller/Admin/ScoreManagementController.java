@@ -34,6 +34,7 @@ public class ScoreManagementController {
     @FXML private Button btnLHP;
     @FXML private Button btnMh;
     @FXML private Button btnLogout;
+    @FXML private Button btnRegisteredClass;
 
     private ObservableList<Diem> scoreList;
 
@@ -45,7 +46,7 @@ public class ScoreManagementController {
     public void initialize() {
 
         colMasv.setCellValueFactory(
-                new PropertyValueFactory<>("masv"));
+                new PropertyValueFactory<>("maSv"));
 
         colMaLopHP.setCellValueFactory(
                 new PropertyValueFactory<>("maLopHP"));
@@ -81,7 +82,7 @@ public class ScoreManagementController {
 
                         txtMon.setText(d.getMon());
 
-                        txtMaSv.setText(d.getMasv());
+                        txtMaSv.setText(d.getMaSv());
 
                         txtMaLopHP.setText(d.getMaLopHP());
 
@@ -141,7 +142,7 @@ public class ScoreManagementController {
         Diem d = new Diem();
 
         d.setMon(txtMon.getText());
-        d.setMasv(txtMaSv.getText());
+        d.setMaSv(txtMaSv.getText());
         d.setMaLopHP(txtMaLopHP.getText());
         d.setDiemQuaTrinh(Double.parseDouble(txtQT.getText()));
         d.setDiemCuoiKy(Double.parseDouble(txtCK.getText()));
@@ -162,7 +163,7 @@ public class ScoreManagementController {
         if (d == null)
             return;
 
-        d.setMasv(txtMaSv.getText());
+        d.setMaSv(txtMaSv.getText());
         d.setMaLopHP(txtMaLopHP.getText());
         d.setMon(txtMon.getText());
         d.setDiemQuaTrinh(Double.parseDouble(txtQT.getText()));
@@ -188,7 +189,7 @@ public class ScoreManagementController {
         alert.setHeaderText(null);
         alert.setContentText(
                 "Bạn có chắc muốn xóa điểm của sinh viên "
-                        + d.getMasv()
+                        + d.getMaSv()
                         + " lớp "
                         + d.getMaLopHP()
                         + " không?"
@@ -243,4 +244,6 @@ public class ScoreManagementController {
         AppSession.clear();
         SceneUtil.switchScene(btnLogout, "/fxml/Login.fxml");
     }
+
+    @FXML public void showRegisteredClass(){ SceneUtil.switchScene(btnRegisteredClass,"/fxml/Admin/RegisteredClass.fxml");}
 }

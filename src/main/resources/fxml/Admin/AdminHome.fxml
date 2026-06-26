@@ -32,11 +32,11 @@
 
             <Button fx:id="btnScore" onAction="#showScore" styleClass="nav-button" text="📊 Điểm" />
 
-            <Button styleClass="nav-button" text="📅 Thời khóa biểu" />
+            <Button fx:id="btnRegisteredClass" onAction="#showRegisteredClass" styleClass="nav-button" text="📋 Lớp đã đăng ký" />
 
             <Region VBox.vgrow="ALWAYS" />
 
-            <Button styleClass="nav-button" text="↩ Đăng xuất" />
+            <Button fx:id="btnLogout" onAction="#handleLogout" prefHeight="42.0" prefWidth="391.0" styleClass="nav-active" text="↪ Đăng xuất" />
         </VBox>
     </left>
 
