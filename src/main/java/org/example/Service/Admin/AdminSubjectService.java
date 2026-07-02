@@ -37,8 +37,6 @@ public class AdminSubjectService {
         try {
             String response = apiClient.get(ApiEndpoint.ADMIN_SUBJECT);
 
-            System.out.println("RAW SUBJECT JSON: " + response);
-
             ObjectMapper mapper = new ObjectMapper();
 
             return mapper.readValue(
@@ -57,8 +55,6 @@ public class AdminSubjectService {
     public boolean add(MonHoc mh) {
         String response = apiClient.post(ApiEndpoint.ADMIN_SUBJECT, mh);
 
-        System.out.println("ADD SUBJECT RESPONSE = " + response);
-
         if (!ApiResponseHandler.isOk(response)) {
             showError(ApiResponseHandler.getMessage(response));
             return false;
@@ -73,8 +69,6 @@ public class AdminSubjectService {
                 mh
         );
 
-        System.out.println("UPDATE SUBJECT RESPONSE = " + response);
-
         if (!ApiResponseHandler.isOk(response)) {
             showError(ApiResponseHandler.getMessage(response));
             return false;
@@ -87,8 +81,6 @@ public class AdminSubjectService {
         String response = apiClient.delete(
                 ApiEndpoint.ADMIN_SUBJECT_BY_MAMON + maMon
         );
-
-        System.out.println("DELETE SUBJECT RESPONSE = " + response);
 
         if (!ApiResponseHandler.isOk(response)) {
             showError(ApiResponseHandler.getMessage(response));

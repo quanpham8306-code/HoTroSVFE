@@ -7,6 +7,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.Config.AppSession;
 import org.example.Model.LopHocPhan;
 import org.example.Service.Admin.AdminRegisteredClassService;
+import org.example.Util.AlertUtil;
 import org.example.Util.SceneUtil;
 
 public class RegisteredClassController {
@@ -27,12 +28,15 @@ public class RegisteredClassController {
     @FXML private Button btnHomeAdmin;
     @FXML private Button btnSV;
     @FXML private Button btnMh;
+    @FXML private Button btnAccount;
     @FXML private Button btnLHP;
     @FXML private Button btnScore;
     @FXML private Button btnLogout;
+    @FXML private Button importStudent;
 
     private final AdminRegisteredClassService service =
             new AdminRegisteredClassService();
+    AlertUtil alertUtil = new AlertUtil();
 
     @FXML
     public void initialize() {
@@ -58,7 +62,7 @@ public class RegisteredClassController {
         String maSv = txtMaSv.getText();
 
         if (maSv == null || maSv.isBlank()) {
-            showAlert("Vui lòng nhập mã sinh viên");
+            alertUtil.showAlert("Vui lòng nhập mã sinh viên");
             return;
         }
 
@@ -76,15 +80,16 @@ public class RegisteredClassController {
 
         if (maSv == null || maSv.isBlank()
                 || maLopHP == null || maLopHP.isBlank()) {
-            showAlert("Vui lòng nhập mã sinh viên và mã lớp học phần");
+            alertUtil.showAlert("Vui lòng nhập mã sinh viên và mã lớp học phần");
             return;
         }
-
-        if (service.addStudentToClass(maSv.trim(), maLopHP.trim())) {
-            showAlert("Thêm sinh viên vào lớp thành công");
+        String respone = service.addStudentToClass(maSv.trim(), maLopHP.trim());
+        if (respone.equals("SUCCESS")) {
+            alertUtil.showAlert("Thêm sinh viên vào lớp thành công");
             searchByStudent();
-        } else {
-            showAlert("Thêm thất bại");
+        }
+        else {
+            alertUtil.showAlert("Thêm thất bại : " + respone);
         }
     }
 
@@ -95,7 +100,7 @@ public class RegisteredClassController {
 
         if (maSv == null || maSv.isBlank()
                 || maLopHP == null || maLopHP.isBlank()) {
-            showAlert("Vui lòng nhập mã sinh viên và mã lớp học phần");
+            alertUtil.showAlert("Vui lòng nhập mã sinh viên và mã lớp học phần");
             return;
         }
 
@@ -105,19 +110,12 @@ public class RegisteredClassController {
 
         if (confirm.showAndWait().orElse(ButtonType.CANCEL) == ButtonType.OK) {
             if (service.removeStudentFromClass(maSv.trim(), maLopHP.trim())) {
-                showAlert("Xóa sinh viên khỏi lớp thành công");
+                alertUtil.showAlert("Xóa sinh viên khỏi lớp thành công");
                 searchByStudent();
             } else {
-                showAlert("Xóa thất bại");
+                alertUtil.showAlert("Xóa thất bại");
             }
         }
-    }
-
-    private void showAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 
     @FXML public void showHomeAd() {
@@ -139,9 +137,18 @@ public class RegisteredClassController {
     @FXML public void showScore() {
         SceneUtil.switchScene(btnScore, "/fxml/Admin/ScoreManagement.fxml");
     }
-
+    @FXML public void showAccount() {SceneUtil.switchScene(btnAccount, "/fxml/Admin/AdminAcount.fxml");}
     @FXML public void handleLogout() {
         AppSession.clear();
         SceneUtil.switchScene(btnLogout, "/fxml/Login.fxml");
+    }
+    @FXML
+    public void impoprtStudentToClass()
+    {
+        service.handleImportStudentToClass(
+                importStudent,
+                txtMaLopHP.getText(),
+                null
+        );
     }
 }

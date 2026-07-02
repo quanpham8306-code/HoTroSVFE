@@ -6,40 +6,51 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane prefHeight="768" prefWidth="1366" stylesheets="@../../css/Admin.css,@../../css/layout.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.Admin.AdminHomeController">
 
     <left>
-        <VBox prefWidth="240" spacing="15" styleClass="sidebar">
+        <VBox maxWidth="240" minWidth="240" prefWidth="240" spacing="18" styleClass="sidebar">
 
             <padding>
-                <Insets bottom="20" left="20" right="20" top="25" />
+                <Insets bottom="20" left="18" right="18" top="24" />
             </padding>
 
-            <Label styleClass="logo-title" text="🎓 Student Portal" />
+            <HBox alignment="CENTER_LEFT" prefHeight="32.0" prefWidth="202.0" spacing="12">
+
+                <Label prefHeight="38.0" prefWidth="34.0" styleClass="logo-icon" text="🎓" />
+
+                <VBox prefHeight="53.0" prefWidth="159.0" spacing="2">
+                    <Label styleClass="logo-title" text="Admin Portal" />
+
+                    <Label styleClass="logo-subtitle" text="Hệ thống quản trị" />
+                </VBox>
+
+            </HBox>
 
             <Separator />
 
-            <Button fx:id="btnHomeAdmin" styleClass="nav-active" text="🏠 Dashboard" />
+            <VBox spacing="10" VBox.vgrow="ALWAYS">
 
-            <Button fx:id="btnSV" onAction="#showSV" styleClass="nav-button" text="👨‍🎓 Sinh viên" />
+                <Button styleClass="nav-active" text="📊 Dashboard" />
 
-            <Button fx:id="btnMh" onAction="#showMh" styleClass="nav-button" text="📚 Môn học" />
+                <Button fx:id="btnSV" onAction="#showSV" styleClass="nav-button" text="👨‍🎓 Sinh viên" />
 
-            <Button fx:id="btnLHP" onAction="#showLHP" styleClass="nav-button" text="🏫 Lớp học phần" />
+                <Button fx:id="btnMh" onAction="#showMh" styleClass="nav-button" text="📚 Môn học" />
 
-            <Button fx:id="btnScore" onAction="#showScore" styleClass="nav-button" text="📊 Điểm" />
+                <Button fx:id="btnLHP" onAction="#showLHP" styleClass="nav-button" text="🏫 Lớp học phần" />
 
-            <Button fx:id="btnRegisteredClass" onAction="#showRegisteredClass" styleClass="nav-button" text="📋 Lớp đã đăng ký" />
+                <Button fx:id="btnScore" onAction="#showScore" styleClass="nav-button" text="📝 Điểm" />
 
-            <Region VBox.vgrow="ALWAYS" />
+                <Button fx:id="btnRegisteredClass" onAction="#showRegisteredClass" styleClass="nav-button" text="📋 Lớp đã đăng ký" />
+                <Button fx:id="btnAccount" onAction="#showAccount" styleClass="nav-button" text="👤 Tài khoản" />
+            </VBox>
 
             <Button fx:id="btnLogout" onAction="#handleLogout" prefHeight="42.0" prefWidth="391.0" styleClass="nav-active" text="↪ Đăng xuất" />
+
         </VBox>
     </left>
-
     <center>
 
         <VBox spacing="20" styleClass="main-bg">

@@ -42,8 +42,6 @@ public class AdminStudentService {
         try {
             String response = apiClient.get(ApiEndpoint.ADMIN_STUDENT);
 
-            System.out.println("RAW JSON: " + response);
-
             ObjectMapper mapper = new ObjectMapper();
             mapper.registerModule(new com.fasterxml.jackson.datatype.jsr310.JavaTimeModule());
 
@@ -65,7 +63,6 @@ public class AdminStudentService {
                         sv
                 );
 
-        System.out.println("ADD STUDENT RESPONSE = " + response);
         return org.example.Api.ApiResponseHandler.isOk(response);
     }
 
@@ -78,7 +75,6 @@ public class AdminStudentService {
                         sv
                 );
 
-        System.out.println("UPDATE STUDENT RESPONSE = " + response);
         return org.example.Api.ApiResponseHandler.isOk(response);
     }
 

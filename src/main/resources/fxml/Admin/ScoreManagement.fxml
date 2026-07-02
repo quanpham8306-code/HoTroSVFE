@@ -51,6 +51,7 @@
                 <Button styleClass="nav-active" text="📝 Điểm" />
 
                 <Button fx:id="btnRegisteredClass" onAction="#showRegisteredClass" styleClass="nav-button" text="📋 Lớp đã đăng ký" />
+            <Button fx:id="btnAccount" onAction="#showAccount" styleClass="nav-button" text="👤 Tài khoản" />
             </VBox>
 
             <Button fx:id="btnLogout" onAction="#handleLogout" prefHeight="42.0" prefWidth="391.0" styleClass="nav-active" text="↪ Đăng xuất" />
@@ -97,36 +98,30 @@
 
                     <!-- Hàng 1 -->
                     <Label text="Mã sinh viên" GridPane.rowIndex="0" />
-                    <TextField fx:id="txtMaSv" promptText="Nhập mã sinh viên"
-                               GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    <TextField fx:id="txtMaSv" promptText="Nhập mã sinh viên" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
                     <Label text="Mã lớp HP" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-                    <TextField fx:id="txtMaLopHP" promptText="Nhập mã lớp học phần"
-                               GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                    <TextField fx:id="txtMaLopHP" promptText="Nhập mã lớp học phần" GridPane.columnIndex="3" GridPane.rowIndex="0" />
 
                     <!-- Hàng 2 -->
                     <Label text="Môn học" GridPane.rowIndex="1" />
-                    <TextField fx:id="txtMon" promptText="Nhập tên môn"
-                               GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    <TextField fx:id="txtMon" promptText="Nhập tên môn" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
                     <!-- Hàng 3 -->
                     <Label text="Điểm quá trình" GridPane.rowIndex="2" />
-                    <TextField fx:id="txtQT" promptText="0 - 10"
-                               GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                    <TextField fx:id="txtQT" promptText="0 - 10" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
                     <Label text="Điểm cuối kỳ" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                    <TextField fx:id="txtCK" promptText="0 - 10"
-                               GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                    <TextField fx:id="txtCK" promptText="0 - 10" GridPane.columnIndex="3" GridPane.rowIndex="2" />
 
                     <!-- Hàng 4 -->
                     <Label text="Điểm học phần" GridPane.rowIndex="3" />
-                    <TextField fx:id="txtHP" editable="false" promptText="Tự động tính"
-                               GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                    <TextField fx:id="txtHP" editable="false" promptText="Tự động tính" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 
                     <Label text="Trạng thái" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                    <TextField fx:id="txtTrangThai" editable="false" promptText="Đạt / Không đạt"
-                               GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                    <TextField fx:id="txtTrangThai" editable="false" promptText="Đạt / Không đạt" GridPane.columnIndex="3" GridPane.rowIndex="3" />
                <rowConstraints>
+                  <RowConstraints />
                   <RowConstraints />
                   <RowConstraints />
                   <RowConstraints />

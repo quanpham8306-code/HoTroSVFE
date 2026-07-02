@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="768" prefWidth="1366" stylesheets="@../../css/Admin.css,@../../css/layout.css,@../../css/note.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.Admin.AccountController">
+
+    <left>
+    <VBox maxWidth="240" minWidth="240" prefWidth="240" spacing="18" styleClass="sidebar">
+
+        <padding>
+            <Insets bottom="20" left="18" right="18" top="24" />
+        </padding>
+
+        <HBox alignment="CENTER_LEFT" prefHeight="32.0" prefWidth="202.0" spacing="12">
+
+            <Label prefHeight="38.0" prefWidth="34.0" styleClass="logo-icon" text="🎓" />
+
+            <VBox prefHeight="53.0" prefWidth="159.0" spacing="2">
+                <Label styleClass="logo-title" text="Admin Portal" />
+
+                <Label styleClass="logo-subtitle" text="Hệ thống quản trị" />
+            </VBox>
+
+        </HBox>
+
+        <Separator />
+
+        <VBox spacing="10" VBox.vgrow="ALWAYS">
+
+            <Button fx:id="btnHomeAdmin" onAction="#showHomeAd" styleClass="nav-button" text="📊 Dashboard" />
+
+            <Button fx:id="btnSV" onAction="#showSV" styleClass="nav-button" text="👨‍🎓 Sinh viên" />
+
+            <Button fx:id="btnMh" onAction="#showMh" styleClass="nav-button" text="📚 Môn học" />
+
+            <Button fx:id="btnLHP" onAction="#showLHP" styleClass="nav-button" text="🏫 Lớp học phần" />
+
+            <Button fx:id="btnScore" onAction="#showScore" styleClass="nav-button" text="📝 Điểm" />
+
+            <Button fx:id="btnRegisteredClass" onAction="#showRegisteredClass" styleClass="nav-button" text="📋 Lớp đã đăng ký" />
+
+            <Button styleClass="nav-active" text="👤 Tài khoản" />
+        </VBox>
+
+        <Button fx:id="btnLogout" onAction="#handleLogout" prefHeight="42.0" prefWidth="391.0" styleClass="nav-active" text="↪ Đăng xuất" />
+
+    </VBox>
+</left>
+    <center>
+        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <children>
+                <VBox prefHeight="101.0" prefWidth="1126.0" styleClass="note-header">
+                    <children>
+                        <Label prefHeight="115.0" prefWidth="418.0" styleClass="page-title" text="Tài khoản" />
+                        <Label prefHeight="77.0" prefWidth="184.0" styleClass="page-subtitle" text="Quản lý tài khoản" />
+                    </children>
+                </VBox>
+                <VBox prefHeight="621.0" prefWidth="1126.0" styleClass="note-editor">
+                    <children>
+                        <VBox alignment="BOTTOM_LEFT" prefHeight="99.0" prefWidth="746.0" spacing="5">
+                            <children>
+                                <Label styleClass="section-title" text="🔒 Reset mật khẩu " />
+                                <Label text="Đưa mật khẩu của tài khoản nhất định về trạng thái mặc định" wrapText="true" />
+                                <Button alignment="CENTER" contentDisplay="CENTER" onAction="#handleResetPws" prefHeight="42.0" prefWidth="198.0" styleClass="primary-button" text="Reset mật khẩu " />
+                            </children>
+                        </VBox>
+                        <Separator prefHeight="46.0" prefWidth="715.0" styleClass="sidebar-separator" />
+                        <VBox prefHeight="96.0" prefWidth="715.0" spacing="5">
+                     <children>
+                        <VBox alignment="BOTTOM_LEFT" prefHeight="99.0" prefWidth="746.0" spacing="5">
+                           <children>
+                              <Label styleClass="section-title" text="🔑 Đổi mật khẩu" />
+                              <Label text="Đổi mật khẩu theo tài khoản" wrapText="true" />
+                              <Button alignment="CENTER" contentDisplay="CENTER" onAction="#handleChangePws" prefHeight="42.0" prefWidth="198.0" styleClass="primary-button" text="Đổi mật khẩu" />
+                           </children>
+                        </VBox>
+                     </children></VBox>
+                  <Separator prefHeight="46.0" prefWidth="715.0" styleClass="sidebar-separator" />
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </center>
+</BorderPane>

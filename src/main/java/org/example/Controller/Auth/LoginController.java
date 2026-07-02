@@ -12,7 +12,6 @@ import org.example.Util.SceneUtil;
 
 public class LoginController {
     @FXML private TextField txtUsername;
-
     @FXML private PasswordField txtPassword;
 
     @FXML private Button btnLogin;

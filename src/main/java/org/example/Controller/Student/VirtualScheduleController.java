@@ -26,6 +26,7 @@ public class VirtualScheduleController {
     @FXML private Button btnScore;
     @FXML private Button btnSchedule;
     @FXML private Button btnNote;
+    @FXML private Button btnSupport;
     @FXML private Button btnLogout;
 
     @FXML private TableView<LopHocPhan> lopHocPhanTable;
@@ -83,6 +84,10 @@ public class VirtualScheduleController {
     @FXML
     public void showSchedule() {
         SceneUtil.switchScene(btnSchedule, "/fxml/Student/Schedule.fxml");
+    }
+    @FXML
+    public void showSupport() {
+        SceneUtil.switchScene(btnSupport, "/fxml/Student/Support.fxml");
     }
 
     @FXML

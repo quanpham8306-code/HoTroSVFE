@@ -52,6 +52,7 @@
                 <Button fx:id="btnScore" onAction="#showScore" prefHeight="42.0" prefWidth="336.0" styleClass="nav-button" text="📝 Điểm" />
 
                 <Button fx:id="btnRegisteredClass" onAction="#showRegisteredClass" styleClass="nav-button" text="📋 Lớp đã đăng ký" />
+            <Button fx:id="btnAccount" onAction="#showAccount" prefHeight="42.0" prefWidth="336.0" styleClass="nav-button" text="👤 Tài khoản" />
             </VBox>
 
             <Button fx:id="btnLogout" onAction="#handleLogout" prefHeight="42.0" prefWidth="391.0" styleClass="nav-active" text="↪ Đăng xuất" />
@@ -86,7 +87,7 @@
 
                 <TextField fx:id="txtSearch" prefWidth="320" promptText="🔍 Tìm kiếm sinh viên..." styleClass="search-box" />
 
-                <Button onAction="#addStudent" styleClass="primary-btn" text="+ Thêm" />
+                <Button fx:id="importStudent" onAction="#handleImportStudent" prefHeight="36.0" prefWidth="78.0" styleClass="primary-btn" text="Import" />
             </HBox>
 
             <!-- TABLE CARD -->
@@ -125,7 +126,6 @@
                     <TextField fx:id="txtNamNhapHoc" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                <Label text="Khoa" GridPane.rowIndex="3" />
                <TextField fx:id="txtKhoa" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-               <TextField fx:id="txtNgaySinh" GridPane.columnIndex="3" GridPane.rowIndex="3" />
                <Label text="Ngày sinh" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                <Label text="Giới tính" GridPane.rowIndex="5" />
                <Label text="Địa chỉ" GridPane.columnIndex="2" GridPane.rowIndex="4" />
@@ -133,6 +133,7 @@
                <TextField fx:id="txtGioiTinh" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                <TextField fx:id="txtDiaChi" GridPane.columnIndex="3" GridPane.rowIndex="4" />
                <TextField fx:id="txtId" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+               <TextField fx:id="txtNgaySinh" GridPane.columnIndex="3" GridPane.rowIndex="3" />
 
                <rowConstraints>
                   <RowConstraints />

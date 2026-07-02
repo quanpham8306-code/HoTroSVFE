@@ -2,28 +2,29 @@ package org.example.Model;
 
 public class DangKyLopRequest {
         private String maSv;
-        private String maLopHP;
+        private String maLopHp;
 
-        public DangKyLopRequest() {}
+    public DangKyLopRequest() {
+    }
 
-        public DangKyLopRequest(String maSv, String maLopHP) {
-            this.maSv = maSv;
-            this.maLopHP = maLopHP;
-        }
+    public DangKyLopRequest(String maSv, String maLopHp) {
+        this.maSv = maSv;
+        this.maLopHp = maLopHp;
+    }
 
-        public String getMaSv() {
-            return maSv;
-        }
+    public String getMaSv() {
+        return maSv;
+    }
 
-        public void setMaSv(String maSv) {
-            this.maSv = maSv;
-        }
+    public void setMaSv(String maSv) {
+        this.maSv = maSv;
+    }
 
-        public String getMaLopHP() {
-            return maLopHP;
-        }
+    public String getMaLopHp() {
+        return maLopHp;
+    }
 
-        public void setMaLopHP(String maLopHP) {
-            this.maLopHP = maLopHP;
-        }
+    public void setMaLopHp(String maLopHp) {
+        this.maLopHp = maLopHp;
+    }
 }

@@ -9,6 +9,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.Config.AppSession;
 import org.example.Model.LopHocPhan;
 import org.example.Service.Admin.AdminClassService;
+import org.example.Util.ApiEndpoint;
+import org.example.Util.ExcelImportUtil;
 import org.example.Util.SceneUtil;
 
 import java.time.LocalDate;
@@ -49,10 +51,12 @@ public class ClassManagementController {
 
     @FXML private Button btnHomeAdmin;
     @FXML private Button btnSV;
+    @FXML private Button importClass;
     @FXML private Button btnMh;
     @FXML private Button btnScore;
     @FXML private Button btnLogout;
     @FXML private Button btnRegisteredClass;
+    @FXML private Button btnAccount;
 
     private ObservableList<LopHocPhan> classList;
 
@@ -278,7 +282,8 @@ public class ClassManagementController {
 
         tableClass.setItems(filtered);
     }
-
+    @FXML public void showRegisteredClass(){
+        SceneUtil.switchScene(btnRegisteredClass,"/fxml/Admin/RegisteredClass.fxml");}
     @FXML
     public void showHomeAd() {
         SceneUtil.switchScene(btnHomeAdmin, "/fxml/Admin/AdminHome.fxml");
@@ -293,7 +298,7 @@ public class ClassManagementController {
     public void showSV() {
         SceneUtil.switchScene(btnSV, "/fxml/Admin/StudentManagement.fxml");
     }
-
+    @FXML public void showAccount() {SceneUtil.switchScene(btnAccount, "/fxml/Admin/AdminAcount.fxml");}
     @FXML
     public void showScore() {
         SceneUtil.switchScene(btnScore, "/fxml/Admin/ScoreManagement.fxml");
@@ -323,6 +328,14 @@ public class ClassManagementController {
         SceneUtil.switchScene(btnLogout, "/fxml/Login.fxml");
     }
 
-    @FXML public void showRegisteredClass(){ SceneUtil.switchScene(btnRegisteredClass,"/fxml/Admin/RegisteredClass.fxml");}
 
+    @FXML
+    private void handleImportClass() {
+        ExcelImportUtil.handleImportExcel(
+                importClass,
+                ApiEndpoint.ADMIN_CLASS_IMPORT,
+                "danhSachLop",
+                this::loadData
+        );
+    }
 }

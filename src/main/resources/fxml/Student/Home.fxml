@@ -40,6 +40,7 @@
             <Button fx:id="btnSchedule" maxWidth="Infinity" onAction="#showSchedule" styleClass="nav-button" text="  📅   Lịch học" />
             <Button fx:id="btnSubject" maxWidth="Infinity" onAction="#showSubject" styleClass="nav-button" text="📚 Đăng ký môn" />
             <Button fx:id="btnNote" maxWidth="Infinity" onAction="#showNote" styleClass="nav-button" text="  📄   Ghi chú" />
+            <Button fx:id="btnSupport" maxWidth="Infinity" onAction="#showSupport" styleClass="nav-button" text="🛠 Hỗ trợ" />
          </VBox>
 
          <Button fx:id="btnLogout" maxWidth="Infinity" onAction="#handleLogout" prefHeight="35.0" prefWidth="199.0" styleClass="logout-button" text="  ↪   Đăng xuất" />
@@ -140,38 +141,38 @@
                </VBox>
 
                <VBox maxWidth="380" minWidth="350" prefWidth="360" spacing="16">
-                  <VBox spacing="16" styleClass="card">
-                     <Label styleClass="section-title" text="🎓  Tổng quan học tập" />
-                     <GridPane hgap="14" vgap="14">
-                        <columnConstraints>
-                           <ColumnConstraints hgrow="ALWAYS" percentWidth="50" />
-                           <ColumnConstraints hgrow="ALWAYS" percentWidth="50" />
-                        </columnConstraints>
-                        <VBox styleClass="stat-card" GridPane.columnIndex="0" GridPane.rowIndex="0">
-                           <Label styleClass="stat-label" text="GPA" />
-                           <Label fx:id="lblGpa" styleClass="stat-blue" text="3.45 /4.0" />
-                        </VBox>
-                        <VBox styleClass="stat-card" GridPane.columnIndex="1" GridPane.rowIndex="0">
-                           <Label styleClass="stat-label" text="Số tín chỉ" />
-                           <Label fx:id="lblSoTinChi" styleClass="stat-green" text="86 TC" />
-                        </VBox>
-                        <VBox styleClass="stat-card" GridPane.columnIndex="0" GridPane.rowIndex="1">
-                           <Label styleClass="stat-label" text="Số môn đã học" />
-                           <Label fx:id="lblSoMon" styleClass="stat-purple" text="28" />
-                        </VBox>
-                        <VBox styleClass="stat-card" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <Label styleClass="stat-label" text="Xếp loại" />
-                           <Label fx:id="lblXepLoai" styleClass="stat-orange" text="Khá" />
-                        </VBox>
-                        <rowConstraints>
-                           <RowConstraints />
-                           <RowConstraints />
-                        </rowConstraints>
-                     </GridPane>
-                  </VBox>
 
                   <VBox spacing="14" styleClass="card">
                      <HBox alignment="CENTER_LEFT">
+                        <VBox spacing="16" styleClass="card">
+                           <Label styleClass="section-title" text="🎓  Tổng quan học tập" />
+                           <GridPane hgap="14" vgap="14">
+                              <columnConstraints>
+                                 <ColumnConstraints hgrow="ALWAYS" percentWidth="50" />
+                                 <ColumnConstraints hgrow="ALWAYS" percentWidth="50" />
+                              </columnConstraints>
+                              <VBox styleClass="stat-card" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                 <Label styleClass="stat-label" text="GPA" />
+                                 <Label fx:id="lblGpa" styleClass="stat-blue" text="3.45 /4.0" />
+                              </VBox>
+                              <VBox styleClass="stat-card" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                 <Label styleClass="stat-label" text="Số tín chỉ" />
+                                 <Label fx:id="lblSoTinChi" styleClass="stat-green" text="86 TC" />
+                              </VBox>
+                              <VBox styleClass="stat-card" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                                 <Label styleClass="stat-label" text="Số môn đã học" />
+                                 <Label fx:id="lblSoMon" styleClass="stat-purple" text="28" />
+                              </VBox>
+                              <VBox styleClass="stat-card" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <Label styleClass="stat-label" text="Xếp loại" />
+                                 <Label fx:id="lblXepLoai" styleClass="stat-orange" text="Khá" />
+                              </VBox>
+                              <rowConstraints>
+                                 <RowConstraints />
+                                 <RowConstraints />
+                              </rowConstraints>
+                           </GridPane>
+                        </VBox>
                         <Label maxWidth="Infinity" styleClass="section-title" text="📅  Lịch học sắp tới" HBox.hgrow="ALWAYS" />
                         <Button mnemonicParsing="false" onAction="#showSchedule" text="Xem tất cả">
                            <styleClass>
@@ -181,7 +182,7 @@
                      </HBox>
                      <VBox spacing="10">
                         <HBox alignment="CENTER_LEFT" spacing="18" styleClass="schedule-row">
-                           <Label fx:id="date1" prefHeight="54.0" prefWidth="70.0" styleClass="date-box" text="Thứ 3&#10;21/05" />
+                           <Label fx:id="date1" prefHeight="54.0" prefWidth="122.0" styleClass="date-box" text="Thứ 3&#10;21/05" />
                            <VBox spacing="3">
                               <Label fx:id="time1" styleClass="info-label" text="07:30 - 09:15" />
                               <Label fx:id="mon1" prefHeight="19.0" prefWidth="190.0" styleClass="schedule-title" text="Cấu trúc dữ liệu và giải thuật" />
@@ -189,7 +190,7 @@
                            </VBox>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" spacing="18" styleClass="schedule-row">
-                           <Label fx:id="date2" prefHeight="54.0" prefWidth="70.0" styleClass="date-box" text="Thứ 3&#10;21/05" />
+                           <Label fx:id="date2" prefHeight="54.0" prefWidth="99.0" styleClass="date-box" text="Thứ 3&#10;21/05" />
                            <VBox spacing="3">
                               <Label fx:id="time2" styleClass="info-label" text="09:30 - 11:15" />
                               <Label fx:id="mon2" styleClass="schedule-title" text="Lập trình hướng đối tượng" />
@@ -197,7 +198,7 @@
                            </VBox>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" spacing="18" styleClass="schedule-row">
-                           <Label fx:id="date3" prefHeight="54.0" prefWidth="70.0" styleClass="date-box" text="Thứ 4&#10;22/05" />
+                           <Label fx:id="date3" prefHeight="54.0" prefWidth="103.0" styleClass="date-box" text="Thứ 4&#10;22/05" />
                            <VBox spacing="3">
                               <Label fx:id="time3" styleClass="info-label" text="13:30 - 15:15" />
                               <Label fx:id="mon3" styleClass="schedule-title" text="Cơ sở dữ liệu" />

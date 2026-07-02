@@ -9,6 +9,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.Config.AppSession;
 import org.example.Model.SinhVien;
 import org.example.Service.Admin.AdminStudentService;
+import org.example.Util.ApiEndpoint;
+import org.example.Util.ExcelImportUtil;
 import org.example.Util.SceneUtil;
 
 import java.time.LocalDate;
@@ -45,10 +47,13 @@ public class StudentManagementController {
     @FXML private TextField txtNamNhapHoc;
 
     @FXML private Button btnHomeAdmin;
+
     @FXML private Button btnMh;
     @FXML private Button btnLHP;
     @FXML private Button btnScore;
+    @FXML private Button importStudent;
     @FXML private Button btnLogout;
+    @FXML private Button btnAccount;
     @FXML private Button btnRegisteredClass;
 
     private ObservableList<SinhVien> studentList;
@@ -88,7 +93,7 @@ public class StudentManagementController {
         colLop.setCellValueFactory(
                 new PropertyValueFactory<>("lop"));
         colGioiTinh.setCellValueFactory(
-                new PropertyValueFactory<>("gioiTinh"));
+                new PropertyValueFactory<>("kieuGioiTinh"));
         colEmail.setCellValueFactory(
                 new PropertyValueFactory<>("email"));
         colNgaySinh.setCellValueFactory(
@@ -114,8 +119,6 @@ public class StudentManagementController {
 
             studentList = FXCollections.observableArrayList(list);
             tableStudent.setItems(studentList);
-
-            System.out.println("SIZE = " + list.size());
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -273,11 +276,10 @@ public class StudentManagementController {
         tableStudent.setItems(filtered);
     }
 
-
-
     @FXML
     private void refreshForm() {
         clearForm();
+        tableStudent.refresh();
         tableStudent.getSelectionModel().clearSelection();
     }
 
@@ -311,9 +313,20 @@ public class StudentManagementController {
         SceneUtil.switchScene(btnLHP, "/fxml/Admin/ClassManagement.fxml");
     }
 
+    @FXML public void showAccount() {SceneUtil.switchScene(btnAccount, "/fxml/Admin/AdminAcount.fxml");}
+
     @FXML
     public void showScore() {
         SceneUtil.switchScene(btnScore, "/fxml/Admin/ScoreManagement.fxml");
+    }
+    @FXML
+    private void handleImportStudent() {
+        ExcelImportUtil.handleImportExcel(
+                importStudent,
+                ApiEndpoint.ADMIN_STUDENT_IMPORT,
+                "danhSachSinhVien",
+                this::loadData
+        );
     }
 
     @FXML public void showRegisteredClass(){ SceneUtil.switchScene(btnRegisteredClass,"/fxml/Admin/RegisteredClass.fxml");}

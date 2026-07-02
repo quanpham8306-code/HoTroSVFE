@@ -3,6 +3,7 @@ package org.example.Service;
 import org.example.Api.ApiClient;
 import org.example.Api.ApiResponseHandler;
 import org.example.Config.AppSession;
+import org.example.Model.ChangePws;
 import org.example.Util.ApiEndpoint;
 
 import java.util.Map;
@@ -54,5 +55,17 @@ public class TaiKhoanService {
         }
 
         public String getRole() {return  role;}
+    }
+
+    public String changePws(String oldPws,  String newPws ) {
+        String response = apiClient.post(
+                ApiEndpoint.COMMON_CHANGE_PWS,
+                new ChangePws(oldPws,newPws)
+        );
+
+        if (ApiResponseHandler.isOk(response)) {
+            return "SUCCESS";
+        }
+        return ApiResponseHandler.getMessage(response);
     }
 }

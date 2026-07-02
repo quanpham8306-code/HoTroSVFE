@@ -14,7 +14,6 @@ public class AdminClassService {
 
     public List<LopHocPhan> getAll() {
         String response = apiClient.get(ApiEndpoint.ADMIN_CLASS);
-        System.out.println("RAW CLASS JSON = " + response);
 
         return ApiResponseHandler.readData(
                 response,

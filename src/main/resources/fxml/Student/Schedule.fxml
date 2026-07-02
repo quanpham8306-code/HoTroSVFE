@@ -40,6 +40,7 @@
                 <Button maxWidth="Infinity" styleClass="nav-active" text="  📅   Lịch học" />
                 <Button fx:id="btnSubject" maxWidth="Infinity" onAction="#showSubject" styleClass="nav-button" text="📚 Đăng ký môn" />
                 <Button fx:id="btnNote" maxWidth="Infinity" onAction="#showNote" styleClass="nav-button" text="  📄   Ghi chú" />
+            <Button fx:id="btnSupport" maxWidth="Infinity" onAction="#showSupport" styleClass="nav-button" text="🛠 Hỗ trợ" />
             </VBox>
 
             <Button fx:id="btnLogout" maxWidth="Infinity" onAction="#handleLogout" prefHeight="34.0" prefWidth="199.0" styleClass="logout-button" text="  ↪   Đăng xuất" />

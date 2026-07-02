@@ -50,6 +50,7 @@
                 <Button fx:id="btnScore" onAction="#showScore" styleClass="nav-button" text="📝 Điểm" />
 
                 <Button fx:id="btnRegisteredClass" onAction="#showRegisteredClass" styleClass="nav-button" text="📋 Lớp đã đăng ký" />
+            <Button fx:id="btnAccount" onAction="#showAccount" styleClass="nav-button" text="👤 Tài khoản" />
             </VBox>
 
             <Button fx:id="btnLogout" onAction="#handleLogout" prefHeight="42.0" prefWidth="391.0" styleClass="nav-active" text="↪ Đăng xuất" />
@@ -126,6 +127,9 @@
                         <TableColumn fx:id="colSoTinChi" prefWidth="180" text="Số tín chỉ" />
 
                     </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
 
                 </TableView>
 

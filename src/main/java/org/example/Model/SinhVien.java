@@ -133,4 +133,9 @@ public class SinhVien {
     public void setNamNhapHoc(int namNhapHoc) {
         this.namNhapHoc = namNhapHoc;
     }
+    public String getKieuGioiTinh()
+    {
+        return this.getGioiTinh()? "Nam":"Nữ";
+    }
+
 }

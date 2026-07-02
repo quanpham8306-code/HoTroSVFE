@@ -33,6 +33,7 @@ public class ScoreManagementController {
     @FXML private Button btnSV;
     @FXML private Button btnLHP;
     @FXML private Button btnMh;
+    @FXML private Button btnAccount;
     @FXML private Button btnLogout;
     @FXML private Button btnRegisteredClass;
 
@@ -234,6 +235,8 @@ public class ScoreManagementController {
     public void showSV() {
         SceneUtil.switchScene(btnSV, "/fxml/Admin/StudentManagement.fxml");
     }
+
+    @FXML public void showAccount() {SceneUtil.switchScene(btnAccount, "/fxml/Admin/AdminAcount.fxml");}
 
     @FXML
     public void showLHP() {

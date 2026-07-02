@@ -1,11 +1,16 @@
 package org.example.Service.Admin;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import org.example.Api.ApiClient;
 import org.example.Api.ApiResponseHandler;
 import org.example.Model.DangKyLopRequest;
 import org.example.Model.LopHocPhan;
+import org.example.Model.ResponeObject;
+import org.example.Model.SinhVien;
 import org.example.Util.ApiEndpoint;
+import org.example.Util.ExcelImportUtil;
 
 import java.util.List;
 
@@ -25,15 +30,17 @@ public class AdminRegisteredClassService {
         return list != null ? list : List.of();
     }
 
-    public boolean addStudentToClass(String maSv, String maLopHP) {
+    public String addStudentToClass(String maSv, String maLopHP) {
         String response = apiClient.post(
                 ApiEndpoint.ADMIN_ADD_STUDENT_TO_CLASS,
                 new DangKyLopRequest(maSv, maLopHP)
         );
 
-        System.out.println("ADD STUDENT CLASS RESPONSE = " + response);
+        if (ApiResponseHandler.isOk(response)) {
+            return "SUCCESS";
+        }
 
-        return ApiResponseHandler.isOk(response);
+        return ApiResponseHandler.getMessage(response);
     }
 
     public boolean removeStudentFromClass(String maSv, String maLopHP) {
@@ -43,5 +50,13 @@ public class AdminRegisteredClassService {
         );
 
         return ApiResponseHandler.isOk(response);
+    }
+    public void handleImportStudentToClass(Button button,String maLop, Runnable reloadAction) {
+        ExcelImportUtil.handleImportExcel(
+                button,
+                ApiEndpoint.ADMIN_STUDENT_TO_CLASS_IMPORT + maLop,
+                "danhSachSinhVienVaoLop",
+                reloadAction
+        );
     }
 }

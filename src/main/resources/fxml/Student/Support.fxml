@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="620" prefWidth="1000" styleClass="root" stylesheets="@../../css/base.css, @../../css/layout.css, @../../css/components.css, @../../css/note.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.Student.StudentSupportController">
+
+    <left>
+        <VBox maxWidth="240" minWidth="240" prefWidth="240" spacing="20" styleClass="sidebar">
+            <padding>
+                <Insets bottom="24" left="20" right="20" top="28" />
+            </padding>
+
+            <HBox alignment="CENTER_LEFT" spacing="12">
+                <Label styleClass="logo-icon" text="🎓" />
+                <VBox spacing="2">
+                    <Label styleClass="logo-title" text="Student Portal" />
+                    <Label styleClass="logo-subtitle" text="Hệ thống sinh viên" />
+                </VBox>
+            </HBox>
+
+            <Separator styleClass="sidebar-separator" />
+
+            <VBox maxHeight="1080.0" maxWidth="384.0" spacing="10" VBox.vgrow="ALWAYS">
+                <Button fx:id="btnHome" maxWidth="Infinity" onAction="#showHome" styleClass="nav-button" text="  👤   Thông tin cá nhân" />
+                <Button fx:id="btnScore" maxWidth="Infinity" onAction="#showScore" styleClass="nav-button" text="  📊   Kết quả học tập" />
+                <Button fx:id="btnSchedule" maxWidth="Infinity" onAction="#showSchedule" styleClass="nav-button" text="  📅   Lịch học" />
+                <Button fx:id="btnSubject" maxWidth="Infinity" onAction="#showSubject" styleClass="nav-button" text="📚 Đăng ký môn" />
+                <Button fx:id="btnNote" maxWidth="Infinity" onAction="#showNote" styleClass="nav-button" text="  📄   Ghi chú" />
+            <Button maxWidth="Infinity" styleClass="nav-active" text="🛠 Hỗ trợ" />
+            </VBox>
+
+            <Button fx:id="btnLogout" maxWidth="Infinity" onAction="#handleLogout" prefHeight="34.0" prefWidth="199.0" styleClass="logout-button" text="  ↪   Đăng xuất" />
+        </VBox>
+    </left>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="146.0" prefWidth="760.0" styleClass="note-header">
+               <children>
+                  <Label prefHeight="85.0" prefWidth="104.0" styleClass="page-title" text="Hỗ trợ" />
+                  <Label prefHeight="328.0" prefWidth="242.0" styleClass="page-subtitle" text="Quản lý tài khoản và các chức năng hỗ trợ" />
+               </children>
+            </VBox>
+            <VBox prefHeight="579.0" prefWidth="746.0" styleClass="note-editor">
+               <children>
+                  <VBox alignment="BOTTOM_LEFT" prefHeight="99.0" prefWidth="746.0" spacing="5">
+                     <children>
+                        <Label styleClass="section-title" text="🔒 Đổi mật khẩu" />
+                        <Label text="Thay đổi mật khẩu để bảo mật tài khoản của bạn." wrapText="true" />
+                        <Button fx:id="btnChangePws" alignment="CENTER" contentDisplay="CENTER" onAction="#handleChangePws" prefHeight="42.0" prefWidth="198.0" styleClass="primary-button" text="Đổi mật khẩu" />
+                     </children>
+                  </VBox>
+                  <Separator prefHeight="46.0" prefWidth="715.0" styleClass="sidebar-separator" />
+                  <VBox prefHeight="96.0" prefWidth="715.0" spacing="5" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

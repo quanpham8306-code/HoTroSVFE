@@ -22,6 +22,7 @@ public class StudentScheduleController {
     @FXML private Button btnLogout;
     @FXML private Button btnHome;
     @FXML private Button btnSubject;
+    @FXML private Button btnSupport;
     @FXML private Button btnNote;
 
     @FXML private Label lblThu2;
@@ -67,7 +68,10 @@ public class StudentScheduleController {
     public void showNote() {
         SceneUtil.switchScene(btnNote, "/fxml/Student/Note.fxml");
     }
-
+    @FXML
+    public void showSupport() {
+        SceneUtil.switchScene(btnSupport, "/fxml/Student/Support.fxml");
+    }
     @FXML
     public void handleLogout() {
         AppSession.clear();

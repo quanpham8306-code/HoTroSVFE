@@ -21,6 +21,7 @@ public class StudentHomeController {
     @FXML private Button btnSchedule;
     @FXML private Button btnSubject;
     @FXML private Button btnNote;
+    @FXML private Button btnSupport;
     @FXML private Button btnLogout;
 
     @FXML private Label lblHoTenHeader;
@@ -87,7 +88,10 @@ public class StudentHomeController {
     public void showNote() {
         SceneUtil.switchScene(btnNote, "/fxml/Student/Note.fxml");
     }
-
+    @FXML
+    public void showSupport() {
+        SceneUtil.switchScene(btnSupport, "/fxml/Student/Support.fxml");
+    }
     @FXML
     public void handleLogout() {
         AppSession.clear();
@@ -144,93 +148,82 @@ public class StudentHomeController {
             lblXepLoai.setText("Chưa có xếp hạng.");
         }
     }
-    private void loadSchedule()
-    {
+    private void loadSchedule() {
         List<BuoiHoc> buoiHocList = thoiKhoaBieuService.getNearSchedule();
 
-        if(buoiHocList.size() == 3)
-        {
-            LopHocPhan lopHocPhan1 = buoiHocList.get(1).getLopHocPhanDTO();
-            LopHocPhan lopHocPhan2 = buoiHocList.get(2).getLopHocPhanDTO();
-            LopHocPhan lopHocPhan3 = buoiHocList.get(3).getLopHocPhanDTO();
+        // Xóa hết trước
+        date1.setText("");
+        date2.setText("");
+        date3.setText("");
 
-            date1.setText(buoiHocList.get(1).getNgayHoc().toString());
-            date2.setText(buoiHocList.get(2).getNgayHoc().toString());
-            date3.setText(buoiHocList.get(3).getNgayHoc().toString());
+        time1.setText("");
+        time2.setText("");
+        time3.setText("");
 
-            time1.setText(lopHocPhan1.getGioBatDau() + "-" + lopHocPhan1.getGioKetThuc());
-            time2.setText(lopHocPhan2.getGioBatDau() + "-" + lopHocPhan2.getGioKetThuc());
-            time3.setText(lopHocPhan3.getGioBatDau() + "-" + lopHocPhan3.getGioKetThuc());
+        address1.setText("");
+        address2.setText("");
+        address3.setText("");
 
-            address1.setText(lopHocPhan1.getPhongHoc());
-            address2.setText(lopHocPhan2.getPhongHoc());
-            address3.setText(lopHocPhan3.getPhongHoc());
+        mon1.setText("");
+        mon2.setText("");
+        mon3.setText("");
 
-            mon1.setText(lopHocPhan1.getTenMonHoc());
-            mon2.setText(lopHocPhan2.getTenMonHoc());
-            mon3.setText(lopHocPhan3.getTenMonHoc());
-        }
-        else if(buoiHocList.size() == 2)
-        {
-            LopHocPhan lopHocPhan1 = buoiHocList.get(1).getLopHocPhanDTO();
-            LopHocPhan lopHocPhan2 = buoiHocList.get(2).getLopHocPhanDTO();
-
-            date1.setText(buoiHocList.get(1).getNgayHoc().toString());
-            date2.setText(buoiHocList.get(2).getNgayHoc().toString());
-            date3.setText("");
-
-            time1.setText(lopHocPhan1.getGioBatDau() + "-" + lopHocPhan1.getGioKetThuc());
-            time2.setText(lopHocPhan2.getGioBatDau() + "-" + lopHocPhan2.getGioKetThuc());
-            time3.setText("");
-
-            address1.setText(lopHocPhan1.getPhongHoc());
-            address2.setText(lopHocPhan2.getPhongHoc());
-            address3.setText("");
-
-            mon1.setText(lopHocPhan1.getTenMonHoc());
-            mon2.setText(lopHocPhan2.getTenMonHoc());
-            mon3.setText("");
-        }
-        if(buoiHocList.size() == 1)
-        {
-            LopHocPhan lopHocPhan1 = buoiHocList.get(1).getLopHocPhanDTO();
-
-            date1.setText(buoiHocList.get(1).getNgayHoc().toString());
-            date2.setText("");
-            date3.setText("");
-
-            time1.setText(lopHocPhan1.getGioBatDau() + "-" + lopHocPhan1.getGioKetThuc());
-            time2.setText("");
-            time3.setText("");
-
-            address1.setText(lopHocPhan1.getPhongHoc());
-            address2.setText("");
-            address3.setText("");
-
-            mon1.setText(lopHocPhan1.getTenMonHoc());
-            mon2.setText("");
-            mon3.setText("");
-        }
-        else
-        {
-            date1.setText("");
-            date2.setText("");
-            date3.setText("");
-
-            time1.setText("");
-            time2.setText("");
-            time3.setText("");
-
-            address1.setText("");
-            address2.setText("");
-            address3.setText("");
-
-            mon1.setText("");
-            mon2.setText("");
-            mon3.setText("");
+        if (buoiHocList == null || buoiHocList.isEmpty()) {
+            return;
         }
 
+        if (buoiHocList.size() >= 1) {
+            setScheduleItem(
+                    buoiHocList.get(0),
+                    date1,
+                    time1,
+                    address1,
+                    mon1
+            );
+        }
 
+        if (buoiHocList.size() >= 2) {
+            setScheduleItem(
+                    buoiHocList.get(1),
+                    date2,
+                    time2,
+                    address2,
+                    mon2
+            );
+        }
+
+        if (buoiHocList.size() >= 3) {
+            setScheduleItem(
+                    buoiHocList.get(2),
+                    date3,
+                    time3,
+                    address3,
+                    mon3
+            );
+        }
+    }
+    private void setScheduleItem(BuoiHoc buoiHoc,
+                                 Label date,
+                                 Label time,
+                                 Label address,
+                                 Label mon) {
+
+        if (buoiHoc == null || buoiHoc.getLopHocPhanDTO() == null) {
+            return;
+        }
+
+        LopHocPhan lopHocPhan = buoiHoc.getLopHocPhanDTO();
+
+        date.setText(buoiHoc.getNgayHoc() != null
+                ? buoiHoc.getNgayHoc().toString()
+                : "");
+
+        time.setText(
+                lopHocPhan.getGioBatDau() + " - " + lopHocPhan.getGioKetThuc()
+        );
+
+        address.setText(lopHocPhan.getPhongHoc());
+        mon.setText(lopHocPhan.getTenMonHoc());
     }
     private String valueOrEmpty(String value) {
         return value == null ? "" : value;

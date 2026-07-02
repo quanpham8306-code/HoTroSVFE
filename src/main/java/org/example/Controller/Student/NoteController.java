@@ -15,6 +15,7 @@ public class NoteController {
     @FXML private Button btnScore;
     @FXML private Button btnSchedule;
     @FXML private Button btnSubject;
+    @FXML private Button btnSupport;
     @FXML private Button btnLogout;
 
     @FXML private TextArea txtNote;
@@ -53,6 +54,11 @@ public class NoteController {
     @FXML
     public void showSubject() {
         SceneUtil.switchScene(btnSubject, "/fxml/Student/VitualSchedule.fxml");
+    }
+
+    @FXML
+    public void showSupport() {
+        SceneUtil.switchScene(btnSupport, "/fxml/Student/Support.fxml");
     }
 
     @FXML

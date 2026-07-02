@@ -46,6 +46,7 @@ public class StudentScoreController {
     @FXML private Button btnSchedule;
     @FXML private Button btnLogout;
     @FXML private Button btnSubject;
+    @FXML private Button btnSupport;
     @FXML private Button btnNote;
 
     @FXML private TableView<BangDiem> scoreTable;
@@ -76,7 +77,10 @@ public class StudentScoreController {
     public void showNote() {
         SceneUtil.switchScene(btnNote, "/fxml/Student/Note.fxml");
     }
-
+    @FXML
+    public void showSupport() {
+        SceneUtil.switchScene(btnSupport, "/fxml/Student/Support.fxml");
+    }
 
     @FXML
     public void handleLogout() {

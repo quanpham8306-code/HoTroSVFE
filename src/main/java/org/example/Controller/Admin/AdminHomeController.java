@@ -19,6 +19,7 @@ public class AdminHomeController {
     @FXML private Button btnScore;
     @FXML private Button btnLogout;
     @FXML private Button btnRegisteredClass;
+    @FXML private Button btnAccount;
 
     private final AdminHomeService service =
             new AdminHomeService();
@@ -60,6 +61,7 @@ public class AdminHomeController {
     public void showScore() {
         SceneUtil.switchScene(btnScore, "/fxml/Admin/ScoreManagement.fxml");
     }
+    @FXML public void showAccount() {SceneUtil.switchScene(btnScore, "/fxml/Admin/AdminAcount.fxml");}
     @FXML
     public void handleLogout() {
         AppSession.clear();

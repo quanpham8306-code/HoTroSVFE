@@ -46,6 +46,13 @@
     -fx-padding: 10 18;
     -fx-cursor: hand;
 }
+.import-btn{
+    -fx-background-color: #470cbf;
+    -fx-text-fill: white;
+    -fx-background-radius: 10;
+    -fx-padding: 10 18;
+    -fx-cursor: hand;
+}
 
 .primary-btn:hover{
     -fx-background-color: #1d4ed8;
