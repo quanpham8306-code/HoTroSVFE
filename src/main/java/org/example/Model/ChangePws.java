@@ -1,30 +1,30 @@
 package org.example.Model;
 
 public class ChangePws {
-    private String oldPws;
-    private String newPws;
+    private String oldPassword;
+    private String newPassword;
 
     public ChangePws() {
     }
 
-    public ChangePws(String oldPws, String newPws) {
-        this.oldPws = oldPws;
-        this.newPws = newPws;
+    public ChangePws(String oldPassword, String newPassword) {
+        this.oldPassword = oldPassword;
+        this.newPassword = newPassword;
     }
 
-    public String getOldPws() {
-        return oldPws;
+    public String getOldPassword() {
+        return oldPassword;
     }
 
-    public void setOldPws(String oldPws) {
-        this.oldPws = oldPws;
+    public void setOldPassword(String oldPassword) {
+        this.oldPassword = oldPassword;
     }
 
-    public String getNewPws() {
-        return newPws;
+    public String getNewPassword() {
+        return newPassword;
     }
 
-    public void setNewPws(String newPws) {
-        this.newPws = newPws;
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
     }
 }

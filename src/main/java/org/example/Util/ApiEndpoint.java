@@ -2,7 +2,7 @@ package org.example.Util;
 
 public class ApiEndpoint {
 
-    public static final String BASE_URL = "http://15.168.177.9:8080";
+    public static final String BASE_URL = "http://26.84.60.246:8080";
 
     // Auth
     public static final String LOGIN = "/api/auth/login";

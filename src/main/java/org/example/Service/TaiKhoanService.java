@@ -58,10 +58,11 @@ public class TaiKhoanService {
     }
 
     public String changePws(String oldPws,  String newPws ) {
-        String response = apiClient.post(
+        String response = apiClient.put(
                 ApiEndpoint.COMMON_CHANGE_PWS,
                 new ChangePws(oldPws,newPws)
         );
+        System.out.println(response);
 
         if (ApiResponseHandler.isOk(response)) {
             return "SUCCESS";
