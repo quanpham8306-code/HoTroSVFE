@@ -134,7 +134,7 @@
                             </VBox>
                         </VBox>
 
-                        <VBox minWidth="330" prefHeight="548.0" prefWidth="372.0" spacing="16">
+                        <VBox minWidth="380" prefHeight="548.0" prefWidth="420.0" HBox.hgrow="SOMETIMES">
                             <VBox spacing="12" styleClass="card chart-card">
                                 <Label styleClass="section-title-small" text="Biểu đồ GPA" />
                                 <LineChart fx:id="gpaChart" animated="false" createSymbols="true" legendVisible="false" prefHeight="130.0" prefWidth="372.0" styleClass="gpa-chart">

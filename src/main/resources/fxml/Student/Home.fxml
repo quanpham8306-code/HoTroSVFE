@@ -140,7 +140,7 @@
                   </VBox>
                </VBox>
 
-               <VBox maxWidth="380" minWidth="350" prefWidth="360" spacing="16">
+               <VBox minWidth="360" prefWidth="420" maxWidth="520" spacing="16" HBox.hgrow="SOMETIMES">
 
                   <VBox spacing="14" styleClass="card">
                      <HBox alignment="CENTER_LEFT">

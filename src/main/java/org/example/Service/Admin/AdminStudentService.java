@@ -79,12 +79,7 @@ public class AdminStudentService {
     }
 
     public boolean delete(String maSv) {
-
-        String response = apiClient.post(
-                ApiEndpoint.ADMIN_STUDENT_DELETE_BY_MASV + maSv,
-                null
-        );
-
+        apiClient.delete(ApiEndpoint.ADMIN_STUDENT_DELETE_BY_MASV + maSv);
         return true;
     }
 }
