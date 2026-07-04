@@ -111,33 +111,40 @@ public class ApiClient {
         }
     }
 
-//    public String delete(String endpoint) {
-//        try {
-//            HttpRequest request = HttpRequest.newBuilder()
-//                    .uri(URI.create(ApiEndpoint.BASE_URL + endpoint))
-//                    .header("Authorization", "Bearer " + AppSession.getToken())
-//                    .DELETE()
-//                    .build();
-//
-//            HttpResponse<String> response =
-//                    client.send(request, HttpResponse.BodyHandlers.ofString());
-//
-//            System.out.println("DELETE STATUS = " + response.statusCode());
-//            System.out.println("DELETE BODY = " + response.body());
-//
-//            return response.body();
-//
-//        } catch (Exception e) {
-//            throw new RuntimeException("DELETE API failed: " + endpoint, e);
-//        }
-//    }
-
     public String delete(String endpoint) {
         try {
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(ApiEndpoint.BASE_URL + endpoint))
                     .header("Authorization", "Bearer " + AppSession.getToken())
                     .DELETE()
+                    .build();
+
+            HttpResponse<String> response =
+                    client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            System.out.println("DELETE STATUS = " + response.statusCode());
+            System.out.println("DELETE BODY = " + response.body());
+
+            if (response.statusCode() < 200 || response.statusCode() >= 300) {
+                throw new RuntimeException("DELETE API failed: " + response.body());
+            }
+
+            return response.body();
+
+        } catch (Exception e) {
+            throw new RuntimeException("DELETE API failed: " + endpoint, e);
+        }
+    }
+
+    public String delete(String endpoint, Object body) {
+        try {
+            String json = objectMapper.writeValueAsString(body);
+            System.out.println(json);
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(ApiEndpoint.BASE_URL + endpoint))
+                    .header("Content-Type", "application/json")
+                    .header("Authorization", "Bearer " + AppSession.getToken())
+                    .method("DELETE", HttpRequest.BodyPublishers.ofString(json))
                     .build();
 
             HttpResponse<String> response =

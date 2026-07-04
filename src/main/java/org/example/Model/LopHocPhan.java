@@ -2,6 +2,8 @@ package org.example.Model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -166,5 +168,15 @@ public class LopHocPhan {
 
     public void setKhoa(String khoa) {
         this.khoa = khoa;
+    }
+
+    public String getKhoangNgayHoc() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return ngayBatDau.format(formatter) + " - " + ngayKetThuc.format(formatter);
+    }
+
+    public String getKhoangThoiGian() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        return gioBatDau.format(formatter) + " - " + gioKetThuc.format(formatter);
     }
 }

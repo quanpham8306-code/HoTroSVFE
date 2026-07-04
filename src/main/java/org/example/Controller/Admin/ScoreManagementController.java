@@ -177,7 +177,6 @@ public class ScoreManagementController {
             refreshForm();
         }
     }
-
     @FXML
     private void deleteScore() {
 

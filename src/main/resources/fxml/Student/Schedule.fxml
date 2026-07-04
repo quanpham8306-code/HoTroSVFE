@@ -82,8 +82,8 @@
                 <GridPane fx:id="scheduleGrid" styleClass="schedule-grid">
 
                     <columnConstraints>
-                        <ColumnConstraints percentWidth="7.0" />
-                        <ColumnConstraints percentWidth="12.399999999999999" />
+                        <ColumnConstraints percentWidth="10.0" />
+                        <ColumnConstraints percentWidth="9.399999999999999" />
                         <ColumnConstraints percentWidth="13.4" />
                         <ColumnConstraints percentWidth="13.4" />
                         <ColumnConstraints percentWidth="13.4" />

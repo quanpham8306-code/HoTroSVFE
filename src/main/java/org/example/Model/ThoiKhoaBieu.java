@@ -4,31 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ThoiKhoaBieu {
-    private String loaiLich;
 
     private int ky;
-
+    private int namHoc;
     private List<LopHocPhan> lopHocPhanDTOList = new ArrayList<>();
 
     public ThoiKhoaBieu() {
     }
 
-    public ThoiKhoaBieu(String loaiLich) {
-        this.loaiLich = loaiLich;
-    }
-
-    public ThoiKhoaBieu(String loaiLich, int ky, List<LopHocPhan> lopHocPhanList) {
-        this.loaiLich = loaiLich;
+    public ThoiKhoaBieu(int ky, int namHoc, List<LopHocPhan> lopHocPhanDTOList) {
         this.ky = ky;
-        this.lopHocPhanDTOList = lopHocPhanList;
-    }
-
-    public String getLoaiLich() {
-        return loaiLich;
-    }
-
-    public void setLoaiLich(String loaiLich) {
-        this.loaiLich = loaiLich;
+        this.namHoc = namHoc;
+        this.lopHocPhanDTOList = lopHocPhanDTOList;
     }
 
     public int getKy() {
@@ -39,11 +26,19 @@ public class ThoiKhoaBieu {
         this.ky = ky;
     }
 
-    public List<LopHocPhan> getLopHocPhanList() {
+    public int getNamHoc() {
+        return namHoc;
+    }
+
+    public void setNamHoc(int namHoc) {
+        this.namHoc = namHoc;
+    }
+
+    public List<LopHocPhan> getLopHocPhanDTOList() {
         return lopHocPhanDTOList;
     }
 
-    public void setLopHocPhanDTOList(List<LopHocPhan> lopHocPhanList) {
-        this.lopHocPhanDTOList = lopHocPhanList;
+    public void setLopHocPhanDTOList(List<LopHocPhan> lopHocPhanDTOList) {
+        this.lopHocPhanDTOList = lopHocPhanDTOList;
     }
 }

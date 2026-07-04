@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
@@ -128,6 +129,7 @@
                </rowConstraints>
 
                 </GridPane>
+            <Separator prefWidth="200.0" />
 
                 <!-- BUTTON -->
                 <HBox spacing="15">
@@ -138,7 +140,10 @@
 
                     <Button onAction="#deleteScore" styleClass="delete-btn" text="Xóa" />
 
-                    <Button onAction="#refreshForm" text="Làm mới" />
+                    <Button onAction="#refreshForm" styleClass="primary-btn" text="Làm mới" />
+               <Region prefHeight="36.0" prefWidth="329.0" />
+               <TextField prefHeight="42.0" prefWidth="238.0" />
+               <Button mnemonicParsing="false" styleClass="primary-btn" text="Button" />
                 </HBox>
 
                 <Separator />

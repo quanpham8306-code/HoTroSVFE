@@ -3,10 +3,7 @@ package org.example.Service.Student;
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.example.Api.ApiClient;
 import org.example.Api.ApiResponseHandler;
-import org.example.Model.HocKy;
-import org.example.Model.LopHocPhan;
-import org.example.Model.Note;
-import org.example.Model.ResponeObject;
+import org.example.Model.*;
 import org.example.Util.ApiEndpoint;
 
 import java.util.List;
@@ -14,33 +11,48 @@ import java.util.List;
 public class LichAoService {
     private final ApiClient apiClient = new ApiClient();
 
-    public ResponeObject checkThemLop(List<String> maLopHocPhanList, String newMaLopHocPhan) {
-        CheckLichAoRequest request = new CheckLichAoRequest(
-                maLopHocPhanList,
-                newMaLopHocPhan
-        );
+    public boolean isTrungLich(LopHocPhan lopCu, LopHocPhan lopMoi) {
+        if (lopCu.getThu() != lopMoi.getThu()) {
+            return false;
+        }
 
-        String response = apiClient.post(
-                ApiEndpoint.STUDENT_VIRTUAL_SCHEDULE_CHECK,
-                request
-        );
-        return ApiResponseHandler.readData(response, ResponeObject.class);
+        boolean trungNgay = !lopMoi.getNgayKetThuc().isBefore(lopCu.getNgayBatDau())
+                && !lopMoi.getNgayBatDau().isAfter(lopCu.getNgayKetThuc());
+
+        if (!trungNgay) {
+            return false;
+        }
+
+        boolean trungGio = lopMoi.getGioBatDau().isBefore(lopCu.getGioKetThuc())
+                && lopMoi.getGioKetThuc().isAfter(lopCu.getGioBatDau());
+
+        return trungGio;
     }
 
-    private static class CheckLichAoRequest {
-        private List<String> selectedLopMaLops;
-        private String newLopMaLop;
-
-        public CheckLichAoRequest(List<String> selectedLopMaLops, String newLopMaLop) {
-            this.selectedLopMaLops = selectedLopMaLops;
-            this.newLopMaLop = newLopMaLop;
+    public LopHocPhan timLopBiTrung(List<LopHocPhan> danhSachDaChon, LopHocPhan lopMoi) {
+        for (LopHocPhan lopDaChon : danhSachDaChon) {
+            if (isTrungLich(lopDaChon, lopMoi)) {
+                return lopDaChon;
+            }
         }
-
-        public List<String> getSelectedLopMaLops() {
-            return selectedLopMaLops;
+        return null;
+    }
+    public LichAo getLichAo(){
+        String response = apiClient.get(ApiEndpoint.STUDENT_GET_VIRTUAL_SCHEDULE);
+        if (!ApiResponseHandler.isOk(response)) {
+            return null;
         }
-        public String getNewLopMaLop() {
-            return newLopMaLop;
+        return ApiResponseHandler.readData(response, LichAo.class);
+    }
+    public String save(LichAo lichAo){
+        String response = apiClient.post(
+                ApiEndpoint.STUDENT_UPSERT_VIRTUAL_SCHEDULE,
+                lichAo
+        );
+        if (!ApiResponseHandler.isOk(response)) {
+            return "SUCCESS";
         }
+        else
+            return ApiResponseHandler.getMessage(response);
     }
 }

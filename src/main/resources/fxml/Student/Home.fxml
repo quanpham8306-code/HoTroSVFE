@@ -60,7 +60,7 @@
 
             <HBox alignment="TOP_LEFT" spacing="20" VBox.vgrow="ALWAYS">
 
-               <VBox minWidth="680" prefWidth="760" spacing="14" HBox.hgrow="ALWAYS">
+               <VBox minWidth="598.0" prefHeight="731.0" prefWidth="598.0" spacing="14" HBox.hgrow="ALWAYS">
 
                   <HBox alignment="CENTER_LEFT" minHeight="165" prefHeight="165" spacing="28" styleClass="card profile-card">
                      <StackPane prefHeight="120" prefWidth="120">
@@ -140,11 +140,11 @@
                   </VBox>
                </VBox>
 
-               <VBox minWidth="360" prefWidth="420" maxWidth="520" spacing="16" HBox.hgrow="SOMETIMES">
+               <VBox maxWidth="520" minWidth="360" prefWidth="420" spacing="16" HBox.hgrow="SOMETIMES">
 
-                  <VBox spacing="14" styleClass="card">
+                  <VBox prefHeight="645.0" prefWidth="379.0" spacing="14" styleClass="card">
                      <HBox alignment="CENTER_LEFT">
-                        <VBox spacing="16" styleClass="card">
+                        <VBox prefHeight="290.0" prefWidth="370.0" spacing="16" styleClass="card">
                            <Label styleClass="section-title" text="🎓  Tổng quan học tập" />
                            <GridPane hgap="14" vgap="14">
                               <columnConstraints>
@@ -173,16 +173,21 @@
                               </rowConstraints>
                            </GridPane>
                         </VBox>
-                        <Label maxWidth="Infinity" styleClass="section-title" text="📅  Lịch học sắp tới" HBox.hgrow="ALWAYS" />
-                        <Button mnemonicParsing="false" onAction="#showSchedule" text="Xem tất cả">
-                           <styleClass>
-                              <String fx:value="link-text" />
-                              <String fx:value="nav-button" />
-                           </styleClass></Button>
                      </HBox>
                      <VBox spacing="10">
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label maxWidth="Infinity" styleClass="section-title" text="📅  Lịch học sắp tới" HBox.hgrow="ALWAYS" />
+                              <Button mnemonicParsing="false" onAction="#showSchedule" text="Xem tất cả">
+                                 <styleClass>
+                                    <String fx:value="link-text" />
+                                    <String fx:value="nav-button" />
+                                 </styleClass>
+                              </Button>
+                           </children>
+                        </HBox>
                         <HBox alignment="CENTER_LEFT" spacing="18" styleClass="schedule-row">
-                           <Label fx:id="date1" prefHeight="54.0" prefWidth="122.0" styleClass="date-box" text="Thứ 3&#10;21/05" />
+                           <Label fx:id="date1" prefHeight="54.0" prefWidth="110.0" styleClass="date-box" text="Thứ 3&#10;21/05" />
                            <VBox spacing="3">
                               <Label fx:id="time1" styleClass="info-label" text="07:30 - 09:15" />
                               <Label fx:id="mon1" prefHeight="19.0" prefWidth="190.0" styleClass="schedule-title" text="Cấu trúc dữ liệu và giải thuật" />
@@ -190,7 +195,7 @@
                            </VBox>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" spacing="18" styleClass="schedule-row">
-                           <Label fx:id="date2" prefHeight="54.0" prefWidth="99.0" styleClass="date-box" text="Thứ 3&#10;21/05" />
+                           <Label fx:id="date2" prefHeight="54.0" prefWidth="110.0" styleClass="date-box" text="Thứ 3&#10;21/05" />
                            <VBox spacing="3">
                               <Label fx:id="time2" styleClass="info-label" text="09:30 - 11:15" />
                               <Label fx:id="mon2" styleClass="schedule-title" text="Lập trình hướng đối tượng" />

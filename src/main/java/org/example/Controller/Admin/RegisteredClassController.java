@@ -36,7 +36,6 @@ public class RegisteredClassController {
 
     private final AdminRegisteredClassService service =
             new AdminRegisteredClassService();
-    AlertUtil alertUtil = new AlertUtil();
 
     @FXML
     public void initialize() {
@@ -62,7 +61,7 @@ public class RegisteredClassController {
         String maSv = txtMaSv.getText();
 
         if (maSv == null || maSv.isBlank()) {
-            alertUtil.showAlert("Vui lòng nhập mã sinh viên");
+            AlertUtil.showAlert("Vui lòng nhập mã sinh viên");
             return;
         }
 
@@ -80,16 +79,16 @@ public class RegisteredClassController {
 
         if (maSv == null || maSv.isBlank()
                 || maLopHP == null || maLopHP.isBlank()) {
-            alertUtil.showAlert("Vui lòng nhập mã sinh viên và mã lớp học phần");
+            AlertUtil.showAlert("Vui lòng nhập mã sinh viên và mã lớp học phần");
             return;
         }
         String respone = service.addStudentToClass(maSv.trim(), maLopHP.trim());
         if (respone.equals("SUCCESS")) {
-            alertUtil.showAlert("Thêm sinh viên vào lớp thành công");
+            AlertUtil.showAlert("Thêm sinh viên vào lớp thành công");
             searchByStudent();
         }
         else {
-            alertUtil.showAlert("Thêm thất bại : " + respone);
+            AlertUtil.showAlert("Thêm thất bại : " + respone);
         }
     }
 
@@ -100,7 +99,7 @@ public class RegisteredClassController {
 
         if (maSv == null || maSv.isBlank()
                 || maLopHP == null || maLopHP.isBlank()) {
-            alertUtil.showAlert("Vui lòng nhập mã sinh viên và mã lớp học phần");
+            AlertUtil.showAlert("Vui lòng nhập mã sinh viên và mã lớp học phần");
             return;
         }
 
@@ -110,10 +109,10 @@ public class RegisteredClassController {
 
         if (confirm.showAndWait().orElse(ButtonType.CANCEL) == ButtonType.OK) {
             if (service.removeStudentFromClass(maSv.trim(), maLopHP.trim())) {
-                alertUtil.showAlert("Xóa sinh viên khỏi lớp thành công");
+                AlertUtil.showAlert("Xóa sinh viên khỏi lớp thành công");
                 searchByStudent();
             } else {
-                alertUtil.showAlert("Xóa thất bại");
+                AlertUtil.showAlert("Xóa thất bại");
             }
         }
     }

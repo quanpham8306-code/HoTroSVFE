@@ -39,4 +39,9 @@ public class MonHoc {
     public void setSoTinChi(int soTinChi) {
         this.soTinChi = soTinChi;
     }
+
+    @Override
+    public String toString() {
+        return tenMonHoc;
+    }
 }

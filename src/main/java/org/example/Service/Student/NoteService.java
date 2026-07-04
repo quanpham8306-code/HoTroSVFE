@@ -20,7 +20,9 @@ public class NoteService {
         return ApiResponseHandler.readData(response, new TypeReference<List<Note>>() {});
     }
     public void deleteNote(Note note){
-        String response = apiClient.get(ApiEndpoint.STUDENT_NOTE_DELETE);
+        String response = apiClient.delete(
+                ApiEndpoint.STUDENT_NOTE_DELETE,
+                note);
     }
     public void saveNote(Note note){
         String response = apiClient.get(ApiEndpoint.STUDENT_NOTE_POST);

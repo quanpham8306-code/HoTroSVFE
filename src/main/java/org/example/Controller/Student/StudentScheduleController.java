@@ -129,7 +129,7 @@ public class StudentScheduleController {
     private void loadScheduleToGrid(ThoiKhoaBieu thoiKhoaBieu) {
         clearOldSchedule();
 
-        for (LopHocPhan lich : thoiKhoaBieu.getLopHocPhanList()) {
+        for (LopHocPhan lich : thoiKhoaBieu.getLopHocPhanDTOList()) {
             int col = getColumnByThu(lich.getThu());
             int row = getRowByTime(lich.getGioBatDau());
 

@@ -14,6 +14,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -134,25 +135,30 @@
                             </VBox>
                         </VBox>
 
-                        <VBox minWidth="380" prefHeight="548.0" prefWidth="420.0" HBox.hgrow="SOMETIMES">
+                        <VBox minWidth="380" prefHeight="410.0" prefWidth="535.0" HBox.hgrow="SOMETIMES">
                             <VBox spacing="12" styleClass="card chart-card">
                                 <Label styleClass="section-title-small" text="Biểu đồ GPA" />
-                                <LineChart fx:id="gpaChart" animated="false" createSymbols="true" legendVisible="false" prefHeight="130.0" prefWidth="372.0" styleClass="gpa-chart">
-                                    <xAxis>
-                                        <CategoryAxis side="BOTTOM" tickLabelRotation="0" />
-                                    </xAxis>
-                                    <yAxis>
-                                        <NumberAxis autoRanging="false" lowerBound="0" side="LEFT" tickUnit="1" upperBound="4" />
-                                    </yAxis>
-                                </LineChart>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                                      <LineChart fx:id="gpaChart" animated="false" createSymbols="true" legendVisible="false" prefHeight="150.0" prefWidth="438.0" styleClass="gpa-chart">
+                                          <xAxis>
+                                              <CategoryAxis side="BOTTOM" tickLabelRotation="0" />
+                                          </xAxis>
+                                          <yAxis>
+                                              <NumberAxis autoRanging="false" lowerBound="0" side="LEFT" tickUnit="1" upperBound="4" />
+                                          </yAxis>
+                                      </LineChart>
+                              <Region prefHeight="200.0" prefWidth="200.0" />
+                           </children>
+                        </HBox>
                             </VBox>
 
                             <VBox prefHeight="185.0" prefWidth="338.0" spacing="12" styleClass="card chart-card" VBox.vgrow="ALWAYS">
                                 <Label styleClass="section-title-small" text="Thống kê kết quả" />
                                 <HBox alignment="CENTER_LEFT" spacing="12">
                                     <PieChart fx:id="resultPieChart" animated="false" labelsVisible="false" legendVisible="false" prefHeight="150.0" prefWidth="160.0" />
-                                    <VBox prefHeight="151.0" prefWidth="166.0" spacing="10" HBox.hgrow="ALWAYS">
-                                        <Label prefHeight="15.0" prefWidth="158.0" styleClass="legend-green" text="●  A (8.5 - 10)" />
+                                    <VBox prefHeight="151.0" prefWidth="104.0" spacing="10" HBox.hgrow="ALWAYS">
+                                        <Label prefHeight="15.0" prefWidth="106.0" styleClass="legend-green" text="●  A (8.5 - 10)" />
                                         <Label styleClass="legend-blue" text="●  B (7.0 - 8.4)" />
                                         <Label styleClass="legend-yellow" text="●  C (5.2 - 6.9)" />
                                         <Label styleClass="legend-purple" text="●  D (4.0 - 5.1)" />

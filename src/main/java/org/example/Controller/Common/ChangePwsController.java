@@ -18,8 +18,6 @@ public class ChangePwsController {
 
     @FXML private Button btnCancel;
 
-    AlertUtil alertUtil = new AlertUtil();
-
     @FXML
     public void cancel() {
         Stage stage = (Stage) btnCancel.getScene().getWindow();
@@ -32,19 +30,19 @@ public class ChangePwsController {
         String confirmPass = confirmPassword.getText().trim();
 
         if (oldPass.isEmpty() || newPass.isEmpty() || confirmPass.isEmpty()) {
-            alertUtil.showError("Vui lòng nhập đầy đủ thông tin.");
+            AlertUtil.showError("Vui lòng nhập đầy đủ thông tin.");
             return;
         }
         if (!newPassword.getText().equals(confirmPassword.getText())) {
-            alertUtil.showError("Mật khẩu xác nhận không khớp.");
+            AlertUtil.showError("Mật khẩu xác nhận không khớp.");
             return;
         }
         String respone = taiKhoanService.changePws(oldPass, newPass);
         if (respone.equals("SUCCESS")) {
-            alertUtil.showAlert("Đổi mật khẩu thành công");
+            AlertUtil.showAlert("Đổi mật khẩu thành công");
         }
         else {
-            alertUtil.showAlert("Đổi mật khẩu thất bại : " + respone);
+            AlertUtil.showAlert("Đổi mật khẩu thất bại : " + respone);
         }
     }
 }

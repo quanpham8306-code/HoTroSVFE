@@ -12,8 +12,8 @@ public class LopHocPhanService {
 
     private final ApiClient apiClient = new ApiClient();
 
-    public List<LopHocPhan> getPickedClass(String khoa, String mon) {
-        String url = ApiEndpoint.STUDENT_PICKED_CLASS + khoa+"/"+mon;
+    public List<LopHocPhan> getPickedClass(String khoa, String maMon) {
+        String url = ApiEndpoint.STUDENT_PICKED_CLASS + khoa+"/"+maMon;
         System.out.println(url);
         String response = apiClient.get(url);
         if (!ApiResponseHandler.isOk(response)) {
