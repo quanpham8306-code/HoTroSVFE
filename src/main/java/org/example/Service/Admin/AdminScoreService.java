@@ -6,6 +6,7 @@ import org.example.Model.Diem;
 import org.example.Util.ApiEndpoint;
 import org.example.Util.UrlUtil;
 
+import java.io.File;
 import java.util.List;
 
 public class AdminScoreService {
@@ -25,7 +26,7 @@ public class AdminScoreService {
 
         String response =
                 apiClient.post(
-                        ApiEndpoint.ADMIN_SCORE
+                        ApiEndpoint.ADMIN_SCORE +"/"
                         + diem.getMaSv()
                                 + "/"
                                 + diem.getMaLopHP(),

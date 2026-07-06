@@ -95,9 +95,18 @@ public class NoteController {
             return;
         }
 
+
+        System.out.println("DELETE SELECTED:");
+        System.out.println("title = " + selected.getTitle());
+        System.out.println("tag = " + selected.getTag());
+        System.out.println("note = " + selected.getNote());
+        System.out.println("date = " + selected.getDate());
+
         noteService.deleteNote(selected);
+
         clearNote();
         loadTable();
+
     }
     @FXML
     public void saveNote() {

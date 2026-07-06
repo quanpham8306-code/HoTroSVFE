@@ -156,7 +156,12 @@
                             <VBox prefHeight="185.0" prefWidth="338.0" spacing="12" styleClass="card chart-card" VBox.vgrow="ALWAYS">
                                 <Label styleClass="section-title-small" text="Thống kê kết quả" />
                                 <HBox alignment="CENTER_LEFT" spacing="12">
-                                    <PieChart fx:id="resultPieChart" animated="false" labelsVisible="false" legendVisible="false" prefHeight="150.0" prefWidth="160.0" />
+                                    <PieChart fx:id="resultPieChart" animated="false" labelsVisible="false"
+                                              legendVisible="false"
+                                              minHeight="160"
+                                              minWidth="160"
+                                              prefHeight="160"
+                                              prefWidth="160" />
                                     <VBox prefHeight="151.0" prefWidth="104.0" spacing="10" HBox.hgrow="ALWAYS">
                                         <Label prefHeight="15.0" prefWidth="106.0" styleClass="legend-green" text="●  A (8.5 - 10)" />
                                         <Label styleClass="legend-blue" text="●  B (7.0 - 8.4)" />

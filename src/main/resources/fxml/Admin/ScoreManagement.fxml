@@ -141,9 +141,25 @@
                     <Button onAction="#deleteScore" styleClass="delete-btn" text="Xóa" />
 
                     <Button onAction="#refreshForm" styleClass="primary-btn" text="Làm mới" />
-               <Region prefHeight="36.0" prefWidth="329.0" />
-               <TextField prefHeight="42.0" prefWidth="238.0" />
-               <Button mnemonicParsing="false" styleClass="primary-btn" text="Button" />
+                    <Region HBox.hgrow="ALWAYS" />
+
+                    <TextField fx:id="txtSearchMaSv"
+                               prefHeight="42.0"
+                               prefWidth="180.0"
+                               promptText="Tìm mã SV" />
+
+                    <TextField fx:id="txtSearchMaLopHP"
+                               prefHeight="42.0"
+                               prefWidth="200.0"
+                               promptText="Tìm mã lớp HP" />
+
+                    <Button onAction="#searchScore"
+                            styleClass="primary-btn"
+                            text="Tìm kiếm" />
+
+                    <Button fx:id="btnImportExcel" onAction="#importExcel"
+                            styleClass="primary-btn"
+                            text="Import Excel" />
                 </HBox>
 
                 <Separator />

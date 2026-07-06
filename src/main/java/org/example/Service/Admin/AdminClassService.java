@@ -39,7 +39,7 @@ public class AdminClassService {
     public boolean delete(String maLop) {
         String response = apiClient.delete(
                 UrlUtil.build(
-                        ApiEndpoint.ADMIN_CLASS_BY_MALOP + maLop
+                        ApiEndpoint.ADMIN_CLASS_DELETE_BY_MALOP + maLop
                         )
                 );
         return ApiResponseHandler.isOk(response);

@@ -152,6 +152,7 @@ public class ClassManagementController {
                         service.getAll());
 
         tableClass.setItems(classList);
+        tableClass.refresh();
     }
 
     @FXML

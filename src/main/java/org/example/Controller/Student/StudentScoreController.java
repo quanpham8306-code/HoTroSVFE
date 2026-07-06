@@ -188,36 +188,36 @@ public class StudentScoreController {
         gpaChart.getData().add(series);
     }
 
-    private void drawPieChart(List<BangDiem> scores) {
-        if (resultPieChart == null) return;
-
-        Map<String, Long> countByGrade = scores.stream()
-                .collect(Collectors.groupingBy(
-                        score -> score.getDiemChu() == null ? "Chưa có" : score.getDiemChu(),
-                        Collectors.counting()
-                ));
-
-        resultPieChart.setData(FXCollections.observableArrayList(
-                countByGrade.entrySet().stream()
-                        .map(entry -> new PieChart.Data(entry.getKey(), entry.getValue()))
-                        .toList()
-        ));
-
-        Map<String, Integer> gradeCount = countGradeLetters(scores);
-
-        int soDiemA = gradeCount.get("A");
-        int soDiemB = gradeCount.get("B");
-        int soDiemC = gradeCount.get("C");
-        int soDiemD = gradeCount.get("D");
-        int soDiemF = gradeCount.get("F");
-
-        lblA.setText(String.format(""+soDiemA));
-        lblB.setText(String.format(""+soDiemB));
-        lblC.setText(String.format(""+soDiemC));
-        lblD.setText(String.format(""+soDiemD));
-        lblF.setText(String.format(""+soDiemF));
-
-    }
+//    private void drawPieChart(List<BangDiem> scores) {
+//        if (resultPieChart == null) return;
+//
+//        Map<String, Long> countByGrade = scores.stream()
+//                .collect(Collectors.groupingBy(
+//                        score -> score.getDiemChu() == null ? "Chưa có" : score.getDiemChu(),
+//                        Collectors.counting()
+//                ));
+//
+//        resultPieChart.setData(FXCollections.observableArrayList(
+//                countByGrade.entrySet().stream()
+//                        .map(entry -> new PieChart.Data(entry.getKey(), entry.getValue()))
+//                        .toList()
+//        ));
+//
+//        Map<String, Integer> gradeCount = countGradeLetters(scores);
+//
+//        int soDiemA = gradeCount.get("A");
+//        int soDiemB = gradeCount.get("B");
+//        int soDiemC = gradeCount.get("C");
+//        int soDiemD = gradeCount.get("D");
+//        int soDiemF = gradeCount.get("F");
+//
+//        lblA.setText(String.format(""+soDiemA));
+//        lblB.setText(String.format(""+soDiemB));
+//        lblC.setText(String.format(""+soDiemC));
+//        lblD.setText(String.format(""+soDiemD));
+//        lblF.setText(String.format(""+soDiemF));
+//
+//    }
     private void setupTable() {
         colMaMonHoc.setCellValueFactory(new PropertyValueFactory<>("maMon"));
         colTenMonHoc.setCellValueFactory(new PropertyValueFactory<>("tenMon"));
@@ -226,28 +226,86 @@ public class StudentScoreController {
         colDiemChu.setCellValueFactory(new PropertyValueFactory<>("diemChu"));
         colTrangThai.setCellValueFactory(new PropertyValueFactory<>("trangThai"));
     }
-    private Map<String, Integer> countGradeLetters(List<BangDiem> scores) {
-        Map<String, Integer> result = new HashMap<>();
+private void drawPieChart(List<BangDiem> scores) {
+    if (resultPieChart == null) return;
 
-        result.put("A", 0);
-        result.put("B", 0);
-        result.put("C", 0);
-        result.put("D", 0);
-        result.put("F", 0);
+    Map<String, Integer> gradeCount = countGradeLetters(scores);
 
-        for (BangDiem score : scores) {
-            String diemChu = score.getDiemChu();
+    int soDiemA = gradeCount.get("A");
+    int soDiemB = gradeCount.get("B");
+    int soDiemC = gradeCount.get("C");
+    int soDiemD = gradeCount.get("D");
+    int soDiemF = gradeCount.get("F");
 
-            if (diemChu != null) {
-                diemChu = diemChu.toUpperCase();
+    ObservableList<PieChart.Data> pieData = FXCollections.observableArrayList();
 
-                if (result.containsKey(diemChu)) {
-                    result.put(diemChu, result.get(diemChu) + 1);
-                }
-            }
+    if (soDiemA > 0) pieData.add(new PieChart.Data("A", soDiemA));
+    if (soDiemB > 0) pieData.add(new PieChart.Data("B", soDiemB));
+    if (soDiemC > 0) pieData.add(new PieChart.Data("C", soDiemC));
+    if (soDiemD > 0) pieData.add(new PieChart.Data("D", soDiemD));
+    if (soDiemF > 0) pieData.add(new PieChart.Data("F", soDiemF));
+
+    resultPieChart.setData(pieData);
+
+    lblA.setText(soDiemA + " môn");
+    lblB.setText(soDiemB + " môn");
+    lblC.setText(soDiemC + " môn");
+    lblD.setText(soDiemD + " môn");
+    lblF.setText(soDiemF + " môn");
+}
+//    private Map<String, Integer> countGradeLetters(List<BangDiem> scores) {
+//        Map<String, Integer> result = new HashMap<>();
+//
+//        result.put("A", 0);
+//        result.put("B", 0);
+//        result.put("C", 0);
+//        result.put("D", 0);
+//        result.put("F", 0);
+//
+//        for (BangDiem score : scores) {
+//            String diemChu = score.getDiemChu();
+//
+//            if (diemChu != null) {
+//                diemChu = diemChu.toUpperCase();
+//
+//                if (result.containsKey(diemChu)) {
+//                    result.put(diemChu, result.get(diemChu) + 1);
+//                }
+//            }
+//        }
+//        return result;
+//    }
+private Map<String, Integer> countGradeLetters(List<BangDiem> scores) {
+    Map<String, Integer> result = new HashMap<>();
+
+    result.put("A", 0);
+    result.put("B", 0);
+    result.put("C", 0);
+    result.put("D", 0);
+    result.put("F", 0);
+
+    for (BangDiem score : scores) {
+        String diemChu = score.getDiemChu();
+
+        if (diemChu == null) continue;
+
+        diemChu = diemChu.trim().toUpperCase();
+
+        if (diemChu.startsWith("A")) {
+            result.put("A", result.get("A") + 1);
+        } else if (diemChu.startsWith("B")) {
+            result.put("B", result.get("B") + 1);
+        } else if (diemChu.startsWith("C")) {
+            result.put("C", result.get("C") + 1);
+        } else if (diemChu.startsWith("D")) {
+            result.put("D", result.get("D") + 1);
+        } else if (diemChu.startsWith("F")) {
+            result.put("F", result.get("F") + 1);
         }
-        return result;
     }
+
+    return result;
+}
     private void loadHocKy(){
         try {
             List<HocKy> hocKyList = diemService.getMyHocKy();

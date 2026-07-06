@@ -2,12 +2,15 @@ package org.example.Controller.Admin;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.Config.AppSession;
 import org.example.Model.Diem;
 import org.example.Service.Admin.AdminScoreService;
+import org.example.Util.ApiEndpoint;
+import org.example.Util.ExcelImportUtil;
 import org.example.Util.SceneUtil;
 
 import java.io.IOException;
@@ -21,6 +24,8 @@ public class ScoreManagementController {
     @FXML private TextField txtCK;
     @FXML private TextField txtHP;
     @FXML private TextField txtTrangThai;
+    @FXML private TextField txtSearchMaSv;
+    @FXML private TextField txtSearchMaLopHP;
 
     @FXML private TableView<Diem> tableScore;
     @FXML private TableColumn<Diem,String> colMon;
@@ -38,6 +43,7 @@ public class ScoreManagementController {
     @FXML private Button btnAccount;
     @FXML private Button btnLogout;
     @FXML private Button btnRegisteredClass;
+    @FXML private Button btnImportExcel;
 
     private ObservableList<Diem> scoreList;
 
@@ -205,6 +211,25 @@ public class ScoreManagementController {
         }
     }
 
+    @FXML
+    private void searchScore() {
+        String maSv = txtSearchMaSv.getText().trim().toLowerCase();
+        String maLopHP = txtSearchMaLopHP.getText().trim().toLowerCase();
+
+        FilteredList<Diem> filteredList = new FilteredList<>(scoreList);
+
+        filteredList.setPredicate(diem -> {
+            boolean matchMaSv = maSv.isEmpty()
+                    || diem.getMaSv().toLowerCase().contains(maSv);
+
+            boolean matchMaLopHP = maLopHP.isEmpty()
+                    || diem.getMaLopHP().toLowerCase().contains(maLopHP);
+
+            return matchMaSv && matchMaLopHP;
+        });
+
+        tableScore.setItems(filteredList);
+    }
 
     @FXML
     private void refreshForm() {
@@ -221,6 +246,15 @@ public class ScoreManagementController {
                 .clearSelection();
     }
 
+    @FXML
+    private void importExcel() {
+        ExcelImportUtil.handleImportExcel(
+                btnImportExcel,
+                ApiEndpoint.ADMIN_SCORE_IMPORT,
+                "danhsachdiem",
+                this::loadData
+        );
+    }
 
     @FXML
     public void showHomeAd() throws IOException {

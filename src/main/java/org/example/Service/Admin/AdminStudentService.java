@@ -78,8 +78,12 @@ public class AdminStudentService {
         return org.example.Api.ApiResponseHandler.isOk(response);
     }
 
+//    public boolean delete(String maSv) {
+//        apiClient.delete(ApiEndpoint.ADMIN_STUDENT_DELETE_BY_MASV + maSv);
+//        return true;
+//    }
     public boolean delete(String maSv) {
-        apiClient.delete(ApiEndpoint.ADMIN_STUDENT_DELETE_BY_MASV + maSv);
-        return true;
-    }
+         String response = apiClient.delete(ApiEndpoint.ADMIN_STUDENT_DELETE_BY_MASV + maSv);
+    return org.example.Api.ApiResponseHandler.isOk(response);
+}
 }
