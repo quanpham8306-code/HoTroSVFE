@@ -31,10 +31,10 @@ public class LoginController {
         try {
             if (taiKhoanService.login(username, password)) {
                 if(AppSession.getRole().equals("ADMIN")){
-                    SceneUtil.switchToApp(btnLogin, "/fxml/Admin/AdminHome.fxml");
+                    SceneUtil.switchScene(btnLogin, "/fxml/Admin/AdminHome.fxml");
                 }
                 if(AppSession.getRole().equals("STUDENT")){
-                    SceneUtil.switchToApp(btnLogin, "/fxml/Student/Home.fxml");
+                    SceneUtil.switchScene(btnLogin, "/fxml/Student/Home.fxml");
                 }
 
             } else {

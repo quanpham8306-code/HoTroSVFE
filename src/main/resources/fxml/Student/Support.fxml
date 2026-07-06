@@ -47,7 +47,7 @@
                   <Label prefHeight="328.0" prefWidth="242.0" styleClass="page-subtitle" text="Quản lý tài khoản và các chức năng hỗ trợ" />
                </children>
             </VBox>
-            <VBox prefHeight="536.0" prefWidth="760.0" styleClass="note-editor" VBox.vgrow="ALWAYS">
+            <VBox prefHeight="552.0" prefWidth="760.0" styleClass="note-editor" VBox.vgrow="ALWAYS">
                <children>
                   <VBox alignment="BOTTOM_LEFT" prefHeight="99.0" prefWidth="746.0" spacing="5">
                      <children>

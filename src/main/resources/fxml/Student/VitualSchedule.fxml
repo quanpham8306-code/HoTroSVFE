@@ -82,6 +82,8 @@
             <VBox prefHeight="222.0" prefWidth="745.0" spacing="10" styleClass="card">
                 <HBox alignment="CENTER_LEFT" spacing="8">
                     <Label styleClass="section-title" text="Chọn Lớp:" />
+                    <Region HBox.hgrow="ALWAYS" />
+                  <Button fx:id="btnClearClass" styleClass="danger-button" text="Xóa lớp" />
                 </HBox>
 
                 <TableView fx:id="lopHocPhanTable" prefHeight="179.0" prefWidth="728.0" styleClass="modern-table">
@@ -96,14 +98,15 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
                 </TableView>
+               <Region />
             </VBox>
 
             <!-- Lịch học ảo -->
             <VBox prefHeight="233.0" prefWidth="745.0" spacing="10" styleClass="card">
                 <HBox alignment="CENTER_LEFT" spacing="10">
                     <Label styleClass="section-title" text="Các lớp đã chọn" />
-                    <Region HBox.hgrow="ALWAYS" />
-                    <Button fx:id="btnClear" styleClass="danger-button" text="Xóa lịch" />
+                  <Region prefHeight="23.0" prefWidth="514.0" HBox.hgrow="ALWAYS" />
+                    <Button fx:id="btnClearSchedule" styleClass="danger-button" text="Xóa lịch" />
                 </HBox>
             <TableView fx:id="virtualScheduleTable" prefHeight="179.0" prefWidth="728.0" styleClass="modern-table">
                <columns>
@@ -118,15 +121,15 @@
                </columnResizePolicy>
             </TableView>
             </VBox>
-         <VBox prefHeight="300.0" prefWidth="745.0" styleClass="action-bar">
+         <VBox prefHeight="598.0" prefWidth="745.0" styleClass="action-bar">
             <children>
-               <HBox prefHeight="501.0" prefWidth="721.0" styleClass="avatar-circle">
+               <HBox prefHeight="30.0" prefWidth="721.0" styleClass="avatar-circle">
                   <children>
-                     <Button fx:id="btnPrevMonth" mnemonicParsing="false" styleClass="primary-button" text="&lt;" />
+                     <Button fx:id="btnPrevMonth" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" styleClass="primary-button" text="&lt;" />
                      <Separator orientation="VERTICAL" prefHeight="200.0" />
-                     <Button fx:id="btnNextMonth" mnemonicParsing="false" styleClass="primary-button" text="&gt;" />
+                     <Button fx:id="btnNextMonth" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" styleClass="primary-button" text="&gt;" />
                      <Region prefHeight="200.0" prefWidth="200.0" />
-                     <Label fx:id="lblMonthYear" prefHeight="28.0" prefWidth="206.0" text="Tháng 1 năm 2026">
+                     <Label fx:id="lblMonthYear" prefHeight="30.0" prefWidth="198.0" text="Tháng 1 năm 2026">
                         <styleClass>
                            <String fx:value="stat-blue" />
                            <String fx:value="logo-icon" />
@@ -135,7 +138,7 @@
                   </children>
                </HBox>
                <Separator prefWidth="200.0" />
-               <GridPane fx:id="scheduleVirtualGrid">
+               <GridPane fx:id="scheduleVirtualGrid" gridLinesVisible="true" prefHeight="226.0" prefWidth="721.0" VBox.vgrow="ALWAYS">
                  <columnConstraints>
                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -152,15 +155,24 @@
                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                  </rowConstraints>
                   <children>
-                     <Label fx:id="lblThu2" text="Thứ 2" GridPane.rowIndex="1" />
-                     <Label fx:id="lblThu3" text="Thứ 3" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                     <Label fx:id="lblThu4" text="Thứ 4" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                     <Label fx:id="lblThu5" text="Thứ 5" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                     <Label fx:id="lblThu6" text="Thứ 6" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                     <Label fx:id="lblThu7" text="Thứ 7" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-                     <Label fx:id="lblCN" text="Chủ nhật" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                     <Label fx:id="lblThu2" prefHeight="28.0" prefWidth="103.0" styleClass="logo-title" text="Thứ 2" GridPane.rowIndex="1" />
+                     <Label fx:id="lblThu3" prefHeight="28.0" prefWidth="107.0" text="Thứ 3" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <styleClass>
+                              <String fx:value="logo-title" />
+                              <String fx:value="label" />
+                           </styleClass></Label>
+                     <Label fx:id="lblThu4" prefHeight="28.0" prefWidth="108.0" styleClass="logo-title" text="Thứ 4" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                     <Label fx:id="lblThu5" prefHeight="28.0" prefWidth="118.0" text="Thứ 5" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                           <styleClass>
+                              <String fx:value="logo-title" />
+                              <String fx:value="label" />
+                           </styleClass></Label>
+                     <Label fx:id="lblThu6" prefHeight="28.0" prefWidth="118.0" styleClass="logo-title" text="Thứ 6" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                     <Label fx:id="lblThu7" prefHeight="28.0" prefWidth="108.0" styleClass="logo-title" text="Thứ 7" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                     <Label fx:id="lblCN" prefHeight="28.0" prefWidth="106.0" styleClass="logo-title" text="Chủ nhật" GridPane.columnIndex="6" GridPane.rowIndex="1" />
                   </children>
                </GridPane>
             </children>

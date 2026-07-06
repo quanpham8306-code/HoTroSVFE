@@ -69,7 +69,7 @@
                     <HBox prefHeight="43.0" prefWidth="1137.0" spacing="18">
                         <VBox spacing="12" styleClass="summary-card" HBox.hgrow="ALWAYS">
                             <HBox alignment="CENTER_LEFT">
-                                <Label styleClass="card-label" text="GPA tích lũy" HBox.hgrow="ALWAYS" />
+                                <Label styleClass="card-label" text="GPA tích lũy " HBox.hgrow="ALWAYS" />
                                 <StackPane styleClass="mini-icon blue"><Label text="📈" /></StackPane>
                             </HBox>
                             <HBox alignment="BASELINE_LEFT" spacing="6" styleClass="pill-blue">
@@ -80,7 +80,7 @@
 
                         <VBox spacing="12" styleClass="summary-card" HBox.hgrow="ALWAYS">
                             <HBox alignment="CENTER_LEFT">
-                                <Label styleClass="card-label" text="Số tín chỉ tích lũy" HBox.hgrow="ALWAYS" />
+                                <Label styleClass="card-label" text="Số tín chỉ tích lũy " HBox.hgrow="ALWAYS" />
                                 <StackPane styleClass="mini-icon green"><Label text="📖" /></StackPane>
                             </HBox>
                             <HBox alignment="BASELINE_LEFT" spacing="6" styleClass="pill-blue">
@@ -91,7 +91,7 @@
 
                         <VBox spacing="12" styleClass="summary-card" HBox.hgrow="ALWAYS">
                             <HBox alignment="CENTER_LEFT">
-                                <Label styleClass="card-label" text="Số môn đã học" HBox.hgrow="ALWAYS" />
+                                <Label styleClass="card-label" text="Số môn đã học " HBox.hgrow="ALWAYS" />
                                 <StackPane styleClass="mini-icon purple"><Label text="📄" /></StackPane>
                             </HBox>
                             <HBox alignment="BASELINE_LEFT" spacing="6" styleClass="pill-blue">
@@ -123,12 +123,12 @@
 
                                 <TableView fx:id="scoreTable" prefHeight="380" styleClass="grade-table-cell" VBox.vgrow="ALWAYS">
                                     <columns>
-                                        <TableColumn fx:id="colMaMonHoc" editable="false" prefWidth="77.0" sortable="false" text="Mã môn" />
-                                        <TableColumn fx:id="colTenMonHoc" editable="false" prefWidth="226.0" sortable="false" text="Tên môn học" />
-                                        <TableColumn fx:id="colSoTinChi" editable="false" prefWidth="90.0" sortable="false" text="Số tín chỉ" />
-                                        <TableColumn fx:id="colDiemHe10" editable="false" prefWidth="97.0" sortable="false" text="Điểm hệ 10" />
-                                        <TableColumn fx:id="colDiemChu" editable="false" prefWidth="78.0" sortable="false" text="Điểm chữ" />
-                                        <TableColumn fx:id="colTrangThai" editable="false" prefWidth="187.0" sortable="false" text="Trạng thái" />
+                                        <TableColumn fx:id="colMaMonHoc" editable="false" prefWidth="200.0" resizable="false" sortable="false" text="Mã môn" />
+                                        <TableColumn fx:id="colTenMonHoc" editable="false" prefWidth="175.0" resizable="false" sortable="false" text="Tên môn học" />
+                                        <TableColumn fx:id="colSoTinChi" editable="false" prefWidth="100.0" resizable="false" sortable="false" text="Số tín chỉ" />
+                                        <TableColumn fx:id="colDiemHe10" editable="false" prefWidth="100.0" resizable="false" sortable="false" text="Điểm hệ 10" />
+                                        <TableColumn fx:id="colDiemChu" editable="false" prefWidth="100.0" resizable="false" sortable="false" text="Điểm chữ" />
+                                        <TableColumn fx:id="colTrangThai" editable="false" prefWidth="150.0" resizable="false" sortable="false" text="Trạng thái" />
                                     </columns>
                                 </TableView>
 
@@ -182,7 +182,7 @@
                                  <Font size="14.0" />
                               </font>
                            </Label>
-                           <Label ellipsisString="Điểm sẽ được cập nhật sau khi giảng viên cập nhật lên hệ thống." prefHeight="79.0" prefWidth="400.0" text="Điểm sẽ được cập nhật sau khi giảng viên cập nhật lên hệ thống.">
+                           <Label ellipsisString="Điểm sẽ được cập nhật sau khi giảng viên cập nhật lên hệ thống." prefHeight="79.0" prefWidth="400.0" text="Điểm sẽ được cập nhật sau khi giảng viên đưa lên hệ thống.">
                               <font>
                                  <Font size="14.0" />
                               </font>

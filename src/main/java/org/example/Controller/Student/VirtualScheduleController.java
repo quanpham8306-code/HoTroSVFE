@@ -16,6 +16,7 @@ import org.example.Service.Student.SinhVienService;
 import org.example.Util.AlertUtil;
 import org.example.Util.SceneUtil;
 
+import java.io.IOException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -98,32 +99,32 @@ public class VirtualScheduleController {
         });
     }
     @FXML
-    public void showScore() {
+    public void showScore() throws IOException {
         SceneUtil.switchScene(btnScore, "/fxml/Student/Score.fxml");
     }
 
     @FXML
-    public void showSchedule() {
+    public void showSchedule() throws IOException {
         SceneUtil.switchScene(btnSchedule, "/fxml/Student/Schedule.fxml");
     }
     @FXML
-    public void showSupport() {
+    public void showSupport() throws IOException {
         SceneUtil.switchScene(btnSupport, "/fxml/Student/Support.fxml");
     }
 
     @FXML
-    public void showHome() {
+    public void showHome() throws IOException {
         SceneUtil.switchScene(btnHome, "/fxml/Student/Home.fxml");
     }
     @FXML
-    public void showNote() {
+    public void showNote() throws IOException {
         SceneUtil.switchScene(btnNote, "/fxml/Student/Note.fxml");
     }
 
     @FXML
     public void handleLogout() {
         AppSession.clear();
-        SceneUtil.switchScene(btnLogout, "/fxml/Login.fxml");
+        SceneUtil.switchToLogin(btnLogout);
     }
     @FXML
     private void saveVirtualSchedule(){

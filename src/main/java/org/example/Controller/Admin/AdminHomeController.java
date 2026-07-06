@@ -7,6 +7,8 @@ import org.example.Config.AppSession;
 import org.example.Service.Admin.AdminHomeService;
 import org.example.Util.SceneUtil;
 
+import java.io.IOException;
+
 public class AdminHomeController {
     @FXML private Label lblStudent;
     @FXML private Label lblSubject;
@@ -41,31 +43,34 @@ public class AdminHomeController {
         }
     }
 
-
     @FXML
-    public void showSV() {
+    public void showSV() throws IOException {
         SceneUtil.switchScene(btnSV, "/fxml/Admin/StudentManagement.fxml");
     }
 
     @FXML
-    public void showMh() {
+    public void showMh() throws IOException {
         SceneUtil.switchScene(btnMh, "/fxml/Admin/SubjectManagement.fxml");
     }
 
     @FXML
-    public void showLHP() {
+    public void showLHP() throws IOException {
         SceneUtil.switchScene(btnLHP, "/fxml/Admin/ClassManagement.fxml");
     }
 
     @FXML
-    public void showScore() {
+    public void showScore() throws IOException {
         SceneUtil.switchScene(btnScore, "/fxml/Admin/ScoreManagement.fxml");
     }
-    @FXML public void showAccount() {SceneUtil.switchScene(btnScore, "/fxml/Admin/AdminAcount.fxml");}
+    @FXML
+    public void showAccount() throws IOException {
+        SceneUtil.switchScene(btnScore, "/fxml/Admin/AdminAcount.fxml");}
     @FXML
     public void handleLogout() {
         AppSession.clear();
-        SceneUtil.switchScene(btnLogout, "/fxml/Login.fxml");
+        SceneUtil.switchToLogin(btnLogout);
     }
-    @FXML public void showRegisteredClass(){ SceneUtil.switchScene(btnRegisteredClass,"/fxml/Admin/RegisteredClass.fxml");}
+    @FXML
+    public void showRegisteredClass() throws IOException {
+        SceneUtil.switchScene(btnRegisteredClass,"/fxml/Admin/RegisteredClass.fxml");}
 }

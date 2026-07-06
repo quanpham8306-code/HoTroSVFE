@@ -13,6 +13,7 @@ import org.example.Util.ApiEndpoint;
 import org.example.Util.ExcelImportUtil;
 import org.example.Util.SceneUtil;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -282,25 +283,27 @@ public class ClassManagementController {
 
         tableClass.setItems(filtered);
     }
-    @FXML public void showRegisteredClass(){
+    @FXML public void showRegisteredClass() throws IOException {
         SceneUtil.switchScene(btnRegisteredClass,"/fxml/Admin/RegisteredClass.fxml");}
     @FXML
-    public void showHomeAd() {
+    public void showHomeAd() throws IOException {
         SceneUtil.switchScene(btnHomeAdmin, "/fxml/Admin/AdminHome.fxml");
     }
 
     @FXML
-    public void showMh() {
+    public void showMh() throws IOException {
         SceneUtil.switchScene(btnMh, "/fxml/Admin/SubjectManagement.fxml");
     }
 
     @FXML
-    public void showSV() {
+    public void showSV() throws IOException {
         SceneUtil.switchScene(btnSV, "/fxml/Admin/StudentManagement.fxml");
     }
-    @FXML public void showAccount() {SceneUtil.switchScene(btnAccount, "/fxml/Admin/AdminAcount.fxml");}
     @FXML
-    public void showScore() {
+    public void showAccount() throws IOException {
+        SceneUtil.switchScene(btnAccount, "/fxml/Admin/AdminAcount.fxml");}
+    @FXML
+    public void showScore() throws IOException {
         SceneUtil.switchScene(btnScore, "/fxml/Admin/ScoreManagement.fxml");
     }
 
@@ -325,7 +328,7 @@ public class ClassManagementController {
     @FXML
     public void handleLogout() {
         AppSession.clear();
-        SceneUtil.switchScene(btnLogout, "/fxml/Login.fxml");
+        SceneUtil.switchToLogin(btnLogout);
     }
 
 

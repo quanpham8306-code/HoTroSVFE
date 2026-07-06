@@ -27,35 +27,36 @@ public class AccountController {
     AccountService  accountService = new AccountService();
 
     @FXML
-    public void showHomeAd() {
+    public void showHomeAd() throws IOException {
         SceneUtil.switchScene(btnHomeAdmin, "/fxml/Admin/AdminHome.fxml");
     }
 
     @FXML
-    public void showSV() {
+    public void showSV() throws IOException {
         SceneUtil.switchScene(btnSV, "/fxml/Admin/StudentManagement.fxml");
     }
 
     @FXML
-    public void showMh() {
+    public void showMh() throws IOException {
         SceneUtil.switchScene(btnMh, "/fxml/Admin/SubjectManagement.fxml");
     }
 
     @FXML
-    public void showLHP() {
+    public void showLHP() throws IOException {
         SceneUtil.switchScene(btnLHP, "/fxml/Admin/ClassManagement.fxml");
     }
 
     @FXML
-    public void showScore() {
+    public void showScore() throws IOException {
         SceneUtil.switchScene(btnScore, "/fxml/Admin/ScoreManagement.fxml");
     }
     @FXML
     public void handleLogout() {
         AppSession.clear();
-        SceneUtil.switchScene(btnLogout, "/fxml/Login.fxml");
+        SceneUtil.switchToLogin(btnLogout);
     }
-    @FXML public void showRegisteredClass(){ SceneUtil.switchScene(btnRegisteredClass,"/fxml/Admin/RegisteredClass.fxml");}
+    @FXML public void showRegisteredClass() throws IOException {
+        SceneUtil.switchScene(btnRegisteredClass,"/fxml/Admin/RegisteredClass.fxml");}
 
     @FXML
     public void handleChangePws() {

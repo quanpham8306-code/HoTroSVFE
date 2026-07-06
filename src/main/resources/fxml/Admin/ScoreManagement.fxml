@@ -154,19 +154,19 @@
 
                     <columns>
 
-                        <TableColumn fx:id="colMasv" prefWidth="150" text="Mã SV" />
+                        <TableColumn fx:id="colMasv" prefWidth="200.0" resizable="false" text="Mã SV" />
 
-                        <TableColumn fx:id="colMaLopHP" prefWidth="180" text="Mã lớp HP" />
+                        <TableColumn fx:id="colMaLopHP" prefWidth="265.0" resizable="false" text="Mã lớp HP" />
 
-                        <TableColumn fx:id="colMon" prefWidth="300" text="Môn học" />
+                        <TableColumn fx:id="colMon" prefWidth="180.0" resizable="false" text="Môn học" />
 
-                        <TableColumn fx:id="colQT" prefWidth="150" text="Điểm QT" />
+                        <TableColumn fx:id="colQT" prefWidth="115.0" resizable="false" text="Điểm QT" />
 
-                        <TableColumn fx:id="colCK" prefWidth="150" text="Điểm CK" />
+                        <TableColumn fx:id="colCK" prefWidth="115.0" resizable="false" text="Điểm CK" />
 
-                        <TableColumn fx:id="colHP" prefWidth="150" text="Điểm HP" />
+                        <TableColumn fx:id="colHP" minWidth="0.0" prefWidth="115.0" resizable="false" text="Điểm HP" />
 
-                        <TableColumn fx:id="colTrangThai" prefWidth="200" text="Trạng thái" />
+                              <TableColumn fx:id="colTrangThai" prefWidth="200.0" resizable="false" text="Trạng thái" />
 
                     </columns>
 

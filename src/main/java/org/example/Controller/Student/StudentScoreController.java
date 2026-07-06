@@ -20,6 +20,7 @@ import org.example.Model.TongDiem;
 import org.example.Service.Student.DiemService;
 import org.example.Util.SceneUtil;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,31 +62,31 @@ public class StudentScoreController {
 
     private final DiemService diemService = new DiemService();
     @FXML
-    public void showHome() {
+    public void showHome() throws IOException {
         SceneUtil.switchScene(btnHome, "/fxml/Student/Home.fxml");
     }
 
     @FXML
-    public void showSchedule() {
+    public void showSchedule() throws IOException {
         SceneUtil.switchScene(btnSchedule, "/fxml/Student/Schedule.fxml");
     }
     @FXML
-    public void showSubject() {
+    public void showSubject() throws IOException {
         SceneUtil.switchScene(btnSubject, "/fxml/Student/VitualSchedule.fxml");
     }
     @FXML
-    public void showNote() {
+    public void showNote() throws IOException {
         SceneUtil.switchScene(btnNote, "/fxml/Student/Note.fxml");
     }
     @FXML
-    public void showSupport() {
+    public void showSupport() throws IOException {
         SceneUtil.switchScene(btnSupport, "/fxml/Student/Support.fxml");
     }
 
     @FXML
     public void handleLogout() {
         AppSession.clear();
-        SceneUtil.switchScene(btnLogout, "/fxml/Login.fxml");
+        SceneUtil.switchToLogin(btnLogout);
     }
     @FXML
     public void initialize() {

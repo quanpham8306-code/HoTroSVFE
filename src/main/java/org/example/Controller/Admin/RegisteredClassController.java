@@ -10,6 +10,8 @@ import org.example.Service.Admin.AdminRegisteredClassService;
 import org.example.Util.AlertUtil;
 import org.example.Util.SceneUtil;
 
+import java.io.IOException;
+
 public class RegisteredClassController {
     @FXML private TextField txtMaSv;
     @FXML private TextField txtMaLopHP;
@@ -117,29 +119,31 @@ public class RegisteredClassController {
         }
     }
 
-    @FXML public void showHomeAd() {
+    @FXML public void showHomeAd() throws IOException {
         SceneUtil.switchScene(btnHomeAdmin, "/fxml/Admin/AdminHome.fxml");
     }
 
-    @FXML public void showSV() {
+    @FXML public void showSV() throws IOException {
         SceneUtil.switchScene(btnSV, "/fxml/Admin/StudentManagement.fxml");
     }
 
-    @FXML public void showMh() {
+    @FXML public void showMh() throws IOException {
         SceneUtil.switchScene(btnMh, "/fxml/Admin/SubjectManagement.fxml");
     }
 
-    @FXML public void showLHP() {
+    @FXML public void showLHP() throws IOException {
         SceneUtil.switchScene(btnLHP, "/fxml/Admin/ClassManagement.fxml");
     }
 
-    @FXML public void showScore() {
+    @FXML public void showScore() throws IOException {
         SceneUtil.switchScene(btnScore, "/fxml/Admin/ScoreManagement.fxml");
     }
-    @FXML public void showAccount() {SceneUtil.switchScene(btnAccount, "/fxml/Admin/AdminAcount.fxml");}
+    @FXML public void showAccount() throws IOException {
+        SceneUtil.switchScene(btnAccount, "/fxml/Admin/AdminAcount.fxml");
+    }
     @FXML public void handleLogout() {
         AppSession.clear();
-        SceneUtil.switchScene(btnLogout, "/fxml/Login.fxml");
+        SceneUtil.switchToLogin(btnLogout);
     }
     @FXML
     public void impoprtStudentToClass()

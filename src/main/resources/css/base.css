@@ -5,6 +5,7 @@
 }
 .label {
     -fx-text-fill: #07142f;
+    -fx-alignment: center;
 }
 
 .text-muted {

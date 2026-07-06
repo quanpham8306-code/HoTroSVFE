@@ -8,6 +8,7 @@ import org.example.Model.Note;
 import org.example.Service.Student.NoteService;
 import org.example.Util.SceneUtil;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class NoteController {
@@ -37,34 +38,34 @@ public class NoteController {
         loadTable();
     }
     @FXML
-    public void showScore() {
+    public void showScore() throws IOException {
         SceneUtil.switchScene(btnScore, "/fxml/Student/Score.fxml");
     }
 
     @FXML
-    public void showSchedule() {
+    public void showSchedule() throws IOException {
         SceneUtil.switchScene(btnSchedule, "/fxml/Student/Schedule.fxml");
     }
 
     @FXML
-    public void showHome() {
+    public void showHome() throws IOException {
         SceneUtil.switchScene(btnHome, "/fxml/Student/Home.fxml");
     }
 
     @FXML
-    public void showSubject() {
+    public void showSubject() throws IOException {
         SceneUtil.switchScene(btnSubject, "/fxml/Student/VitualSchedule.fxml");
     }
 
     @FXML
-    public void showSupport() {
+    public void showSupport() throws IOException {
         SceneUtil.switchScene(btnSupport, "/fxml/Student/Support.fxml");
     }
 
     @FXML
     public void handleLogout() {
         AppSession.clear();
-        SceneUtil.switchScene(btnLogout, "/fxml/Login.fxml");
+        SceneUtil.switchToLogin(btnLogout);
     }
     @FXML public void newNote() {
         clearNote();

@@ -25,34 +25,34 @@ public class StudentSupportController {
     @FXML private Button btnNote;
 
     @FXML
-    public void showHome() {
+    public void showHome() throws IOException {
         SceneUtil.switchScene(btnHome, "/fxml/Student/Home.fxml");
     }
 
     @FXML
-    public void showSchedule() {
+    public void showSchedule() throws IOException {
         SceneUtil.switchScene(btnSchedule, "/fxml/Student/Schedule.fxml");
     }
 
     @FXML
-    public void showSubject() {
+    public void showSubject() throws IOException {
         SceneUtil.switchScene(btnSubject, "/fxml/Student/VitualSchedule.fxml");
     }
 
     @FXML
-    public void showScore() {
+    public void showScore() throws IOException {
         SceneUtil.switchScene(btnScore, "/fxml/Student/Score.fxml");
     }
 
     @FXML
-    public void showNote() {
+    public void showNote() throws IOException {
         SceneUtil.switchScene(btnNote, "/fxml/Student/Note.fxml");
     }
 
     @FXML
     public void handleLogout() {
         AppSession.clear();
-        SceneUtil.switchScene(btnLogout, "/fxml/Login.fxml");
+        SceneUtil.switchToLogin(btnLogout);
     }
 
     @FXML
