@@ -82,7 +82,7 @@
                     </columnConstraints>
 
                     <Label text="Mã lớp" />
-                    <TextField fx:id="txtMaLop" GridPane.columnIndex="1" />
+                    <TextField fx:id="txtMaLop" editable="false" GridPane.columnIndex="1" />
 
                     <Label text="Tên môn" GridPane.columnIndex="2" />
                     <TextField fx:id="txtMonHoc" GridPane.columnIndex="3" />

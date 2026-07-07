@@ -104,7 +104,7 @@
 
                     <Button onAction="#deleteSubject" styleClass="delete-btn" text="Xóa" />
 
-                    <Button onAction="#refreshForm" text="Làm mới" />
+                    <Button onAction="#refreshForm" styleClass="import-btn" text="Làm mới" />
 
                 </HBox>
 

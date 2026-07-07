@@ -1,5 +1,6 @@
 package org.example.Controller.Student;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,9 +19,11 @@ import org.example.Model.HocKy;
 import org.example.Model.TongDiem;
 
 import org.example.Service.Student.DiemService;
+import org.example.Service.Student.SinhVienService;
 import org.example.Util.SceneUtil;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,6 +64,7 @@ public class StudentScoreController {
     @FXML private ComboBox<HocKy> cBoxKyHoc;
 
     private final DiemService diemService = new DiemService();
+    private final SinhVienService sinhVienService = new SinhVienService();
     @FXML
     public void showHome() throws IOException {
         SceneUtil.switchScene(btnHome, "/fxml/Student/Home.fxml");
@@ -91,64 +95,44 @@ public class StudentScoreController {
     @FXML
     public void initialize() {
         setupTable();
-        loadHocKy();
-        loadAllScoreData();
+
         cBoxKyHoc.setOnAction(this::chonKyHoc);
+
+        loadHocKyComboBox();
+
+        if (!cBoxKyHoc.getItems().isEmpty()) {
+            cBoxKyHoc.getSelectionModel().selectFirst();
+        }
+
+        loadAllScoreData();
     }
     private void chonKyHoc(ActionEvent event) {
-        if(cBoxKyHoc.getSelectionModel().getSelectedItem().getHocKy() == 0) {
+        HocKy selected = cBoxKyHoc.getSelectionModel().getSelectedItem();
+
+        if (selected == null || selected.getHocKy() == 0) {
             lblHocKy.setText("Bảng điểm toàn bộ các kỳ.");
             loadAllScoreData();
-        } else if (cBoxKyHoc.getSelectionModel().getSelectedItem() == null) {
-            cBoxKyHoc.getSelectionModel().clearSelection();
-        }
-        else
-        {
-            int hocKy = cBoxKyHoc.getSelectionModel().getSelectedItem().getHocKy();
-            String namHoc = cBoxKyHoc.getSelectionModel().getSelectedItem().getNamHoc();
-            lblHocKy.setText("Bảng điểm học kỳ "+ hocKy + " năm hoc " + namHoc);
-            loadScoreByKy(hocKy, namHoc);
+            return;
         }
 
+        int hocKy = selected.getHocKy();
+        String namHoc = selected.getNamHoc();
+
+        lblHocKy.setText("Bảng điểm học kỳ " + hocKy + " năm học " + namHoc);
+        loadScoreByKy(hocKy, namHoc);
     }
-    private void loadScoreByKy(int ky,String nam) {
+    private void loadScoreByKy(int ky, String nam) {
         try {
-            List<BangDiem> scores = diemService.getMyScoresByKy(ky,nam);
-            TongDiem summary = diemService.getMySummaryByKy(ky,nam);
-            ObservableList<BangDiem> diems =
-                    FXCollections.observableArrayList(scores);
+            List<BangDiem> scores = diemService.getMyScoresByKy(ky, nam);
 
-            scoreTable.setItems(diems);
-            lblGPA.setText(String.format("%.2f", summary.getGpa()));
-            lblTongTinChi.setText(String.valueOf(summary.getTongTin()));
-            lblSoMon.setText(String.valueOf(summary.getTongMon()));
-            lblXepLoai.setText(
-                    summary.getXepLoai() == null ? "Chưa có" : summary.getXepLoai()
-            );
+            if (scores == null || scores.isEmpty()) {
+                resetScoreView();
+                return;
+            }
 
-            drawLineChart(scores);
-            drawPieChart(scores);
+            TongDiem summary = diemService.getMySummaryByKy(ky, nam);
 
-        } catch(Exception e){
-            e.printStackTrace();
-
-            scoreTable.setItems(FXCollections.observableArrayList());
-
-            lblGPA.setText("0.00");
-            lblSoMon.setText("0");
-            lblTongTinChi.setText("0");
-            lblXepLoai.setText("Chưa có");
-        }
-    }
-
-    private void loadAllScoreData() {
-        try {
-            List<BangDiem> scores = diemService.getMyScores();
-            TongDiem summary = diemService.getMySummary();
-            ObservableList<BangDiem> diems =
-                    FXCollections.observableArrayList(scores);
-
-            scoreTable.setItems(diems);
+            scoreTable.setItems(FXCollections.observableArrayList(scores));
 
             lblGPA.setText(String.format("%.2f", summary.getGpa()));
             lblTongTinChi.setText(String.valueOf(summary.getTongTin()));
@@ -162,20 +146,88 @@ public class StudentScoreController {
 
         } catch (Exception e) {
             e.printStackTrace();
-
-            scoreTable.setItems(FXCollections.observableArrayList());
-
-            lblGPA.setText("0.00");
-            lblSoMon.setText("0");
-            lblTongTinChi.setText("0");
-            lblXepLoai.setText("Chưa có");
+            resetScoreView();
         }
     }
+    private void loadAllScoreData() {
+        try {
+            List<BangDiem> scores = diemService.getMyScores();
 
+            if (scores == null || scores.isEmpty()) {
+                resetScoreView();
+                return;
+            }
+
+            TongDiem summary = diemService.getMySummary();
+
+            scoreTable.setItems(FXCollections.observableArrayList(scores));
+
+            lblGPA.setText(String.format("%.2f", summary.getGpa()));
+            lblTongTinChi.setText(String.valueOf(summary.getTongTin()));
+            lblSoMon.setText(String.valueOf(summary.getTongMon()));
+            lblXepLoai.setText(
+                    summary.getXepLoai() == null ? "Chưa có" : summary.getXepLoai()
+            );
+
+            drawLineChart(scores);
+            drawPieChart(scores);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            resetScoreView();
+        }
+    }
+    private void resetScoreView() {
+        scoreTable.setItems(FXCollections.observableArrayList());
+
+        lblGPA.setText("0.00");
+        lblTongTinChi.setText("0");
+        lblSoMon.setText("0");
+        lblXepLoai.setText("Chưa có");
+
+        drawLineChart(List.of());
+        drawPieChart(List.of());
+    }
+    private void loadHocKyComboBox() {
+        if (cBoxKyHoc.getItems() == null) {
+            cBoxKyHoc.setItems(FXCollections.observableArrayList());
+        }
+        int namNhapHoc = sinhVienService.getKhoa();
+
+        cBoxKyHoc.getItems().clear();
+
+        LocalDate now = LocalDate.now();
+        int namHienTai = now.getYear();
+        int thangHienTai = now.getMonthValue();
+
+        for (int namHoc = namNhapHoc; namHoc <= namHienTai; namHoc++) {
+
+            if (namHoc < namHienTai || thangHienTai >= 9) {
+                cBoxKyHoc.getItems().add(
+                        new HocKy(1,namHoc + "-" + (namHoc + 1))
+                );
+            }
+
+            int namKy2 = namHoc + 1;
+
+            if (namKy2 < namHienTai ||
+                    (namKy2 == namHienTai && thangHienTai >= 3)) {
+                cBoxKyHoc.getItems().add(
+                        new HocKy(2,namHoc + "-" + (namHoc + 1))
+                );
+            }
+        }
+
+        cBoxKyHoc.getItems().addFirst(null);
+        if (!cBoxKyHoc.getItems().isEmpty()) {
+            cBoxKyHoc.getSelectionModel().selectLast();
+        }
+    }
     private void drawLineChart(List<BangDiem> scores) {
         if (gpaChart == null) return;
 
         gpaChart.getData().clear();
+        gpaChart.setMinHeight(250);
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         series.setName("Điểm hệ 4 từng môn");
 
@@ -188,36 +240,6 @@ public class StudentScoreController {
         gpaChart.getData().add(series);
     }
 
-//    private void drawPieChart(List<BangDiem> scores) {
-//        if (resultPieChart == null) return;
-//
-//        Map<String, Long> countByGrade = scores.stream()
-//                .collect(Collectors.groupingBy(
-//                        score -> score.getDiemChu() == null ? "Chưa có" : score.getDiemChu(),
-//                        Collectors.counting()
-//                ));
-//
-//        resultPieChart.setData(FXCollections.observableArrayList(
-//                countByGrade.entrySet().stream()
-//                        .map(entry -> new PieChart.Data(entry.getKey(), entry.getValue()))
-//                        .toList()
-//        ));
-//
-//        Map<String, Integer> gradeCount = countGradeLetters(scores);
-//
-//        int soDiemA = gradeCount.get("A");
-//        int soDiemB = gradeCount.get("B");
-//        int soDiemC = gradeCount.get("C");
-//        int soDiemD = gradeCount.get("D");
-//        int soDiemF = gradeCount.get("F");
-//
-//        lblA.setText(String.format(""+soDiemA));
-//        lblB.setText(String.format(""+soDiemB));
-//        lblC.setText(String.format(""+soDiemC));
-//        lblD.setText(String.format(""+soDiemD));
-//        lblF.setText(String.format(""+soDiemF));
-//
-//    }
     private void setupTable() {
         colMaMonHoc.setCellValueFactory(new PropertyValueFactory<>("maMon"));
         colTenMonHoc.setCellValueFactory(new PropertyValueFactory<>("tenMon"));
@@ -247,34 +269,30 @@ private void drawPieChart(List<BangDiem> scores) {
 
     resultPieChart.setData(pieData);
 
+    Platform.runLater(() -> {
+        for (PieChart.Data data : pieData) {
+            switch (data.getName()) {
+                case "A" ->
+                        data.getNode().setStyle("-fx-pie-color: #16A34A;");
+                case "B" ->
+                        data.getNode().setStyle("-fx-pie-color: #2563EB;");
+                case "C" ->
+                        data.getNode().setStyle("-fx-pie-color: #D97706;");
+                case "D" ->
+                        data.getNode().setStyle("-fx-pie-color: #7C3AED;");
+                case "F" ->
+                        data.getNode().setStyle("-fx-pie-color: #DC2626;");
+            }
+        }
+    });
+
     lblA.setText(soDiemA + " môn");
     lblB.setText(soDiemB + " môn");
     lblC.setText(soDiemC + " môn");
     lblD.setText(soDiemD + " môn");
     lblF.setText(soDiemF + " môn");
 }
-//    private Map<String, Integer> countGradeLetters(List<BangDiem> scores) {
-//        Map<String, Integer> result = new HashMap<>();
-//
-//        result.put("A", 0);
-//        result.put("B", 0);
-//        result.put("C", 0);
-//        result.put("D", 0);
-//        result.put("F", 0);
-//
-//        for (BangDiem score : scores) {
-//            String diemChu = score.getDiemChu();
-//
-//            if (diemChu != null) {
-//                diemChu = diemChu.toUpperCase();
-//
-//                if (result.containsKey(diemChu)) {
-//                    result.put(diemChu, result.get(diemChu) + 1);
-//                }
-//            }
-//        }
-//        return result;
-//    }
+
 private Map<String, Integer> countGradeLetters(List<BangDiem> scores) {
     Map<String, Integer> result = new HashMap<>();
 
@@ -305,17 +323,6 @@ private Map<String, Integer> countGradeLetters(List<BangDiem> scores) {
     }
 
     return result;
-}
-    private void loadHocKy(){
-        try {
-            List<HocKy> hocKyList = diemService.getMyHocKy();
-            hocKyList.addFirst(new HocKy(0,"Tất cả các kỳ"));
-            cBoxKyHoc.setItems(
-                    FXCollections.observableArrayList(hocKyList)
-            );
-        } catch (Exception e) {
-            cBoxKyHoc.setItems(null);
-        }
     }
 }
 

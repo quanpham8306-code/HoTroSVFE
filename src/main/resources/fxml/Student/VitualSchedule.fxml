@@ -72,21 +72,21 @@
                   </rowConstraints>
                   </GridPane>
                <Region prefHeight="200.0" prefWidth="200.0" />
+                  <Button fx:id="btnClearSchedule" onAction="#clearSchedule" styleClass="danger-button" text="Xóa lịch" />
                    <Button fx:id="btnSave" onAction="#saveVirtualSchedule" styleClass="primary-button" text="💾 Save" HBox.hgrow="ALWAYS" />
-                   <Button fx:id="btnExport" styleClass="success-button" text="📤 Export" HBox.hgrow="ALWAYS" />
-                   <Button fx:id="btnImport" prefHeight="23.0" prefWidth="69.0" styleClass="warning-button" text="📥 Import" HBox.hgrow="ALWAYS" />
+                   <Button fx:id="btnExport" onAction="#exportExcel" styleClass="success-button" text="📤 Export" HBox.hgrow="ALWAYS" />
+                   <Button fx:id="btnImport" onAction="#importExcel" prefHeight="23.0" prefWidth="69.0" styleClass="warning-button" text="📥 Import" HBox.hgrow="ALWAYS" />
             </children>
          </HBox>
 
             <!-- Chọn lớp -->
-            <VBox prefHeight="222.0" prefWidth="745.0" spacing="10" styleClass="card">
+            <VBox prefHeight="330.0" prefWidth="745.0" spacing="10" styleClass="card">
                 <HBox alignment="CENTER_LEFT" spacing="8">
                     <Label styleClass="section-title" text="Chọn Lớp:" />
                     <Region HBox.hgrow="ALWAYS" />
-                  <Button fx:id="btnClearClass" styleClass="danger-button" text="Xóa lớp" />
                 </HBox>
 
-                <TableView fx:id="lopHocPhanTable" prefHeight="179.0" prefWidth="728.0" styleClass="modern-table">
+                <TableView fx:id="lopHocPhanTable" prefHeight="159.0" prefWidth="713.0" styleClass="modern-table">
                     <columns>
                         <TableColumn fx:id="colLop" prefWidth="260" text="Lớp" />
                         <TableColumn fx:id="colGiangVien" prefWidth="220" text="Giảng viên" />
@@ -102,11 +102,11 @@
             </VBox>
 
             <!-- Lịch học ảo -->
-            <VBox prefHeight="233.0" prefWidth="745.0" spacing="10" styleClass="card">
+            <VBox prefHeight="352.0" prefWidth="745.0" spacing="10" styleClass="card">
                 <HBox alignment="CENTER_LEFT" spacing="10">
                     <Label styleClass="section-title" text="Các lớp đã chọn" />
                   <Region prefHeight="23.0" prefWidth="514.0" HBox.hgrow="ALWAYS" />
-                    <Button fx:id="btnClearSchedule" styleClass="danger-button" text="Xóa lịch" />
+                    <Button fx:id="btnClearClass" onAction="#clear1Class" styleClass="danger-button" text="Xóa lớp" />
                 </HBox>
             <TableView fx:id="virtualScheduleTable" prefHeight="179.0" prefWidth="728.0" styleClass="modern-table">
                <columns>
@@ -121,15 +121,14 @@
                </columnResizePolicy>
             </TableView>
             </VBox>
-         <VBox prefHeight="598.0" prefWidth="745.0" styleClass="action-bar">
+         <VBox prefHeight="850.0" prefWidth="745.0" styleClass="action-bar">
             <children>
                <HBox prefHeight="30.0" prefWidth="721.0" styleClass="avatar-circle">
                   <children>
-                     <Button fx:id="btnPrevMonth" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" styleClass="primary-button" text="&lt;" />
+                     <Button fx:id="btnPrevMonth" mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" styleClass="primary-button" text="&lt;" />
                      <Separator orientation="VERTICAL" prefHeight="200.0" />
-                     <Button fx:id="btnNextMonth" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" styleClass="primary-button" text="&gt;" />
-                     <Region prefHeight="200.0" prefWidth="200.0" />
-                     <Label fx:id="lblMonthYear" prefHeight="30.0" prefWidth="198.0" text="Tháng 1 năm 2026">
+                     <Button fx:id="btnNextMonth" mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" styleClass="primary-button" text="&gt;" />
+                     <Label fx:id="lblMonthYear" prefHeight="30.0" prefWidth="951.0" text="Tháng 1 năm 2026">
                         <styleClass>
                            <String fx:value="stat-blue" />
                            <String fx:value="logo-icon" />
@@ -151,7 +150,6 @@
                  <rowConstraints>
                    <RowConstraints />
                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -163,13 +161,15 @@
                            <styleClass>
                               <String fx:value="logo-title" />
                               <String fx:value="label" />
-                           </styleClass></Label>
+                           </styleClass>
+                        </Label>
                      <Label fx:id="lblThu4" prefHeight="28.0" prefWidth="108.0" styleClass="logo-title" text="Thứ 4" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                      <Label fx:id="lblThu5" prefHeight="28.0" prefWidth="118.0" text="Thứ 5" GridPane.columnIndex="3" GridPane.rowIndex="1">
                            <styleClass>
                               <String fx:value="logo-title" />
                               <String fx:value="label" />
-                           </styleClass></Label>
+                           </styleClass>
+                        </Label>
                      <Label fx:id="lblThu6" prefHeight="28.0" prefWidth="118.0" styleClass="logo-title" text="Thứ 6" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                      <Label fx:id="lblThu7" prefHeight="28.0" prefWidth="108.0" styleClass="logo-title" text="Thứ 7" GridPane.columnIndex="5" GridPane.rowIndex="1" />
                      <Label fx:id="lblCN" prefHeight="28.0" prefWidth="106.0" styleClass="logo-title" text="Chủ nhật" GridPane.columnIndex="6" GridPane.rowIndex="1" />

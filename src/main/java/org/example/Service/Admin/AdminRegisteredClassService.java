@@ -1,16 +1,13 @@
 package org.example.Service.Admin;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import org.example.Api.ApiClient;
 import org.example.Api.ApiResponseHandler;
 import org.example.Model.DangKyLopRequest;
 import org.example.Model.LopHocPhan;
-import org.example.Model.ResponeObject;
-import org.example.Model.SinhVien;
 import org.example.Util.ApiEndpoint;
-import org.example.Util.ExcelImportUtil;
+import org.example.Util.ExcelUtil;
 
 import java.util.List;
 
@@ -52,7 +49,7 @@ public class AdminRegisteredClassService {
         return ApiResponseHandler.isOk(response);
     }
     public void handleImportStudentToClass(Button button,String maLop, Runnable reloadAction) {
-        ExcelImportUtil.handleImportExcel(
+        ExcelUtil.handleImportExcel(
                 button,
                 ApiEndpoint.ADMIN_STUDENT_TO_CLASS_IMPORT + maLop,
                 "danhSachSinhVienVaoLop",

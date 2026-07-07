@@ -10,6 +10,9 @@ import org.example.Config.AppSession;
 import org.example.Model.LopHocPhan;
 import org.example.Model.ThoiKhoaBieu;
 import org.example.Service.Student.ThoiKhoaBieuService;
+import org.example.Util.ApiEndpoint;
+import org.example.Util.DateUtil;
+import org.example.Util.ExcelUtil;
 import org.example.Util.SceneUtil;
 
 import java.io.IOException;
@@ -25,6 +28,7 @@ public class StudentScheduleController {
     @FXML private Button btnSubject;
     @FXML private Button btnSupport;
     @FXML private Button btnNote;
+    @FXML private Button btnExport;
 
     @FXML private Label lblThu2;
     @FXML private Label lblThu3;
@@ -39,7 +43,6 @@ public class StudentScheduleController {
 
 
     private LocalDate currentWeekStart;
-    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private final ThoiKhoaBieuService thoiBieuService = new ThoiKhoaBieuService();
 
     @FXML
@@ -107,7 +110,9 @@ public class StudentScheduleController {
     }
     @FXML
     private void exportSchedule(){
-        thoiBieuService.exportSchedule();
+        ExcelUtil.handleExport(btnExport.getScene().getWindow(),
+                ApiEndpoint.STUDENT_SCHEDULE_EXPORT,
+                "lich-hoc.xlsx");
     }
     private void loadWeek(LocalDate date) {
         LocalDate fdate = getStartOfWeek(date);
@@ -119,16 +124,20 @@ public class StudentScheduleController {
         loadScheduleToGrid(tkb);
     }
     private void updateWeekHeader(LocalDate weekStart) {
-        lblThu2.setText("Thứ 2\n" + weekStart.format(formatter));
-        lblThu3.setText("Thứ 3\n" + weekStart.plusDays(1).format(formatter));
-        lblThu4.setText("Thứ 4\n" + weekStart.plusDays(2).format(formatter));
-        lblThu5.setText("Thứ 5\n" + weekStart.plusDays(3).format(formatter));
-        lblThu6.setText("Thứ 6\n" + weekStart.plusDays(4).format(formatter));
-        lblThu7.setText("Thứ 7\n" + weekStart.plusDays(5).format(formatter));
-        lblCN.setText("Chủ nhật\n" + weekStart.plusDays(6).format(formatter));
+        lblThu2.setText("Thứ 2\n" + DateUtil.format(weekStart));
+        lblThu3.setText("Thứ 3\n" + DateUtil.format(weekStart.plusDays(1)));
+        lblThu4.setText("Thứ 4\n" + DateUtil.format(weekStart.plusDays(2)));
+        lblThu5.setText("Thứ 5\n" + DateUtil.format(weekStart.plusDays(3)));
+        lblThu6.setText("Thứ 6\n" + DateUtil.format(weekStart.plusDays(4)));
+        lblThu7.setText("Thứ 7\n" + DateUtil.format(weekStart.plusDays(5)));
+        lblCN.setText("Chủ nhật\n" + DateUtil.format(weekStart.plusDays(6)));
     }
     private void loadScheduleToGrid(ThoiKhoaBieu thoiKhoaBieu) {
         clearOldSchedule();
+
+        if (thoiKhoaBieu == null || thoiKhoaBieu.getLopHocPhanDTOList() == null) {
+            return;
+        }
 
         for (LopHocPhan lich : thoiKhoaBieu.getLopHocPhanDTOList()) {
             int col = getColumnByThu(lich.getThu());

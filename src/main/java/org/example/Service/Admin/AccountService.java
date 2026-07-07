@@ -7,11 +7,9 @@ import org.example.Util.ApiEndpoint;
 
 public class AccountService {
     ApiClient apiClient = new ApiClient();
-    public String resetPws() {
-        String response = apiClient.put(
-                ApiEndpoint.ADMIN_RESET_PASSWORD
-        );
-
+    public String resetPws(String username) {
+        String url = ApiEndpoint.ADMIN_RESET_PASSWORD+username;
+        String response = apiClient.put(url);
         if (ApiResponseHandler.isOk(response)) {
             return "SUCCESS";
         }

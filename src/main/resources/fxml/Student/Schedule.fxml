@@ -78,18 +78,18 @@
             </HBox>
 
             <!-- SCHEDULE TABLE -->
-            <ScrollPane fitToHeight="true" fitToWidth="true" styleClass="schedule-scroll">
-                <GridPane fx:id="scheduleGrid" styleClass="schedule-grid">
+            <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="716.0" prefWidth="690.0" styleClass="schedule-scroll" VBox.vgrow="ALWAYS">
+                <GridPane fx:id="scheduleGrid" prefHeight="487.0" prefWidth="738.0" styleClass="schedule-grid">
 
                     <columnConstraints>
                         <ColumnConstraints percentWidth="10.0" />
-                        <ColumnConstraints percentWidth="9.399999999999999" />
-                        <ColumnConstraints percentWidth="13.4" />
-                        <ColumnConstraints percentWidth="13.4" />
-                        <ColumnConstraints percentWidth="13.4" />
-                        <ColumnConstraints percentWidth="13.4" />
-                        <ColumnConstraints percentWidth="13.4" />
-                        <ColumnConstraints percentWidth="13.4" />
+                        <ColumnConstraints percentWidth="13.0" />
+                        <ColumnConstraints percentWidth="13.0" />
+                        <ColumnConstraints percentWidth="13.0" />
+                        <ColumnConstraints percentWidth="13.0" />
+                        <ColumnConstraints percentWidth="13.0" />
+                        <ColumnConstraints percentWidth="13.0" />
+                        <ColumnConstraints percentWidth="11.799999999999994" />
                     </columnConstraints>
 
                     <rowConstraints>

@@ -6,13 +6,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextInputDialog;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.Config.AppSession;
 import org.example.Service.Admin.AccountService;
+import org.example.Util.AlertUtil;
 import org.example.Util.SceneUtil;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class AccountController {
 
@@ -85,18 +88,27 @@ public class AccountController {
     @FXML
     public void handleResetPws()
     {
-        String response = accountService.resetPws();
-        if(response.equals("SUCCESS"))
-           showAlert("Reset Success");
-        else
-            showAlert("Reset Failed " + response);
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Reset mật khẩu");
+        dialog.setHeaderText("Nhập tên đăng nhập cần reset");
+        dialog.setContentText("Username:");
 
-    }
-    private void showAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+        Optional<String> result = dialog.showAndWait();
+
+        result.ifPresent(username -> {
+            username = username.trim();
+
+            if (username.isEmpty()) {
+                AlertUtil.showAlert("Username không được để trống");
+                return;
+            }
+            String message = accountService.resetPws(username);
+
+            if(message.equals("SUCCESS"))
+                AlertUtil.showAlert("Reset mật khẩu thành công");
+            else
+                AlertUtil.showError(message);
+        });
     }
 }
 

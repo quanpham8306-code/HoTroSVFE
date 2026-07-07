@@ -27,16 +27,9 @@ public class DiemService {
         return ApiResponseHandler.readData(response, TongDiem.class);
     }
     public TongDiem getMySummaryByKy(int ky, String nam) {
-        String url = ApiEndpoint.STUDENT_SCORE_ME_BY_KY + ky+"/"+nam;
-        String response = apiClient.get(ApiEndpoint.STUDENT_SCORE_SUMMARY_BY_KY);
+        String url = ApiEndpoint.STUDENT_SCORE_SUMMARY_BY_KY + ky+"/"+nam;
+        String response = apiClient.get(url);
         return ApiResponseHandler.readData(response, TongDiem.class);
-    }
-    public List<HocKy> getMyHocKy() {
-        String response = apiClient.get(ApiEndpoint.GET_ALL_MY_HOC_KY);
-        if (!ApiResponseHandler.isOk(response)) {
-            return List.of();
-        }
-        return ApiResponseHandler.readData(response, new TypeReference<List<HocKy>>() {});
     }
     public List<BangDiem> getMyScoresByKy(int hocKy,String nam)
     {

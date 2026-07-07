@@ -6,16 +6,10 @@ import java.util.List;
 public class ThoiKhoaBieu {
 
     private int ky;
-    private int namHoc;
+    private String namHoc;
     private List<LopHocPhan> lopHocPhanDTOList = new ArrayList<>();
 
     public ThoiKhoaBieu() {
-    }
-
-    public ThoiKhoaBieu(int ky, int namHoc, List<LopHocPhan> lopHocPhanDTOList) {
-        this.ky = ky;
-        this.namHoc = namHoc;
-        this.lopHocPhanDTOList = lopHocPhanDTOList;
     }
 
     public int getKy() {
@@ -26,11 +20,11 @@ public class ThoiKhoaBieu {
         this.ky = ky;
     }
 
-    public int getNamHoc() {
+    public String getNamHoc() {
         return namHoc;
     }
 
-    public void setNamHoc(int namHoc) {
+    public void setNamHoc(String namHoc) {
         this.namHoc = namHoc;
     }
 
@@ -39,6 +33,12 @@ public class ThoiKhoaBieu {
     }
 
     public void setLopHocPhanDTOList(List<LopHocPhan> lopHocPhanDTOList) {
+        this.lopHocPhanDTOList = lopHocPhanDTOList;
+    }
+
+    public ThoiKhoaBieu(int ky, String namHoc, List<LopHocPhan> lopHocPhanDTOList) {
+        this.ky = ky;
+        this.namHoc = namHoc;
         this.lopHocPhanDTOList = lopHocPhanDTOList;
     }
 }

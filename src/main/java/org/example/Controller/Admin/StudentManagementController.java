@@ -10,7 +10,7 @@ import org.example.Config.AppSession;
 import org.example.Model.SinhVien;
 import org.example.Service.Admin.AdminStudentService;
 import org.example.Util.ApiEndpoint;
-import org.example.Util.ExcelImportUtil;
+import org.example.Util.ExcelUtil;
 import org.example.Util.SceneUtil;
 
 import java.io.IOException;
@@ -324,7 +324,7 @@ public class StudentManagementController {
     }
     @FXML
     private void handleImportStudent() {
-        ExcelImportUtil.handleImportExcel(
+        ExcelUtil.handleImportExcel(
                 importStudent,
                 ApiEndpoint.ADMIN_STUDENT_IMPORT,
                 "danhSachSinhVien",

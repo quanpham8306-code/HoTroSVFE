@@ -73,13 +73,7 @@
 
                 <Label styleClass="page-title" text="Quản lý điểm" />
 
-                <HBox spacing="8">
-                    <Label styleClass="breadcrumb" text="Admin" />
-
-                    <Label styleClass="breadcrumb" text="›" />
-
-                    <Label styleClass="breadcrumb-current" text="Điểm" />
-                </HBox>
+                <HBox spacing="8" />
 
             </VBox>
 
@@ -143,23 +137,13 @@
                     <Button onAction="#refreshForm" styleClass="primary-btn" text="Làm mới" />
                     <Region HBox.hgrow="ALWAYS" />
 
-                    <TextField fx:id="txtSearchMaSv"
-                               prefHeight="42.0"
-                               prefWidth="180.0"
-                               promptText="Tìm mã SV" />
+                    <TextField fx:id="txtSearchMaSv" prefHeight="42.0" prefWidth="180.0" promptText="Tìm mã SV" />
 
-                    <TextField fx:id="txtSearchMaLopHP"
-                               prefHeight="42.0"
-                               prefWidth="200.0"
-                               promptText="Tìm mã lớp HP" />
+                    <TextField fx:id="txtSearchMaLopHP" prefHeight="42.0" prefWidth="200.0" promptText="Tìm mã lớp HP" />
 
-                    <Button onAction="#searchScore"
-                            styleClass="primary-btn"
-                            text="Tìm kiếm" />
+                    <Button onAction="#searchScore" styleClass="primary-btn" text="Tìm kiếm" />
 
-                    <Button fx:id="btnImportExcel" onAction="#importExcel"
-                            styleClass="primary-btn"
-                            text="Import Excel" />
+                    <Button fx:id="btnImportExcel" onAction="#importExcel" styleClass="import-btn" text="Import Excel" />
                 </HBox>
 
                 <Separator />

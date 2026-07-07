@@ -3,11 +3,14 @@ package org.example.Util;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.stage.FileChooser;
+import javafx.stage.Window;
 import org.example.Api.ApiClient;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 
-public class ExcelImportUtil {
+public class ExcelUtil {
 
     private static final ApiClient apiClient = new ApiClient();
 
@@ -43,4 +46,34 @@ public class ExcelImportUtil {
             reloadAction.run();
         }
     }
+    public static void handleExport(Window owner,
+                              String endpoint,
+                              String defaultFileName) {
+        byte[] excelData = apiClient.downloadFile(endpoint);
+
+        if (excelData == null || excelData.length == 0) {
+            AlertUtil.showAlert("Không có dữ liệu để xuất.");
+            return;
+        }
+
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Xuất Excel");
+        chooser.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter("Excel Workbook (*.xlsx)", "*.xlsx")
+        );
+        chooser.setInitialFileName(defaultFileName);
+
+        File file = chooser.showSaveDialog(owner);
+
+        if (file == null) return;
+
+        try {
+            Files.write(file.toPath(), excelData);
+            AlertUtil.showAlert("Xuất Excel thành công.");
+        } catch (IOException e) {
+            AlertUtil.showAlert("Xuất Excel thất bại.");
+            e.printStackTrace();
+        }
+    }
 }
+

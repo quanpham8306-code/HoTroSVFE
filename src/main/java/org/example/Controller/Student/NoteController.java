@@ -1,15 +1,22 @@
 package org.example.Controller.Student;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.Config.AppSession;
+import org.example.Model.LopHocPhan;
 import org.example.Model.Note;
 import org.example.Service.Student.NoteService;
+import org.example.Util.AlertUtil;
 import org.example.Util.SceneUtil;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 public class NoteController {
     @FXML private Button btnHome;
@@ -29,13 +36,27 @@ public class NoteController {
     @FXML private TableColumn<Note, String> colTag;
     @FXML private TableColumn<Note, String> colTitle;
 
+    private Note selectedNote;
     private final NoteService noteService = new NoteService();
+    private ObservableList<Note> noteList = FXCollections.observableArrayList();
 
     @FXML public void initialize() {
+        selectedNote = null;
         clearNote();
         setUpTable();
         getNoteTable();
         loadTable();
+        noteList.addAll(noteService.findAllNotes());
+        txtSearch.textProperty()
+                .addListener((obs, oldV, newV)
+                        -> search(newV));
+        noteTable.getSelectionModel()
+                .selectedItemProperty()
+                .addListener((observable, oldValue, newValue) -> {
+
+                    if (newValue == null) return;
+                    selectedNote = newValue;
+                });
     }
     @FXML
     public void showScore() throws IOException {
@@ -89,20 +110,10 @@ public class NoteController {
     }
     @FXML
     public void deleteNote() {
-        Note selected = noteTable.getSelectionModel().getSelectedItem();
-
-        if (selected == null) {
+        if (selectedNote == null) {
             return;
         }
-
-
-        System.out.println("DELETE SELECTED:");
-        System.out.println("title = " + selected.getTitle());
-        System.out.println("tag = " + selected.getTag());
-        System.out.println("note = " + selected.getNote());
-        System.out.println("date = " + selected.getDate());
-
-        noteService.deleteNote(selected);
+        noteService.deleteNote(selectedNote);
 
         clearNote();
         loadTable();
@@ -110,6 +121,15 @@ public class NoteController {
     }
     @FXML
     public void saveNote() {
+
+        if (txtTitle.equals("")) {
+            AlertUtil.showAlert("Title không được để trống");
+            return;
+        }
+        if (txtNote.equals("")) {
+            AlertUtil.showAlert("Nội dung không được để trống");
+            return;
+        }
         Note note = getNote();
         noteService.saveNote(note);
         clearNote();
@@ -155,5 +175,26 @@ public class NoteController {
         txtNote.setText(note.getNote());
         txtTag.setText(note.getTag());
         txtTitle.setText(note.getTitle());
+    }
+    private void search(String keyword) {
+
+        FilteredList<Note> filtered =
+                new FilteredList<>(noteList);
+
+        filtered.setPredicate(note -> {
+
+            if (keyword == null
+                    || keyword.isBlank())
+                return true;
+
+            String key =
+                    keyword.toLowerCase();
+
+            return note.getTitle()
+                    .toLowerCase()
+                    .contains(key);
+        });
+
+        noteTable.setItems(filtered);
     }
 }

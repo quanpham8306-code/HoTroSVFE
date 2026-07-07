@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -62,7 +61,7 @@
 
                <VBox minWidth="598.0" prefHeight="731.0" prefWidth="598.0" spacing="14" HBox.hgrow="ALWAYS">
 
-                  <HBox alignment="CENTER_LEFT" minHeight="165" prefHeight="165" spacing="28" styleClass="card profile-card">
+                  <HBox alignment="CENTER_LEFT" minHeight="165" prefHeight="165" spacing="28" styleClass="card">
                      <StackPane prefHeight="120" prefWidth="120">
                         <Circle radius="58" styleClass="avatar-circle" />
                         <Label styleClass="avatar-emoji" text="👨‍🎓" />
@@ -80,10 +79,11 @@
                      </VBox>
                   </HBox>
 
-                  <VBox spacing="22" styleClass="card info-card" VBox.vgrow="ALWAYS">
+                  <VBox spacing="22" styleClass="card" VBox.vgrow="ALWAYS">
                      <HBox alignment="CENTER_LEFT">
                         <Label maxWidth="Infinity" styleClass="section-title" text="👤  Thông tin cá nhân" HBox.hgrow="ALWAYS" />
                      </HBox>
+                     <Separator prefHeight="0.0" prefWidth="558.0" />
 
                      <GridPane hgap="46" vgap="15">
                         <columnConstraints>
@@ -92,41 +92,41 @@
                         </columnConstraints>
 
                         <VBox spacing="7" styleClass="info-item" GridPane.columnIndex="0" GridPane.rowIndex="0">
-                           <Label styleClass="info-label" text="Họ và tên" />
-                           <TextField fx:id="txtHoTen" styleClass="info-value" text="Phạm Anh Quân" />
+                           <Label prefHeight="18.0" prefWidth="65.0" styleClass="info-label" text="Họ và tên" />
+                           <Label fx:id="lblName" prefHeight="19.0" prefWidth="232.0" styleClass="info-value" text="Label" />
                         </VBox>
                         <VBox spacing="7" styleClass="info-item" GridPane.columnIndex="0" GridPane.rowIndex="1">
-                           <Label styleClass="info-label" text="Ngày sinh" />
-                           <TextField fx:id="txtNgaySinh" styleClass="info-value" text="15/08/2004" />
+                           <Label prefHeight="18.0" prefWidth="66.0" styleClass="info-label" text="Ngày sinh" />
+                           <Label fx:id="lblDate" prefHeight="15.0" prefWidth="222.0" styleClass="info-value" text="Label" />
                         </VBox>
                         <VBox spacing="7" styleClass="info-item" GridPane.columnIndex="0" GridPane.rowIndex="2">
                            <Label styleClass="info-label" text="Giới tính" />
-                           <TextField fx:id="txtGioiTinh" styleClass="info-value" text="Nam" />
+                           <Label fx:id="lblSex" prefHeight="19.0" prefWidth="232.0" styleClass="info-value" text="Label" />
                         </VBox>
                         <VBox spacing="7" styleClass="info-item" GridPane.columnIndex="0" GridPane.rowIndex="3">
                            <Label styleClass="info-label" text="Số điện thoại" />
-                           <TextField fx:id="txtPhone" styleClass="info-value" text="0321 456 789" />
+                           <Label fx:id="lblPhone" prefHeight="15.0" prefWidth="215.0" styleClass="info-value" text="Label" />
                         </VBox>
                         <VBox spacing="7" styleClass="info-item" GridPane.columnIndex="0" GridPane.rowIndex="4">
                            <Label styleClass="info-label" text="Địa chỉ" />
-                           <TextField fx:id="txtAddress" styleClass="info-value" text="123 Nguyễn Văn Cừ, Q.5, TP.HCM" />
+                           <Label fx:id="lblAd" prefHeight="15.0" prefWidth="215.0" styleClass="info-value" text="Label" />
                         </VBox>
 
                         <VBox spacing="7" styleClass="info-item" GridPane.columnIndex="1" GridPane.rowIndex="0">
-                           <Label styleClass="info-label" text="Mã sinh viên" />
-                           <TextField fx:id="txtMaSV" styleClass="info-value" text="CT9B230128" />
+                           <Label prefHeight="18.0" prefWidth="78.0" styleClass="info-label" text="Mã sinh viên" />
+                           <Label fx:id="lblMaSv" prefHeight="15.0" prefWidth="215.0" styleClass="info-value" text="Label" />
                         </VBox>
                         <VBox spacing="7" styleClass="info-item" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <Label styleClass="info-label" text="Lớp" />
-                           <TextField fx:id="txtClass" styleClass="info-value" text="CT9B" />
+                           <Label prefHeight="18.0" prefWidth="32.0" styleClass="info-label" text="Lớp" />
+                           <Label fx:id="lblClass" prefHeight="19.0" prefWidth="270.0" styleClass="info-value" text="Label" />
                         </VBox>
                         <VBox spacing="7" styleClass="info-item" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <Label styleClass="info-label" text="Email" />
-                           <TextField fx:id="txtEmail" styleClass="info-value" text="quanpa@example.com" />
+                           <Label fx:id="lblMail" prefHeight="19.0" prefWidth="232.0" styleClass="info-value" text="Label" />
                         </VBox>
                         <VBox spacing="7" styleClass="info-item" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <Label styleClass="info-label" text="CMND/CCCD" />
-                           <TextField fx:id="txtID" styleClass="info-value" text="079204012345" />
+                           <Label fx:id="lblId" prefHeight="19.0" prefWidth="232.0" styleClass="info-value" text="Label" />
                         </VBox>
 
                         <rowConstraints>
@@ -143,7 +143,7 @@
                <VBox maxWidth="520" minWidth="360" prefWidth="420" spacing="16" HBox.hgrow="SOMETIMES">
 
                   <VBox prefHeight="645.0" prefWidth="379.0" spacing="14" styleClass="card">
-                     <HBox alignment="CENTER_LEFT">
+                     <HBox alignment="CENTER_LEFT" prefHeight="308.0" prefWidth="310.0">
                         <VBox prefHeight="290.0" prefWidth="370.0" spacing="16" styleClass="card">
                            <Label styleClass="section-title" text="🎓  Tổng quan học tập" />
                            <GridPane hgap="14" vgap="14">
@@ -190,7 +190,7 @@
                            <Label fx:id="date1" prefHeight="54.0" prefWidth="110.0" styleClass="date-box" text="Thứ 3&#10;21/05" />
                            <VBox spacing="3">
                               <Label fx:id="time1" styleClass="info-label" text="07:30 - 09:15" />
-                              <Label fx:id="mon1" prefHeight="19.0" prefWidth="190.0" styleClass="schedule-title" text="Cấu trúc dữ liệu và giải thuật" />
+                              <Label fx:id="mon1" prefHeight="19.0" prefWidth="185.0" styleClass="schedule-title" text="Cấu trúc dữ liệu và giải thuật" VBox.vgrow="ALWAYS" />
                               <Label fx:id="address1" styleClass="info-label" text="P.301 - Tòa A" />
                            </VBox>
                         </HBox>
@@ -198,15 +198,15 @@
                            <Label fx:id="date2" prefHeight="54.0" prefWidth="110.0" styleClass="date-box" text="Thứ 3&#10;21/05" />
                            <VBox spacing="3">
                               <Label fx:id="time2" styleClass="info-label" text="09:30 - 11:15" />
-                              <Label fx:id="mon2" styleClass="schedule-title" text="Lập trình hướng đối tượng" />
+                              <Label fx:id="mon2" styleClass="schedule-title" text="Lập trình hướng đối tượng" VBox.vgrow="ALWAYS" />
                               <Label fx:id="address2" styleClass="info-label" text="P.302 - Tòa A" />
                            </VBox>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" spacing="18" styleClass="schedule-row">
-                           <Label fx:id="date3" prefHeight="54.0" prefWidth="103.0" styleClass="date-box" text="Thứ 4&#10;22/05" />
+                           <Label fx:id="date3" prefHeight="54.0" prefWidth="110.0" styleClass="date-box" text="Thứ 4&#10;22/05" />
                            <VBox spacing="3">
                               <Label fx:id="time3" styleClass="info-label" text="13:30 - 15:15" />
-                              <Label fx:id="mon3" styleClass="schedule-title" text="Cơ sở dữ liệu" />
+                              <Label fx:id="mon3" styleClass="schedule-title" text="Cơ sở dữ liệu" VBox.vgrow="ALWAYS" />
                               <Label fx:id="address3" styleClass="info-label" text="P.201 - Tòa B" />
                            </VBox>
                         </HBox>

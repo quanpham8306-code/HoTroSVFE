@@ -10,7 +10,7 @@ import org.example.Config.AppSession;
 import org.example.Model.Diem;
 import org.example.Service.Admin.AdminScoreService;
 import org.example.Util.ApiEndpoint;
-import org.example.Util.ExcelImportUtil;
+import org.example.Util.ExcelUtil;
 import org.example.Util.SceneUtil;
 
 import java.io.IOException;
@@ -248,10 +248,10 @@ public class ScoreManagementController {
 
     @FXML
     private void importExcel() {
-        ExcelImportUtil.handleImportExcel(
+        ExcelUtil.handleImportExcel(
                 btnImportExcel,
                 ApiEndpoint.ADMIN_SCORE_IMPORT,
-                "danhsachdiem",
+                "danhSachDiem",
                 this::loadData
         );
     }

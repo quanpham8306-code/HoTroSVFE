@@ -119,14 +119,14 @@
                             </HBox>
 
                             <VBox spacing="18" styleClass="card table-card" VBox.vgrow="ALWAYS">
-                                <Label fx:id="lblHocKy" styleClass="section-title" text="Bảng điểm học kỳ 2 (2023 - 2024)" />
+                                <Label fx:id="lblHocKy" styleClass="section-title" text="Bảng điểm tất cả các kỳ." />
 
                                 <TableView fx:id="scoreTable" prefHeight="380" styleClass="grade-table-cell" VBox.vgrow="ALWAYS">
                                     <columns>
-                                        <TableColumn fx:id="colMaMonHoc" editable="false" prefWidth="200.0" resizable="false" sortable="false" text="Mã môn" />
-                                        <TableColumn fx:id="colTenMonHoc" editable="false" prefWidth="175.0" resizable="false" sortable="false" text="Tên môn học" />
-                                        <TableColumn fx:id="colSoTinChi" editable="false" prefWidth="100.0" resizable="false" sortable="false" text="Số tín chỉ" />
-                                        <TableColumn fx:id="colDiemHe10" editable="false" prefWidth="100.0" resizable="false" sortable="false" text="Điểm hệ 10" />
+                                        <TableColumn fx:id="colMaMonHoc" editable="false" prefWidth="175.99999618530273" resizable="false" sortable="false" text="Mã môn" />
+                                        <TableColumn fx:id="colTenMonHoc" editable="false" prefWidth="169.60008239746094" resizable="false" sortable="false" text="Tên môn học" />
+                                        <TableColumn fx:id="colSoTinChi" editable="false" prefWidth="103.20001220703125" resizable="false" sortable="false" text="Số tín chỉ" />
+                                        <TableColumn fx:id="colDiemHe10" editable="false" prefWidth="127.20001220703125" resizable="false" sortable="false" text="Điểm học phần" />
                                         <TableColumn fx:id="colDiemChu" editable="false" prefWidth="100.0" resizable="false" sortable="false" text="Điểm chữ" />
                                         <TableColumn fx:id="colTrangThai" editable="false" prefWidth="150.0" resizable="false" sortable="false" text="Trạng thái" />
                                     </columns>
@@ -135,12 +135,12 @@
                             </VBox>
                         </VBox>
 
-                        <VBox minWidth="380" prefHeight="410.0" prefWidth="535.0" HBox.hgrow="SOMETIMES">
-                            <VBox spacing="12" styleClass="card chart-card">
+                        <VBox minWidth="380" prefHeight="410.0" prefWidth="535.0" HBox.hgrow="ALWAYS">
+                            <VBox prefHeight="553.0" prefWidth="523.0" spacing="12" styleClass="card chart-card">
                                 <Label styleClass="section-title-small" text="Biểu đồ GPA" />
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                                      <LineChart fx:id="gpaChart" animated="false" createSymbols="true" legendVisible="false" prefHeight="150.0" prefWidth="438.0" styleClass="gpa-chart">
+                                      <LineChart fx:id="gpaChart" animated="false" createSymbols="true" legendVisible="false" prefHeight="150.0" prefWidth="438.0" styleClass="gpa-chart" HBox.hgrow="ALWAYS">
                                           <xAxis>
                                               <CategoryAxis side="BOTTOM" tickLabelRotation="0" />
                                           </xAxis>
@@ -153,25 +153,20 @@
                         </HBox>
                             </VBox>
 
-                            <VBox prefHeight="185.0" prefWidth="338.0" spacing="12" styleClass="card chart-card" VBox.vgrow="ALWAYS">
+                            <VBox prefHeight="187.0" prefWidth="523.0" spacing="12" styleClass="card chart-card" VBox.vgrow="ALWAYS">
                                 <Label styleClass="section-title-small" text="Thống kê kết quả" />
                                 <HBox alignment="CENTER_LEFT" spacing="12">
-                                    <PieChart fx:id="resultPieChart" animated="false" labelsVisible="false"
-                                              legendVisible="false"
-                                              minHeight="160"
-                                              minWidth="160"
-                                              prefHeight="160"
-                                              prefWidth="160" />
-                                    <VBox prefHeight="151.0" prefWidth="104.0" spacing="10" HBox.hgrow="ALWAYS">
-                                        <Label prefHeight="15.0" prefWidth="106.0" styleClass="legend-green" text="●  A (8.5 - 10)" />
+                                    <PieChart fx:id="resultPieChart" animated="false" labelsVisible="false" legendVisible="false" minHeight="160" minWidth="160" prefHeight="160" prefWidth="238.0" />
+                                    <VBox prefHeight="160.0" prefWidth="123.0" spacing="10" HBox.hgrow="ALWAYS">
+                                        <Label prefHeight="15.0" prefWidth="85.0" styleClass="legend-green" text="●  A (8.5 - 10)" />
                                         <Label styleClass="legend-blue" text="●  B (7.0 - 8.4)" />
                                         <Label styleClass="legend-yellow" text="●  C (5.2 - 6.9)" />
                                         <Label styleClass="legend-purple" text="●  D (4.0 - 5.1)" />
                                         <Label styleClass="legend-red" text="●  F (&lt; 4.0)" />
                                     </VBox>
-                           <VBox prefHeight="151.0" prefWidth="150.0">
+                           <VBox prefHeight="160.0" prefWidth="210.0">
                               <children>
-                                 <Label fx:id="lblA" prefHeight="14.0" prefWidth="66.0" styleClass="legend-green" text="1 môn" />
+                                 <Label fx:id="lblA" prefHeight="15.0" prefWidth="38.0" styleClass="legend-green" text="1 môn" />
                                  <Label fx:id="lblB" prefHeight="34.0" prefWidth="36.0" styleClass="legend-blue" text="1 môn" />
                                  <Label fx:id="lblC" prefHeight="21.0" prefWidth="36.0" styleClass="legend-yellow" text="1 môn" />
                                  <Label fx:id="lblD" prefHeight="26.0" prefWidth="36.0" styleClass="legend-purple" text="1 môn" />

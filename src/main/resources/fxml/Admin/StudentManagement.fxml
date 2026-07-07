@@ -87,7 +87,7 @@
 
                 <TextField fx:id="txtSearch" prefWidth="320" promptText="🔍 Tìm kiếm sinh viên..." styleClass="search-box" />
 
-                <Button fx:id="importStudent" onAction="#handleImportStudent" prefHeight="36.0" prefWidth="78.0" styleClass="primary-btn" text="Import" />
+                <Button fx:id="importStudent" onAction="#handleImportStudent" prefHeight="36.0" prefWidth="115.0" styleClass="primary-btn" text="Import Excel" />
             </HBox>
 
             <!-- TABLE CARD -->
@@ -105,7 +105,7 @@
                     </columnConstraints>
 
                     <Label text="Mã sinh viên" />
-                    <TextField fx:id="txtMaSv" GridPane.columnIndex="1" />
+                    <TextField fx:id="txtMaSv" editable="false" GridPane.columnIndex="1" />
 
                     <Label text="Họ tên" GridPane.columnIndex="2" />
                     <TextField fx:id="txtHoTen" GridPane.columnIndex="3" />
@@ -125,7 +125,7 @@
                     <Label text="Năm nhập học" GridPane.rowIndex="4" />
                     <TextField fx:id="txtNamNhapHoc" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                <Label text="Khoa" GridPane.rowIndex="3" />
-               <TextField fx:id="txtKhoa" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+               <TextField fx:id="txtKhoa" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                <Label text="Ngày sinh" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                <Label text="Giới tính" GridPane.rowIndex="5" />
                <Label text="Địa chỉ" GridPane.columnIndex="2" GridPane.rowIndex="4" />

@@ -64,7 +64,7 @@ public class AdminHomeController {
     }
     @FXML
     public void showAccount() throws IOException {
-        SceneUtil.switchScene(btnScore, "/fxml/Admin/AdminAcount.fxml");}
+        SceneUtil.switchScene(btnAccount, "/fxml/Admin/AdminAcount.fxml");}
     @FXML
     public void handleLogout() {
         AppSession.clear();

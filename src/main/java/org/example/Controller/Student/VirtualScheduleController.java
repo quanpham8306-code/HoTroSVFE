@@ -2,10 +2,14 @@ package org.example.Controller.Student;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import org.example.Config.AppSession;
 import org.example.Model.*;
@@ -14,6 +18,8 @@ import org.example.Service.Student.LopHocPhanService;
 import org.example.Service.Student.MonHocService;
 import org.example.Service.Student.SinhVienService;
 import org.example.Util.AlertUtil;
+import org.example.Util.ApiEndpoint;
+import org.example.Util.ExcelUtil;
 import org.example.Util.SceneUtil;
 
 import java.io.IOException;
@@ -25,57 +31,78 @@ import java.util.List;
 
 
 public class VirtualScheduleController {
-    @FXML private Button btnHome;
-    @FXML private Button btnScore;
-    @FXML private Button btnSchedule;
-    @FXML private Button btnNote;
-    @FXML private Button btnSupport;
-    @FXML private Button btnLogout;
+    @FXML
+    private Button btnHome;
+    @FXML
+    private Button btnScore;
+    @FXML
+    private Button btnSchedule;
+    @FXML
+    private Button btnNote;
+    @FXML
+    private Button btnSupport;
+    @FXML
+    private Button btnLogout;
 
-    @FXML private TableView<LopHocPhan> lopHocPhanTable;
-    @FXML private TableColumn<LopHocPhan, String> colLop;
-    @FXML private TableColumn<LopHocPhan, String> colGiangVien;
-    @FXML private TableColumn<LopHocPhan, String> colDiaDiem;
-    @FXML private TableColumn<LopHocPhan, String> colThoiGian;
-    @FXML private TableColumn<LopHocPhan, String> colNgayHoc;
+    @FXML
+    private TableView<LopHocPhan> lopHocPhanTable;
+    @FXML
+    private TableColumn<LopHocPhan, String> colLop;
+    @FXML
+    private TableColumn<LopHocPhan, String> colGiangVien;
+    @FXML
+    private TableColumn<LopHocPhan, String> colDiaDiem;
+    @FXML
+    private TableColumn<LopHocPhan, String> colThoiGian;
+    @FXML
+    private TableColumn<LopHocPhan, String> colNgayHoc;
 
-    @FXML private TableView<LopHocPhan> virtualScheduleTable;
-    @FXML private TableColumn<LopHocPhan, String> colLop1;
-    @FXML private TableColumn<LopHocPhan, String> colGiangVien1;
-    @FXML private TableColumn<LopHocPhan, String> colDiaDiem1;
-    @FXML private TableColumn<LopHocPhan, String> colThoiGian1;
-    @FXML private TableColumn<LopHocPhan, String> colNgayHoc1;
+    @FXML
+    private TableView<LopHocPhan> virtualScheduleTable;
+    @FXML
+    private TableColumn<LopHocPhan, String> colLop1;
+    @FXML
+    private TableColumn<LopHocPhan, String> colGiangVien1;
+    @FXML
+    private TableColumn<LopHocPhan, String> colDiaDiem1;
+    @FXML
+    private TableColumn<LopHocPhan, String> colThoiGian1;
+    @FXML
+    private TableColumn<LopHocPhan, String> colNgayHoc1;
 
-    @FXML private Label lblThu2;
-    @FXML private Label lblThu3;
-    @FXML private Label lblThu4;
-    @FXML private Label lblThu5;
-    @FXML private Label lblThu6;
-    @FXML private Label lblThu7;
-    @FXML private Label lblCN;
+    @FXML
+    private Label lblMonthYear;
+    @FXML
+    private Button btnPrevMonth;
+    @FXML
+    private Button btnNextMonth;
 
-
-    @FXML private Label lblMonthYear;
-    @FXML private Button btnPrevMonth;
-    @FXML private Button btnNextMonth;
-
-    @FXML private GridPane scheduleVirtualGrid;
+    @FXML
+    private GridPane scheduleVirtualGrid;
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-    @FXML private ComboBox<String> cbKhoa;
-    @FXML private ComboBox<MonHoc> cbMon;
+    @FXML
+    private ComboBox<String> cbKhoa;
+    @FXML
+    private ComboBox<MonHoc> cbMon;
+    @FXML
+    private Button btnImport;
+    @FXML
+    private Button btnExport;
 
     private final LopHocPhanService lopHocPhanService = new LopHocPhanService();
     private final SinhVienService sinhVienService = new SinhVienService();
     private final MonHocService monHocService = new MonHocService();
     private final LichAoService lichAoService = new LichAoService();
 
-    private LocalDate currentMonthStart;
+    private LocalDate currentMonthStart = LocalDate.now();
     private LichAo virtualSchedule;
+    private LopHocPhan selectedLop;
 
     @FXML
     public void initialize() {
-        virtualSchedule  = new LichAo();
+        selectedLop = null;
+        virtualSchedule = new LichAo();
         loadComboKhoa();
         setupTable();
         setupVirtualTable();
@@ -94,10 +121,17 @@ public class VirtualScheduleController {
                 .selectedItemProperty()
                 .addListener((observable, oldValue, newValue) -> {
 
-            if (newValue == null) return;
-            handleThemLop(newValue);
-        });
+                    if (newValue == null) return;
+                    handleThemLop(newValue);
+                });
+
+        virtualScheduleTable.getSelectionModel()
+                .selectedItemProperty()
+                .addListener((obs, oldValue, newValue) -> {
+                    selectedLop = newValue;
+                });
     }
+
     @FXML
     public void showScore() throws IOException {
         SceneUtil.switchScene(btnScore, "/fxml/Student/Score.fxml");
@@ -107,6 +141,7 @@ public class VirtualScheduleController {
     public void showSchedule() throws IOException {
         SceneUtil.switchScene(btnSchedule, "/fxml/Student/Schedule.fxml");
     }
+
     @FXML
     public void showSupport() throws IOException {
         SceneUtil.switchScene(btnSupport, "/fxml/Student/Support.fxml");
@@ -116,6 +151,7 @@ public class VirtualScheduleController {
     public void showHome() throws IOException {
         SceneUtil.switchScene(btnHome, "/fxml/Student/Home.fxml");
     }
+
     @FXML
     public void showNote() throws IOException {
         SceneUtil.switchScene(btnNote, "/fxml/Student/Note.fxml");
@@ -126,14 +162,16 @@ public class VirtualScheduleController {
         AppSession.clear();
         SceneUtil.switchToLogin(btnLogout);
     }
+
     @FXML
-    private void saveVirtualSchedule(){
+    private void saveVirtualSchedule() {
         String respose = lichAoService.save(virtualSchedule);
-        if(respose.equals("SUCCESS"))
+        if (respose.equals("SUCCESS"))
             AlertUtil.showAlert("Lưu lịch thành công.");
         else
             AlertUtil.showAlert(respose);
     }
+
     private void setupTable() {
         colLop.setCellValueFactory(new PropertyValueFactory<>("maLopHP"));
         colDiaDiem.setCellValueFactory(new PropertyValueFactory<>("phongHoc"));
@@ -141,6 +179,7 @@ public class VirtualScheduleController {
         colNgayHoc.setCellValueFactory(new PropertyValueFactory<>("khoangNgayHoc"));
         colThoiGian.setCellValueFactory(new PropertyValueFactory<>("khoangThoiGian"));
     }
+
     private void setupVirtualTable() {
         colLop1.setCellValueFactory(new PropertyValueFactory<>("maLopHP"));
         colDiaDiem1.setCellValueFactory(new PropertyValueFactory<>("phongHoc"));
@@ -148,27 +187,29 @@ public class VirtualScheduleController {
         colNgayHoc1.setCellValueFactory(new PropertyValueFactory<>("khoangNgayHoc"));
         colThoiGian1.setCellValueFactory(new PropertyValueFactory<>("khoangThoiGian"));
     }
-    private void loadVirtualClassTable()
-    {
+
+    private void loadVirtualClassTable() {
         virtualScheduleTable.getItems().clear();
         ObservableList<LopHocPhan> lopHocPhanObservableList = FXCollections.observableArrayList();
         lopHocPhanObservableList.addAll(virtualSchedule.getLopHocPhanDTOList());
         virtualScheduleTable.setItems(lopHocPhanObservableList);
     }
+
     private void loadClassTable() {
         ObservableList<LopHocPhan> lopHocPhanObservableList = FXCollections.observableArrayList();
-        List<LopHocPhan> lopHocPhanList = lopHocPhanService.getPickedClass(getKhoaSelected(),getMonKhoaSelected());
+        List<LopHocPhan> lopHocPhanList = lopHocPhanService.getPickedClass(getKhoaSelected(), getMonKhoaSelected());
         lopHocPhanObservableList.addAll(lopHocPhanList);
         lopHocPhanTable.setItems(lopHocPhanObservableList);
     }
+
     private void loadComboKhoa() {
 
         try {
             cbKhoa.getItems().clear();
             int namNhapHoc = sinhVienService.getKhoa();
             int namHienTai;
-            if(LocalDate.now().getMonth().getValue() < 9)
-                namHienTai = LocalDate.now().getYear()-1;
+            if (LocalDate.now().getMonth().getValue() < 9)
+                namHienTai = LocalDate.now().getYear() - 1;
             else
                 namHienTai = LocalDate.now().getYear();
 
@@ -184,9 +225,11 @@ public class VirtualScheduleController {
             cbMon.setItems(null);
         }
     }
+
     private String getKhoaSelected() {
         return cbKhoa.getValue();
     }
+
     private void loadComboMon() {
         try {
             cbMon.getItems().clear();
@@ -196,9 +239,11 @@ public class VirtualScheduleController {
             cbMon.setItems(null);
         }
     }
+
     private String getMonKhoaSelected() {
         return cbMon.getValue().getMaMon();
     }
+
     private void handleThemLop(LopHocPhan lopMoi) {
 
         if (lopMoi == null) {
@@ -216,15 +261,18 @@ public class VirtualScheduleController {
 
         virtualSchedule.getLopHocPhanDTOList().add(lopMoi);
         loadVirtualClassTable();
+        loadMonth(currentMonthStart);
         AlertUtil.showAlert("Thêm lớp thành công");
     }
-    private void getLichAo(){
-        if(lichAoService.getLichAo() != null)
-        {
+
+    private void getLichAo() {
+        if (lichAoService.getLichAo() != null) {
             virtualSchedule = lichAoService.getLichAo();
             loadVirtualClassTable();
+            loadMonth(currentMonthStart);
         }
     }
+
     private void setupMonthButtons() {
         btnPrevMonth.setOnAction(e -> {
             currentMonthStart = currentMonthStart.minusMonths(1);
@@ -237,75 +285,67 @@ public class VirtualScheduleController {
         });
     }
 
-    private void loadMonth(LocalDate date) {
-        currentMonthStart = getStartOfMonth(date);
+    private VBox createDayBox(LocalDate date, int currentMonth) {
+        VBox box = new VBox(5);
+        box.getStyleClass().add("calendar-day-box");
+        box.setMinHeight(120);
+        box.setPrefHeight(160);
+        box.setMaxHeight(Double.MAX_VALUE);
 
-        updateMonthHeader(currentMonthStart);
-        updateDayHeader();
-        loadScheduleToGrid(virtualSchedule);
-    }
-
-    private void updateMonthHeader(LocalDate monthStart) {
-        lblMonthYear.setText(
-                "Tháng " + monthStart.getMonthValue() + " năm " + monthStart.getYear()
-        );
-    }
-
-    private void updateDayHeader() {
-        lblThu2.setText("Thứ 2");
-        lblThu3.setText("Thứ 3");
-        lblThu4.setText("Thứ 4");
-        lblThu5.setText("Thứ 5");
-        lblThu6.setText("Thứ 6");
-        lblThu7.setText("Thứ 7");
-        lblCN.setText("Chủ nhật");
-    }
-
-    private void loadScheduleToGrid(LichAo lichAo) {
-        clearOldSchedule();
-
-        if (lichAo == null || lichAo.getLopHocPhanDTOList() == null) {
-            return;
+        if (date.getMonthValue() != currentMonth) {
+            box.getStyleClass().add("calendar-day-other-month");
         }
 
-        int[] rowByColumn = new int[8];
+        Label dayLabel = new Label(String.valueOf(date.getDayOfMonth()));
+        dayLabel.getStyleClass().add("calendar-day-number");
 
-        for (LopHocPhan lich : lichAo.getLopHocPhanDTOList()) {
-            int col = getColumnByThu(lich.getThu());
+        if (date.getMonthValue() != currentMonth) {
+            dayLabel.getStyleClass().add("calendar-day-other-number");
+        }
 
-            if (col == -1) {
-                continue;
+        VBox cardBox = new VBox(5);
+        cardBox.setFillWidth(true);
+
+        if (virtualSchedule != null && virtualSchedule.getLopHocPhanDTOList() != null) {
+            for (LopHocPhan lop : virtualSchedule.getLopHocPhanDTOList()) {
+                if (isClassOnDate(lop, date)) {
+                    cardBox.getChildren().add(createScheduleCard(lop));
+                }
             }
-
-            int row = rowByColumn[col];
-            rowByColumn[col]++;
-
-            VBox card = createScheduleCard(lich);
-            card.setMaxWidth(Double.MAX_VALUE);
-            GridPane.setFillWidth(card, true);
-            GridPane.setFillHeight(card, false);
-
-            scheduleVirtualGrid.add(card, col, row);
         }
+
+        ScrollPane scrollPane = new ScrollPane(cardBox);
+        scrollPane.setFitToWidth(true);
+        scrollPane.setFitToHeight(false);
+        scrollPane.setMinHeight(0);
+        scrollPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
+        scrollPane.setMaxHeight(Double.MAX_VALUE);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        scrollPane.getStyleClass().add("calendar-day-scroll");
+
+        VBox.setVgrow(scrollPane, Priority.ALWAYS);
+
+        box.getChildren().addAll(dayLabel, scrollPane);
+
+        return box;
     }
 
-    private void clearOldSchedule() {
-        scheduleVirtualGrid.getChildren().removeIf(node ->
-                "schedule-card".equals(node.getUserData())
-        );
-    }
+    private boolean isClassOnDate(LopHocPhan lop, LocalDate date) {
+        if (lop.getNgayBatDau() == null || lop.getNgayKetThuc() == null) {
+            return false;
+        }
 
-    private int getColumnByThu(int thu) {
-        return switch (thu) {
-            case 2 -> 0;
-            case 3 -> 1;
-            case 4 -> 2;
-            case 5 -> 3;
-            case 6 -> 4;
-            case 7 -> 5;
-            case 8 -> 6;
-            default -> -1;
-        };
+        if (date.isBefore(lop.getNgayBatDau()) || date.isAfter(lop.getNgayKetThuc())) {
+            return false;
+        }
+
+        int thu = date.getDayOfWeek().getValue() + 1;
+        if (date.getDayOfWeek() == DayOfWeek.SUNDAY) {
+            thu = 8;
+        }
+
+        return lop.getThu() == thu;
     }
 
     private VBox createScheduleCard(LopHocPhan lich) {
@@ -315,27 +355,99 @@ public class VirtualScheduleController {
         Label maLop = new Label("Lớp: " + lich.getMaLopHP());
         maLop.getStyleClass().add("schedule-code");
 
-        Label phong = new Label("Phòng: " + lich.getPhongHoc());
-        phong.getStyleClass().add("schedule-info");
-
         Label gio = new Label(lich.getGioBatDau() + " - " + lich.getGioKetThuc());
         gio.getStyleClass().add("schedule-time-cell");
 
-        Label gv = new Label("GV: " + lich.getGiangVien());
-        gv.getStyleClass().add("schedule-info");
-
         VBox card = new VBox(5);
-        card.getChildren().addAll(tenMon, maLop, phong, gio, gv);
-
-        card.getStyleClass().add("schedule-class-card");
-        card.setUserData("schedule-card");
+        card.getChildren().addAll(tenMon, maLop, gio);
 
         card.setMaxWidth(Double.MAX_VALUE);
         GridPane.setFillWidth(card, true);
 
         return card;
     }
-    private LocalDate getStartOfMonth(LocalDate date) {
-        return date.withDayOfMonth(1);
+
+    private void loadMonth(LocalDate date) {
+        scheduleVirtualGrid.getChildren().clear();
+
+        LocalDate firstDay = date.withDayOfMonth(1);
+
+        // Bắt đầu từ thứ 2 của tuần chứa ngày đầu tháng
+        LocalDate startDate = firstDay.minusDays(firstDay.getDayOfWeek().getValue() - 1);
+
+        lblMonthYear.setText(
+                "Tháng " + firstDay.getMonthValue() + " năm " + firstDay.getYear()
+        );
+
+        String[] headers = {
+                "Thứ 2", "Thứ 3", "Thứ 4",
+                "Thứ 5", "Thứ 6", "Thứ 7", "Chủ nhật"
+        };
+
+        for (int i = 0; i < headers.length; i++) {
+            Label label = new Label(headers[i]);
+            label.getStyleClass().add("calendar-week-header");
+
+            label.setMaxWidth(Double.MAX_VALUE);
+            label.setAlignment(Pos.CENTER);
+
+            scheduleVirtualGrid.add(label, i, 0);
+        }
+
+        for (int i = 0; i < 42; i++) {
+            LocalDate currentDate = startDate.plusDays(i);
+
+            int col = i % 7;
+            int row = i / 7 + 1;
+
+            VBox dayBox = createDayBox(currentDate, firstDay.getMonthValue());
+
+            scheduleVirtualGrid.add(dayBox, col, row);
+        }
+    }
+
+    @FXML public void clearSchedule(){
+        String response = lichAoService.deleteLichAo(virtualSchedule);
+
+        if (response.equals("SUCCESS")) {
+            virtualSchedule.getLopHocPhanDTOList().clear();
+            loadMonth(LocalDate.now());
+            reloadVirtualData();
+            AlertUtil.showAlert("Xóa lịch ảo thành công.");
+        }
+        else
+            AlertUtil.showError(response);
+    }
+
+    @FXML public void clear1Class(){
+        virtualSchedule.getLopHocPhanDTOList().remove(selectedLop);
+        loadMonth(LocalDate.now());
+        reloadVirtualData();
+        AlertUtil.showAlert("Xóa lớp thành công.");
+    }
+
+    @FXML public void importExcel(){
+        ExcelUtil.handleImportExcel(btnImport,
+                ApiEndpoint.STUDENT_VIRTUAL_SCHEDULE_IMPORT,
+                "lichAo",
+                this::getLichAo
+                );
+        reloadVirtualData();
+    }
+
+    @FXML public void exportExcel(){
+        ExcelUtil.handleExport(btnExport.getScene().getWindow(),
+                ApiEndpoint.STUDENT_VIRTUAL_SCHEDULE_EXPORT,
+                "Lich_ao.xlsx");
+    }
+    private void reloadVirtualData(){
+        loadVirtualClassTable();
+        if (cbMon.getValue() == null) {
+            cbMon.getItems().clear();
+            return;
+        }
+
+        loadClassTable();
+
     }
 }

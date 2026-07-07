@@ -120,3 +120,97 @@
 .danger-button {
     -fx-background-color: #ef4444;
 }
+/* ===== CALENDAR CONTAINER ===== */
+
+.calendar-day-box {
+    -fx-background-color: white;
+    -fx-border-color: #e5e7eb;
+    -fx-border-width: 0.5;
+    -fx-padding: 5;
+    -fx-min-height: 130;
+    -fx-pref-height: 130;
+}
+
+.calendar-day-other-month {
+    -fx-background-color: #f8fafc;
+}
+
+/* ===== HEADER THỨ ===== */
+
+.calendar-week-header {
+    -fx-background-color: linear-gradient(to right, #2563eb, #3b82f6);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 8 0 8 0;
+    -fx-alignment: center;
+}
+
+/* ===== SỐ NGÀY ===== */
+
+.calendar-day-number {
+    -fx-background-color: linear-gradient(to right, #dbeafe, #eff6ff);
+    -fx-text-fill: #1e40af;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 3 9 3 9;
+    -fx-background-radius: 12;
+}
+
+.calendar-day-other-number {
+    -fx-background-color: #e5e7eb;
+    -fx-text-fill: #9ca3af;
+}
+
+/* ===== SCROLL TRONG Ô NGÀY ===== */
+
+.calendar-day-scroll {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-padding: 0;
+}
+
+.calendar-day-scroll .viewport {
+    -fx-background-color: transparent;
+}
+
+.calendar-day-scroll .scroll-bar:vertical {
+    -fx-pref-width: 6;
+}
+
+.calendar-day-scroll .scroll-bar:vertical .thumb {
+    -fx-background-color: #cbd5e1;
+    -fx-background-radius: 8;
+}
+
+.calendar-day-scroll .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+}
+
+/* ===== CARD LỚP HỌC ===== */
+
+.schedule-class-card {
+    -fx-background-color: #eef4ff;
+    -fx-background-radius: 8;
+    -fx-border-color: #bfdbfe;
+    -fx-border-radius: 8;
+    -fx-padding: 5;
+    -fx-spacing: 3;
+}
+
+.schedule-subject {
+    -fx-text-fill: #1e3a8a;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+}
+
+.schedule-code {
+    -fx-text-fill: #2563eb;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+}
+
+.schedule-time-cell {
+    -fx-text-fill: #111827;
+    -fx-font-size: 12px;
+}

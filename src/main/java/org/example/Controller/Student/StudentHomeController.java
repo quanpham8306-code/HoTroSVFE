@@ -10,6 +10,7 @@ import org.example.Model.*;
 import org.example.Service.Student.DiemService;
 import org.example.Service.Student.SinhVienService;
 import org.example.Service.Student.ThoiKhoaBieuService;
+import org.example.Util.DateUtil;
 import org.example.Util.SceneUtil;
 
 import java.io.IOException;
@@ -30,15 +31,15 @@ public class StudentHomeController {
     @FXML private Label lblNganhHeader;
     @FXML private Label lblKhoaHeader;
 
-    @FXML private TextField txtHoTen;
-    @FXML private TextField txtNgaySinh;
-    @FXML private TextField txtID;
-    @FXML private TextField txtAddress;
-    @FXML private TextField txtEmail;
-    @FXML private TextField txtPhone;
-    @FXML private TextField txtMaSV;
-    @FXML private TextField txtClass;
-    @FXML private TextField txtGioiTinh;
+    @FXML private Label lblName;
+    @FXML private Label lblDate;
+    @FXML private Label lblId;
+    @FXML private Label lblAd;
+    @FXML private Label lblMail;
+    @FXML private Label lblPhone;
+    @FXML private Label lblMaSv;
+    @FXML private Label lblClass;
+    @FXML private Label lblSex;
 
     @FXML private Label lblGpa;
     @FXML private Label lblSoTinChi;
@@ -69,7 +70,6 @@ public class StudentHomeController {
         loadStudentInfo();
         loadScoreSummary();
         loadSchedule();
-        acceptEdit(false);
     }
     @FXML
     public void showScore() throws IOException {
@@ -106,15 +106,15 @@ public class StudentHomeController {
             lblMaSvHeader.setText(sv.getMaSv()+" ");
             lblNganhHeader.setText(sv.getNganh()+" ");
             lblKhoaHeader.setText(sv.getKhoa()+" ");
-            txtHoTen.setText(sv.getHoTen()+" ");
-            txtNgaySinh.setText(sv.getNgaySinh().toString()+" ");
-            txtID.setText(sv.getCccd()+" ");
-            txtAddress.setText(sv.getDiaChi()+" ");
-            txtEmail.setText(sv.getEmail()+" ");
-            txtPhone.setText(sv.getSoDienThoai()+" ");
-            txtMaSV.setText(sv.getMaSv()+" ");
-            txtClass.setText(sv.getLop()+" ");
-            txtGioiTinh.setText(
+            lblName.setText(sv.getHoTen()+" ");
+            lblDate.setText(DateUtil.format(sv.getNgaySinh()));
+            lblId.setText(sv.getCccd()+" ");
+            lblAd.setText(sv.getDiaChi()+" ");
+            lblMail.setText(sv.getEmail()+" ");
+            lblPhone.setText(sv.getSoDienThoai()+" ");
+            lblMaSv.setText(sv.getMaSv()+" ");
+            lblClass.setText(sv.getLop()+" ");
+            lblSex.setText(
                     sv.getGioiTinh() ? "Nam" : "Nữ");
             if(sv.getNamNhapHoc() + 4 < LocalDate.now().getYear())
                 lblStatus.setText("● Đã tốt nghiệp");
@@ -122,18 +122,6 @@ public class StudentHomeController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-    public void acceptEdit(boolean x)
-    {
-        txtHoTen.setEditable(x);
-        txtNgaySinh.setEditable(x);
-        txtID.setEditable(x);
-        txtAddress.setEditable(x);
-        txtEmail.setEditable(x);
-        txtPhone.setEditable(x);
-        txtMaSV.setEditable(x);
-        txtClass.setEditable(x);
-        txtGioiTinh.setEditable(x);
     }
     private void loadScoreSummary() {
         try {
@@ -216,7 +204,7 @@ public class StudentHomeController {
         LopHocPhan lopHocPhan = buoiHoc.getLopHocPhanDTO();
 
         date.setText(buoiHoc.getNgayHoc() != null
-                ? buoiHoc.getNgayHoc().toString()
+                ? DateUtil.format(buoiHoc.getNgayHoc())
                 : "");
 
         time.setText(
@@ -225,8 +213,5 @@ public class StudentHomeController {
 
         address.setText(lopHocPhan.getPhongHoc());
         mon.setText(lopHocPhan.getTenMonHoc());
-    }
-    private String valueOrEmpty(String value) {
-        return value == null ? "" : value;
     }
 }

@@ -67,7 +67,6 @@
                            <children>
                               <Label styleClass="section-title" text="Chi tiết ghi chú" />
                               <Region HBox.hgrow="ALWAYS" />
-                              <Label fx:id="lblStatus" styleClass="updated-label" text="Chưa lưu" />
                            </children>
                         </HBox>
                         <TextField fx:id="txtTitle" promptText="Nhập tiêu đề ghi chú..." styleClass="title-field" />

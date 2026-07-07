@@ -63,7 +63,7 @@
                     <Button onAction="#addStudentToClass" styleClass="primary-btn" text="+ Thêm vào lớp" />
 
                     <Button onAction="#removeStudentFromClass" styleClass="delete-btn" text="Xóa khỏi lớp" />
-               <Button fx:id="importStudent" onAction="#impoprtStudentToClass" prefHeight="36.0" prefWidth="78.0" styleClass="import-btn" text="Import" />
+               <Button fx:id="importStudent" onAction="#impoprtStudentToClass" prefHeight="36.0" prefWidth="105.0" styleClass="import-btn" text="Import Excel" />
                 </HBox>
 
                 <Separator />

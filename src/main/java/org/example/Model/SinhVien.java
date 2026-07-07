@@ -1,5 +1,6 @@
 package org.example.Model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.time.LocalDate;
@@ -9,6 +10,7 @@ import java.util.Date;
 public class SinhVien {
     private String maSv;
     private String hoTen;
+
     private LocalDate ngaySinh;
     private Boolean gioiTinh;
     private String email;

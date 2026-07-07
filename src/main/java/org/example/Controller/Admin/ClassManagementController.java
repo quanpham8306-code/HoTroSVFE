@@ -10,7 +10,7 @@ import org.example.Config.AppSession;
 import org.example.Model.LopHocPhan;
 import org.example.Service.Admin.AdminClassService;
 import org.example.Util.ApiEndpoint;
-import org.example.Util.ExcelImportUtil;
+import org.example.Util.ExcelUtil;
 import org.example.Util.SceneUtil;
 
 import java.io.IOException;
@@ -335,7 +335,7 @@ public class ClassManagementController {
 
     @FXML
     private void handleImportClass() {
-        ExcelImportUtil.handleImportExcel(
+        ExcelUtil.handleImportExcel(
                 importClass,
                 ApiEndpoint.ADMIN_CLASS_IMPORT,
                 "danhSachLop",

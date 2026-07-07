@@ -11,6 +11,7 @@ import org.example.Util.AlertUtil;
 import org.example.Util.SceneUtil;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class RegisteredClassController {
     @FXML private TextField txtMaSv;
@@ -41,15 +42,6 @@ public class RegisteredClassController {
 
     @FXML
     public void initialize() {
-        colMaLop.setCellValueFactory(new PropertyValueFactory<>("maLopHP"));
-        colMonHoc.setCellValueFactory(new PropertyValueFactory<>("tenMonHoc"));
-        colGiangVien.setCellValueFactory(new PropertyValueFactory<>("giangVien"));
-        colPhong.setCellValueFactory(new PropertyValueFactory<>("phongHoc"));
-        colThu.setCellValueFactory(new PropertyValueFactory<>("thu"));
-        colGioBatDau.setCellValueFactory(new PropertyValueFactory<>("gioBatDau"));
-        colGioKetThuc.setCellValueFactory(new PropertyValueFactory<>("gioKetThuc"));
-        colHocKy.setCellValueFactory(new PropertyValueFactory<>("hocKy"));
-        colNamHoc.setCellValueFactory(new PropertyValueFactory<>("namHoc"));
 
         tableClass.getSelectionModel().selectedItemProperty().addListener((obs, oldV, lhp) -> {
             if (lhp != null) {
@@ -148,10 +140,39 @@ public class RegisteredClassController {
     @FXML
     public void impoprtStudentToClass()
     {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Nhập mã lớp");
+        dialog.setHeaderText("Import danh sách sinh viên vào lớp học phần");
+        dialog.setContentText("Nhập mã lớp:");
+
+        Optional<String> result = dialog.showAndWait();
+
+        if (result.isEmpty()) {
+            return;
+        }
+
+        String maLopHP = result.get().trim();
+
+        if (maLopHP.isEmpty()) {
+            AlertUtil.showAlert("Vui lòng nhập mã lớp học phần");
+            return;
+        }
         service.handleImportStudentToClass(
                 importStudent,
-                txtMaLopHP.getText(),
+                maLopHP,
                 null
         );
+    }
+    private void setupTable(){
+        colMaLop.setCellValueFactory(new PropertyValueFactory<>("maLopHP"));
+        colMonHoc.setCellValueFactory(new PropertyValueFactory<>("tenMonHoc"));
+        colGiangVien.setCellValueFactory(new PropertyValueFactory<>("giangVien"));
+        colPhong.setCellValueFactory(new PropertyValueFactory<>("phongHoc"));
+        colThu.setCellValueFactory(new PropertyValueFactory<>("thu"));
+        colGioBatDau.setCellValueFactory(new PropertyValueFactory<>("gioBatDau"));
+        colGioKetThuc.setCellValueFactory(new PropertyValueFactory<>("gioKetThuc"));
+        colHocKy.setCellValueFactory(new PropertyValueFactory<>("hocKy"));
+        colNamHoc.setCellValueFactory(new PropertyValueFactory<>("namHoc"));
+
     }
 }

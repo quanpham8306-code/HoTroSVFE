@@ -160,6 +160,7 @@
     -fx-text-fill: #07142f;
     -fx-font-size: 15px;
     -fx-font-weight: bold;
+    -fx-alignment: center-left;
 }
 
 /* SCHEDULE */
@@ -182,6 +183,7 @@
     -fx-font-size: 15px;
     -fx-font-weight: bold;
     -fx-text-fill: #07142f;
+    -fx-alignment: center-left;
 }
 
 /* STATS */
