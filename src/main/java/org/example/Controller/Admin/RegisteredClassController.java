@@ -6,6 +6,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.Config.AppSession;
 import org.example.Model.LopHocPhan;
+import org.example.Model.SinhVien;
 import org.example.Service.Admin.AdminRegisteredClassService;
 import org.example.Util.AlertUtil;
 import org.example.Util.SceneUtil;
@@ -17,16 +18,13 @@ public class RegisteredClassController {
     @FXML private TextField txtMaSv;
     @FXML private TextField txtMaLopHP;
 
-    @FXML private TableView<LopHocPhan> tableClass;
-    @FXML private TableColumn<LopHocPhan, String> colMaLop;
-    @FXML private TableColumn<LopHocPhan, String> colMonHoc;
-    @FXML private TableColumn<LopHocPhan, String> colGiangVien;
-    @FXML private TableColumn<LopHocPhan, String> colPhong;
-    @FXML private TableColumn<LopHocPhan, Integer> colThu;
-    @FXML private TableColumn<LopHocPhan, String> colGioBatDau;
-    @FXML private TableColumn<LopHocPhan, String> colGioKetThuc;
-    @FXML private TableColumn<LopHocPhan, String> colHocKy;
-    @FXML private TableColumn<LopHocPhan, String> colNamHoc;
+    @FXML private TableView<SinhVien> tableClass;
+    @FXML private TableColumn<LopHocPhan, String> colMaSv;
+    @FXML private TableColumn<LopHocPhan, String> colName;
+    @FXML private TableColumn<LopHocPhan, String> colSex;
+    @FXML private TableColumn<LopHocPhan, String> colLop;
+    @FXML private TableColumn<LopHocPhan, Integer> colNganh;
+    @FXML private TableColumn<LopHocPhan, String> colKhoa;
 
     @FXML private Button btnHomeAdmin;
     @FXML private Button btnSV;
@@ -42,28 +40,28 @@ public class RegisteredClassController {
 
     @FXML
     public void initialize() {
+        setupTable();
 
-        tableClass.getSelectionModel().selectedItemProperty().addListener((obs, oldV, lhp) -> {
-            if (lhp != null) {
-                txtMaLopHP.setText(lhp.getMaLopHP());
+        tableClass.getSelectionModel().selectedItemProperty().addListener((obs, oldV, sv) -> {
+            if (sv != null) {
+                txtMaSv.setText(sv.getMaSv());
             }
         });
     }
 
     @FXML
-    private void searchByStudent() {
-        String maSv = txtMaSv.getText();
+    private void searchBy() {
+        if(!txtMaLopHP.getText().isEmpty()){
+            String maLop = txtMaLopHP.getText();
 
-        if (maSv == null || maSv.isBlank()) {
-            AlertUtil.showAlert("Vui lòng nhập mã sinh viên");
-            return;
+            tableClass.setItems(
+                    FXCollections.observableArrayList(
+                            service.getByMaLopHP(maLop.trim())
+                    )
+            );
         }
-
-        tableClass.setItems(
-                FXCollections.observableArrayList(
-                        service.getByMaSv(maSv.trim())
-                )
-        );
+        else
+            AlertUtil.showError("Vui lòng nhập dữ liệu ở ô mã lớp.");
     }
 
     @FXML
@@ -79,7 +77,7 @@ public class RegisteredClassController {
         String respone = service.addStudentToClass(maSv.trim(), maLopHP.trim());
         if (respone.equals("SUCCESS")) {
             AlertUtil.showAlert("Thêm sinh viên vào lớp thành công");
-            searchByStudent();
+            searchBy();
         }
         else {
             AlertUtil.showAlert("Thêm thất bại : " + respone);
@@ -102,9 +100,9 @@ public class RegisteredClassController {
         confirm.setContentText("Xóa sinh viên " + maSv + " khỏi lớp " + maLopHP + "?");
 
         if (confirm.showAndWait().orElse(ButtonType.CANCEL) == ButtonType.OK) {
-            if (service.removeStudentFromClass(maSv.trim(), maLopHP.trim())) {
+            if (service.removeStudentFromClass(maSv.trim(), maLopHP.trim()).equals("SUCCESS")) {
                 AlertUtil.showAlert("Xóa sinh viên khỏi lớp thành công");
-                searchByStudent();
+                searchBy();
             } else {
                 AlertUtil.showAlert("Xóa thất bại");
             }
@@ -164,15 +162,11 @@ public class RegisteredClassController {
         );
     }
     private void setupTable(){
-        colMaLop.setCellValueFactory(new PropertyValueFactory<>("maLopHP"));
-        colMonHoc.setCellValueFactory(new PropertyValueFactory<>("tenMonHoc"));
-        colGiangVien.setCellValueFactory(new PropertyValueFactory<>("giangVien"));
-        colPhong.setCellValueFactory(new PropertyValueFactory<>("phongHoc"));
-        colThu.setCellValueFactory(new PropertyValueFactory<>("thu"));
-        colGioBatDau.setCellValueFactory(new PropertyValueFactory<>("gioBatDau"));
-        colGioKetThuc.setCellValueFactory(new PropertyValueFactory<>("gioKetThuc"));
-        colHocKy.setCellValueFactory(new PropertyValueFactory<>("hocKy"));
-        colNamHoc.setCellValueFactory(new PropertyValueFactory<>("namHoc"));
-
+        colMaSv.setCellValueFactory(new PropertyValueFactory<>("maSv"));
+        colLop.setCellValueFactory(new PropertyValueFactory<>("lop"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("hoTen"));
+        colSex.setCellValueFactory(new PropertyValueFactory<>("kieuGioiTinh"));
+        colKhoa.setCellValueFactory(new PropertyValueFactory<>("khoa"));
+        colNganh.setCellValueFactory(new PropertyValueFactory<>("nganh"));
     }
 }

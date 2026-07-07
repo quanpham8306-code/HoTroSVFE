@@ -43,7 +43,7 @@
 
                 <Button fx:id="btnScore" onAction="#showScore" styleClass="nav-button" text="📝 Điểm" />
 
-                <Button fx:id="btnRegisteredClass" onAction="#showRegisteredClass" styleClass="nav-button" text="📋 Lớp đã đăng ký" />
+                <Button fx:id="btnRegisteredClass" onAction="#showRegisteredClass" styleClass="nav-button" text="📋 Chi tiết lớp học phần" />
                 <Button fx:id="btnAccount" onAction="#showAccount" styleClass="nav-button" text="👤 Tài khoản" />
             </VBox>
 

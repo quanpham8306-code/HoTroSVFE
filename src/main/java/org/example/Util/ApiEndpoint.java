@@ -2,7 +2,7 @@ package org.example.Util;
 
 public class ApiEndpoint {
 
-    public static final String BASE_URL = "http://26.84.60.246:8080";
+    public static final String BASE_URL = "http://47.129.182.56:8080";
 
     // Auth
     public static final String LOGIN = "/api/auth/login";
@@ -48,7 +48,8 @@ public class ApiEndpoint {
     public static final String ADMIN_REGISTERED_CLASS_BY_STUDENT = "/api/admin/class/registered_class/";// xem sinh viên đã đăng kí những lớp nào
     public static final String ADMIN_ADD_STUDENT_TO_CLASS ="/api/admin/class/add_student";// thêm sv vào lớp HP
     public static final String ADMIN_STUDENT_TO_CLASS_IMPORT = "/api/admin/class/importExcelSinhVienVaoLopHP/";
-    public static final String ADMIN_REMOVE_STUDENT_FROM_CLASS ="/api/admin/class/remove_student/";// xóa sv khỏi lớp HP
+    public static final String ADMIN_STUDENT_IN_CLASS = "/api/admin/class/student/";
+    public static final String ADMIN_REMOVE_STUDENT_FROM_CLASS ="/api/admin/class/delete/";// xóa sv khỏi lớp HP
     public static final String ADMIN_SCORE_IMPORT ="/api/admin/score/importExcel";
     //Common
     public static final String COMMON_CHANGE_PWS = "/api/common/change-password";
